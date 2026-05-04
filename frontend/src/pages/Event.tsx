@@ -7,6 +7,8 @@ import { AttendeeBar, Badge , SectionLabel} from "@/components/UI";
 import type {OSKEvent,EventType,} from "@/types";
 import EyebrowLabel from "@/components/UI/EyebrowLable";
 
+
+
 // ─── Meta maps 
 
 const TYPE_META: Record<EventType, {

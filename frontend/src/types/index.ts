@@ -16,6 +16,7 @@ export type {
   OSKEvent,
 } from "./event.types";
 
+
 export type {
   PartnerCategory,
   Partner,
@@ -34,3 +35,17 @@ export type {
   ContactFormState,
   FormStatus,
 } from "./resource.types";
+
+
+export type {
+  ApiSuccess,
+  ApiError,
+  ApiResponse,
+  CodingLevel,
+  ApiMember,
+  CreateMemberPayload,
+  ApiPartner,
+  CreatePartnerPayload,
+} from "./api.types";
+
+export type { PartnerFormState } from "./partnersForm.types";

@@ -9,7 +9,6 @@ export { RESOURCES, EXTERNAL_TOOLS, LEARNING_PATHS,} from "./resources";
 export type { ExternalTool } from "./resources";
 export { PARTNER_BENEFITS, PARTNERSHIP_STEPS, PARTNER_STATS, WHAT_WE_LOOK_FOR,
 }                          from "./partners";
-// add this line to your existing index.ts
 export {
   HERO_STATS,
   ABOUT_STRIP_STATS,
@@ -32,3 +31,12 @@ export type {
   ActivityItem,
   FAQItem,
 }                    from "./homepage";
+
+
+
+export {
+  ORG_CATEGORIES,
+  ORG_SIZES,
+  PARTNERSHIP_TIERS,
+  AFRICAN_COUNTRIES,
+} from "./partnersForm";

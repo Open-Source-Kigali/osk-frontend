@@ -4,6 +4,7 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import { X } from "lucide-react";
 
 import LogoImage from "@/assets/Logo/OSK-primary-logo.svg";
+import LogoWhite from "@/assets/Logo/OSK-primary-logo-1200-400-white.svg"
 import { useScrolled } from "@/hooks";
 import { NAV_LINKS } from "@/constants";
 import PrimaryButton from "./UI/PrimaryButton";
@@ -41,12 +42,12 @@ const Navbar = () => {
       >
         {/* Logo */}
         <Link to="/" className="flex items-center">
-          <img
-            src={LogoImage}
-            alt="Open Source Kigali"
-            className="h-10 sm:h-12 md:h-14 w-auto object-contain"
-          />
-        </Link>
+  <img
+    src={scrolled ? LogoImage : LogoWhite}
+    alt="Open Source Kigali"
+    className="h-10 sm:h-12 md:h-14 w-auto object-contain"
+  />
+</Link>
 
         {/* Desktop nav */}
         <div className="hidden md:flex items-center space-x-8 text-base">
@@ -70,7 +71,7 @@ const Navbar = () => {
         </div>
 
         {/* CTA button (desktop) */}
-        <PrimaryButton to="" className="hidden md:inline-flex">
+        <PrimaryButton to="/membersform" className="hidden md:inline-flex">
           Contribute to OSK
         </PrimaryButton>
         {/* Mobile hamburger */}
