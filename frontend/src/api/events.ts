@@ -1,29 +1,7 @@
-import type { OSKEvent, EventType, EventMode, EventStatus, EventSpeaker } from "@/types";
+import type { OSKEvent, EventType, EventStatus, EventSpeaker, ApiEvent } from "@/types";
 import { formatDateRange, slugFromTitle } from "@/lib/formatters";
 import { getInitials } from "@/lib/utils";
 import { apiGet } from "./client";
-
-interface ApiEvent {
-  id:            string;
-  title:         string;
-  tagline:       string | null;
-  imageUrl:      string | null;
-  imagePublicId: string | null;
-  description:   string | null;
-  category:      string;
-  mode:          EventMode;
-  featured:      boolean;
-  capacity:      number | null;
-  registered:    number;
-  date:          string;
-  endDate:       string | null;
-  timeLabel:     string | null;
-  location:      string | null;
-  speakers:      string[] | null;
-  registerUrl:   string | null;
-  createdAt:     string;
-  updatedAt:     string;
-}
 
 function deriveType(category: string): EventType {
   const c = category.toLowerCase();

@@ -1,8 +1,7 @@
 import { NavLink }          from "react-router";
 import {Github, ArrowUpRight, GitPullRequest, Users, AlertCircle, Star, GitFork, Search, Filter, ExternalLink, Code2, Zap, CheckCircle2, Clock} from "lucide-react";
 import { Badge } from '@/components/UI/';
-import { Card } from "@/components/UI";
-import { SectionLabel } from "@/components/UI";
+import { Card, SectionLabel, Loader } from "@/components/UI";
 import { useFilter, useProjects } from "@/hooks";
 import { GOOD_FIRST_ISSUES } from "@/constants";
 import type { Projects,Issue,ProjectStatus,ProjectCategory } from "@/types";
@@ -418,9 +417,7 @@ const Projectt = () => {
         <div className="max-w-7xl mx-auto">
 
           {loading ? (
-            <div className="text-center py-24 text-gray-400">
-              <p className="font-semibold text-gray-500">Loading projects…</p>
-            </div>
+            <Loader />
           ) : error ? (
             <div className="text-center py-24 text-gray-400">
               <Code2 size={36} className="mx-auto mb-4 opacity-30" />

@@ -46,6 +46,8 @@ export type {
   CreateMemberPayload,
   ApiPartner,
   CreatePartnerPayload,
+  ApiProject,
+  ApiEvent,
 } from "./api.types";
 
 export type { PartnerFormState } from "./partnersForm.types";

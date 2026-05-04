@@ -66,3 +66,56 @@ export interface CreatePartnerPayload {
   email:            string;
   partershipReason: string; // intentional — matches the API typo
 }
+
+// ── Project ────────────────────────────────────────────────────────────────────
+export interface ApiProject {
+  id:             string;
+  slug:           string;
+  repoOwner:      string;
+  repoName:       string;
+  imageUrl:       string | null;
+  imagePublicId:  string | null;
+  tagline:        string | null;
+  category:       string;
+  status:         string;
+  featured:       boolean;
+  maintainer:     string | null;
+  langColor:      string | null;
+  ghDescription:  string | null;
+  ghLanguage:     string | null;
+  ghTopics:       string[] | null;
+  ghStars:        number;
+  ghForks:        number;
+  ghOpenIssues:   number;
+  ghContributors: number;
+  ghPullRequests: number;
+  ghPushedAt:     string;
+  lastFetchedAt:  string;
+  createdAt:      string;
+  updatedAt:      string;
+}
+
+// ── Event ──────────────────────────────────────────────────────────────────────
+import type { EventMode } from "./event.types";
+
+export interface ApiEvent {
+  id:            string;
+  title:         string;
+  tagline:       string | null;
+  imageUrl:      string | null;
+  imagePublicId: string | null;
+  description:   string | null;
+  category:      string;
+  mode:          EventMode;
+  featured:      boolean;
+  capacity:      number | null;
+  registered:    number;
+  date:          string;
+  endDate:       string | null;
+  timeLabel:     string | null;
+  location:      string | null;
+  speakers:      string[] | null;
+  registerUrl:   string | null;
+  createdAt:     string;
+  updatedAt:     string;
+}
