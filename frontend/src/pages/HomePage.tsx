@@ -930,7 +930,7 @@ const HomePage = () => {
             </p>
 
             <div className="flex flex-wrap gap-4 mb-12">
-              <PrimaryButton to="">
+              <PrimaryButton to="/membersform">
                 Join the Community
                 <ArrowRight
                   size={16}

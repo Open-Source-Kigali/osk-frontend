@@ -40,9 +40,9 @@ const linkGroups: FooterLinkGroup[] = [
   {
     heading: "Connect",
     links: [
-      { label: "GitHub", to: "https://github.com", external: true },
+      { label: "GitHub", to: "https://github.com/Open-Source-Kigali", external: true },
       { label: "Discord", to: "https://discord.com", external: true },
-      { label: "LinkedIn", to: "https://linkedin.com", external: true },
+      { label: "LinkedIn", to: "https://www.linkedin.com/company/open-source-kigali/?viewAsMember=true", external: true },
       {
         label: "opensourcekigali@gmail.com",
         to: "mailto:opensourcekigali@gmail.com",

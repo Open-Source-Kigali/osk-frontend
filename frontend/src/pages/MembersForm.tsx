@@ -227,9 +227,7 @@ const MembersForm = () => {
           <strong className="text-gray-700">48 hours</strong>.
         </p>
 
-        <p className="text-gray-400 text-sm mb-8">
-          Member ID: <span className="font-mono">{createdMember.id}</span>
-        </p>
+        
 
         <div className="flex flex-wrap gap-3 justify-center">
           <NavLink

@@ -9,7 +9,15 @@ import { useScrolled } from "@/hooks";
 import { NAV_LINKS } from "@/constants";
 import PrimaryButton from "./UI/PrimaryButton";
 
-const Navbar = () => {
+type NavbarProps = {
+  variant?: "dark" | "light";
+};
+
+
+
+const Navbar = ({ variant = "light" }: NavbarProps) => {
+  const logo = variant === "dark" ? LogoWhite : LogoImage;
+
   const scrolled = useScrolled(50);
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -31,23 +39,25 @@ const Navbar = () => {
     };
   }, [mobileOpen]);
 
+  
+
   return (
     <>
       <nav
-        className={`flex justify-between items-center px-4 sm:px-8 lg:px-20 fixed py-4 w-full z-20 transition-colors duration-300 ${
-          isLight
+        className={`flex justify-between items-center px-4 sm:px-8 lg:px-20 fixed py-4 w-full z-20 transition-colors duration-300 ${isLight
             ? "bg-white shadow-xl text-gray-900"
             : "bg-transparent text-white"
-        }`}
+          }`}
       >
         {/* Logo */}
+        
         <Link to="/" className="flex items-center">
-  <img
-    src={scrolled ? LogoImage : LogoWhite}
-    alt="Open Source Kigali"
-    className="h-10 sm:h-12 md:h-14 w-auto object-contain"
-  />
-</Link>
+          <img
+            src={logo}
+            alt="Open Source Kigali"
+            className="h-10 sm:h-12 md:h-14 w-auto object-contain"
+          />
+        </Link>
 
         {/* Desktop nav */}
         <div className="hidden md:flex items-center space-x-8 text-base">
@@ -58,11 +68,10 @@ const Navbar = () => {
               className={({ isActive }) =>
                 isActive
                   ? "text-primary-colour font-semibold"
-                  : `font-medium transition-colors duration-200 ${
-                      isLight
-                        ? "text-gray-900 hover:text-primary-colour"
-                        : "text-white hover:text-[#93bbff]"
-                    }`
+                  : `font-medium transition-colors duration-200 ${isLight
+                    ? "text-gray-900 hover:text-primary-colour"
+                    : "text-white hover:text-[#93bbff]"
+                  }`
               }
             >
               {link.name}
@@ -84,9 +93,8 @@ const Navbar = () => {
             <X className={`w-6 h-6 text-gray-900`} />
           ) : (
             <RxHamburgerMenu
-              className={`w-6 h-6 transition-colors duration-300 ${
-                isLight ? "text-gray-900" : "text-white"
-              }`}
+              className={`w-6 h-6 transition-colors duration-300 ${isLight ? "text-gray-900" : "text-white"
+                }`}
             />
           )}
         </button>
