@@ -41,3 +41,10 @@ export type {
   ActivityItem,
   FAQItem,
 } from "./homepage";
+
+export {
+  ORG_CATEGORIES,
+  ORG_SIZES,
+  PARTNERSHIP_TIERS,
+  AFRICAN_COUNTRIES,
+} from "./partnersForm";
