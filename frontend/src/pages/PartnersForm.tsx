@@ -233,10 +233,7 @@ const PartnersForm = () => {
           <strong className="text-gray-700">{createdPartner.email}</strong>{" "}
           within <strong className="text-gray-700">48 hours</strong>.
         </p>
-        <p className="text-gray-400 text-sm mb-8">
-          Reference ID:{" "}
-          <span className="font-mono text-xs">{createdPartner.id}</span>
-        </p>
+       
 
         <div className="flex flex-wrap gap-3 justify-center">
           <NavLink
