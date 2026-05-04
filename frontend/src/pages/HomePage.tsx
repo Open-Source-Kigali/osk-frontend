@@ -149,9 +149,9 @@ const HomePage = () => {
             next billion users into the next billion creators.
           </p>
 
-          <div className="flex flex-col items-center gap-4 md:gap-6 justify-center md:justify-start mt-16">
+          <div className="flex flex-col sm:flex-row items-center gap-4 md:gap-6 justify-center md:justify-start mt-16">
             <PrimaryButton to="">Join the Community</PrimaryButton>
-            <SecondaryButton to="/about">About Us</SecondaryButton>
+            <SecondaryButton to="/about">Know More About Us</SecondaryButton>
           </div>
 
           {/* Stats — from HERO_STATS constant */}
