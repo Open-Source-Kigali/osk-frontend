@@ -1,19 +1,19 @@
-import {  Twitter, Linkedin, Instagram, Facebook } from "lucide-react";
-import { ABOUT_STATS, STORY_POINTS, VALUES, ABOUT_TEAM,} from "@/constants";
+import { Twitter, Linkedin, Instagram, Facebook } from "lucide-react";
+import { ABOUT_STATS, STORY_POINTS, VALUES, ABOUT_TEAM } from "@/constants";
 import peopleImg from "@/assets/images/People.jpeg";
-import groupImg  from "@/assets/images/group2.png";
+import groupImg from "@/assets/images/group2.png";
 import EyebrowLabel from "@/components/UI/EyebrowLable";
 import PrimaryButton from "@/components/UI/PrimaryButton";
 import SecondaryButton from "@/components/UI/SecondaryButton";
 
 //Types
 interface DotProps {
-  color:  string;
-  size:   string;
+  color: string;
+  size: string;
   style?: React.CSSProperties;
 }
 
-//Sub-components 
+//Sub-components
 
 // Purely decorative floating blob — no logic, no state
 const Dot = ({ color, size, style }: DotProps) => (
@@ -25,33 +25,56 @@ const Dot = ({ color, size, style }: DotProps) => (
 
 // Reusable pill badge used in every section header
 
-
-//Page 
+//Page
 const About = () => (
   <div className="font-sans">
-
     {/* ── HERO */}
     <section className="relative bg-white overflow-hidden pt-16 pb-0">
-
       {/* Floating decorative dots */}
-      <Dot color="bg-blue-500"   size="w-3 h-3"   style={{ top: "18%", left: "8%"    }} />
-      <Dot color="bg-green-400"  size="w-2.5 h-2.5" style={{ top: "30%", left: "40%"   }} />
-      <Dot color="bg-yellow-400" size="w-4 h-4"   style={{ top: "55%", right: "22%"  }} />
-      <Dot color="bg-blue-400"   size="w-2 h-2"   style={{ top: "65%", left: "55%"   }} />
-      <Dot color="bg-pink-400"   size="w-3 h-3"   style={{ top: "80%", right: "38%"  }} />
-      <Dot color="bg-purple-400" size="w-2 h-2"   style={{ top: "20%", right: "30%"  }} />
+      <Dot
+        color="bg-blue-500"
+        size="w-3 h-3"
+        style={{ top: "18%", left: "8%" }}
+      />
+      <Dot
+        color="bg-green-400"
+        size="w-2.5 h-2.5"
+        style={{ top: "30%", left: "40%" }}
+      />
+      <Dot
+        color="bg-yellow-400"
+        size="w-4 h-4"
+        style={{ top: "55%", right: "22%" }}
+      />
+      <Dot
+        color="bg-blue-400"
+        size="w-2 h-2"
+        style={{ top: "65%", left: "55%" }}
+      />
+      <Dot
+        color="bg-pink-400"
+        size="w-3 h-3"
+        style={{ top: "80%", right: "38%" }}
+      />
+      <Dot
+        color="bg-purple-400"
+        size="w-2 h-2"
+        style={{ top: "20%", right: "30%" }}
+      />
 
       <div className="max-w-5xl mx-auto px-6 md:px-20 text-center relative z-10 py-16">
-        <EyebrowLabel text="About Open Source Kigali" align="center"/>
+        <EyebrowLabel text="About Open Source Kigali" align="center" />
 
         <h1 className="text-2xl md:text-5xl font-black text-gray-900 leading-tight mb-8 mt-3">
-          We're building the open<br />source movement in Rwanda.
+          We're building the open
+          <br />
+          source movement in Rwanda.
         </h1>
 
         {/* CTAs */}
         <div className="flex flex-wrap gap-4 md:gap-6 justify-center mt-6 mb-14">
           <PrimaryButton to="" className="w-full md:w-auto">
-            Join the community
+            Join the Community
           </PrimaryButton>
           <SecondaryButton to="/projects" className="w-full  md:w-auto">
             View Projects
@@ -75,7 +98,9 @@ const About = () => (
               <span className="font-black text-primary-colour text-3xl md:text-4xl">
                 {s.value}
               </span>
-              <span className="text-gray-500 text-base uppercase">{s.label}</span>
+              <span className="text-gray-500 text-base uppercase">
+                {s.label}
+              </span>
             </div>
           ))}
         </div>
@@ -85,25 +110,32 @@ const About = () => (
     {/* OUR STORY  */}
     <section className="py-24 px-6 md:px-20 bg-white">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-
         {/* Left */}
         <div className="relative">
-          <Dot color="bg-blue-500" size="w-2.5 h-2.5" style={{ top: "10%",  left: "-16px" }} />
-          <Dot color="bg-pink-400" size="w-4 h-4"     style={{ bottom: "20%", right: "10%" }} />
+          <Dot
+            color="bg-blue-500"
+            size="w-2.5 h-2.5"
+            style={{ top: "10%", left: "-16px" }}
+          />
+          <Dot
+            color="bg-pink-400"
+            size="w-4 h-4"
+            style={{ bottom: "20%", right: "10%" }}
+          />
 
-          <EyebrowLabel text="Our Story" align="left"/>
+          <EyebrowLabel text="Our Story" align="left" />
 
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-gray-900 mb-6 leading-snug">
-            We're building the economic
-            infrastructure for open source
-            in Rwanda.
+            We're building the economic infrastructure for open source in
+            Rwanda.
           </h2>
 
           <div className="flex items-start gap-4 mt-8">
             <div className="w-12 h-12 shrink-0 rounded-full border-4 border-blue-500 border-r-transparent border-b-transparent rotate-45 mt-1" />
             <p className="text-gray-500 text-base leading-relaxed">
-              A living place for curiosity and collaboration, meeting and meaning.
-              The heart of a community where developers ship real things together.
+              A living place for curiosity and collaboration, meeting and
+              meaning. The heart of a community where developers ship real
+              things together.
             </p>
           </div>
         </div>
@@ -117,8 +149,12 @@ const About = () => (
                   {sp.number}.
                 </span>
                 <div>
-                  <p className="font-bold text-gray-900 text-xl mb-1">{sp.title}</p>
-                  <p className="text-gray-500 text-sm md:text-base leading-relaxed">{sp.body}</p>
+                  <p className="font-bold text-gray-900 text-xl mb-1">
+                    {sp.title}
+                  </p>
+                  <p className="text-gray-500 text-sm md:text-base leading-relaxed">
+                    {sp.body}
+                  </p>
                 </div>
               </div>
             </div>
@@ -130,7 +166,6 @@ const About = () => (
     {/* ── OUR VISION  */}
     <section className="py-24 px-6 md:px-20 bg-gray-50">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-
         {/* Left: image */}
         <div className="rounded-2xl overflow-hidden shadow-lg">
           <img
@@ -142,22 +177,32 @@ const About = () => (
 
         {/* Right: vision text */}
         <div className="relative">
-          <Dot color="bg-yellow-400" size="w-4 h-4" style={{ top: "-12px", right: "20%"  }} />
-          <Dot color="bg-pink-400"   size="w-3 h-3" style={{ bottom: "10%", left: "-8px" }} />
-          <EyebrowLabel text="Vision" align="right"/>
+          <Dot
+            color="bg-yellow-400"
+            size="w-4 h-4"
+            style={{ top: "-12px", right: "20%" }}
+          />
+          <Dot
+            color="bg-pink-400"
+            size="w-3 h-3"
+            style={{ bottom: "10%", left: "-8px" }}
+          />
+          <EyebrowLabel text="Vision" align="right" />
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-gray-900 mb-6 leading-snug">
             Our Vision
           </h2>
           <div className="space-y-4 text-gray-500 text-sm md:text-base leading-relaxed">
             <p>
-              We believe Rwanda will look different after a generation of developers
-              who learned by shipping — not by watching. Just as open source transformed
-              the global tech industry, we believe it can transform ours.
+              We believe Rwanda will look different after a generation of
+              developers who learned by shipping — not by watching. Just as open
+              source transformed the global tech industry, we believe it can
+              transform ours.
             </p>
             <p>
               We foresee a thriving ecosystem where contributors from Kigali are
-              building tools used worldwide, where a student's first PR opens doors
-              to global opportunities, and where "made in Rwanda" is a mark of quality.
+              building tools used worldwide, where a student's first PR opens
+              doors to global opportunities, and where "made in Rwanda" is a
+              mark of quality.
             </p>
           </div>
         </div>
@@ -169,7 +214,7 @@ const About = () => (
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4">
           <div>
-            <EyebrowLabel text="What We Stand For" align="left"/>
+            <EyebrowLabel text="What We Stand For" align="left" />
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-gray-900">
               Five things we don't negotiate on.
             </h2>
@@ -191,8 +236,12 @@ const About = () => (
                 {v.number}
               </span>
               <div className="col-span-10 md:col-span-11 grid md:grid-cols-2 gap-2 md:gap-12 items-baseline">
-                <h3 className="text-base md:text-xl font-bold text-gray-900">{v.title}</h3>
-                <p className="text-gray-500 text-sm md:text-base leading-relaxed">{v.body}</p>
+                <h3 className="text-base md:text-xl font-bold text-gray-900">
+                  {v.title}
+                </h3>
+                <p className="text-gray-500 text-sm md:text-base leading-relaxed">
+                  {v.body}
+                </p>
               </div>
             </div>
           ))}
@@ -205,14 +254,16 @@ const About = () => (
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-4">
           <div>
-            <EyebrowLabel text="The People" align="left"/>
+            <EyebrowLabel text="The People" align="left" />
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-gray-900">
-              Leading, Strong<br />Creative Team
+              Leading, Strong
+              <br />
+              Creative Team
             </h2>
           </div>
           <p className="text-gray-500 text-base md:text-lg max-w-xs text-start leading-relaxed">
             OSK is led by a volunteer team of contributors who spend their own
-            time making the community better for everyone else.
+            time making the Community better for everyone else.
           </p>
         </div>
 
@@ -224,8 +275,12 @@ const About = () => (
               className="bg-white rounded-2xl overflow-hidden border border-gray-100 hover:shadow-md transition-shadow duration-200"
             >
               {/* Avatar area */}
-              <div className={`${m.bg} h-48 flex items-center justify-center relative overflow-hidden`}>
-                <span className="text-white font-black text-7xl opacity-20">{m.initials}</span>
+              <div
+                className={`${m.bg} h-48 flex items-center justify-center relative overflow-hidden`}
+              >
+                <span className="text-white font-black text-7xl opacity-20">
+                  {m.initials}
+                </span>
                 {m.featured && (
                   <span className="absolute top-3 right-3 bg-blue-500 text-white text-xs font-bold px-3 py-1 rounded-full">
                     Lead
@@ -241,10 +296,10 @@ const About = () => (
                 </p>
                 <div className="flex gap-2">
                   {[
-                    { Icon: Twitter,   href: m.links.twitter   },
+                    { Icon: Twitter, href: m.links.twitter },
                     { Icon: Instagram, href: m.links.instagram },
-                    { Icon: Facebook,  href: m.links.facebook  },
-                    { Icon: Linkedin,  href: m.links.linkedin  },
+                    { Icon: Facebook, href: m.links.facebook },
+                    { Icon: Linkedin, href: m.links.linkedin },
                   ].map(({ Icon, href }, idx) => (
                     <a
                       key={idx}
@@ -264,27 +319,31 @@ const About = () => (
 
     {/* ── BOTTOM CTA */}
     <section className="py-24 px-6 md:px-20 bg-background-colour relative overflow-hidden">
-      <Dot color="bg-blue-500" size="w-48 h-48" style={{ top: "-24px",  right: "-24px", opacity: 0.08 }} />
-      <Dot color="bg-blue-400" size="w-32 h-32" style={{ bottom: "-16px", left: "10%",  opacity: 0.06 }} />
+      <Dot
+        color="bg-blue-500"
+        size="w-48 h-48"
+        style={{ top: "-24px", right: "-24px", opacity: 0.08 }}
+      />
+      <Dot
+        color="bg-blue-400"
+        size="w-32 h-32"
+        style={{ bottom: "-16px", left: "10%", opacity: 0.06 }}
+      />
 
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-end justify-between gap-10 relative z-10">
         <div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white leading-tight">
-            Your first PR<br />
+            Your first PR
+            <br />
             <span className="text-blue-400">is one click away.</span>
           </h2>
         </div>
         <div className="flex flex-col sm:flex-row gap-4 shrink-0">
-          <PrimaryButton to="">
-            Join the Community
-          </PrimaryButton>
-          <SecondaryButton to="/projects">
-            Browse Projects
-          </SecondaryButton>
+          <PrimaryButton to="">Join the Community</PrimaryButton>
+          <SecondaryButton to="/projects">Browse Projects</SecondaryButton>
         </div>
       </div>
     </section>
-
   </div>
 );
 

@@ -1,31 +1,46 @@
 import { NavLink } from "react-router";
-import { Github, MessageCircle, Linkedin, Twitter,ArrowUpRight, Hash, Users, Shield,}                          from "lucide-react";
-import { COMMUNITY_STATS, CHANNELS, GUIDELINES, SOCIAL_PLATFORMS} from "@/constants";
+import {
+  Github,
+  MessageCircle,
+  Linkedin,
+  Twitter,
+  ArrowUpRight,
+  Hash,
+  Users,
+  Shield,
+} from "lucide-react";
+import {
+  COMMUNITY_STATS,
+  CHANNELS,
+  GUIDELINES,
+  SOCIAL_PLATFORMS,
+} from "@/constants";
 import EyebrowLabel from "@/components/UI/EyebrowLable";
 import PrimaryButton from "@/components/UI/PrimaryButton";
 
-
 const SOCIAL_ICONS: Record<string, React.ReactNode> = {
-discord:  <MessageCircle size={22} />,
-  github:   <Github        size={22} />,
-  linkedin: <Linkedin      size={22} />,
-  twitter:  <Twitter       size={22} />,
+  discord: <MessageCircle size={22} />,
+  github: <Github size={22} />,
+  linkedin: <Linkedin size={22} />,
+  twitter: <Twitter size={22} />,
 };
 
 // ─── Sub-components
 
-
-// ─── Page 
+// ─── Page
 const Community = () => (
   <>
     {/* HERO */}
     <section className="pt-32 pb-20 px-6 md:px-20 bg-[#FFFBF7] relative overflow-hidden">
       <div className="relative max-w-7xl mx-auto">
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-12">
-
           {/* Left copy */}
           <div className="max-w-2xl">
-            <EyebrowLabel text="Community is live " className=' animate-pulse' align="left"/>
+            <EyebrowLabel
+              text="Community is live "
+              className=" animate-pulse"
+              align="left"
+            />
 
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-gray-900 leading-none tracking-tight mb-6">
               This is where
@@ -66,7 +81,9 @@ const Community = () => (
                 key={s.label}
                 className="bg-white rounded-2xl border border-gray-100 p-5 shadow-sm"
               >
-                <p className="text-3xl font-black text-gray-900 leading-none mb-1">{s.value}</p>
+                <p className="text-3xl font-black text-gray-900 leading-none mb-1">
+                  {s.value}
+                </p>
                 <p className="text-gray-800 text-sm font-semibold">{s.label}</p>
                 <p className="text-gray-400 text-xs mt-0.5">{s.sub}</p>
               </div>
@@ -77,13 +94,19 @@ const Community = () => (
         {/* Avatar stack + CTA */}
         <div className="mt-16 flex items-center flex-wrap gap-3">
           <div className="flex -space-x-2">
-            {(["DD","AU","JH","CI","EN"] as const).map((ini, i) => (
+            {(["DD", "AU", "JH", "CI", "EN"] as const).map((ini, i) => (
               <div
                 key={ini}
                 className="w-8 h-8 rounded-full border-2 border-white flex items-center justify-center text-white text-xs font-bold"
                 style={{
-                  background: ["#3b82f6","#10b981","#8b5cf6","#f59e0b","#ef4444"][i],
-                  zIndex:     5 - i,
+                  background: [
+                    "#3b82f6",
+                    "#10b981",
+                    "#8b5cf6",
+                    "#f59e0b",
+                    "#ef4444",
+                  ][i],
+                  zIndex: 5 - i,
                 }}
               >
                 {ini}
@@ -91,10 +114,11 @@ const Community = () => (
             ))}
           </div>
           <p className="text-gray-500 text-sm">
-            <span className="font-semibold text-gray-900">100+ people</span> already building — come meet them.
+            <span className="font-semibold text-gray-900">100+ people</span>{" "}
+            already building — come meet them.
           </p>
           <PrimaryButton to="" className="">
-             Join the Community Now <ArrowUpRight size={14} />
+            Join the Community Now <ArrowUpRight size={14} />
           </PrimaryButton>
         </div>
       </div>
@@ -105,13 +129,14 @@ const Community = () => (
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
           <div>
-           <EyebrowLabel text="The Channels" align="left"/>
+            <EyebrowLabel text="The Channels" align="left" />
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
               Where the real talk happens.
             </h2>
           </div>
           <p className="text-gray-500 text-sm md:text-base max-w-sm md:text-right leading-relaxed">
-            We use Discord and WhatsApp. These are the channels you'll actually use every day.
+            We use Discord and WhatsApp. These are the channels you'll actually
+            use every day.
           </p>
         </div>
 
@@ -137,7 +162,9 @@ const Community = () => (
                   />
                 )}
               </div>
-              <p className="text-gray-500 text-sm leading-relaxed mb-4">{ch.desc}</p>
+              <p className="text-gray-500 text-sm leading-relaxed mb-4">
+                {ch.desc}
+              </p>
               <div className="flex items-center gap-1 text-gray-400">
                 <Users size={14} />
                 <span className="text-xs">{ch.members}</span>
@@ -163,10 +190,17 @@ const Community = () => (
               </div>
               <div className="flex-1 min-w-0">
                 <div className="flex items-center justify-between mb-1">
-                  <p className="font-semibold text-gray-900 text-base">{p.name}</p>
-                  <ArrowUpRight size={14} className="text-gray-400 group-hover:text-gray-700 transition-colors" />
+                  <p className="font-semibold text-gray-900 text-base">
+                    {p.name}
+                  </p>
+                  <ArrowUpRight
+                    size={14}
+                    className="text-gray-400 group-hover:text-gray-700 transition-colors"
+                  />
                 </div>
-                <p className="text-gray-400 text-sm font-mono truncate mb-1">{p.handle}</p>
+                <p className="text-gray-400 text-sm font-mono truncate mb-1">
+                  {p.handle}
+                </p>
                 <p className="text-gray-400 text-xs leading-snug">{p.desc}</p>
               </div>
             </a>
@@ -178,24 +212,24 @@ const Community = () => (
     {/* ── 3. COMMUNITY GUIDELINES */}
     <section className="py-24 px-6 md:px-20 bg-gray-950">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-
         {/* Left */}
         <div>
-          <EyebrowLabel text="How we treat each other" align="left"/>
+          <EyebrowLabel text="How we treat each other" align="left" />
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-6">
             Six rules.
             <br />
             <span className="text-gray-500">No fine print.</span>
           </h2>
           <p className="text-gray-400 text-base leading-relaxed mb-8">
-            OSK is only as good as the people in it. These aren't policies written by a
-            lawyer — they're the norms that have made this community a place people
-            actually want to spend time.
+            OSK is only as good as the people in it. These aren't policies
+            written by a lawyer — they're the norms that have made this
+            community a place people actually want to spend time.
           </p>
           <div className="flex items-center gap-3">
             <Shield size={16} className="text-blue-400 shrink-0" />
             <p className="text-gray-500 text-sm">
-              Violations are handled by the moderation team. Repeat offences result in removal.
+              Violations are handled by the moderation team. Repeat offences
+              result in removal.
             </p>
           </div>
         </div>
@@ -221,13 +255,14 @@ const Community = () => (
     <section className="py-24 px-6 md:px-20 bg-[#FFFBF7]">
       <div className="max-w-7xl mx-auto">
         <div className="text-center max-w-3xl mx-auto mb-14">
-          <EyebrowLabel text="You Have Made It This Far" align="center"/>
+          <EyebrowLabel text="You Have Made It This Far" align="center" />
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-gray-900 leading-tight mb-6">
-            The community tab won't close itself.
+            the Community tab won't close itself.
           </h2>
           <p className="text-gray-500 text-base md:text-lg leading-relaxed">
-            You've read enough. The next step isn't another page — it's joining the Discord,
-            saying hi in #general, and finding your first issue. Takes 10 minutes.
+            You've read enough. The next step isn't another page — it's joining
+            the Discord, saying hi in #general, and finding your first issue.
+            Takes 10 minutes.
           </p>
         </div>
 
@@ -239,7 +274,7 @@ const Community = () => (
             <MessageCircle size={28} className="mb-4" />
             <p className="font-black text-xl mb-1">Join Discord</p>
             <p className="text-blue-100 text-sm mb-6 leading-snug">
-              Where the sessions happen and the community lives.
+              Where the sessions happen and the Community lives.
             </p>
             <span className="mt-auto inline-flex items-center gap-1.5 text-sm font-semibold group-hover:gap-2.5 transition-all">
               Open server <ArrowUpRight size={14} />
