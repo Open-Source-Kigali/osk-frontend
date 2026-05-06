@@ -73,7 +73,7 @@ const About = () => (
 
         {/* CTAs */}
         <div className="flex flex-wrap gap-4 md:gap-6 justify-center mt-6 mb-14">
-          <PrimaryButton to="" className="w-full md:w-auto">
+          <PrimaryButton to="/membersform" className="w-full md:w-auto">
             Join the Community
           </PrimaryButton>
           <SecondaryButton to="/projects" className="w-full  md:w-auto">
@@ -339,7 +339,7 @@ const About = () => (
           </h2>
         </div>
         <div className="flex flex-col sm:flex-row gap-4 shrink-0">
-          <PrimaryButton to="">Join the Community</PrimaryButton>
+          <PrimaryButton to="/membersform">Join the Community</PrimaryButton>
           <SecondaryButton to="/projects">Browse Projects</SecondaryButton>
         </div>
       </div>

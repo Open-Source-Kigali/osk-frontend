@@ -39,7 +39,7 @@ const PartnersMarquee = ({ showSecondary = true }: Props) => {
           </div>
 
           <div className="flex flex-wrap items-center gap-3 shrink-0">
-            <PrimaryButton to="">
+            <PrimaryButton to="/partnersform">
               Become a partner
             </PrimaryButton>
 

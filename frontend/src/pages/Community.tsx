@@ -1,4 +1,3 @@
-import { NavLink } from "react-router";
 import {
   Github,
   MessageCircle,
@@ -117,7 +116,7 @@ const Community = () => (
             <span className="font-semibold text-gray-900">100+ people</span>{" "}
             already building — come meet them.
           </p>
-          <PrimaryButton to="" className="">
+          <PrimaryButton to="/membersform" className="">
             Join the Community Now <ArrowUpRight size={14} />
           </PrimaryButton>
         </div>
@@ -267,8 +266,10 @@ const Community = () => (
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 max-w-2xl mx-auto">
-          <NavLink
-            to="/contact"
+          <a
+            href="/"
+            target="_blank"
+            rel="noopener noreferrer"
             className="group flex flex-col items-start p-7 bg-blue-500 hover:bg-blue-400 rounded-2xl text-white transition-colors duration-200"
           >
             <MessageCircle size={28} className="mb-4" />
@@ -279,10 +280,12 @@ const Community = () => (
             <span className="mt-auto inline-flex items-center gap-1.5 text-sm font-semibold group-hover:gap-2.5 transition-all">
               Open server <ArrowUpRight size={14} />
             </span>
-          </NavLink>
+          </a>
 
-          <NavLink
-            to="/projects"
+          <a
+            href="https://github.com/Open-Source-Kigali"
+            target="_blank"
+            rel="noopener noreferrer"
             className="group flex flex-col items-start p-7 bg-gray-950 hover:bg-gray-800 rounded-2xl text-white transition-colors duration-200"
           >
             <Github size={28} className="mb-4" />
@@ -293,7 +296,7 @@ const Community = () => (
             <span className="mt-auto inline-flex items-center gap-1.5 text-sm font-semibold group-hover:gap-2.5 transition-all text-gray-300">
               View GitHub <ArrowUpRight size={14} />
             </span>
-          </NavLink>
+          </a>
         </div>
       </div>
     </section>

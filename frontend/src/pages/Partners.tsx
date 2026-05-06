@@ -51,9 +51,7 @@ const Partners = () => (
           <PrimaryButton to="/partnersform">
             Become a Partner
           </PrimaryButton>
-          <SecondaryButton to="">
-            View Our Partners
-          </SecondaryButton>
+          
         </div>
       </div>
     </section>
@@ -95,7 +93,7 @@ const Partners = () => (
             <strong className="text-gray-900">{PARTNERS.length} organisations</strong>{" "}
             across Rwanda and we're actively looking for more.
           </p>
-          <PrimaryButton to="" className="md:w-1/2">
+          <PrimaryButton to="/partnersform" className="md:w-1/2">
             Partner with Us
           </PrimaryButton>
         </div>
@@ -154,7 +152,7 @@ const Partners = () => (
               We respond to all enquiries within 48 hours.
             </p>
           </div>
-          <SecondaryButton to="">
+          <SecondaryButton to="/partnersform">
             Get in touch <ArrowRight size={14} />
           </SecondaryButton>
         </div>
@@ -176,7 +174,7 @@ const Partners = () => (
             every time.
           </p>
           <Link
-            to=""
+            to="/partnersform"
             className="inline-flex items-center gap-2 text-base font-bold text-primary-colour border-b-2 border-primary-colour pb-0.5 hover:opacity-80 transition-colors"
           >
             Get in touch about a partnership <ArrowRight size={14} />
@@ -287,7 +285,7 @@ const Partners = () => (
             </a>
 
             <NavLink
-              to="/contact"
+              to="/partnersform"
               className="flex items-center gap-4 p-5 rounded-2xl border-2 border-gray-200 hover:border-gray-400 hover:shadow-sm transition-all group bg-white"
             >
               <div className="w-12 h-12 rounded-xl bg-gray-900 flex items-center justify-center shrink-0">
