@@ -1,33 +1,19 @@
 import type { Partner } from "@/types";
 
 // Partner logos — copy your uploaded images to src/assets/partners/
-import ictChamber        from '@/assets/partners/ICT.png'
+
 import digitalTransform  from '@/assets/partners/DTCR.png'
 import giz               from '@/assets/partners/GIZ.png'
 import millionCoders     from '@/assets/partners/RC.png'
 import rwandaGovt        from '@/assets/partners/MINICT.png'
 
 export const PARTNERS: Partner[] = [
-  {
-    id:          1,
-    name:        "ICT Chamber",
-    shortName:   "ICT",
-    category:    "company",
-    description:
-      "Rwanda's ICT industry association, representing the private sector in digital innovation and policy.",
-    website:     "https://ictchamber.rw",
-    logo:        ictChamber,
-    initials:    "ICT",
-    bg:          "#f59e0b",
-    since:       "2024",
-    collab:      "Industry connections, policy alignment, member network access",
-    featured:    true,
-  },
+ 
   {
     id:          2,
     name:        "Digital Transformation Center Rwanda",
     shortName:   "DTC",
-    category:    "government",
+    category:    "company",
     description:
       "Rwanda's Digital Transformation Center drives the adoption of digital solutions across government and the private sector.",
     website:     "https://dtc.rw",
@@ -42,7 +28,7 @@ export const PARTNERS: Partner[] = [
     id:          3,
     name:        "GIZ German Cooperation",
     shortName:   "GIZ",
-    category:    "ngo",
+    category:    "company",
     description:
       "Deutsche Gesellschaft für Internationale Zusammenarbeit supports digital skills development across Africa.",
     website:     "https://giz.de",

@@ -9,24 +9,21 @@ import { useScrolled } from "@/hooks";
 import { NAV_LINKS } from "@/constants";
 import PrimaryButton from "./UI/PrimaryButton";
 
-type NavbarProps = {
-  variant?: "dark" | "light";
-};
 
 
 
-const Navbar = ({ variant = "light" }: NavbarProps) => {
-  const logo = variant === "dark" ? LogoWhite : LogoImage;
 
+const Navbar = () => {
   const scrolled = useScrolled(50);
-  const [mobileOpen, setMobileOpen] = useState(false);
+const [mobileOpen, setMobileOpen] = useState(false);
 
-  // 🔥 Detect current route
-  const location = useLocation();
-  const isHome = location.pathname === "/";
+const location = useLocation();
+const isHome = location.pathname === "/";
 
-  // 🔥 Determine if navbar should be "light" (white bg + dark text)
-  const isLight = !isHome || scrolled;
+const isLight = !isHome || scrolled;
+
+const showWhiteLogo = isHome && !scrolled;
+const logo = showWhiteLogo ? LogoWhite : LogoImage;
 
   useEffect(() => {
     if (mobileOpen) {
@@ -39,23 +36,22 @@ const Navbar = ({ variant = "light" }: NavbarProps) => {
     };
   }, [mobileOpen]);
 
-  
+
 
   return (
     <>
       <nav
         className={`flex justify-between items-center px-4 sm:px-8 lg:px-20 fixed py-4 w-full z-20 transition-colors duration-300 ${isLight
-            ? "bg-white shadow-xl text-gray-900"
-            : "bg-transparent text-white"
+          ? "bg-white shadow-xl text-gray-900"
+          : "bg-transparent text-white"
           }`}
       >
         {/* Logo */}
-        
         <Link to="/" className="flex items-center">
           <img
             src={logo}
             alt="Open Source Kigali"
-            className="h-10 sm:h-12 md:h-14 w-auto object-contain"
+            className="h-10 sm:h-12 md:h-14 w-auto object-contain transition-all duration-300"
           />
         </Link>
 

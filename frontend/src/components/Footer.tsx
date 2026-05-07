@@ -1,6 +1,8 @@
 import { NavLink } from "react-router";
+import whiteLogo from '@/assets/Logo/OSK-primary-logo-1200-400-white.svg'
 
-import { Github, Twitter, Linkedin, MessageCircle, Mail } from "lucide-react";
+import {  MessageCircle, Mail } from "lucide-react";
+import { FiGithub, FiTwitter, FiLinkedin } from "react-icons/fi";
 
 
 
@@ -14,8 +16,7 @@ const linkGroups: FooterLinkGroup[] = [
     heading: "Community",
     links: [
       { label: "About OSK", to: "/about" },
-      { label: "Community Charter", to: "/charter" },
-      { label: "Our Team", to: "/team" },
+      { label: "Our Team", to: "/about" },
       { label: "Partners", to: "/partners" },
     ],
   },
@@ -23,9 +24,8 @@ const linkGroups: FooterLinkGroup[] = [
     heading: "Contribute",
     links: [
       { label: "All Projects", to: "/projects" },
-      { label: "Good First Issues", to: "/issues" },
-      { label: "Contribution Guide", to: "/guide" },
-      { label: "Mentorship", to: "/mentorship" },
+      { label: "Good First Issues", to: "/projects" },
+      { label: "Contribution Guide", to: "/projects" },
     ],
   },
   {
@@ -34,7 +34,6 @@ const linkGroups: FooterLinkGroup[] = [
       { label: "Tutorials", to: "/resources" },
       { label: "Blog", to: "/blog" },
       { label: "Events", to: "/events" },
-      { label: "Opportunities", to: "/opportunities" },
     ],
   },
   {
@@ -45,7 +44,7 @@ const linkGroups: FooterLinkGroup[] = [
       { label: "LinkedIn", to: "https://www.linkedin.com/company/open-source-kigali/?viewAsMember=true", external: true },
       {
         label: "opensourcekigali@gmail.com",
-        to: "mailto:opensourcekigali@gmail.com",
+        to: "https://mail.google.com/mail/?view=cm&to=opensourcekigali@gmail.com",
         external: true,
       },
     ],
@@ -53,11 +52,11 @@ const linkGroups: FooterLinkGroup[] = [
 ];
 
 const socialLinks = [
-  { icon: <Github size={18} />, href: "https://github.com", label: "GitHub" },
-  { icon: <Twitter size={18} />, href: "https://twitter.com", label: "Twitter / X" },
-  { icon: <Linkedin size={18} />, href: "https://linkedin.com", label: "LinkedIn" },
+  { icon: <FiGithub size={18}/>, href: "https://github.com/Open-Source-Kigali", label: "GitHub" },
+  { icon: <FiTwitter size={18}/>, href: "https://twitter.com", label: "Twitter / X" },
+  { icon: <FiLinkedin  size={18}/>, href: "https://www.linkedin.com/company/open-source-kigali/?viewAsMember=true", label: "LinkedIn" },
   { icon: <MessageCircle size={18} />, href: "https://discord.com", label: "Discord" },
-  { icon: <Mail size={18} />, href: "mailto:opensourcekigali@gmail.com", label: "Email" },
+  { icon: <Mail size={18} />, href: "https://mail.google.com/mail/?view=cm&to=opensourcekigali@gmail.com", label: "Email" },
 ];
 
 const Footer = () => {
@@ -71,9 +70,7 @@ const Footer = () => {
           {/* Brand */}
           <div className="md:col-span-1">
             <NavLink to="/" className="inline-block mb-4">
-              <span className="text-white font-bold text-lg tracking-tight">
-                Open Source <span className="text-blue-400">Kigali</span>
-              </span>
+              <img src={whiteLogo} alt="Opeen source kigali logo" className=" w-24 md:w-32 " />
             </NavLink>
             <p className="text-sm leading-relaxed text-gray-500">
               Building Rwanda's open source ecosystem — one contribution at a time.

@@ -1,48 +1,17 @@
-import { useState, useCallback } from "react";
+import { useState,  } from "react";
 import { NavLink } from "react-router";
-import useEmblaCarousel from "embla-carousel-react";
+//import useEmblaCarousel from "embla-carousel-react";
 import CountUp from "react-countup";
-import {
-  Laptop,
-  Palette,
-  FileText,
-  Users,
-  ChevronLeft,
-  ChevronRight,
-  Quote,
-  GitMerge,
-  UserPlus,
-  GitPullRequest,
-  Zap,
-  ArrowRight,
-  ArrowUpRight,
-  Calendar,
-  Clock,
-  MapPin,
-  Plus,
-  Minus,
-} from "lucide-react";
+import {  ChevronLeft, ChevronRight, Quote, GitMerge, UserPlus, GitPullRequest, Zap, ArrowRight,  Calendar, Clock, MapPin, Plus, Minus} from "lucide-react";
 import { useAutoPlay, useProjects, useEvents } from "@/hooks";
-import { MARQUEE_PARTNERS } from "@/constants";
-import {
-  HERO_STATS,
-  CONTRIBUTION_SLIDES,
-  EXPLORE_LINKS,
-  TESTIMONIALS,
-  CTA_ACTIVITY,
-  CTA_STATS,
-  FAQ_ITEMS,
-} from "@/constants";
-import type {
-  ContributionType,
-  HomeEventType,
-  ActivityIconKey,
-} from "@/constants";
+import { HERO_STATS,  EXPLORE_LINKS, TESTIMONIALS, CTA_ACTIVITY, CTA_STATS, FAQ_ITEMS,} from "@/constants";
+import type {  HomeEventType, ActivityIconKey} from "@/constants";
+import PartnersMarquee from "@/components/UI/PartnersMarquee";
 
 // ── Assets
 import heroImage from "@/assets/images/HeroImage.jpeg";
 import peopleImg from "@/assets/images/People.jpeg";
-import groupImg from "@/assets/images/group2.png";
+import groupImg from "@/assets/images/did.jpeg.jpeg";
 import coachImg from "@/assets/images/People.jpeg";
 import youthImg from "@/assets/images/Youth meetup.jpg";
 import peopleImg2 from "@/assets/images/People.jpeg";
@@ -52,13 +21,14 @@ import EyebrowLabel from "@/components/UI/EyebrowLable";
 import PrimaryButton from "@/components/UI/PrimaryButton";
 import SecondaryButton from "@/components/UI/SecondaryButton";
 
-// ── Static icon maps
+{/* ── Static icon maps
 const CONTRIBUTION_ICONS: Record<ContributionType, React.ReactNode> = {
   developer: <Laptop size={28} />,
   designer: <Palette size={28} />,
   documentation: <FileText size={28} />,
   moderator: <Users size={28} />,
 };
+*/}
 
 const ACTIVITY_ICONS: Record<ActivityIconKey, React.ReactNode> = {
   merge: <GitMerge size={13} />,
@@ -82,13 +52,6 @@ const PROJECT_IMAGES: Record<string, string> = {
   "openrwanda-map": mapImg,
 };
 
-// Marquee animation duration
-const MARQUEE_DURATION = "30s";
-const MARQUEE_TRACK = [
-  ...MARQUEE_PARTNERS,
-  ...MARQUEE_PARTNERS,
-  ...MARQUEE_PARTNERS,
-];
 
 // ─── Page
 const HomePage = () => {
@@ -98,7 +61,7 @@ const HomePage = () => {
     interval: 4000,
   });
 
-  // Contribution carousel
+  {/*Contribution carousel
   const [emblaRef, emblaApi] = useEmblaCarousel({
     loop: false,
     align: "start",
@@ -106,6 +69,8 @@ const HomePage = () => {
   const [emblaIndex, setEmblaIndex] = useState(0);
   const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
   const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
+
+  */}
 
   // FAQ accordion
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -329,7 +294,7 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* CONTRIBUTION SECTION */}
+      {/* CONTRIBUTION SECTION 
       <section className="py-20 px-4 md:px-20 text-center bg-white">
         <div className="max-w-7xl mx-auto">
           <EyebrowLabel text="Ways to Contribute" />
@@ -342,7 +307,7 @@ const HomePage = () => {
             grow your skills, and make meaningful impact.
           </p>
 
-          {/* Embla Carousel — from CONTRIBUTION_SLIDES constant */}
+          {/* Embla Carousel — from CONTRIBUTION_SLIDES constant 
           <div className="max-w-6xl mx-auto">
             <div className="overflow-hidden" ref={emblaRef}>
               <div className="flex gap-6">
@@ -351,7 +316,7 @@ const HomePage = () => {
                     key={index}
                     className="flex-[0_0_100%] sm:flex-[0_0_50%] md:flex-[0_0_33.3333%]"
                   >
-                    {/* Contribution Card — inline */}
+                    {/* Contribution Card — inline 
                     <div className="bg-slate-100 rounded-3xl p-8 flex flex-col justify-between min-h-90 transition duration-300 hover:shadow-xl text-left">
                       <div>
                         <div className="text-blue-500 mb-4">
@@ -373,7 +338,7 @@ const HomePage = () => {
               </div>
             </div>
 
-            {/* Carousel navigation */}
+            {/* Carousel navigation 
             <div className="flex justify-center items-center mt-6 gap-4">
               <button
                 onClick={scrollPrev}
@@ -408,6 +373,7 @@ const HomePage = () => {
           </div>
         </div>
       </section>
+      */}
 
 
       {/* EXPLORE / CONNECT */}
@@ -686,114 +652,8 @@ const HomePage = () => {
       </section>
 
       {/* PARTNERS MARQUEE */}
-      <section
-        className="py-16 overflow-hidden"
-        style={{ background: "#f0f6ff" }}
-      >
-        <div className="max-w-7xl mx-auto px-6 md:px-20 mb-10">
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6">
-            <div>
-              <EyebrowLabel text="Trusted by" align="left" />
-              <h2 className="text-2xl sm:text-3xl font-black text-gray-900 leading-tight">
-                Organisations that believe
-                <br />
-                <span style={{ color: "#2b7fff" }}>in Rwanda's builders.</span>
-              </h2>
-            </div>
-            <div className="flex flex-wrap items-center gap-3 shrink-0">
-              <PrimaryButton to='/partnersform' >
-                Become a partner <ArrowUpRight size={14} />
-              </PrimaryButton>
-              <SecondaryButton to="/partners">Learn more</SecondaryButton>
-            </div>
-          </div>
-        </div>
-
-        {/* Partners Marquee */}
-        <div className="relative">
-          <div
-            className="absolute left-0 top-0 bottom-0 w-24 z-10 pointer-events-none"
-            style={{
-              background: "linear-gradient(to right, #f0f6ff, transparent)",
-            }}
-          />
-          <div
-            className="absolute right-0 top-0 bottom-0 w-24 z-10 pointer-events-none"
-            style={{
-              background: "linear-gradient(to left, #f0f6ff, transparent)",
-            }}
-          />
-          <div
-            className="flex gap-10 w-max"
-            style={{
-              animation: `osk-marquee ${MARQUEE_DURATION} linear infinite`,
-            }}
-          >
-            {MARQUEE_TRACK.map((partner, i) => (
-              <a
-                key={`${partner.id}-${i}`}
-                href={partner.website}
-                target="_blank"
-                rel="noopener noreferrer"
-                title={partner.name}
-                className="shrink-0 flex items-center justify-center"
-                style={{ width: "200px", height: "90px" }}
-              >
-                {partner.logo ? (
-                  <img
-                    src={partner.logo}
-                    alt={partner.name}
-                    className="max-h-12 max-w-full w-auto object-contain opacity-70 hover:opacity-100 transition-opacity"
-                    draggable={false}
-                  />
-                ) : (
-                  <div
-                    className="w-12 h-12 rounded-xl flex items-center justify-center text-white font-black text-sm"
-                    style={{ background: partner.bg }}
-                  >
-                    {partner.initials}
-                  </div>
-                )}
-              </a>
-            ))}
-          </div>
-        </div>
-
-        {/* Partner stats */}
-        <div className="max-w-7xl mx-auto px-6 md:px-20 mt-10">
-          <div
-            className="flex flex-wrap items-center gap-x-8 gap-y-3 pt-8 border-t"
-            style={{ borderColor: "#c5d9ff" }}
-          >
-            {[
-              {
-                n: `${MARQUEE_PARTNERS.length}+`,
-                label: "Partner organisations",
-              },
-              { n: "3", label: "Universities" },
-              { n: "40+", label: "Contributors from partners" },
-              { n: "2", label: "Government partnerships" },
-            ].map((s) => (
-              <div key={s.label} className="flex items-baseline gap-1.5">
-                <span
-                  className="text-xl font-black"
-                  style={{ color: "#2b7fff" }}
-                >
-                  {s.n}
-                </span>
-                <span className="text-sm text-gray-400">{s.label}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <style>{`
-          @keyframes osk-marquee {
-            0%   { transform: translateX(0);        }
-            100% { transform: translateX(-33.333%); }
-          }
-        `}</style>
-      </section>
+      <PartnersMarquee/>
+      
 
       {/* FAQ */}
       <section className="py-20 px-4 md:px-20 bg-gray-50">

@@ -1,6 +1,6 @@
 import { NavLink, Link } from "react-router";
 import { ArrowRight, ArrowUpRight, Users, BookOpen, Briefcase, Globe, CheckCircle, Mail, Building2, GraduationCap, Landmark, Heart } from "lucide-react";
-import { PARTNERS, PARTNER_BENEFITS, PARTNERSHIP_STEPS, PARTNER_STATS, WHAT_WE_LOOK_FOR } from "@/constants";
+import { PARTNERS, PARTNER_BENEFITS, PARTNERSHIP_STEPS,  WHAT_WE_LOOK_FOR } from "@/constants";
 import EyebrowLabel from "../components/UI/EyebrowLable";
 import PartnerMarquee from '@/components/UI/PartnersMarquee';
 import PrimaryButton from "@/components/UI/PrimaryButton";
@@ -59,7 +59,7 @@ const Partners = () => (
     {/* ── MARQUEE */}
     <PartnerMarquee showSecondary={false} />
 
-    {/* STAT CARDS — from PARTNER_STATS constant */}
+    {/* STAT CARDS — from PARTNER_STATS constant 
     <section className="py-14 px-6 md:px-20 bg-white border-b border-gray-100">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-4 gap-5">
         {PARTNER_STATS.map((s, i) => (
@@ -74,9 +74,10 @@ const Partners = () => (
         ))}
       </div>
     </section>
+    */}
 
     {/* ── PROGRAMME OVERVIEW */}
-    <section className="py-20 px-6 md:px-20 bg-white">
+    <section className="py-20 px-6 md:px-20 bg-white md:mt-16">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
         <div>
@@ -110,7 +111,7 @@ const Partners = () => (
             },
             {
               icon: <Building2 size={22} className="text-blue-500" />,
-              label: "Companies",
+              label: "Partner Organizations",
               count: PARTNERS.filter((p) => p.category === "company").length,
               bg: "bg-blue-50",
               border: "border-blue-100",
@@ -141,7 +142,7 @@ const Partners = () => (
     </section>
 
     {/* ── INLINE CTA BANNER */}
-    <div className="px-6 md:px-20">
+    <div className="px-6 md:px-20 md:mt-10">
       <div className="max-w-7xl mx-auto">
         <div className="bg-background-colour rounded-2xl px-8 py-7 flex flex-col sm:flex-row items-center justify-between gap-5">
           <div>
@@ -160,7 +161,7 @@ const Partners = () => (
     </div>
 
     {/* ── BENEFITS — from PARTNER_BENEFITS constant */}
-    <section className="py-20 px-6 md:px-20 bg-white">
+    <section className="py-20 px-6 md:px-20 bg-white md:mt-10">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
 
         <div className="lg:sticky lg:top-28">

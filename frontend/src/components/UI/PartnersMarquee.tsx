@@ -111,15 +111,14 @@ const PartnersMarquee = ({ showSecondary = true }: Props) => {
               n: `${MARQUEE_PARTNERS.length}+`,
               label: "Partner organisations",
             },
-            { n: "3", label: "Universities" },
-            { n: "40+", label: "Contributors from partners" },
+            
             { n: "2", label: "Government partnerships" },
           ].map((s) => (
-            <div key={s.label} className="flex items-baseline gap-1.5">
+            <div key={s.label} className="flex items-baseline  gap-1.5">
               <span className="text-xl font-black" style={{ color: "#2b7fff" }}>
                 {s.n}
               </span>
-              <span className="text-sm text-gray-400">{s.label}</span>
+              <span className="text-base text-text-body">{s.label}</span>
             </div>
           ))}
         </div>

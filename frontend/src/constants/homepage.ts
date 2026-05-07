@@ -60,7 +60,7 @@ export const CONTRIBUTION_SLIDES: ContributionSlide[] = [
 export const EXPLORE_LINKS = [
   {
     label: "Connect with the Community",
-    to: "/community",
+    to: "/membersform",
     variant: "primary" as const,
   },
   {

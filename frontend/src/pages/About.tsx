@@ -1,7 +1,7 @@
 import { Twitter, Linkedin, Instagram, Facebook } from "lucide-react";
 import { ABOUT_STATS, STORY_POINTS, VALUES, ABOUT_TEAM } from "@/constants";
 import peopleImg from "@/assets/images/People.jpeg";
-import groupImg from "@/assets/images/group2.png";
+import groupImg from "@/assets/images/did.jpeg.jpeg";
 import EyebrowLabel from "@/components/UI/EyebrowLable";
 import PrimaryButton from "@/components/UI/PrimaryButton";
 import SecondaryButton from "@/components/UI/SecondaryButton";
