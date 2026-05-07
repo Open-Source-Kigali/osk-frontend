@@ -41,7 +41,7 @@ const Partners = () => (
         <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-gray-900 leading-tight tracking-tight mb-6">
           Turning partnerships into
           <br />
-          <span className="text-blue-500">real community impact.</span>
+          <span className="text-primary-colour">real community impact.</span>
         </h1>
         <p className="text-gray-500 text-base md:text-lg leading-relaxed mb-10 max-w-lg mx-auto">
           We collaborate with universities, companies, government bodies, and innovation

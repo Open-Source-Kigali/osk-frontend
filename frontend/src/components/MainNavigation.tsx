@@ -111,7 +111,7 @@ const logo = showWhiteLogo ? LogoWhite : LogoImage;
           ))}
 
           {/* CTA button (mobile) */}
-          <PrimaryButton to="">Contribute to OSK</PrimaryButton>
+          <PrimaryButton to="/membersform">Contribute to OSK</PrimaryButton>
         </div>
       )}
     </>

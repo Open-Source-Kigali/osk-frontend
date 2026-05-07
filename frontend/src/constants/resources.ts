@@ -170,7 +170,7 @@ export const EXTERNAL_TOOLS: ExternalTool[] = [
   {
     name:        "GitHub",
     description: "Where all OSK projects live. Your profile here is your most important portfolio.",
-    link:        "https://github.com",
+    link:        "https://github.com/enterprise",
     iconKey:     "github",
     category:    "Version control",
     free:        true,
@@ -178,7 +178,7 @@ export const EXTERNAL_TOOLS: ExternalTool[] = [
   {
     name:        "VS Code",
     description: "The editor used by most OSK contributors. Extensive extensions, Git built-in.",
-    link:        "https://code.visualstudio.com",
+    link:        "https://code.visualstudio.com/",
     iconKey:     "vscode",
     category:    "Editor",
     free:        true,
@@ -210,7 +210,7 @@ export const EXTERNAL_TOOLS: ExternalTool[] = [
   {
     name:        "YouTube — OSK Sessions",
     description: "Recorded Wednesday sessions. Full replays of every technical session we've run.",
-    link:        "https://youtube.com",
+    link:        "https://youtube.com/@opensourcekigali?si=94d3Q7tI_6McGzhr",
     iconKey:     "youtube",
     category:    "Videos",
     free:        true,

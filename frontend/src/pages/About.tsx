@@ -92,13 +92,13 @@ const About = () => (
 
       {/* Stats strip — data from ABOUT_STATS constant */}
       <div className="border-b border-gray-100 bg-white">
-        <div className="max-w-7xl mx-auto px-6 md:px-20 flex flex-wrap items-center justify-center gap-10 py-4">
+        <div className="max-w-7xl mx-auto px-6 md:px-20 flex flex-wrap items-center justify-center gap-6 md:gap-10 py-2  md:py-4">
           {ABOUT_STATS.map((s) => (
             <div key={s.label} className="flex items-center gap-3 text-center">
-              <span className="font-black text-primary-colour text-3xl md:text-4xl">
+              <span className="font-black text-primary-colour text-lg md:text-4xl">
                 {s.value}
               </span>
-              <span className="text-gray-500 text-base uppercase">
+              <span className="text-gray-500 text-sm  md:text-base uppercase">
                 {s.label}
               </span>
             </div>
@@ -332,13 +332,13 @@ const About = () => (
 
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-end justify-between gap-10 relative z-10">
         <div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white leading-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white leading-tight text-center md:text-left">
             Your first PR
             <br />
-            <span className="text-blue-400">is one click away.</span>
+            <span className="text-blue-400 ml-4 md:ml-0">is one click away.</span>
           </h2>
         </div>
-        <div className="flex flex-col sm:flex-row gap-4 shrink-0">
+        <div className="flex flex-col sm:flex-row gap-4 shrink-0 mx-auto md:mx-0">
           <PrimaryButton to="/membersform">Join the Community</PrimaryButton>
           <SecondaryButton to="/projects">Browse Projects</SecondaryButton>
         </div>

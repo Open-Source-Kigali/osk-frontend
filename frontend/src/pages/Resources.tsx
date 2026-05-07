@@ -1,6 +1,5 @@
 import { NavLink } from "react-router";
 import {
-  Search,
   BookOpen,
   Play,
   Wrench,
@@ -269,16 +268,16 @@ const FeaturedResourceCard = ({ resource }: { resource: Resource }) => (
         </div>
       </div>
 
-      <div className="md:col-span-1 flex md:flex-col gap-3 items-start md:items-stretch">
+      <div className="md:col-span-1 flex flex-col gap-3 items-stretch">
         <a
           href={resource.link}
-          className="flex items-center justify-center gap-2 px-5 py-3 bg-primary-colour hover:opacity-90 text-white text-sm font-bold rounded-xl transition-colors"
+          className="w-full md:w-auto flex items-center justify-center gap-2 px-5 py-3 bg-primary-colour hover:opacity-90 text-white text-sm font-bold rounded-xl transition-colors"
         >
           Read now <ArrowUpRight size={14} />
         </a>
         <a
           href={resource.link}
-          className="flex items-center justify-center gap-2 px-5 py-3 border border-primary-colour text-brand-50 hover:text-primary-colour text-sm font-semibold rounded-xl transition-colors"
+          className="w-full md:w-auto flex items-center justify-center gap-2 px-5 py-3 border border-primary-colour text-brand-50 hover:text-primary-colour text-sm font-semibold rounded-xl transition-colors"
         >
           Save for later
         </a>
@@ -349,7 +348,7 @@ const Resources = () => {
   const {
     filtered: allFiltered,
     search,
-    setSearch,
+
     filters,
     setFilter,
     clearAll,
@@ -369,11 +368,7 @@ const Resources = () => {
   const featured = RESOURCES.find((r) => r.featured)!;
   const nonFeatured = allFiltered.filter((r) => !r.featured);
 
-  // Quick stats — derived from RESOURCES constant, always accurate
-  const totalViews = RESOURCES.reduce(
-    (a, r) => a + r.views,
-    0,
-  ).toLocaleString();
+
 
   return (
     <>
@@ -410,51 +405,6 @@ const Resources = () => {
             </p>
           </div>
 
-          {/* Search */}
-          <div className="relative max-w-xl">
-            <Search
-              size={16}
-              className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"
-            />
-            <input
-              type="text"
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              placeholder="Search tutorials, guides, tools..."
-              className="w-full pl-11 pr-4 py-3.5 bg-white border border-gray-200 rounded-2xl text-gray-900 text-base placeholder:text-gray-400 focus:outline-none focus:border-primary-colour focus:ring-2 focus:ring-blue-100 transition-all shadow-sm"
-            />
-            {search && (
-              <button
-                onClick={() => setSearch("")}
-                className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-700 text-xs font-semibold"
-              >
-                clear
-              </button>
-            )}
-          </div>
-
-          {/* Quick stats — from RESOURCES constant */}
-          <div className="flex flex-wrap gap-6 mt-8 pt-8 border-t border-gray-200 justify-center">
-            {[
-              { n: RESOURCES.length, label: "resources" },
-              {
-                n: RESOURCES.filter((r) => r.type === "tutorial").length,
-                label: "tutorials",
-              },
-              {
-                n: RESOURCES.filter((r) => r.type === "video").length,
-                label: "video sessions",
-              },
-              { n: totalViews, label: "total views" },
-            ].map((s) => (
-              <div key={s.label} className="flex items-baseline gap-1.5">
-                <span className="text-2xl font-black text-primary-colour">
-                  {s.n}
-                </span>
-                <span className="text-gray-500 text-lg">{s.label}</span>
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 
@@ -475,11 +425,10 @@ const Resources = () => {
                 <button
                   key={f.key}
                   onClick={() => setFilter("type", f.key)}
-                  className={`px-4 py-2.5 text-sm font-bold whitespace-nowrap border-b-2 transition-colors duration-200 -mb-px ${
-                    filters.type === f.key
+                  className={`px-4 py-2.5 text-sm font-bold whitespace-nowrap border-b-2 transition-colors duration-200 -mb-px ${filters.type === f.key
                       ? "border-primary-colour text-primary-colour"
                       : "border-transparent text-gray-400 hover:text-primary-colour"
-                  }`}
+                    }`}
                 >
                   {f.label}
                   {f.key !== "all" && (
@@ -498,11 +447,10 @@ const Resources = () => {
                   <button
                     key={f.key}
                     onClick={() => setFilter("category", f.key)}
-                    className={`px-3 py-1.5 rounded-full text-xs font-bold transition-colors ${
-                      filters.category === f.key
+                    className={`px-3 py-1.5 rounded-full text-xs font-bold transition-colors ${filters.category === f.key
                         ? "bg-primary-colour text-white"
                         : "bg-gray-100 text-gray-500 hover:bg-primary-colour hover:text-white"
-                    }`}
+                      }`}
                   >
                     {f.label}
                   </button>
@@ -668,7 +616,7 @@ const Resources = () => {
       </section>
 
       {/* ── SUBMIT A RESOURCE */}
-      <section className="px-6 md:px-20 py-20 bg-gray-900 relative overflow-hidden">
+      <section className="px-6 md:px-20 py-20 bg-background-colour relative overflow-hidden">
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
@@ -731,17 +679,14 @@ const Resources = () => {
             </div>
 
             <a
-              href="mailto:opensourcekigali@gmail.com?subject=Resource Submission"
+              href="https://mail.google.com/mail/?view=cm&to=opensourcekigali@gmail.com"
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center justify-center gap-2 w-full py-3 bg-primary-colour hover:opacity-90 text-white text-sm font-bold rounded-xl transition-colors"
             >
               Submit via email <ArrowUpRight size={14} />
             </a>
-            <NavLink
-              to="/community"
-              className="flex items-center justify-center gap-2 w-full py-3 mt-2 border border-gray-200 text-gray-500 hover:text-gray-800 hover:border-gray-400 text-sm font-semibold rounded-xl transition-colors"
-            >
-              Or post in #resources on Discord
-            </NavLink>
+
           </div>
         </div>
       </section>
