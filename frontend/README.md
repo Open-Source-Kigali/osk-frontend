@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="./src/assets/images/logoopensource.png" alt="Open Source Kigali Logo" height="90" />
+<img src="./src/assets/Logo/OSK-primary-logo-1200-400-white.svg" alt="Open Source Kigali Logo" height="90" />
 
 # Open Source Kigali — Website
 
@@ -20,7 +20,7 @@
   •
   <a href="https://github.com/opensourcekigali/osk-website/issues">🐛 Report Bug</a>
   •
-  <a href="https://github.com/opensourcekigali/osk-website/issues/new?template=feature_request.md">✨ Request Feature</a>
+  
 </p>
 
 <p>
@@ -112,8 +112,7 @@ Before running the project locally, ensure you have:
 ### 1️⃣ Fork and Clone the Repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/osk-website.git
-cd osk-website
+git clone https://github.com/Open-Source-Kigali/-Open-Source-Kigali-Website.git
 ```
 
 ### 2️⃣ Install Dependencies
@@ -125,7 +124,7 @@ npm install
 ### 3️⃣ Create Environment Variables
 
 ```bash
-cp .env.example .env
+cp .env
 ```
 
 ### 4️⃣ Start Development Server
