@@ -1,73 +1,224 @@
-# React + TypeScript + Vite
+<div align="center">
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<img src="./src/assets/images/logoopensource.png" alt="Open Source Kigali Logo" height="90" />
 
-Currently, two official plugins are available:
+# Open Source Kigali — Website
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Built in public • By the community • For the community
 
-## React Compiler
+<p>
+  The official website for <strong>Open Source Kigali (OSK)</strong> — Rwanda’s growing open-source developer community.
+</p>
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+<p>
+  This platform showcases community projects, events, learning resources,
+  partnerships, and opportunities for contributors to collaborate and grow.
+</p>
 
-## Expanding the ESLint configuration
+<p>
+  <a href="https://opensourcekigali.rw">🌐 Live Website</a>
+  •
+  <a href="https://github.com/opensourcekigali/osk-website/issues">🐛 Report Bug</a>
+  •
+  <a href="https://github.com/opensourcekigali/osk-website/issues/new?template=feature_request.md">✨ Request Feature</a>
+</p>
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+<p>
+  <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="PRs Welcome" />
+  <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="MIT License" />
+  <img src="https://img.shields.io/badge/made%20in-Rwanda-green.svg" alt="Made in Rwanda" />
+</p>
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+</div>
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# 📖 About the Project
+
+This repository contains the source code for the official **Open Source Kigali** website.
+
+The project exists to:
+
+- Showcase OSK community initiatives
+- Highlight open-source projects
+- Share events and learning resources
+- Help contributors join the community
+- Support partnerships and collaborations
+
+> **This repository itself is an open-source project.**
+>
+> Anyone can contribute by opening issues, suggesting improvements,
+> or submitting pull requests.
+
+---
+
+# ✨ Features
+
+- Fast and modern frontend powered by Vite
+- Responsive UI with Tailwind CSS
+- Reusable component architecture
+- Mobile-friendly design
+- Community-driven contributions
+- Continuous deployment with Vercel
+- Type-safe development using TypeScript
+
+---
+
+#  Tech Stack
+
+| Layer | Technology |
+|---|---|
+| Framework | React 18 + TypeScript |
+| Build Tool | Vite |
+| Styling | Tailwind CSS |
+| Routing | React Router v6 |
+| HTTP | Native Fetch API |
+| State Management | React Hooks (`useState`, `useEffect`) |
+| Deployment | Vercel |
+
+---
+
+# Project Structure
+
+```bash
+src/
+├── assets/          # Images and static assets
+├── components/      # Reusable UI components
+│   └── ui/          # UI primitives (Button, Badge, Card...)
+├── constants/       # Static data arrays
+├── hooks/           # Custom React hooks
+├── lib/             # Utility functions and API helpers
+├── pages/           # Route pages
+├── types/           # TypeScript interfaces/types
+└── App.tsx          # Router configuration
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+# Getting Started
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Prerequisites
+
+Before running the project locally, ensure you have:
+
+- Node.js 18+
+- npm or yarn
+- Git
+
+---
+
+## Installation & Setup
+
+### 1️⃣ Fork and Clone the Repository
+
+```bash
+git clone https://github.com/YOUR_USERNAME/osk-website.git
+cd osk-website
 ```
+
+### 2️⃣ Install Dependencies
+
+```bash
+npm install
+```
+
+### 3️⃣ Create Environment Variables
+
+```bash
+cp .env.example .env
+```
+
+### 4️⃣ Start Development Server
+
+```bash
+npm run dev
+```
+
+The application will run at:
+
+```bash
+http://localhost:5173
+```
+
+---
+
+# Environment Variables
+
+| Variable | Description | Required |
+|---|---|---|
+| `VITE_API_BASE_URL` | OSK backend API base URL | ✅ Yes |
+
+---
+
+# Available Scripts
+
+```bash
+npm run dev        # Start development server
+npm run build      # Build for production
+npm run preview    # Preview production build locally
+npm run lint       # Run ESLint
+npm run typecheck  # Run TypeScript checks
+```
+
+---
+
+# Contributing
+
+We welcome contributions from developers, designers, writers,
+and open-source enthusiasts of all skill levels.
+
+Please read:
+
+```bash
+CONTRIBUTING.md
+```
+
+before opening a pull request.
+
+---
+
+## New to Open Source?
+
+Start with issues labelled:
+
+```bash
+good first issue
+```
+
+These issues are beginner-friendly, well-scoped,
+and reviewed quickly by maintainers.
+
+---
+
+# Community & Contact
+
+| Platform | Link |
+|---|---|
+| Discord | https://discord.com/invite/osk |
+| LinkedIn | https://linkedin.com/company/osk |
+| GitHub | https://github.com/opensourcekigali |
+| Email | opensourcekigali@gmail.com |
+
+---
+
+# License
+
+This project is licensed under the **MIT License**.
+
+See:
+
+```bash
+LICENSE
+```
+
+for more information.
+
+---
+
+<div align="center">
+
+### Built with ❤️ by the Open Source Kigali Community
+
+Empowering African developers through open source.
+
+</div>
