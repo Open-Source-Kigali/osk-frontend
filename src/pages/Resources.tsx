@@ -1,23 +1,5 @@
 import { NavLink } from "react-router";
-import {
-  Search,
-  BookOpen,
-  Play,
-  Wrench,
-  FileCode,
-  Newspaper,
-  Layout,
-  Clock,
-  ArrowUpRight,
-  ExternalLink,
-  Github,
-  Star,
-  ChevronRight,
-  Rss,
-  Terminal,
-  Globe,
-  Youtube,
-  PenLine,
+import { Search, BookOpen, Play, Wrench, FileCode, Newspaper, Layout, Clock, ArrowUpRight, ExternalLink,  Github, Star, ChevronRight, Rss, Terminal, Globe, Youtube, PenLine,
 } from "lucide-react";
 
 import { useFilter } from "@/hooks";
@@ -369,11 +351,7 @@ const Resources = () => {
   const featured = RESOURCES.find((r) => r.featured)!;
   const nonFeatured = allFiltered.filter((r) => !r.featured);
 
-  // Quick stats — derived from RESOURCES constant, always accurate
-  const totalViews = RESOURCES.reduce(
-    (a, r) => a + r.views,
-    0,
-  ).toLocaleString();
+  
 
   return (
     <>
@@ -433,28 +411,7 @@ const Resources = () => {
             )}
           </div>
 
-          {/* Quick stats — from RESOURCES constant */}
-          <div className="flex flex-wrap gap-6 mt-8 pt-8 border-t border-gray-200 justify-center">
-            {[
-              { n: RESOURCES.length, label: "resources" },
-              {
-                n: RESOURCES.filter((r) => r.type === "tutorial").length,
-                label: "tutorials",
-              },
-              {
-                n: RESOURCES.filter((r) => r.type === "video").length,
-                label: "video sessions",
-              },
-              { n: totalViews, label: "total views" },
-            ].map((s) => (
-              <div key={s.label} className="flex items-baseline gap-1.5">
-                <span className="text-2xl font-black text-primary-colour">
-                  {s.n}
-                </span>
-                <span className="text-gray-500 text-lg">{s.label}</span>
-              </div>
-            ))}
-          </div>
+          
         </div>
       </section>
 

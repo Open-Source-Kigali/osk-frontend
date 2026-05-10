@@ -53,7 +53,7 @@ const linkGroups: FooterLinkGroup[] = [
 
 const socialLinks = [
   { icon: <FiGithub size={18}/>, href: "https://github.com/Open-Source-Kigali", label: "GitHub" },
-  { icon: <FiTwitter size={18}/>, href: "https://twitter.com", label: "Twitter / X" },
+  { icon: <FiTwitter size={18}/>, href: "https://x.com/OS_kigali", label: "Twitter / X" },
   { icon: <FiLinkedin  size={18}/>, href: "https://www.linkedin.com/company/open-source-kigali/?viewAsMember=true", label: "LinkedIn" },
   { icon: <MessageCircle size={18} />, href: "https://discord.com", label: "Discord" },
   { icon: <Mail size={18} />, href: "https://mail.google.com/mail/?view=cm&to=opensourcekigali@gmail.com", label: "Email" },

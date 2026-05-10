@@ -167,6 +167,8 @@ const HomePage = () => {
           </div>
         </div>
       </section>
+      {/* PARTNERS MARQUEE */}
+      <PartnersMarquee/>
 
       {/* ABOUT STRIP */}
       <section className="py-16 md:py-28 px-4 md:px-20 bg-white">
@@ -651,8 +653,7 @@ const HomePage = () => {
         `}</style>
       </section>
 
-      {/* PARTNERS MARQUEE */}
-      <PartnersMarquee/>
+      
       
 
       {/* FAQ */}

@@ -210,7 +210,7 @@ export const EXTERNAL_TOOLS: ExternalTool[] = [
   {
     name:        "YouTube — OSK Sessions",
     description: "Recorded Wednesday sessions. Full replays of every technical session we've run.",
-    link:        "https://youtube.com",
+    link:        "https://www.youtube.com/@opensourcekigali",
     iconKey:     "youtube",
     category:    "Videos",
     free:        true,
