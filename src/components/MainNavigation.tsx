@@ -111,7 +111,12 @@ const logo = showWhiteLogo ? LogoWhite : LogoImage;
           ))}
 
           {/* CTA button (mobile) */}
-          <PrimaryButton to="">Contribute to OSK</PrimaryButton>
+          <PrimaryButton
+            to="/membersform"
+            onClick={() => setMobileOpen(false)}
+          >
+            Contribute to OSK
+          </PrimaryButton>
         </div>
       )}
     </>
