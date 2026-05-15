@@ -46,7 +46,7 @@ All work is tracked using GitHub Issues.
 | `design`           | UI/UX improvements |
 
  Start here:  
-https://github.com/opensourcekigali/osk-website/labels/good%20first%20issue
+https://github.com/Open-Source-Kigali/osk-frontend/issues
 
 ---
 
