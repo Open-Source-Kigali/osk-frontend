@@ -168,6 +168,8 @@ and open-source enthusiasts of all skill levels.
 
 Please read:
 
+See all contributors → [CONTRIBUTORS.md](./CONTRIBUTORS.md)
+
 ```bash
 CONTRIBUTING.md
 ```
