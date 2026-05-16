@@ -196,8 +196,6 @@ src/
 If you’re stuck:
 
 -  GitHub Issues — for bugs & feature discussions
--  Discord #code-review — for code help
--  Discord #general — for anything else
 
 We aim to review all pull requests within **48 hours (weekdays)**.
 
