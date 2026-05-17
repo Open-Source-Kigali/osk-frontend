@@ -172,7 +172,7 @@ Please read:
 CONTRIBUTING.md
 ```
 
-before opening a pull request.
+before opening a pull request, do this.
 
 ---
 
