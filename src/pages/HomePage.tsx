@@ -7,6 +7,7 @@ import { useAutoPlay, useProjects, useEvents } from "@/hooks";
 import { HERO_STATS,  EXPLORE_LINKS, TESTIMONIALS, CTA_ACTIVITY, CTA_STATS, FAQ_ITEMS,} from "@/constants";
 import type {  HomeEventType, ActivityIconKey} from "@/constants";
 import PartnersMarquee from "@/components/UI/PartnersMarquee";
+import { Loader } from "@/components/UI";
 
 // ── Assets
 import heroImage from "@/assets/images/HeroImage.jpeg";
@@ -82,12 +83,12 @@ const HomePage = () => {
   );
 
   // Projects for homepage (first 4)
-  const { projects } = useProjects();
+  const { projects, loading: projectsLoading, error: projectsError } = useProjects();
   const homeProjects = projects.slice(0, 4);
   const featuredProject = homeProjects[0];
 
   // Events for homepage (upcoming, capped at 4)
-  const { events } = useEvents();
+  const { events, loading: eventsLoading, error: eventsError } = useEvents();
   const homeEvents = events
     .filter((e) => e.status !== "past")
     .slice(0, 4)
@@ -102,6 +103,7 @@ const HomePage = () => {
         location:    e.location,
         description: e.description,
         tag:         type.charAt(0).toUpperCase() + type.slice(1),
+        coverImage:  e.coverImage,
       };
     });
   const featuredHomeEvent = homeEvents[0];
@@ -215,8 +217,15 @@ const HomePage = () => {
             </NavLink>
           </div>
 
+          {/* Projects content */}
+          {projectsLoading ? (
+            <Loader />
+          ) : projectsError ? (
+            <p className="text-center text-sm text-gray-500 py-12">Failed to load projects: {projectsError}</p>
+          ) : null}
+
           {/* Featured — first project */}
-          {featuredProject && (
+          {!projectsLoading && !projectsError && featuredProject && (
             <div className="relative w-full bg-white rounded-2xl overflow-hidden shadow-lg mb-12 md:flex md:items-stretch border border-gray-100">
               <div className="md:w-1/2 h-64 sm:h-80 md:h-auto relative">
                 <img
@@ -256,6 +265,7 @@ const HomePage = () => {
           )}
 
           {/* Other projects grid — remaining 3 */}
+          {!projectsLoading && !projectsError && (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
             {homeProjects.slice(1).map((project) => (
               <div
@@ -293,6 +303,7 @@ const HomePage = () => {
               </div>
             ))}
           </div>
+          )}
         </div>
       </section>
 
@@ -446,8 +457,15 @@ const HomePage = () => {
             </NavLink>
           </div>
 
+          {/* Events content */}
+          {eventsLoading ? (
+            <Loader />
+          ) : eventsError ? (
+            <p className="text-center text-sm text-gray-500 py-12">Failed to load events: {eventsError}</p>
+          ) : null}
+
           {/* Featured event */}
-          {featuredHomeEvent && (
+          {!eventsLoading && !eventsError && featuredHomeEvent && (
           <div className="bg-white rounded-2xl shadow-md overflow-hidden mb-8 border border-gray-100">
             <div className="md:flex">
               <div className="md:w-2/3 p-6 sm:p-8 md:p-10">
@@ -491,26 +509,47 @@ const HomePage = () => {
                   </SecondaryButton>
                 </div>
               </div>
-              <div className="md:w-1/3 bg-blue-500 flex flex-col items-center justify-center p-10 text-white text-center">
-                <p className="text-6xl font-bold">48h</p>
-                <p className="mt-2 text-lg font-medium opacity-90">
-                  Build Challenge
-                </p>
-                <p className="mt-4 text-sm opacity-75">
-                  Open to all skill levels
-                </p>
-              </div>
+              {featuredHomeEvent.coverImage ? (
+                <div className="md:w-1/3 h-56 md:h-auto overflow-hidden shrink-0">
+                  <img
+                    src={featuredHomeEvent.coverImage}
+                    alt={featuredHomeEvent.title}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              ) : (
+                <div className="md:w-1/3 bg-blue-500 flex flex-col items-center justify-center p-10 text-white text-center">
+                  <p className="text-6xl font-bold">48h</p>
+                  <p className="mt-2 text-lg font-medium opacity-90">
+                    Build Challenge
+                  </p>
+                  <p className="mt-4 text-sm opacity-75">
+                    Open to all skill levels
+                  </p>
+                </div>
+              )}
             </div>
           </div>
           )}
 
           {/* Other events grid */}
+          {!eventsLoading && !eventsError && (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {restHomeEvents.map((event) => (
               <div
                 key={event.id}
-                className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 flex flex-col hover:shadow-md transition-shadow"
+                className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden flex flex-col hover:shadow-md transition-shadow"
               >
+                {event.coverImage && (
+                  <div className="h-40 w-full overflow-hidden shrink-0">
+                    <img
+                      src={event.coverImage}
+                      alt={event.title}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                )}
+                <div className="p-6 flex flex-col flex-1">
                 <span
                   className={`text-xs font-semibold px-3 py-1 rounded-full w-fit ${EVENT_TYPE_STYLES[event.type]}`}
                 >
@@ -541,9 +580,11 @@ const HomePage = () => {
                 >
                   RSVP →
                 </NavLink>
+                </div>
               </div>
             ))}
           </div>
+          )}
         </div>
       </section>
 

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { NavLink } from "react-router";
-import {Calendar, Clock, MapPin, Users, ArrowUpRight, ChevronRight,Filter, Play, Mic, Zap,Code2, Globe, CheckCircle2,Bell, ChevronLeft} from "lucide-react";
+import {Calendar, Clock, MapPin, Users, ArrowUpRight, ChevronRight, ChevronDown, Filter, Play, Mic, Zap, Code2, Globe, CheckCircle2, Bell, ChevronLeft} from "lucide-react";
 import { useFilter, useEvents } from "@/hooks";
 import { AttendeeBar, Badge , SectionLabel, Loader} from "@/components/UI";
 import type {OSKEvent,EventType,} from "@/types";
@@ -151,8 +151,19 @@ const MiniCalendar = ({ events }: { events: OSKEvent[] }) => {
 const FeaturedCard = ({ event }: { event: OSKEvent }) => (
   <div
     className="relative rounded-3xl overflow-hidden mb-8"
-    style={{ background: "linear-gradient(135deg, #2b7fff 0%, #1a6fef 50%, #0a5fdf 100%)" }}
+    style={
+      event.coverImage
+        ? { backgroundImage: `url('${event.coverImage}')`, backgroundSize: "cover", backgroundPosition: "center" }
+        : { background: "linear-gradient(135deg, #2b7fff 0%, #1a6fef 50%, #0a5fdf 100%)" }
+    }
   >
+    {/* Gradient overlay when a cover image is set */}
+    {event.coverImage && (
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{ background: "linear-gradient(135deg, rgba(43,127,255,0.88) 0%, rgba(26,111,239,0.88) 50%, rgba(10,95,223,0.88) 100%)" }}
+      />
+    )}
     <div
       className="absolute inset-0 pointer-events-none"
       style={{
@@ -264,80 +275,149 @@ const FeaturedCard = ({ event }: { event: OSKEvent }) => (
   </div>
 );
 
-// ─── Event Card 
+// ─── Event Card
+
+const TYPE_HEADER_BG: Record<EventType, string> = {
+  hackathon: "#0d1b3e",
+  workshop:  "#1e1b4b",
+  meetup:    "#064e3b",
+  session:   "#431407",
+  talk:      "#4c0519",
+};
 
 const EventCard = ({ event }: { event: OSKEvent }) => {
-  const isPast = event.status === "past";
-  return (
-    <div
-      className={`bg-white rounded-2xl border-2 overflow-hidden flex flex-col hover:shadow-lg transition-all duration-300 group ${
-        isPast ? "border-gray-100 opacity-80" : "border-[#c5d9ff] hover:border-[#5b9fff]"
-      }`}
-    >
-      {/* Top color strip */}
-      <div
-        className="h-1 w-full"
-        style={{
-          background: isPast
-            ? "#e5e7eb"
-            : "linear-gradient(90deg, #2b7fff, #5b9fff)",
-        }}
-      />
+  const [expanded, setExpanded] = useState(false);
+  const isPast    = event.status === "past";
+  const headerBg  = isPast ? "#1f2937" : TYPE_HEADER_BG[event.type];
+  const hasDetails = !!(event.tagline || event.description);
 
-      <div className="p-5 flex flex-col flex-1">
-        {/* Date box + badges */}
-        <div className="flex items-start justify-between gap-3 mb-4">
+  return (
+    <div className="group relative bg-white rounded-2xl overflow-hidden flex flex-col border border-gray-100 hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300">
+
+      {/* ── Header: image with overlaid chips, or dark type-specific block */}
+      <div className="relative h-48 shrink-0 overflow-hidden">
+        {event.coverImage ? (
+          <img
+            src={event.coverImage}
+            alt={event.title}
+            className={`w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.04] ${isPast ? "grayscale" : ""}`}
+          />
+        ) : (
+          <div className="w-full h-full relative" style={{ background: headerBg }}>
+            {/* Subtle dot grid */}
+            <div
+              className="absolute inset-0 pointer-events-none"
+              style={{
+                backgroundImage: "radial-gradient(circle at 1px 1px, rgba(255,255,255,0.06) 1px, transparent 0)",
+                backgroundSize: "20px 20px",
+              }}
+            />
+            {/* Large day number as the visual anchor */}
+            <div className="absolute inset-0 flex flex-col justify-end p-5">
+              <span className="text-8xl font-black text-white/20 leading-none select-none"
+                style={{ letterSpacing: "-0.04em" }}>
+                {event.day}
+              </span>
+            </div>
+          </div>
+        )}
+
+        {/* Past dim overlay */}
+        {isPast && <div className="absolute inset-0 bg-black/20" />}
+
+        {/* Date chip — bottom-left, overlaid on header */}
+        <div className="absolute bottom-3 left-3">
           <div
-            className={`shrink-0 w-14 h-14 rounded-2xl flex flex-col items-center justify-center ${
-              isPast ? "bg-gray-100" : "bg-[#e8f1ff]"
-            }`}
+            className="px-3 py-2 rounded-xl"
+            style={{
+              background: "rgba(255,255,255,0.95)",
+              backdropFilter: "blur(8px)",
+              boxShadow: "0 2px 12px rgba(0,0,0,0.12)",
+            }}
           >
-            <span
-              className={`text-xs font-black uppercase tracking-wider ${
-                isPast ? "text-gray-400" : "text-primary-colour"
-              }`}
-            >
-              {event.month}
-            </span>
-            <span
-              className={`text-2xl font-black leading-none ${
-                isPast ? "text-gray-500" : "text-[#1a6fef]"
-              }`}
-            >
+            <span className="text-2xl font-black text-gray-900 leading-none block" style={{ letterSpacing: "-0.02em" }}>
               {event.day}
             </span>
-          </div>
-
-          <div className="flex flex-col items-end gap-1.5">
-            <TypeBadge type={event.type} />
-            <ModeBadge mode={event.mode} />
+            <span className="text-[10px] font-bold uppercase tracking-widest" style={{ color: "#2b7fff" }}>
+              {event.month} {event.year}
+            </span>
           </div>
         </div>
 
-        {/* Content */}
+        {/* Type badge — top-right */}
+        <div className="absolute top-3 right-3">
+          <TypeBadge type={event.type} />
+        </div>
+      </div>
+
+      {/* ── Body */}
+      <div className="p-5 flex flex-col flex-1">
+
+        {/* Mode + status row */}
+        <div className="flex items-center gap-2 mb-3">
+          <ModeBadge mode={event.mode} />
+          {event.status === "live" && (
+            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-red-50 text-red-600 border border-red-200">
+              <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
+              Live now
+            </span>
+          )}
+        </div>
+
+        {/* Title */}
         <h3
-          className={`font-black text-base leading-snug mb-1 transition-colors duration-200 ${
-            isPast
-              ? "text-gray-600"
-              : "text-gray-900 group-hover:text-primary-colour"
+          className={`font-black text-base leading-snug transition-colors duration-200 ${
+            isPast ? "text-gray-500" : "text-gray-900 group-hover:text-[#2b7fff]"
           }`}
         >
           {event.title}
         </h3>
-        <p className="text-[#5b9fff] text-xs font-semibold mb-3">{event.tagline}</p>
-        <p className="text-gray-500 text-sm leading-relaxed mb-4 flex-1">{event.description}</p>
 
-        {/* Info */}
-        <div className="flex flex-col gap-1.5 mb-4 text-xs text-gray-400">
-          <span className="flex items-center gap-1.5">
-            <Clock  size={11} style={{ color: "#5b9fff" }} /> {event.time}
-          </span>
-          <span className="flex items-center gap-1.5">
-            <MapPin size={11} style={{ color: "#5b9fff" }} /> {event.location}
-          </span>
+        {/* Expandable: tagline + full description */}
+        {hasDetails && (
+          <>
+            <div
+              className="overflow-hidden transition-all duration-300 ease-in-out"
+              style={{ maxHeight: expanded ? "200px" : "0px" }}
+            >
+              <div className="pt-2 pb-1">
+                {event.tagline && (
+                  <p className="text-xs font-semibold mb-2" style={{ color: "#5b9fff" }}>
+                    {event.tagline}
+                  </p>
+                )}
+                <p className="text-gray-500 text-sm leading-relaxed">{event.description}</p>
+              </div>
+            </div>
+
+            <button
+              onClick={() => setExpanded((v) => !v)}
+              className="flex items-center gap-1 mt-2 mb-3 text-[11px] font-bold self-start transition-colors"
+              style={{ color: expanded ? "#9ca3af" : "#2b7fff" }}
+            >
+              <ChevronDown
+                size={13}
+                className="transition-transform duration-300"
+                style={{ transform: expanded ? "rotate(180deg)" : "rotate(0deg)" }}
+              />
+              {expanded ? "Less" : "Details"}
+            </button>
+          </>
+        )}
+
+        <div className="flex-1" />
+
+        {/* Meta — horizontal, compact */}
+        <div className="flex flex-wrap gap-x-3 gap-y-1 text-xs text-gray-400 mb-4">
+          {event.time && (
+            <span className="flex items-center gap-1"><Clock size={10} style={{ color: "#5b9fff" }} />{event.time}</span>
+          )}
+          {event.location && (
+            <span className="flex items-center gap-1"><MapPin size={10} style={{ color: "#5b9fff" }} />{event.location}</span>
+          )}
         </div>
 
-        {/* Attendee bar (upcoming with a capacity only) */}
+        {/* Attendee bar */}
         {!isPast && event.capacity && (
           <div className="mb-4">
             <AttendeeBar filled={event.attendees} capacity={event.capacity} />
@@ -359,16 +439,16 @@ const EventCard = ({ event }: { event: OSKEvent }) => {
             <span className="text-xs text-gray-400 italic">No recording available</span>
           )
         ) : (
-            <a
+          <a
             href={event.registerUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full py-2.5 rounded-xl text-sm font-bold text-white text-center transition-colors block"
+            className="w-full flex items-center justify-center gap-1.5 py-2.5 rounded-xl text-sm font-bold text-white text-center transition-colors"
             style={{ background: "#2b7fff" }}
             onMouseEnter={(e) => (e.currentTarget.style.background = "#1a6fef")}
             onMouseLeave={(e) => (e.currentTarget.style.background = "#2b7fff")}
           >
-            Register →
+            Register <ArrowUpRight size={14} />
           </a>
         )}
       </div>
