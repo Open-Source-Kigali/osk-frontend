@@ -1,11 +1,32 @@
-import { useState,  } from "react";
+import { useState } from "react";
 import { NavLink } from "react-router";
 //import useEmblaCarousel from "embla-carousel-react";
 import CountUp from "react-countup";
-import {  ChevronLeft, ChevronRight, Quote, GitMerge, UserPlus, GitPullRequest, Zap, ArrowRight,  Calendar, Clock, MapPin, Plus, Minus} from "lucide-react";
+import {
+  ChevronLeft,
+  ChevronRight,
+  Quote,
+  GitMerge,
+  UserPlus,
+  GitPullRequest,
+  Zap,
+  ArrowRight,
+  Calendar,
+  Clock,
+  MapPin,
+  Plus,
+  Minus,
+} from "lucide-react";
 import { useAutoPlay, useProjects, useEvents } from "@/hooks";
-import { HERO_STATS,  EXPLORE_LINKS, TESTIMONIALS, CTA_ACTIVITY, CTA_STATS, FAQ_ITEMS,} from "@/constants";
-import type {  HomeEventType, ActivityIconKey} from "@/constants";
+import {
+  HERO_STATS,
+  EXPLORE_LINKS,
+  TESTIMONIALS,
+  CTA_ACTIVITY,
+  CTA_STATS,
+  FAQ_ITEMS,
+} from "@/constants";
+import type { HomeEventType, ActivityIconKey } from "@/constants";
 import PartnersMarquee from "@/components/UI/PartnersMarquee";
 import { Loader } from "@/components/UI";
 
@@ -22,14 +43,16 @@ import EyebrowLabel from "@/components/UI/EyebrowLable";
 import PrimaryButton from "@/components/UI/PrimaryButton";
 import SecondaryButton from "@/components/UI/SecondaryButton";
 
-{/* ── Static icon maps
+{
+  /* ── Static icon maps
 const CONTRIBUTION_ICONS: Record<ContributionType, React.ReactNode> = {
   developer: <Laptop size={28} />,
   designer: <Palette size={28} />,
   documentation: <FileText size={28} />,
   moderator: <Users size={28} />,
 };
-*/}
+*/
+}
 
 const ACTIVITY_ICONS: Record<ActivityIconKey, React.ReactNode> = {
   merge: <GitMerge size={13} />,
@@ -53,7 +76,6 @@ const PROJECT_IMAGES: Record<string, string> = {
   "openrwanda-map": mapImg,
 };
 
-
 // ─── Page
 const HomePage = () => {
   // Testimonials auto-play
@@ -62,7 +84,8 @@ const HomePage = () => {
     interval: 4000,
   });
 
-  {/*Contribution carousel
+  {
+    /*Contribution carousel
   const [emblaRef, emblaApi] = useEmblaCarousel({
     loop: false,
     align: "start",
@@ -71,7 +94,8 @@ const HomePage = () => {
   const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
   const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
 
-  */}
+  */
+  }
 
   // FAQ accordion
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -83,7 +107,11 @@ const HomePage = () => {
   );
 
   // Projects for homepage (first 4)
-  const { projects, loading: projectsLoading, error: projectsError } = useProjects();
+  const {
+    projects,
+    loading: projectsLoading,
+    error: projectsError,
+  } = useProjects();
   const homeProjects = projects.slice(0, 4);
   const featuredProject = homeProjects[0];
 
@@ -95,23 +123,22 @@ const HomePage = () => {
     .map((e) => {
       const type: HomeEventType = e.type === "talk" ? "session" : e.type;
       return {
-        id:          e.id,
+        id: e.id,
         type,
-        title:       e.title,
-        date:        e.date,
-        time:        e.time,
-        location:    e.location,
+        title: e.title,
+        date: e.date,
+        time: e.time,
+        location: e.location,
         description: e.description,
-        tag:         type.charAt(0).toUpperCase() + type.slice(1),
-        coverImage:  e.coverImage,
+        tag: type.charAt(0).toUpperCase() + type.slice(1),
+        coverImage: e.coverImage,
       };
     });
   const featuredHomeEvent = homeEvents[0];
-  const restHomeEvents    = homeEvents.slice(1);
+  const restHomeEvents = homeEvents.slice(1);
 
   return (
     <div className="font-sans">
-
       {/*  1. HERO */}
       <section className="relative w-full min-h-screen">
         {/* Background */}
@@ -139,12 +166,10 @@ const HomePage = () => {
           </p>
 
           <div className="flex flex-wrap gap-4 md:gap-6 justify-center md:justify-start mt-16">
-            <PrimaryButton to='/membersform'>
+            <PrimaryButton to="https://docs.google.com/forms/d/1L4saCJxfIi_jha0lBanIjAl-o2sEXvPs6d0J1TyW9DM/viewform">
               Join the community
             </PrimaryButton>
-            <SecondaryButton to='/about'>
-              Know More About Us
-            </SecondaryButton>
+            <SecondaryButton to="/about">Know More About Us</SecondaryButton>
           </div>
 
           {/* Stats — from HERO_STATS constant */}
@@ -170,7 +195,7 @@ const HomePage = () => {
         </div>
       </section>
       {/* PARTNERS MARQUEE */}
-      <PartnersMarquee/>
+      <PartnersMarquee />
 
       {/* ABOUT STRIP */}
       <section className="py-16 md:py-28 px-4 md:px-20 bg-white">
@@ -200,7 +225,6 @@ const HomePage = () => {
         </div>
       </section>
 
-
       {/* FEATURED PROJECTS */}
       <section className="py-20 px-4 md:px-20 bg-gray-50">
         <div className="max-w-7xl mx-auto">
@@ -221,7 +245,9 @@ const HomePage = () => {
           {projectsLoading ? (
             <Loader />
           ) : projectsError ? (
-            <p className="text-center text-sm text-gray-500 py-12">Failed to load projects: {projectsError}</p>
+            <p className="text-center text-sm text-gray-500 py-12">
+              Failed to load projects: {projectsError}
+            </p>
           ) : null}
 
           {/* Featured — first project */}
@@ -266,43 +292,45 @@ const HomePage = () => {
 
           {/* Other projects grid — remaining 3 */}
           {!projectsLoading && !projectsError && (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-            {homeProjects.slice(1).map((project) => (
-              <div
-                key={project.id}
-                className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden flex flex-col hover:shadow-lg transition-shadow duration-300"
-              >
-                <div className="h-48 w-full overflow-hidden">
-                  <img
-                    src={
-                      project.image || PROJECT_IMAGES[project.slug] || youthImg
-                    }
-                    alt={project.title}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="p-5 flex flex-col flex-1">
-                  <h4 className="font-semibold mb-3 text-base sm:text-lg text-gray-900">
-                    {project.title}
-                  </h4>
-                  <p className="text-gray-600 text-sm mb-4 flex-1">
-                    {project.description}
-                  </p>
-                  <div className="flex gap-2.5 sm:gap-3 flex-wrap my-3">
-                    <PrimaryButton to={project.repoUrl} className="w-full">
-                      Contribute
-                    </PrimaryButton>
-                    <SecondaryButton
-                      to={project.liveUrl || project.repoUrl}
-                      className="w-full"
-                    >
-                      View Project
-                    </SecondaryButton>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+              {homeProjects.slice(1).map((project) => (
+                <div
+                  key={project.id}
+                  className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden flex flex-col hover:shadow-lg transition-shadow duration-300"
+                >
+                  <div className="h-48 w-full overflow-hidden">
+                    <img
+                      src={
+                        project.image ||
+                        PROJECT_IMAGES[project.slug] ||
+                        youthImg
+                      }
+                      alt={project.title}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="p-5 flex flex-col flex-1">
+                    <h4 className="font-semibold mb-3 text-base sm:text-lg text-gray-900">
+                      {project.title}
+                    </h4>
+                    <p className="text-gray-600 text-sm mb-4 flex-1">
+                      {project.description}
+                    </p>
+                    <div className="flex gap-2.5 sm:gap-3 flex-wrap my-3">
+                      <PrimaryButton to={project.repoUrl} className="w-full">
+                        Contribute
+                      </PrimaryButton>
+                      <SecondaryButton
+                        to={project.liveUrl || project.repoUrl}
+                        className="w-full"
+                      >
+                        View Project
+                      </SecondaryButton>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
           )}
         </div>
       </section>
@@ -388,7 +416,6 @@ const HomePage = () => {
       </section>
       */}
 
-
       {/* EXPLORE / CONNECT */}
       <section className="bg-[#FFF7F5] py-20 px-4 md:px-20">
         <EyebrowLabel text="Connect, Contribute and Learn" className="mb-4" />
@@ -461,129 +488,132 @@ const HomePage = () => {
           {eventsLoading ? (
             <Loader />
           ) : eventsError ? (
-            <p className="text-center text-sm text-gray-500 py-12">Failed to load events: {eventsError}</p>
+            <p className="text-center text-sm text-gray-500 py-12">
+              Failed to load events: {eventsError}
+            </p>
           ) : null}
 
           {/* Featured event */}
           {!eventsLoading && !eventsError && featuredHomeEvent && (
-          <div className="bg-white rounded-2xl shadow-md overflow-hidden mb-8 border border-gray-100">
-            <div className="md:flex">
-              <div className="md:w-2/3 p-6 sm:p-8 md:p-10">
-                <span
-                  className={`text-xs font-semibold px-3 py-1 rounded-full ${EVENT_TYPE_STYLES[featuredHomeEvent.type]}`}
-                >
-                  {featuredHomeEvent.tag}
-                </span>
-                <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 mt-4 mb-3">
-                  {featuredHomeEvent.title}
-                </h3>
-                <p className="text-gray-500 text-sm sm:text-base mb-6">
-                  {featuredHomeEvent.description}
-                </p>
-                <div className="flex flex-wrap gap-4 text-sm text-gray-500 mb-8">
-                  <span className="flex items-center gap-1.5">
-                    <Calendar size={14} className="text-blue-500" />{" "}
-                    {featuredHomeEvent.date}
-                  </span>
-                  <span className="flex items-center gap-1.5">
-                    <Clock size={14} className="text-blue-500" />{" "}
-                    {featuredHomeEvent.time}
-                  </span>
-                  <span className="flex items-center gap-1.5">
-                    <MapPin size={14} className="text-blue-500" />{" "}
-                    {featuredHomeEvent.location}
-                  </span>
-                </div>
-                <div className="flex flex-wrap gap-3">
-                  <PrimaryButton
-                    to=""
-                    className="w-full md:w-auto mb-3 md:mb-0"
+            <div className="bg-white rounded-2xl shadow-md overflow-hidden mb-8 border border-gray-100">
+              <div className="md:flex">
+                <div className="md:w-2/3 p-6 sm:p-8 md:p-10">
+                  <span
+                    className={`text-xs font-semibold px-3 py-1 rounded-full ${EVENT_TYPE_STYLES[featuredHomeEvent.type]}`}
                   >
-                    Register Now
-                  </PrimaryButton>
-                  <SecondaryButton
-                    to=""
-                    className="w-full md:w-auto mb-3 md:mb-0"
-                  >
-                    Learn More
-                  </SecondaryButton>
+                    {featuredHomeEvent.tag}
+                  </span>
+                  <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 mt-4 mb-3">
+                    {featuredHomeEvent.title}
+                  </h3>
+                  <p className="text-gray-500 text-sm sm:text-base mb-6">
+                    {featuredHomeEvent.description}
+                  </p>
+                  <div className="flex flex-wrap gap-4 text-sm text-gray-500 mb-8">
+                    <span className="flex items-center gap-1.5">
+                      <Calendar size={14} className="text-blue-500" />{" "}
+                      {featuredHomeEvent.date}
+                    </span>
+                    <span className="flex items-center gap-1.5">
+                      <Clock size={14} className="text-blue-500" />{" "}
+                      {featuredHomeEvent.time}
+                    </span>
+                    <span className="flex items-center gap-1.5">
+                      <MapPin size={14} className="text-blue-500" />{" "}
+                      {featuredHomeEvent.location}
+                    </span>
+                  </div>
+                  <div className="flex flex-wrap gap-3">
+                    <PrimaryButton
+                      to=""
+                      className="w-full md:w-auto mb-3 md:mb-0"
+                    >
+                      Register Now
+                    </PrimaryButton>
+                    <SecondaryButton
+                      to=""
+                      className="w-full md:w-auto mb-3 md:mb-0"
+                    >
+                      Learn More
+                    </SecondaryButton>
+                  </div>
                 </div>
+                {featuredHomeEvent.coverImage ? (
+                  <div className="md:w-1/3 h-56 md:h-auto overflow-hidden shrink-0">
+                    <img
+                      src={featuredHomeEvent.coverImage}
+                      alt={featuredHomeEvent.title}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                ) : (
+                  <div className="md:w-1/3 bg-blue-500 flex flex-col items-center justify-center p-10 text-white text-center">
+                    <p className="text-6xl font-bold">48h</p>
+                    <p className="mt-2 text-lg font-medium opacity-90">
+                      Build Challenge
+                    </p>
+                    <p className="mt-4 text-sm opacity-75">
+                      Open to all skill levels
+                    </p>
+                  </div>
+                )}
               </div>
-              {featuredHomeEvent.coverImage ? (
-                <div className="md:w-1/3 h-56 md:h-auto overflow-hidden shrink-0">
-                  <img
-                    src={featuredHomeEvent.coverImage}
-                    alt={featuredHomeEvent.title}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              ) : (
-                <div className="md:w-1/3 bg-blue-500 flex flex-col items-center justify-center p-10 text-white text-center">
-                  <p className="text-6xl font-bold">48h</p>
-                  <p className="mt-2 text-lg font-medium opacity-90">
-                    Build Challenge
-                  </p>
-                  <p className="mt-4 text-sm opacity-75">
-                    Open to all skill levels
-                  </p>
-                </div>
-              )}
             </div>
-          </div>
           )}
 
           {/* Other events grid */}
           {!eventsLoading && !eventsError && (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {restHomeEvents.map((event) => (
-              <div
-                key={event.id}
-                className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden flex flex-col hover:shadow-md transition-shadow"
-              >
-                {event.coverImage && (
-                  <div className="h-40 w-full overflow-hidden shrink-0">
-                    <img
-                      src={event.coverImage}
-                      alt={event.title}
-                      className="w-full h-full object-cover"
-                    />
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {restHomeEvents.map((event) => (
+                <div
+                  key={event.id}
+                  className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden flex flex-col hover:shadow-md transition-shadow"
+                >
+                  {event.coverImage && (
+                    <div className="h-40 w-full overflow-hidden shrink-0">
+                      <img
+                        src={event.coverImage}
+                        alt={event.title}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  )}
+                  <div className="p-6 flex flex-col flex-1">
+                    <span
+                      className={`text-xs font-semibold px-3 py-1 rounded-full w-fit ${EVENT_TYPE_STYLES[event.type]}`}
+                    >
+                      {event.tag}
+                    </span>
+                    <h4 className="text-base sm:text-lg font-semibold text-gray-900 mt-4 mb-2">
+                      {event.title}
+                    </h4>
+                    <p className="text-gray-500 text-sm flex-1 mb-4">
+                      {event.description}
+                    </p>
+                    <div className="flex flex-col gap-1.5 text-xs text-gray-400">
+                      <span className="flex items-center gap-1.5">
+                        <Calendar size={12} className="text-blue-400" />{" "}
+                        {event.date}
+                      </span>
+                      <span className="flex items-center gap-1.5">
+                        <Clock size={12} className="text-blue-400" />{" "}
+                        {event.time}
+                      </span>
+                      <span className="flex items-center gap-1.5">
+                        <MapPin size={12} className="text-blue-400" />{" "}
+                        {event.location}
+                      </span>
+                    </div>
+                    <NavLink
+                      to="/event"
+                      className="mt-5 text-sm text-blue-500 font-medium hover:underline"
+                    >
+                      RSVP →
+                    </NavLink>
                   </div>
-                )}
-                <div className="p-6 flex flex-col flex-1">
-                <span
-                  className={`text-xs font-semibold px-3 py-1 rounded-full w-fit ${EVENT_TYPE_STYLES[event.type]}`}
-                >
-                  {event.tag}
-                </span>
-                <h4 className="text-base sm:text-lg font-semibold text-gray-900 mt-4 mb-2">
-                  {event.title}
-                </h4>
-                <p className="text-gray-500 text-sm flex-1 mb-4">
-                  {event.description}
-                </p>
-                <div className="flex flex-col gap-1.5 text-xs text-gray-400">
-                  <span className="flex items-center gap-1.5">
-                    <Calendar size={12} className="text-blue-400" />{" "}
-                    {event.date}
-                  </span>
-                  <span className="flex items-center gap-1.5">
-                    <Clock size={12} className="text-blue-400" /> {event.time}
-                  </span>
-                  <span className="flex items-center gap-1.5">
-                    <MapPin size={12} className="text-blue-400" />{" "}
-                    {event.location}
-                  </span>
                 </div>
-                <NavLink
-                  to="/event"
-                  className="mt-5 text-sm text-blue-500 font-medium hover:underline"
-                >
-                  RSVP →
-                </NavLink>
-                </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
           )}
         </div>
       </section>
@@ -693,9 +723,6 @@ const HomePage = () => {
           }
         `}</style>
       </section>
-
-      
-      
 
       {/* FAQ */}
       <section className="py-20 px-4 md:px-20 bg-gray-50">
@@ -832,7 +859,7 @@ const HomePage = () => {
             </p>
 
             <div className="flex flex-wrap gap-4 mb-12">
-              <PrimaryButton to="/membersform">
+              <PrimaryButton to="https://docs.google.com/forms/d/1L4saCJxfIi_jha0lBanIjAl-o2sEXvPs6d0J1TyW9DM/viewform">
                 Join the Community
                 <ArrowRight
                   size={16}

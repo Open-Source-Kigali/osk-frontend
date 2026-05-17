@@ -1,5 +1,19 @@
-import {Github, MessageCircle, Linkedin, Twitter, ArrowUpRight, Hash, Users, Shield,} from "lucide-react";
-import { COMMUNITY_STATS, CHANNELS, GUIDELINES, SOCIAL_PLATFORMS } from "@/constants";
+import {
+  Github,
+  MessageCircle,
+  Linkedin,
+  Twitter,
+  ArrowUpRight,
+  Hash,
+  Users,
+  Shield,
+} from "lucide-react";
+import {
+  COMMUNITY_STATS,
+  CHANNELS,
+  GUIDELINES,
+  SOCIAL_PLATFORMS,
+} from "@/constants";
 import EyebrowLabel from "@/components/UI/EyebrowLable";
 import PrimaryButton from "@/components/UI/PrimaryButton";
 
@@ -102,7 +116,10 @@ const Community = () => (
             <span className="font-semibold text-gray-900">100+ people</span>{" "}
             already building — come meet them.
           </p>
-          <PrimaryButton to="/membersform" className="">
+          <PrimaryButton
+            to="https://docs.google.com/forms/d/1L4saCJxfIi_jha0lBanIjAl-o2sEXvPs6d0J1TyW9DM/viewform"
+            className=""
+          >
             Join the Community Now <ArrowUpRight size={14} />
           </PrimaryButton>
         </div>

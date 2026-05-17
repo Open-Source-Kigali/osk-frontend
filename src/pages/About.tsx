@@ -1,11 +1,17 @@
-import { FaXTwitter, FaLinkedinIn, FaInstagram, FaFacebookF, FaGithub, FaFigma } from "react-icons/fa6";
+import {
+  FaXTwitter,
+  FaLinkedinIn,
+  FaInstagram,
+  FaFacebookF,
+  FaGithub,
+  FaFigma,
+} from "react-icons/fa6";
 import { ABOUT_STATS, STORY_POINTS, VALUES, ABOUT_TEAM } from "@/constants";
 import peopleImg from "@/assets/images/People.jpeg";
 import groupImg from "@/assets/images/did.jpeg.jpeg";
 import EyebrowLabel from "@/components/UI/EyebrowLable";
 import PrimaryButton from "@/components/UI/PrimaryButton";
 import SecondaryButton from "@/components/UI/SecondaryButton";
-
 
 //Types
 interface DotProps {
@@ -74,7 +80,10 @@ const About = () => (
 
         {/* CTAs */}
         <div className="flex flex-wrap gap-4 md:gap-6 justify-center mt-6 mb-14">
-          <PrimaryButton to="/membersform" className="w-full md:w-auto">
+          <PrimaryButton
+            to="https://docs.google.com/forms/d/1L4saCJxfIi_jha0lBanIjAl-o2sEXvPs6d0J1TyW9DM/viewform"
+            className="w-full md:w-auto"
+          >
             Join the Community
           </PrimaryButton>
           <SecondaryButton to="/projects" className="w-full  md:w-auto">
@@ -255,9 +264,10 @@ const About = () => (
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-4">
           <div>
-
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-gray-900">
-              Leading, Strong<br />Creative Team
+              Leading, Strong
+              <br />
+              Creative Team
             </h2>
           </div>
           <p className="text-gray-500 text-base md:text-lg max-w-xs text-start leading-relaxed">
@@ -268,16 +278,43 @@ const About = () => (
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {ABOUT_TEAM.map((m) => {
-
             // Build only the social links that are not null
             const socialLinks = [
-              m.links.linkedin && { icon: <FaLinkedinIn size={12} />, href: m.links.linkedin, label: "LinkedIn" },
-              m.links.github && { icon: <FaGithub size={12} />, href: m.links.github, label: "GitHub" },
-              m.links.twitter && { icon: <FaXTwitter size={12} />, href: m.links.twitter, label: "Twitter" },
-              m.links.instagram && { icon: <FaInstagram size={12} />, href: m.links.instagram, label: "Instagram" },
-              m.links.facebook && { icon: <FaFacebookF size={12} />, href: m.links.facebook, label: "Facebook" },
-              m.links.figma && { icon: <FaFigma size={12} />, href: m.links.figma, label: "Figma" },
-            ].filter(Boolean) as { icon: React.ReactNode; href: string; label: string }[];
+              m.links.linkedin && {
+                icon: <FaLinkedinIn size={12} />,
+                href: m.links.linkedin,
+                label: "LinkedIn",
+              },
+              m.links.github && {
+                icon: <FaGithub size={12} />,
+                href: m.links.github,
+                label: "GitHub",
+              },
+              m.links.twitter && {
+                icon: <FaXTwitter size={12} />,
+                href: m.links.twitter,
+                label: "Twitter",
+              },
+              m.links.instagram && {
+                icon: <FaInstagram size={12} />,
+                href: m.links.instagram,
+                label: "Instagram",
+              },
+              m.links.facebook && {
+                icon: <FaFacebookF size={12} />,
+                href: m.links.facebook,
+                label: "Facebook",
+              },
+              m.links.figma && {
+                icon: <FaFigma size={12} />,
+                href: m.links.figma,
+                label: "Figma",
+              },
+            ].filter(Boolean) as {
+              icon: React.ReactNode;
+              href: string;
+              label: string;
+            }[];
 
             return (
               <div
@@ -294,7 +331,9 @@ const About = () => (
                       style={{ objectPosition: m.objectPosition ?? "top" }}
                     />
                   ) : (
-                    <div className={`${m.bg} w-full h-full flex items-center justify-center`}>
+                    <div
+                      className={`${m.bg} w-full h-full flex items-center justify-center`}
+                    >
                       <span className="text-white font-black text-7xl opacity-20">
                         {m.initials}
                       </span>
@@ -361,7 +400,9 @@ const About = () => (
           </h2>
         </div>
         <div className="flex flex-col sm:flex-row gap-4 shrink-0">
-          <PrimaryButton to="/membersform">Join the Community</PrimaryButton>
+          <PrimaryButton to="https://docs.google.com/forms/d/1L4saCJxfIi_jha0lBanIjAl-o2sEXvPs6d0J1TyW9DM/viewform">
+            Join the Community
+          </PrimaryButton>
           <SecondaryButton to="/projects">Browse Projects</SecondaryButton>
         </div>
       </div>
