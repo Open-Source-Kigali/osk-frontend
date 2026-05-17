@@ -64,17 +64,17 @@ The project exists to:
 
 ---
 
-#  Tech Stack
+# Tech Stack
 
-| Layer | Technology |
-|---|---|
-| Framework | React 18 + TypeScript |
-| Build Tool | Vite |
-| Styling | Tailwind CSS |
-| Routing | React Router v6 |
-| HTTP | Native Fetch API |
+| Layer            | Technology                            |
+| ---------------- | ------------------------------------- |
+| Framework        | React 18 + TypeScript                 |
+| Build Tool       | Vite                                  |
+| Styling          | Tailwind CSS                          |
+| Routing          | React Router v6                       |
+| HTTP             | Native Fetch API                      |
 | State Management | React Hooks (`useState`, `useEffect`) |
-| Deployment | Vercel |
+| Deployment       | Vercel                                |
 
 ---
 
@@ -143,9 +143,9 @@ http://localhost:5173
 
 # Environment Variables
 
-| Variable | Description | Required |
-|---|---|---|
-| `VITE_API_BASE_URL` | OSK backend API base URL | ✅ Yes |
+| Variable            | Description              | Required |
+| ------------------- | ------------------------ | -------- |
+| `VITE_API_BASE_URL` | OSK backend API base URL | ✅ Yes   |
 
 ---
 
@@ -191,12 +191,12 @@ and reviewed quickly by maintainers.
 
 # Community & Contact
 
-| Platform | Link |
-|---|---|
-| Discord | https://discord.com/invite/osk |
-| LinkedIn | https://linkedin.com/company/osk |
-| GitHub | https://github.com/opensourcekigali |
-| Email | opensourcekigali@gmail.com |
+| Platform | Link                                             |
+| -------- | ------------------------------------------------ |
+| Discord  | https://discord.com/invite/3dTFZSn6Tq/invite/osk |
+| LinkedIn | https://linkedin.com/company/osk                 |
+| GitHub   | https://github.com/opensourcekigali              |
+| Email    | opensourcekigali@gmail.com                       |
 
 ---
 

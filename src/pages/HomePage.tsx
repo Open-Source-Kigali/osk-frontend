@@ -804,7 +804,7 @@ const HomePage = () => {
             </div>
 
             <a
-              href="https://discord.com"
+              href="https://discord.com/invite/3dTFZSn6Tq"
               target="_blank"
               rel="noopener noreferrer"
               className="shrink-0 px-5 py-2.5 bg-primary-colour text-white text-sm font-medium rounded-full hover:opacity-90 transition-colors duration-200"
