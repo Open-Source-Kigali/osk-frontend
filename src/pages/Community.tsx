@@ -4,16 +4,9 @@ import {
   Linkedin,
   Twitter,
   ArrowUpRight,
-  Hash,
-  Users,
   Shield,
 } from "lucide-react";
-import {
-  COMMUNITY_STATS,
-  CHANNELS,
-  GUIDELINES,
-  SOCIAL_PLATFORMS,
-} from "@/constants";
+import { COMMUNITY_STATS, GUIDELINES, SOCIAL_PLATFORMS } from "@/constants";
 import EyebrowLabel from "@/components/UI/EyebrowLable";
 import PrimaryButton from "@/components/UI/PrimaryButton";
 

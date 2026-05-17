@@ -7,7 +7,7 @@ import HomePage from "./pages/HomePage";
 import About from "./pages/About";
 import Community from "./pages/Community";
 import Projectt from "./pages/Projects";
-import Resources from "./pages/Resources";
+// import Resources from "./pages/Resources";
 import RootLayer from "./pages/RootLayer";
 import Partners from "./pages/Partners";
 import Event from "./pages/Event";
