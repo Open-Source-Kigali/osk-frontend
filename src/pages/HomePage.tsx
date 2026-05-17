@@ -842,7 +842,7 @@ const HomePage = () => {
             <div className="inline-flex items-center gap-2 mb-6 px-4 py-1.5 rounded-full border border-white/10 bg-white/5">
               <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
               <span className="text-white/70 text-xs tracking-wide uppercase">
-                Community is live · Join 100+ contributors
+                Community is live · Join 1500+ contributors
               </span>
             </div>
 

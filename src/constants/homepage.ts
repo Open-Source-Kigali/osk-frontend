@@ -3,17 +3,17 @@
 
 // ─── Hero
 export const HERO_STATS = [
-  { number: 100, label: "Contributors" },
-  { number: 600, label: "Pull Requests" },
-  { number: 300, label: "Projects" },
-  { number: 200, label: "Active Memebers" },
+  { number: 12, label: "Contributors" },
+  { number: 25, label: "Pull Requests" },
+  { number: 3, label: "Projects" },
+  { number: 1500, label: "Active Memebers" },
 ];
 
 // ─── About strip
 export const ABOUT_STRIP_STATS = [
-  { value: "100+", label: "Active Contributors" },
+  { value: "12+", label: "Active Contributors" },
   { value: "10", label: "Projects Shipped" },
-  { value: "600+", label: "Pull Requests Merged" },
+  { value: "25+", label: "Pull Requests Merged" },
 ];
 
 // ─── Contribution roles
@@ -68,11 +68,11 @@ export const EXPLORE_LINKS = [
     to: "/projects",
     variant: "secondary" as const,
   },
-  {
-    label: "Learn with the Community",
-    to: "/resources",
-    variant: "secondary" as const,
-  },
+  // {
+  //   label: "Learn with the Community",
+  //   to: "/resources",
+  //   variant: "secondary" as const,
+  // },
 ];
 
 // ─── Homepage events
@@ -244,8 +244,8 @@ export const CTA_ACTIVITY: ActivityItem[] = [
 ];
 
 export const CTA_STATS = [
-  { value: "100+", label: "Contributors" },
-  { value: "600+", label: "Pull Requests" },
+  { value: "12+", label: "Contributors" },
+  { value: "25+", label: "Pull Requests" },
   { value: "10", label: "Active Projects" },
 ];
 

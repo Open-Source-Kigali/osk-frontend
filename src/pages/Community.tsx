@@ -113,7 +113,7 @@ const Community = () => (
             ))}
           </div>
           <p className="text-gray-500 text-sm">
-            <span className="font-semibold text-gray-900">100+ people</span>{" "}
+            <span className="font-semibold text-gray-900">1500+ people</span>{" "}
             already building — come meet them.
           </p>
           <PrimaryButton
@@ -140,39 +140,6 @@ const Community = () => (
             We use Discord and WhatsApp. These are the channels you'll actually
             use every day.
           </p>
-        </div>
-
-        {/* Channel grid — from CHANNELS constant */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {CHANNELS.map((ch) => (
-            <div
-              key={ch.name}
-              className="group rounded-2xl border border-gray-100 bg-white p-5 hover:border-gray-200 hover:shadow-md hover:-translate-y-1 transition-all duration-300 cursor-default"
-            >
-              <div className="flex items-center gap-2 mb-3">
-                <span className="text-xl">{ch.emoji}</span>
-                <div className="flex items-center gap-1.5 flex-1 min-w-0">
-                  <Hash size={13} className="text-gray-400 shrink-0" />
-                  <span className="font-mono text-base font-semibold text-gray-900 truncate">
-                    {ch.name}
-                  </span>
-                </div>
-                {ch.active && (
-                  <span
-                    className="w-2.5 h-2.5 rounded-full bg-green-400 shrink-0 animate-pulse"
-                    title="Active now"
-                  />
-                )}
-              </div>
-              <p className="text-gray-500 text-sm leading-relaxed mb-4">
-                {ch.desc}
-              </p>
-              <div className="flex items-center gap-1 text-gray-400">
-                <Users size={14} />
-                <span className="text-xs">{ch.members}</span>
-              </div>
-            </div>
-          ))}
         </div>
 
         {/* Social platforms — from SOCIAL_PLATFORMS constant */}

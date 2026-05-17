@@ -5,7 +5,7 @@ export const NAV_LINKS: NavLink[] = [
   { name: "About", path: "/about" },
   { name: "Community", path: "/community" },
   { name: "Events", path: "/event" },
-  { name: "Resources", path: "/resources" },
+  // { name: "Resources", path: "/resources" },
   { name: "Projects", path: "/projects" },
   { name: "Partners", path: "/partners" },
 ];
@@ -20,12 +20,12 @@ export const FOOTER_LINKS: Record<string, NavLink[]> = {
   Contribute: [
     { name: "All Projects", path: "/projects" },
     { name: "Good First Issues", path: "/projects#issues" },
-    { name: "Contribution Guide", path: "/resources" },
+    // { name: "Contribution Guide", path: "/resources" },
     { name: "Mentorship", path: "/community" },
   ],
   Resources: [
-    { name: "Tutorials", path: "/resources?type=tutorial" },
-    { name: "Blog", path: "/resources?type=article" },
+    // { name: "Tutorials", path: "/resources?type=tutorial" },
+    // { name: "Blog", path: "/resources?type=article" },
     { name: "Events", path: "/events" },
     { name: "Opportunities", path: "/community" },
   ],
