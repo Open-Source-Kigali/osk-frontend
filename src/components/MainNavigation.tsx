@@ -4,26 +4,22 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import { X } from "lucide-react";
 
 import LogoImage from "@/assets/Logo/OSK-primary-logo.svg";
-import LogoWhite from "@/assets/Logo/OSK-primary-logo-1200-400-white.svg"
+import LogoWhite from "@/assets/Logo/OSK-primary-logo-1200-400-white.svg";
 import { useScrolled } from "@/hooks";
 import { NAV_LINKS } from "@/constants";
 import PrimaryButton from "./UI/PrimaryButton";
 
-
-
-
-
 const Navbar = () => {
   const scrolled = useScrolled(50);
-const [mobileOpen, setMobileOpen] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
-const location = useLocation();
-const isHome = location.pathname === "/";
+  const location = useLocation();
+  const isHome = location.pathname === "/";
 
-const isLight = !isHome || scrolled;
+  const isLight = !isHome || scrolled;
 
-const showWhiteLogo = isHome && !scrolled;
-const logo = showWhiteLogo ? LogoWhite : LogoImage;
+  const showWhiteLogo = isHome && !scrolled;
+  const logo = showWhiteLogo ? LogoWhite : LogoImage;
 
   useEffect(() => {
     if (mobileOpen) {
@@ -36,15 +32,14 @@ const logo = showWhiteLogo ? LogoWhite : LogoImage;
     };
   }, [mobileOpen]);
 
-
-
   return (
     <>
       <nav
-        className={`flex justify-between items-center px-4 sm:px-8 lg:px-20 fixed py-4 w-full z-20 transition-colors duration-300 ${isLight
-          ? "bg-white shadow-xl text-gray-900"
-          : "bg-transparent text-white"
-          }`}
+        className={`flex justify-between items-center px-4 sm:px-8 lg:px-20 fixed py-4 w-full z-20 transition-colors duration-300 ${
+          isLight
+            ? "bg-white shadow-xl text-gray-900"
+            : "bg-transparent text-white"
+        }`}
       >
         {/* Logo */}
         <Link to="/" className="flex items-center">
@@ -64,10 +59,11 @@ const logo = showWhiteLogo ? LogoWhite : LogoImage;
               className={({ isActive }) =>
                 isActive
                   ? "text-primary-colour font-semibold"
-                  : `font-medium transition-colors duration-200 ${isLight
-                    ? "text-gray-900 hover:text-primary-colour"
-                    : "text-white hover:text-[#93bbff]"
-                  }`
+                  : `font-medium transition-colors duration-200 ${
+                      isLight
+                        ? "text-gray-900 hover:text-primary-colour"
+                        : "text-white hover:text-[#93bbff]"
+                    }`
               }
             >
               {link.name}
@@ -76,7 +72,10 @@ const logo = showWhiteLogo ? LogoWhite : LogoImage;
         </div>
 
         {/* CTA button (desktop) */}
-        <PrimaryButton to="/membersform" className="hidden md:inline-flex">
+        <PrimaryButton
+          to="https://docs.google.com/forms/d/e/1FAIpQLSfP6ysp6y_SNcuHb1x9v-nMxfXR7-kcyBogN2ZMF--2byOzyg/viewform"
+          className="hidden md:inline-flex"
+        >
           Contribute to OSK
         </PrimaryButton>
         {/* Mobile hamburger */}
@@ -89,8 +88,9 @@ const logo = showWhiteLogo ? LogoWhite : LogoImage;
             <X className={`w-6 h-6 text-gray-900`} />
           ) : (
             <RxHamburgerMenu
-              className={`w-6 h-6 transition-colors duration-300 ${isLight ? "text-gray-900" : "text-white"
-                }`}
+              className={`w-6 h-6 transition-colors duration-300 ${
+                isLight ? "text-gray-900" : "text-white"
+              }`}
             />
           )}
         </button>
