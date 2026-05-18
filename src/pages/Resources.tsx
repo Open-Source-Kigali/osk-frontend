@@ -688,7 +688,7 @@ const Resources = () => {
             </div>
 
             <a
-              href="mailto:opensourcekigali@gmail.com?subject=Resource Submission"
+              href="https://mail.google.com/mail/?view=cm&to=contact@oskigali.org&su=Resource+Submission"
               className="flex items-center justify-center gap-2 w-full py-3 bg-primary-colour hover:opacity-90 text-white text-sm font-bold rounded-xl transition-colors"
             >
               Submit via email <ArrowUpRight size={14} />

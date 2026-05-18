@@ -770,7 +770,7 @@ const Event = () => {
 
             <div className="flex flex-col gap-2">
                 <a
-                href="mailto:opensourcekigali@gmail.com?subject=Event Proposal"
+                href="https://mail.google.com/mail/?view=cm&to=contact@oskigali.org&su=Event+Proposal"
                 className="flex items-center justify-center gap-2 w-full py-3 rounded-xl text-white text-sm font-bold transition-colors"
                 style={{ background: "#2b7fff" }}
                 onMouseEnter={(e) => (e.currentTarget.style.background = "#1a6fef")}

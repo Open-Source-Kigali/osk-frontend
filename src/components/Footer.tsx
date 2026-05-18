@@ -53,8 +53,8 @@ const linkGroups: FooterLinkGroup[] = [
         external: true,
       },
       {
-        label: "opensourcekigali@gmail.com",
-        to: "https://mail.google.com/mail/?view=cm&to=opensourcekigali@gmail.com",
+        label: "contact@oskigali.org",
+        to: "https://mail.google.com/mail/?view=cm&to=contact@oskigali.org",
         external: true,
       },
     ],
@@ -84,7 +84,7 @@ const socialLinks = [
   },
   {
     icon: <Mail size={18} />,
-    href: "https://mail.google.com/mail/?view=cm&to=opensourcekigali@gmail.com",
+    href: "https://mail.google.com/mail/?view=cm&to=contact@oskigali.org",
     label: "Email",
   },
 ];

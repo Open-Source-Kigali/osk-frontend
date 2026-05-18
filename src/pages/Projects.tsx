@@ -557,7 +557,7 @@ const Projectt = () => {
               ))}
             </div>
             <a
-              href="opensourcekigali@gmail.com"
+              href="https://mail.google.com/mail/?view=cm&to=contact@oskigali.org"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-2 w-full py-3 mt-7 rounded-xl text-white text-sm font-bold transition-colors"

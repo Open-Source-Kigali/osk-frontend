@@ -43,7 +43,7 @@ export const FOOTER_LINKS: Record<string, NavLink[]> = {
     { name: "LinkedIn", path: "https://linkedin.com", external: true },
     {
       name: "Email",
-      path: "mailto:opensourcekigali@gmail.com",
+      path: "https://mail.google.com/mail/?view=cm&to=contact@oskigali.org",
       external: true,
     },
   ],

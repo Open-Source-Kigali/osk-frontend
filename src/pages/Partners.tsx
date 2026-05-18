@@ -270,7 +270,7 @@ const Partners = () => (
 
           <div className="space-y-4">
             <a
-              href="mailto:opensourcekigali@gmail.com?subject=Partnership Enquiry"
+              href="https://mail.google.com/mail/?view=cm&to=partnerships@oskigali.org&su=Partnership+Enquiry"
               className="flex items-center gap-4 p-5 rounded-2xl border-2 border-blue-200 bg-blue-50 hover:border-blue-400 hover:shadow-md transition-all group"
             >
               <div className="w-12 h-12 rounded-xl bg-blue-500 flex items-center justify-center shrink-0">
@@ -279,7 +279,7 @@ const Partners = () => (
               <div className="flex-1">
                 <p className="font-black text-gray-900 text-base">Email us directly</p>
                 <p className="text-gray-500 text-sm font-mono mt-0.5">
-                  opensourcekigali@gmail.com
+                  partnerships@oskigali.org
                 </p>
               </div>
               <ArrowUpRight size={16} className="text-blue-400 group-hover:text-blue-600 transition-colors" />
