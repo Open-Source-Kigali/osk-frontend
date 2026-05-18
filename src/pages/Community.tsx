@@ -230,7 +230,7 @@ const Community = () => (
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 max-w-2xl mx-auto">
           <a
-            href="/"
+            href="https://discord.com/invite/3dTFZSn6Tq"
             target="_blank"
             rel="noopener noreferrer"
             className="group flex flex-col items-start p-7 bg-blue-500 hover:bg-blue-400 rounded-2xl text-white transition-colors duration-200"

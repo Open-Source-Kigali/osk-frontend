@@ -50,7 +50,7 @@ export const EVENTS: OSKEvent[] = [
     speakers: [{ name: "Tech Lead", role: "OSK Maintainer", initials: "TL" }],
     tags: ["node.js", "api", "auth"],
     featured: false,
-    registerUrl: "https://discord.com/invite/3dTFZSn6Tq/osk",
+    registerUrl: "https://discord.com/invite/3dTFZSn6Tq",
   },
   {
     id: 3,

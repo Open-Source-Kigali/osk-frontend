@@ -646,14 +646,17 @@ const Event = () => {
             </div>
           </div>
           <div className="flex gap-3 shrink-0">
-            <button
-              className="px-5 py-2.5 rounded-full text-white text-sm font-bold transition-colors hover:cursor-pointer"
+            <a
+              href="https://discord.com/invite/3dTFZSn6Tq"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-5 py-2.5 rounded-full text-white text-sm font-bold transition-colors"
               style={{ background: "#2b7fff" }}
               onMouseEnter={(e) => (e.currentTarget.style.background = "#1a6fef")}
               onMouseLeave={(e) => (e.currentTarget.style.background = "#2b7fff")}
             >
               Join Discord
-            </button>
+            </a>
             <button
               className="px-5 py-2.5 rounded-full text-sm font-bold border transition-colors hover:cursor-pointer"
               style={{ borderColor: "#2b7fff", color: "#2b7fff" }}

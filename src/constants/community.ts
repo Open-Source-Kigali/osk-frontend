@@ -84,7 +84,7 @@ export const SOCIAL_PLATFORMS = [
     handle: "OSK Community",
     desc: "Main hub for daily chat, sessions, and support",
     color: "bg-indigo-500",
-    link: "#",
+    link: "https://discord.com/invite/3dTFZSn6Tq",
     cta: "Join Server",
     iconKey: "discord",
   },
