@@ -167,9 +167,12 @@ const Footer = () => {
             <NavLink to="/privacy" className="hover:text-gray-400 transition">
               Privacy Policy
             </NavLink>
-            <NavLink to="/conduct" className="hover:text-gray-400 transition">
+            <a
+              href="https://docs.google.com/document/d/1K_bIZT09p-8IiPpg1v3RsMD2dZmUzRFWlMp8tfOavcE/edit?usp=sharing"
+              className="hover:text-gray-400 transition"
+            >
               Code of Conduct
-            </NavLink>
+            </a>
             <NavLink to="/charter" className="hover:text-gray-400 transition">
               Community Charter
             </NavLink>
