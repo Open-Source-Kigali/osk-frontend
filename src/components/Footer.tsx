@@ -1,8 +1,9 @@
 import { NavLink } from "react-router";
 import whiteLogo from "@/assets/Logo/OSK-primary-logo-1200-400-white.svg";
 
-import { MessageCircle, Mail } from "lucide-react";
+import { Mail } from "lucide-react";
 import { FiGithub, FiTwitter, FiLinkedin } from "react-icons/fi";
+import { FaWhatsapp } from "react-icons/fa";
 
 interface FooterLinkGroup {
   heading: string;
@@ -78,8 +79,8 @@ const socialLinks = [
     label: "LinkedIn",
   },
   {
-    icon: <MessageCircle size={18} />,
-    href: "https://discord.com/invite/3dTFZSn6Tq",
+    icon: <FaWhatsapp size={18} />,
+    href: "https://chat.whatsapp.com/GimdjJcYLyyG62zpgsI0zB",
     label: "Discord",
   },
   {
@@ -167,10 +168,10 @@ const Footer = () => {
             <NavLink to="/privacy" className="hover:text-gray-400 transition">
               Privacy Policy
             </NavLink>
-            <a 
-              href="https://docs.google.com/document/d/1K_bIZT09p-8IiPpg1v3RsMD2dZmUzRFWlMp8tfOavcE/edit?usp=sharing" 
-              target="_blank" 
-              rel="noopener noreferrer" 
+            <a
+              href="https://docs.google.com/document/d/1K_bIZT09p-8IiPpg1v3RsMD2dZmUzRFWlMp8tfOavcE/edit?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
               className="hover:text-gray-400 transition"
             >
               Code of Conduct
