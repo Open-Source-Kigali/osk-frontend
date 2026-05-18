@@ -191,6 +191,7 @@ and reviewed quickly by maintainers.
 # Community & Contact
 
 | Platform | Link                                             |
+| -------- | ------------------------------------------------ | |
 | -------- | ------------------------------------------------ |
 | Discord  | https://discord.com/invite/3dTFZSn6Tq/invite/osk |
 | LinkedIn | https://www.linkedin.com/company/open-source-kigali/?viewAsMember=true |
