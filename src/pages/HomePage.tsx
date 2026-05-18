@@ -165,10 +165,19 @@ const HomePage = () => {
             next billion users into the next billion creators.
           </p>
 
-          <div className="flex flex-wrap gap-4 md:gap-6 justify-center md:justify-start mt-16">
-            <PrimaryButton to="https://docs.google.com/forms/d/1L4saCJxfIi_jha0lBanIjAl-o2sEXvPs6d0J1TyW9DM/viewform">
+          <div className="flex flex-wrap gap-4 md:gap-6 justify-center md:justify-start mt-16 rounded-md">
+            {/* <PrimaryButton to="https://docs.google.com/forms/d/1L4saCJxfIi_jha0lBanIjAl-o2sEXvPs6d0J1TyW9DM/viewform">
               Join the community
-            </PrimaryButton>
+            </PrimaryButton> */}
+            <a
+              href="https://docs.google.com/forms/d/1L4saCJxfIi_jha0lBanIjAl-o2sEXvPs6d0J1TyW9DM/viewform"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-md transition duration-300"
+            >
+              Join the community
+            </a>
+
             <SecondaryButton to="/about">Know More About Us</SecondaryButton>
           </div>
 
