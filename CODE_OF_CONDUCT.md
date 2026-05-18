@@ -34,7 +34,7 @@ We are committed to making participation in this project a **harassment-free exp
 
 If you experience or witness a violation of this Code of Conduct, you can report it to the OSK leadership team:
 
- **opensourcekigali@gmail.com**
+ **[opensourcekigali@gmail.com](mailto:opensourcekigali@gmail.com)**
 
 All reports will be treated seriously, reviewed promptly, and kept confidential.
 
