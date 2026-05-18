@@ -167,9 +167,14 @@ const Footer = () => {
             <NavLink to="/privacy" className="hover:text-gray-400 transition">
               Privacy Policy
             </NavLink>
-            <NavLink to="/conduct" className="hover:text-gray-400 transition">
+            <a
+              href="https://github.com/Open-Source-Kigali/osk-frontend/blob/main/CODE_OF_CONDUCT.md"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-gray-400 transition"
+            >
               Code of Conduct
-            </NavLink>
+            </a>
             <NavLink to="/charter" className="hover:text-gray-400 transition">
               Community Charter
             </NavLink>
