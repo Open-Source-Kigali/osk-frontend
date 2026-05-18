@@ -170,6 +170,8 @@ const Footer = () => {
             </NavLink>
             <a
               href="https://docs.google.com/document/d/1K_bIZT09p-8IiPpg1v3RsMD2dZmUzRFWlMp8tfOavcE/edit?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
               className="hover:text-gray-400 transition"
             >
               Code of Conduct
