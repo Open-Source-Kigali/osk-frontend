@@ -166,7 +166,7 @@ const HomePage = () => {
           </p>
 
           <div className="flex flex-wrap gap-4 md:gap-6 justify-center md:justify-start mt-16">
-            <PrimaryButton to="https://docs.google.com/forms/d/1L4saCJxfIi_jha0lBanIjAl-o2sEXvPs6d0J1TyW9DM/viewform">
+            <PrimaryButton to="https://docs.google.com/forms/d/1L4saCJxfIi_jha0lBanIjAl-o2sEXvPs6d0J1TyW9DM/viewform" >
               Join the community
             </PrimaryButton>
             <SecondaryButton to="/about">Know More About Us</SecondaryButton>
@@ -804,7 +804,7 @@ const HomePage = () => {
             </div>
 
             <a
-              href="https://discord.com/invite/3dTFZSn6Tq"
+              href="https://chat.whatsapp.com/GimdjJcYLyyG62zpgsI0zB"
               target="_blank"
               rel="noopener noreferrer"
               className="shrink-0 px-5 py-2.5 bg-primary-colour text-white text-sm font-medium rounded-full hover:opacity-90 transition-colors duration-200"
@@ -859,7 +859,7 @@ const HomePage = () => {
             </p>
 
             <div className="flex flex-wrap gap-4 mb-12">
-              <PrimaryButton to="https://docs.google.com/forms/d/1L4saCJxfIi_jha0lBanIjAl-o2sEXvPs6d0J1TyW9DM/viewform">
+              <PrimaryButton  to="https://docs.google.com/forms/d/1L4saCJxfIi_jha0lBanIjAl-o2sEXvPs6d0J1TyW9DM/viewform" >
                 Join the Community
                 <ArrowRight
                   size={16}
