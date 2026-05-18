@@ -585,7 +585,7 @@ const Projectt = () => {
               </p>
             </div>
             <a
-              href="https://github.com/open-source-kigali"
+              href="https://github.com/Open-Source-Kigali/osk-frontend/issues"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-white text-sm font-bold transition-colors"
@@ -675,7 +675,7 @@ const Projectt = () => {
               ))}
             </div>
             <a
-              href="mailto:contact@oskigali.org"
+              href="mailto:opensourcekigali@gmail.com"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-2 w-full py-3 mt-7 rounded-xl text-white text-sm font-bold transition-colors"
