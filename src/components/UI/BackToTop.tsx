@@ -1,4 +1,3 @@
-import React from "react";
 import { ChevronUp } from "lucide-react";
 import { useScrolled } from "../../hooks/useScrolled";
 
