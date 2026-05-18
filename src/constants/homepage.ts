@@ -60,7 +60,7 @@ export const CONTRIBUTION_SLIDES: ContributionSlide[] = [
 export const EXPLORE_LINKS = [
   {
     label: "Connect with the Community",
-    to: "/membersform",
+    to: "https://docs.google.com/forms/d/e/1FAIpQLSfP6ysp6y_SNcuHb1x9v-nMxfXR7-kcyBogN2ZMF--2byOzyg/viewform",
     variant: "primary" as const,
   },
   {
