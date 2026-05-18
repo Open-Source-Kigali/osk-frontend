@@ -48,7 +48,7 @@ const Partners = () => (
           hubs to grow Rwanda's open-source ecosystem and build software that matters.
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-          <PrimaryButton to="/partnersform">
+          <PrimaryButton to="#become">
             Become a Partner
           </PrimaryButton>
           
@@ -94,7 +94,7 @@ const Partners = () => (
             <strong className="text-gray-900">{PARTNERS.length} organisations</strong>{" "}
             across Rwanda and we're actively looking for more.
           </p>
-          <PrimaryButton to="/partnersform" className="md:w-1/2">
+          <PrimaryButton to="#become" className="md:w-1/2">
             Partner with Us
           </PrimaryButton>
         </div>
