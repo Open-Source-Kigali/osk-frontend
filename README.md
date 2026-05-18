@@ -171,7 +171,7 @@ Please read:
 ```bash
 CONTRIBUTING.md
 ```
-
+See all contributors → [CONTRIBUTORS.md](./CONTRIBUTORS.md)
 before opening a pull request, do this.
 
 ---
