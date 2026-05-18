@@ -17,9 +17,8 @@ import {
   Plus,
   Minus,
 } from "lucide-react";
-import { useAutoPlay, useProjects, useEvents } from "@/hooks";
+import { useAutoPlay, useProjects, useEvents, useGithubStats } from "@/hooks";
 import {
-  HERO_STATS,
   EXPLORE_LINKS,
   TESTIMONIALS,
   CTA_ACTIVITY,
@@ -78,6 +77,8 @@ const PROJECT_IMAGES: Record<string, string> = {
 
 // ─── Page
 const HomePage = () => {
+  const { stats } = useGithubStats();
+
   // Testimonials auto-play
   const { current, paused, next, prev, goTo, setPaused } = useAutoPlay({
     length: TESTIMONIALS.length,
@@ -172,13 +173,13 @@ const HomePage = () => {
             <SecondaryButton to="/about">Know More About Us</SecondaryButton>
           </div>
 
-          {/* Stats — from HERO_STATS constant */}
+          {/* Stats — fetched dynamically from GitHub API */}
           <div className="flex flex-wrap justify-center md:justify-start items-center gap-6 md:gap-16 mt-16 pt-6">
-            {HERO_STATS.map((stat, index) => (
+            {stats.map((stat, index) => (
               <div
                 key={stat.label}
                 className={`flex-1 min-w-20 py-4 ${
-                  index !== HERO_STATS.length - 1
+                  index !== stats.length - 1
                     ? "md:border-r border-gray-300"
                     : ""
                 } text-center md:text-left`}
