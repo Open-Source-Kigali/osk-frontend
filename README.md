@@ -192,8 +192,7 @@ and reviewed quickly by maintainers.
 # Community & Contact
 
 | Platform | Link                                             |
-| -------- | ------------------------------------------------ |
-| Discord  | https://discord.com/invite/3dTFZSn6Tq/invite/osk |
+| -------- | ------------------------------------------------ | |
 | LinkedIn | https://linkedin.com/company/osk                 |
 | GitHub   | https://github.com/open-source-kigali            |
 | Email    | opensourcekigali@gmail.com                       |
