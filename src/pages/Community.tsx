@@ -9,6 +9,7 @@ import {
 import { COMMUNITY_STATS, GUIDELINES, SOCIAL_PLATFORMS } from "@/constants";
 import EyebrowLabel from "@/components/UI/EyebrowLable";
 import PrimaryButton from "@/components/UI/PrimaryButton";
+import { BsWhatsapp } from "react-icons/bs";
 
 const SOCIAL_ICONS: Record<string, React.ReactNode> = {
   discord: <MessageCircle size={22} />,
@@ -230,18 +231,18 @@ const Community = () => (
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 max-w-2xl mx-auto">
           <a
-            href="https://discord.com/invite/3dTFZSn6Tq"
+            href="https://chat.whatsapp.com/GimdjJcYLyyG62zpgsI0zB"
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex flex-col items-start p-7 bg-blue-500 hover:bg-blue-400 rounded-2xl text-white transition-colors duration-200"
+            className="group flex flex-col items-start p-7 bg-[#25D366] hover:bg-blue-400 rounded-2xl text-white transition-colors duration-200"
           >
-            <MessageCircle size={28} className="mb-4" />
-            <p className="font-black text-xl mb-1">Join Discord</p>
+            <BsWhatsapp size={28} className="mb-4" />
+            <p className="font-black text-xl mb-1">Join WhatsApp</p>
             <p className="text-blue-100 text-sm mb-6 leading-snug">
-              Where the sessions happen and the Community lives.
+             Where learning and community come together.
             </p>
             <span className="mt-auto inline-flex items-center gap-1.5 text-sm font-semibold group-hover:gap-2.5 transition-all">
-              Open server <ArrowUpRight size={14} />
+              Open WhatsApp <ArrowUpRight size={14} />
             </span>
           </a>
 
