@@ -110,8 +110,8 @@ const Navbar = () => {
             </NavLink>
           ))}
 
-          {/* CTA button (mobile) */}
-          <PrimaryButton to="">Contribute to OSK</PrimaryButton>
+          {/* CTA button (mobile)
+          <PrimaryButton to="">OSK</PrimaryButton> */}
         </div>
       )}
     </>
