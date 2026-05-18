@@ -17,12 +17,11 @@ import {
   Plus,
   Minus,
 } from "lucide-react";
-import { useAutoPlay, useProjects, useEvents } from "@/hooks";
+import { useAutoPlay, useProjects, useEvents, useGithubActivity } from "@/hooks";
 import {
   HERO_STATS,
   EXPLORE_LINKS,
   TESTIMONIALS,
-  CTA_ACTIVITY,
   CTA_STATS,
   FAQ_ITEMS,
 } from "@/constants";
@@ -78,6 +77,8 @@ const PROJECT_IMAGES: Record<string, string> = {
 
 // ─── Page
 const HomePage = () => {
+  const { activity } = useGithubActivity();
+
   // Testimonials auto-play
   const { current, paused, next, prev, goTo, setPaused } = useAutoPlay({
     length: TESTIMONIALS.length,
@@ -913,7 +914,7 @@ const HomePage = () => {
               </div>
 
               <ul className="divide-y divide-white/5">
-                {CTA_ACTIVITY.map((item) => (
+                {activity.map((item) => (
                   <li
                     key={item.id}
                     className="flex items-start gap-3 px-5 py-4 hover:bg-white/3 transition-colors"
