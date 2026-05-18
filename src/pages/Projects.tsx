@@ -676,6 +676,8 @@ const Projectt = () => {
             </div>
             <a
               href="mailto:opensourcekigali@gmail.com"
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center justify-center gap-2 w-full py-3 mt-7 rounded-xl text-white text-sm font-bold transition-colors"
               style={{ background: "#2b7fff" }}
               onMouseEnter={(e) =>
