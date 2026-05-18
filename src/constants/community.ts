@@ -5,64 +5,7 @@ export const COMMUNITY_STATS = [
   { value: "4", label: "Live projects", sub: "open to contribute" },
 ];
 
-export const CHANNELS = [
-  {
-    name: "general",
-    emoji: "💬",
-    desc: "Day-to-day talk, intros, memes, everything.",
-    members: 98,
-    active: true,
-  },
-  {
-    name: "code-review",
-    emoji: "🔍",
-    desc: "Post your PRs. Get honest, helpful feedback.",
-    members: 74,
-    active: true,
-  },
-  {
-    name: "good-first-issues",
-    emoji: "🟢",
-    desc: "Curated issues for people just getting started.",
-    members: 61,
-    active: false,
-  },
-  {
-    name: "opportunities",
-    emoji: "📌",
-    desc: "Jobs, internships, grants, and collabs shared here first.",
-    members: 89,
-    active: true,
-  },
-  {
-    name: "project-updates",
-    emoji: "📦",
-    desc: "Maintainers post progress. Contributors stay in the loop.",
-    members: 55,
-    active: false,
-  },
-  {
-    name: "design-collab",
-    emoji: "🎨",
-    desc: "Figma links, UI feedback, design systems discussions.",
-    members: 42,
-    active: false,
-  },
-  {
-    name: "events",
-    emoji: "📅",
-    desc: "Hackathons, meetups, workshops — everything calendar-worthy.",
-    members: 77,
-    active: true,
-  },
-  {
-    name: "off-topic",
-    emoji: "☕",
-    desc: "Because not everything has to be about code.",
-    members: 93,
-    active: false,
-  },
-];
+
 
 export const GUIDELINES = [
   { rule: "Respect everyone, always. Experience level is not a ranking." },
