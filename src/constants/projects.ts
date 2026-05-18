@@ -10,7 +10,7 @@ export const GOOD_FIRST_ISSUES: Issue[] = [
     project: "Kigali Community Hub",
     projectSlug: "kigali-community-hub",
     difficulty: "beginner",
-    link: "https://github.com/opensourcekigali/kigali-community-hub/issues/1",
+    link: "https://github.com/open-source-kigali",
   },
   {
     id: 2,
@@ -19,7 +19,7 @@ export const GOOD_FIRST_ISSUES: Issue[] = [
     project: "AfyaConnect",
     projectSlug: "afyaconnect",
     difficulty: "beginner",
-    link: "https://github.com/opensourcekigali/afyaconnect/issues/2",
+    link: "https://github.com/open-source-kigali",
   },
   {
     id: 3,
@@ -28,7 +28,7 @@ export const GOOD_FIRST_ISSUES: Issue[] = [
     project: "EduTrack Rwanda",
     projectSlug: "edutrack-rwanda",
     difficulty: "beginner",
-    link: "https://github.com/opensourcekigali/edutrack-rwanda/issues/3",
+    link: "https://github.com/open-source-kigali",
   },
   {
     id: 4,
@@ -37,6 +37,6 @@ export const GOOD_FIRST_ISSUES: Issue[] = [
     project: "OpenRwanda Map",
     projectSlug: "openrwanda-map",
     difficulty: "intermediate",
-    link: "https://github.com/opensourcekigali/openrwanda-map/issues/4",
+    link: "https://github.com/open-source-kigali/openrwanda-map/issues/4",
   },
 ];

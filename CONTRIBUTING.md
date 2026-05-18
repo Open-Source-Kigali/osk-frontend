@@ -26,31 +26,31 @@ By contributing to this project, you agree to follow our Code of Conduct.
 
 Please read it here:
 
- [CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md)
+[CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md)
 
 We expect all contributors to be respectful, collaborative, and inclusive.
 
 ---
 
-##  What We Need Help With
+## What We Need Help With
 
 All work is tracked using GitHub Issues.
 
-| Label              | Meaning |
-|--------------------|--------|
+| Label              | Meaning                 |
+| ------------------ | ----------------------- |
 | `good first issue` | Beginner-friendly tasks |
 | `help wanted`      | Needs community support |
-| `bug`              | Something is broken |
-| `enhancement`      | Feature improvements |
-| `documentation`    | Docs or README updates |
-| `design`           | UI/UX improvements |
+| `bug`              | Something is broken     |
+| `enhancement`      | Feature improvements    |
+| `documentation`    | Docs or README updates  |
+| `design`           | UI/UX improvements      |
 
- Start here:  
-https://github.com/opensourcekigali/osk-website/labels/good%20first%20issue
+Start here:  
+https://github.com/open-source-kigali/osk-frontend/labels/good%20first%20issue
 
 ---
 
-##  Before You Start
+## Before You Start
 
 Before writing any code:
 
@@ -63,7 +63,7 @@ This makes reviews faster and easier.
 
 ---
 
-##  Setting Up Locally
+## Setting Up Locally
 
 ```bash
 # 1. Fork the repository, then clone your fork
@@ -88,7 +88,7 @@ http://localhost:5173
 
 ---
 
-##  Making a Contribution
+## Making a Contribution
 
 ```bash
 # 1. Create a new branch
@@ -115,7 +115,7 @@ git push origin feat/add-new-feature
 
 ---
 
-##  Pull Request Checklist
+## Pull Request Checklist
 
 Before submitting your PR:
 
@@ -131,7 +131,7 @@ Before submitting your PR:
 
 ---
 
-##  Commit Message Format
+## Commit Message Format
 
 We use **Conventional Commits**:
 
@@ -175,7 +175,7 @@ chore: update dependencies
 
 ---
 
-##  Project Structure
+## Project Structure
 
 ```bash
 src/
@@ -191,13 +191,13 @@ src/
 
 ---
 
-##  Where to Get Help
+## Where to Get Help
 
 If you’re stuck:
 
--  GitHub Issues — for bugs & feature discussions
--  Discord #code-review — for code help
--  Discord #general — for anything else
+- GitHub Issues — for bugs & feature discussions
+- Discord #code-review — for code help
+- Discord #general — for anything else
 
 We aim to review all pull requests within **48 hours (weekdays)**.
 

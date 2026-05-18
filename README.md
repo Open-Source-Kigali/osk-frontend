@@ -16,9 +16,9 @@
 </p>
 
 <p>
-  <a href="https://opensourcekigali.rw">🌐 Live Website</a>
+  <a href="https://oskigali.org">🌐 Live Website</a>
   •
-  <a href="https://github.com/opensourcekigali/osk-website/issues">🐛 Report Bug</a>
+  <a href="https://github.com/open-source-kigali/osk-frontend/issues">🐛 Report Bug</a>
   •
   
 </p>
@@ -195,7 +195,7 @@ and reviewed quickly by maintainers.
 | -------- | ------------------------------------------------ |
 | Discord  | https://discord.com/invite/3dTFZSn6Tq/invite/osk |
 | LinkedIn | https://linkedin.com/company/osk                 |
-| GitHub   | https://github.com/opensourcekigali              |
+| GitHub   | https://github.com/open-source-kigali            |
 | Email    | opensourcekigali@gmail.com                       |
 
 ---

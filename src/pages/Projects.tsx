@@ -1,49 +1,92 @@
-import { NavLink }          from "react-router";
-import {Github, ArrowUpRight, GitPullRequest, Users, AlertCircle, Star, GitFork, Search, Filter, ExternalLink, Code2, Zap, CheckCircle2, Clock} from "lucide-react";
-import { Badge } from '@/components/UI/';
+import { NavLink } from "react-router";
+import {
+  Github,
+  ArrowUpRight,
+  GitPullRequest,
+  Users,
+  AlertCircle,
+  Star,
+  GitFork,
+  Search,
+  Filter,
+  ExternalLink,
+  Code2,
+  Zap,
+  CheckCircle2,
+  Clock,
+} from "lucide-react";
+import { Badge } from "@/components/UI/";
 import { Card, SectionLabel, Loader } from "@/components/UI";
 import { useFilter, useProjects } from "@/hooks";
 import { GOOD_FIRST_ISSUES } from "@/constants";
-import type { Projects,Issue,ProjectStatus,ProjectCategory } from "@/types";
+import type { Projects, Issue, ProjectStatus, ProjectCategory } from "@/types";
 import EyebrowLabel from "@/components/UI/EyebrowLable";
 
 // ─── Meta maps
-const STATUS_META: Record<ProjectStatus, {
-  label: string; dot: string; badge: string; text: string;
-}> = {
-  active:      { label: "Active",               dot: "bg-green-500",   badge: "bg-green-50 border-green-200",   text: "text-green-700"  },
-  seeking:     { label: "Seeking Contributors", dot: "bg-[#2b7fff]",   badge: "bg-[#e8f1ff] border-[#c5d9ff]", text: "text-[#2b7fff]"  },
-  maintenance: { label: "Maintenance",          dot: "bg-amber-400",   badge: "bg-amber-50 border-amber-200",   text: "text-amber-700"  },
-  new:         { label: "New",                  dot: "bg-violet-500",  badge: "bg-violet-50 border-violet-200", text: "text-violet-700" },
+const STATUS_META: Record<
+  ProjectStatus,
+  {
+    label: string;
+    dot: string;
+    badge: string;
+    text: string;
+  }
+> = {
+  active: {
+    label: "Active",
+    dot: "bg-green-500",
+    badge: "bg-green-50 border-green-200",
+    text: "text-green-700",
+  },
+  seeking: {
+    label: "Seeking Contributors",
+    dot: "bg-[#2b7fff]",
+    badge: "bg-[#e8f1ff] border-[#c5d9ff]",
+    text: "text-[#2b7fff]",
+  },
+  maintenance: {
+    label: "Maintenance",
+    dot: "bg-amber-400",
+    badge: "bg-amber-50 border-amber-200",
+    text: "text-amber-700",
+  },
+  new: {
+    label: "New",
+    dot: "bg-violet-500",
+    badge: "bg-violet-50 border-violet-200",
+    text: "text-violet-700",
+  },
 };
 
 const CATEGORY_FILTERS: { key: ProjectCategory; label: string }[] = [
-  { key: "all",       label: "All Projects" },
-  { key: "platform",  label: "Platform"     },
-  { key: "health",    label: "Health"       },
-  { key: "education", label: "Education"    },
-  { key: "maps",      label: "Maps & Data"  },
-  { key: "tools",     label: "Dev Tools"    },
+  { key: "all", label: "All Projects" },
+  { key: "platform", label: "Platform" },
+  { key: "health", label: "Health" },
+  { key: "education", label: "Education" },
+  { key: "maps", label: "Maps & Data" },
+  { key: "tools", label: "Dev Tools" },
 ];
 
 const ISSUE_LABEL_STYLES: Record<Issue["label"], string> = {
   "good first issue": "bg-green-50 text-green-700 border-green-200",
-  "help wanted":      "bg-[#e8f1ff] text-[#2b7fff] border-[#c5d9ff]",
-  "bug":              "bg-red-50 text-red-600 border-red-200",
-  "enhancement":      "bg-violet-50 text-violet-700 border-violet-200",
+  "help wanted": "bg-[#e8f1ff] text-[#2b7fff] border-[#c5d9ff]",
+  bug: "bg-red-50 text-red-600 border-red-200",
+  enhancement: "bg-violet-50 text-violet-700 border-violet-200",
 };
 
 const DIFFICULTY_STYLES: Record<Issue["difficulty"], string> = {
-  beginner:     "text-green-600",
+  beginner: "text-green-600",
   intermediate: "text-amber-600",
-  advanced:     "text-red-500",
+  advanced: "text-red-500",
 };
 
-// ─── Sub-components 
+// ─── Sub-components
 const StatusBadge = ({ status }: { status: ProjectStatus }) => {
   const m = STATUS_META[status];
   return (
-    <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold border ${m.badge} ${m.text}`}>
+    <span
+      className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold border ${m.badge} ${m.text}`}
+    >
       <span className={`w-1.5 h-1.5 rounded-full ${m.dot}`} />
       {m.label}
     </span>
@@ -63,7 +106,7 @@ const LangDot = ({ color, name }: { color: string; name: string }) => (
   </span>
 );
 
-// ─── Featured Card 
+// ─── Featured Card
 const FeaturedCard = ({ project }: { project: Projects }) => (
   <div className="bg-white rounded-2xl border border-[#c5d9ff] overflow-hidden shadow-sm mb-6 group">
     <div className="md:flex md:items-stretch">
@@ -95,13 +138,17 @@ const FeaturedCard = ({ project }: { project: Projects }) => (
           <h3 className="text-2xl sm:text-3xl font-black text-gray-900 tracking-tight mb-2">
             {project.title}
           </h3>
-          <p className="text-[#f4511e] font-semibold text-sm mb-4">{project.tagline}</p>
+          <p className="text-[#f4511e] font-semibold text-sm mb-4">
+            {project.tagline}
+          </p>
           <p className="text-gray-500 text-sm sm:text-base leading-relaxed mb-6">
             {project.description}
           </p>
 
           <div className="flex flex-wrap gap-2 mb-6">
-            {project.techStack.map((t) => <TechPill key={t} tech={t} />)}
+            {project.techStack.map((t) => (
+              <TechPill key={t} tech={t} />
+            ))}
           </div>
         </div>
 
@@ -109,15 +156,22 @@ const FeaturedCard = ({ project }: { project: Projects }) => (
           <div className="flex flex-wrap gap-5 text-sm text-gray-400 mb-6 pb-6 border-b border-gray-100">
             <span className="flex items-center gap-1.5">
               <Users size={14} className="text-[#5b9fff]" />
-              <strong className="text-gray-900">{project.stats.contributors}</strong> contributors
+              <strong className="text-gray-900">
+                {project.stats.contributors}
+              </strong>{" "}
+              contributors
             </span>
             <span className="flex items-center gap-1.5">
               <GitPullRequest size={14} className="text-[#5b9fff]" />
-              <strong className="text-gray-900">{project.stats.prs}</strong> PRs merged
+              <strong className="text-gray-900">{project.stats.prs}</strong> PRs
+              merged
             </span>
             <span className="flex items-center gap-1.5">
               <AlertCircle size={14} className="text-[#f4511e]" />
-              <strong className="text-gray-900">{project.stats.openIssues}</strong> open issues
+              <strong className="text-gray-900">
+                {project.stats.openIssues}
+              </strong>{" "}
+              open issues
             </span>
             <span className="flex items-center gap-1.5">
               <Star size={14} className="text-amber-400" />
@@ -134,8 +188,12 @@ const FeaturedCard = ({ project }: { project: Projects }) => (
               to={`/projects/${project.slug}`}
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-white text-sm font-bold transition-colors"
               style={{ background: "#2b7fff" }}
-              onMouseEnter={(e) => (e.currentTarget.style.background = "#1a6fef")}
-              onMouseLeave={(e) => (e.currentTarget.style.background = "#2b7fff")}
+              onMouseEnter={(e) =>
+                (e.currentTarget.style.background = "#1a6fef")
+              }
+              onMouseLeave={(e) =>
+                (e.currentTarget.style.background = "#2b7fff")
+              }
             >
               View Project <ArrowUpRight size={14} />
             </NavLink>
@@ -146,13 +204,13 @@ const FeaturedCard = ({ project }: { project: Projects }) => (
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border text-sm font-bold transition-colors"
               style={{ borderColor: "#c5d9ff", color: "#2b7fff" }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.background  = "#2b7fff";
-                e.currentTarget.style.color       = "#fff";
+                e.currentTarget.style.background = "#2b7fff";
+                e.currentTarget.style.color = "#fff";
                 e.currentTarget.style.borderColor = "#2b7fff";
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.background  = "transparent";
-                e.currentTarget.style.color       = "#2b7fff";
+                e.currentTarget.style.background = "transparent";
+                e.currentTarget.style.color = "#2b7fff";
                 e.currentTarget.style.borderColor = "#c5d9ff";
               }}
             >
@@ -165,7 +223,7 @@ const FeaturedCard = ({ project }: { project: Projects }) => (
   </div>
 );
 
-// ─── Project Card 
+// ─── Project Card
 const ProjectCard = ({ project }: { project: Projects }) => (
   <Card hover className="flex flex-col group">
     <div className="h-44 overflow-hidden rounded-t-2xl relative">
@@ -191,11 +249,17 @@ const ProjectCard = ({ project }: { project: Projects }) => (
       <h4 className="font-black text-gray-900 text-lg tracking-tight mb-1 group-hover:text-primary-colour transition-colors">
         {project.title}
       </h4>
-      <p className="text-[#f4511e] text-xs font-semibold mb-3">{project.tagline}</p>
-      <p className="text-gray-500 text-sm leading-relaxed mb-4 flex-1">{project.description}</p>
+      <p className="text-[#f4511e] text-xs font-semibold mb-3">
+        {project.tagline}
+      </p>
+      <p className="text-gray-500 text-sm leading-relaxed mb-4 flex-1">
+        {project.description}
+      </p>
 
       <div className="flex flex-wrap gap-1.5 mb-4">
-        {project.techStack.slice(0, 3).map((t) => <TechPill key={t} tech={t} />)}
+        {project.techStack.slice(0, 3).map((t) => (
+          <TechPill key={t} tech={t} />
+        ))}
         {project.techStack.length > 3 && (
           <span className="px-2 py-1 text-xs text-gray-400 font-mono">
             +{project.techStack.length - 3}
@@ -206,7 +270,9 @@ const ProjectCard = ({ project }: { project: Projects }) => (
       <div className="flex items-center gap-4 text-xs text-gray-400 mb-5 pb-4 border-b border-gray-100">
         <span className="flex items-center gap-1">
           <Users size={12} className="text-[#5b9fff]" />
-          <strong className="text-gray-900">{project.stats.contributors}</strong>
+          <strong className="text-gray-900">
+            {project.stats.contributors}
+          </strong>
         </span>
         <span className="flex items-center gap-1">
           <GitPullRequest size={12} className="text-[#5b9fff]" />
@@ -214,7 +280,10 @@ const ProjectCard = ({ project }: { project: Projects }) => (
         </span>
         <span className="flex items-center gap-1">
           <AlertCircle size={12} className="text-[#f4511e]" />
-          <strong className="text-gray-900">{project.stats.openIssues}</strong> open
+          <strong className="text-gray-900">
+            {project.stats.openIssues}
+          </strong>{" "}
+          open
         </span>
         <span className="flex items-center gap-1 ml-auto">
           <Star size={12} className="text-amber-400" />
@@ -262,18 +331,25 @@ const IssueRow = ({ issue }: { issue: Issue }) => (
         {issue.title}
       </p>
       <div className="flex flex-wrap items-center gap-2">
-        <span className={`text-xs px-2 py-0.5 rounded-full font-bold border ${ISSUE_LABEL_STYLES[issue.label]}`}>
+        <span
+          className={`text-xs px-2 py-0.5 rounded-full font-bold border ${ISSUE_LABEL_STYLES[issue.label]}`}
+        >
           {issue.label}
         </span>
         <span className="text-gray-300 text-xs">·</span>
         <span className="text-xs text-gray-400 font-mono">{issue.project}</span>
         <span className="text-gray-300 text-xs">·</span>
-        <span className={`text-xs font-bold ${DIFFICULTY_STYLES[issue.difficulty]}`}>
+        <span
+          className={`text-xs font-bold ${DIFFICULTY_STYLES[issue.difficulty]}`}
+        >
           {issue.difficulty}
         </span>
       </div>
     </div>
-    <ExternalLink size={13} className="text-gray-300 group-hover:text-primary-colour transition-colors shrink-0 mt-0.5" />
+    <ExternalLink
+      size={13}
+      className="text-gray-300 group-hover:text-primary-colour transition-colors shrink-0 mt-0.5"
+    />
   </a>
 );
 
@@ -290,26 +366,30 @@ const Projectt = () => {
     setFilter,
     clearAll,
     hasActiveFilters,
-  } = useFilter<Projects, { category: ProjectCategory; status: ProjectStatus | "all" }>({
-    items:      projects,
+  } = useFilter<
+    Projects,
+    { category: ProjectCategory; status: ProjectStatus | "all" }
+  >({
+    items: projects,
     searchKeys: ["title", "description", "techStack"],
     filterKeys: ["category", "status"],
   });
 
-  const featured    = projects.find((p) => p.featured);
+  const featured = projects.find((p) => p.featured);
   const nonFeatured = filtered.filter((p) => !p.featured);
 
   // Only show featured card when no filters are active
   const showFeatured = !hasActiveFilters && !!featured;
 
   // Quick stats derived from fetched projects
-  const totalOpenIssues    = projects.reduce((a, p) => a + p.stats.openIssues, 0);
-  const totalContributors  = projects.reduce((a, p) => a + p.stats.contributors, 0);
+  const totalOpenIssues = projects.reduce((a, p) => a + p.stats.openIssues, 0);
+  const totalContributors = projects.reduce(
+    (a, p) => a + p.stats.contributors,
+    0,
+  );
 
   return (
     <>
-      
-
       {/* ── Hero */}
       <section
         className="pt-32 pb-0 px-6 md:px-20 relative overflow-hidden"
@@ -318,17 +398,21 @@ const Projectt = () => {
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
-            backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 0)",
+            backgroundImage:
+              "radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 0)",
             backgroundSize: "32px 32px",
           }}
         />
         <div
           className="absolute top-0 right-1/4 w-96 h-96 rounded-full pointer-events-none"
-          style={{ background: "radial-gradient(circle, rgba(43,127,255,0.12) 0%, transparent 70%)" }}
+          style={{
+            background:
+              "radial-gradient(circle, rgba(43,127,255,0.12) 0%, transparent 70%)",
+          }}
         />
 
         <div className="relative max-w-7xl mx-auto">
-          <EyebrowLabel text=" Open Source Projects" align="left"/>
+          <EyebrowLabel text=" Open Source Projects" align="left" />
 
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-10 mb-12">
             <div>
@@ -348,9 +432,9 @@ const Projectt = () => {
             {/* Stats — derived from PROJECTS constant, always accurate */}
             <div className="grid grid-cols-3 gap-px bg-white/10 rounded-2xl overflow-hidden shrink-0">
               {[
-                { n: projects.length,    label: "Projects"     },
-                { n: totalOpenIssues,    label: "Open Issues"  },
-                { n: totalContributors,  label: "Contributors" },
+                { n: projects.length, label: "Projects" },
+                { n: totalOpenIssues, label: "Open Issues" },
+                { n: totalContributors, label: "Contributors" },
               ].map((s) => (
                 <div key={s.label} className="bg-white/5 px-6 py-5 text-center">
                   <p className="text-2xl font-black text-white">{s.n}</p>
@@ -363,7 +447,10 @@ const Projectt = () => {
           {/* Search + status filters */}
           <div className="flex flex-col sm:flex-row gap-3 mb-0">
             <div className="relative flex-1 max-w-sm">
-              <Search size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-white/30" />
+              <Search
+                size={15}
+                className="absolute left-3.5 top-1/2 -translate-y-1/2 text-white/30"
+              />
               <input
                 type="text"
                 placeholder="Search projects or tech stack…"
@@ -375,7 +462,9 @@ const Projectt = () => {
 
             <div className="flex items-center gap-1.5 flex-wrap">
               <Filter size={13} className="text-white/30 shrink-0" />
-              {(["all", "active", "seeking", "new", "maintenance"] as const).map((s) => (
+              {(
+                ["all", "active", "seeking", "new", "maintenance"] as const
+              ).map((s) => (
                 <button
                   key={s}
                   onClick={() => setFilter("status", s)}
@@ -383,10 +472,16 @@ const Projectt = () => {
                   style={
                     filters.status === s
                       ? { background: "#2b7fff", color: "#fff" }
-                      : { background: "rgba(255,255,255,0.08)", color: "rgba(255,255,255,0.5)", border: "1px solid rgba(255,255,255,0.1)" }
+                      : {
+                          background: "rgba(255,255,255,0.08)",
+                          color: "rgba(255,255,255,0.5)",
+                          border: "1px solid rgba(255,255,255,0.1)",
+                        }
                   }
                 >
-                  {s === "all" ? "All" : STATUS_META[s as ProjectStatus]?.label ?? s}
+                  {s === "all"
+                    ? "All"
+                    : (STATUS_META[s as ProjectStatus]?.label ?? s)}
                 </button>
               ))}
             </div>
@@ -402,7 +497,10 @@ const Projectt = () => {
                 style={
                   filters.category === cat.key
                     ? { borderColor: "#2b7fff", color: "#5b9fff" }
-                    : { borderColor: "transparent", color: "rgba(255,255,255,0.35)" }
+                    : {
+                        borderColor: "transparent",
+                        color: "rgba(255,255,255,0.35)",
+                      }
                 }
               >
                 {cat.label}
@@ -415,13 +513,14 @@ const Projectt = () => {
       {/* ── Project list */}
       <section className="py-12 px-6 md:px-20 bg-gray-50">
         <div className="max-w-7xl mx-auto">
-
           {loading ? (
             <Loader />
           ) : error ? (
             <div className="text-center py-24 text-gray-400">
               <Code2 size={36} className="mx-auto mb-4 opacity-30" />
-              <p className="font-semibold text-red-500">Couldn't load projects.</p>
+              <p className="font-semibold text-red-500">
+                Couldn't load projects.
+              </p>
               <p className="text-sm mt-1 text-gray-500">{error}</p>
             </div>
           ) : (
@@ -438,8 +537,12 @@ const Projectt = () => {
               ) : (
                 <div className="text-center py-24 text-gray-400">
                   <Code2 size={36} className="mx-auto mb-4 opacity-30" />
-                  <p className="font-semibold text-gray-500">No projects match that filter.</p>
-                  <p className="text-sm mt-1 mb-6">Try clearing the search or switching categories.</p>
+                  <p className="font-semibold text-gray-500">
+                    No projects match that filter.
+                  </p>
+                  <p className="text-sm mt-1 mb-6">
+                    Try clearing the search or switching categories.
+                  </p>
                   <button
                     onClick={clearAll}
                     className="px-5 py-2.5 rounded-full border text-sm font-semibold transition-colors"
@@ -457,32 +560,42 @@ const Projectt = () => {
       {/* ── Good first issues */}
       <section id="issues" className="py-20 px-6 md:px-20 bg-white">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-5 gap-12 items-start">
-
           <div className="lg:col-span-2">
             <SectionLabel color="#f4511e">Good First Issues</SectionLabel>
             <h2 className="text-2xl sm:text-3xl font-black text-gray-900 mb-4 leading-snug">
               Start here
-              <br />if you're new.
+              <br />
+              if you're new.
             </h2>
             <p className="text-gray-500 text-sm leading-relaxed mb-6">
-              These issues are scoped, documented, and have a maintainer
-              ready to review your PR within 48 hours. No experience needed.
+              These issues are scoped, documented, and have a maintainer ready
+              to review your PR within 48 hours. No experience needed.
             </p>
             <div className="flex items-start gap-3 p-4 rounded-xl bg-green-50 border border-green-100 mb-6">
-              <CheckCircle2 size={16} className="text-green-600 shrink-0 mt-0.5" />
+              <CheckCircle2
+                size={16}
+                className="text-green-600 shrink-0 mt-0.5"
+              />
               <p className="text-green-800 text-xs leading-relaxed">
-                <strong>Every issue below has been written so a beginner can understand
-                what needs to be done.</strong> Pick one, fork the repo, and open your first PR.
+                <strong>
+                  Every issue below has been written so a beginner can
+                  understand what needs to be done.
+                </strong>{" "}
+                Pick one, fork the repo, and open your first PR.
               </p>
             </div>
             <a
-              href="https://github.com/opensourcekigali"
+              href="https://github.com/open-source-kigali"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-white text-sm font-bold transition-colors"
               style={{ background: "#2b7fff" }}
-              onMouseEnter={(e) => (e.currentTarget.style.background = "#1a6fef")}
-              onMouseLeave={(e) => (e.currentTarget.style.background = "#2b7fff")}
+              onMouseEnter={(e) =>
+                (e.currentTarget.style.background = "#1a6fef")
+              }
+              onMouseLeave={(e) =>
+                (e.currentTarget.style.background = "#2b7fff")
+              }
             >
               <Github size={14} /> View all issues on GitHub
             </a>
@@ -511,13 +624,17 @@ const Projectt = () => {
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
-            backgroundImage: "radial-gradient(circle at 1px 1px, rgba(255,255,255,0.055) 1px, transparent 0)",
+            backgroundImage:
+              "radial-gradient(circle at 1px 1px, rgba(255,255,255,0.055) 1px, transparent 0)",
             backgroundSize: "28px 28px",
           }}
         />
         <div
           className="absolute bottom-0 left-1/3 w-80 h-80 rounded-full pointer-events-none"
-          style={{ background: "radial-gradient(circle, rgba(244,81,30,0.08) 0%, transparent 70%)" }}
+          style={{
+            background:
+              "radial-gradient(circle, rgba(244,81,30,0.08) 0%, transparent 70%)",
+          }}
         />
 
         <div className="relative max-w-7xl mx-auto flex flex-col lg:flex-row items-start lg:items-center justify-between gap-12">
@@ -532,7 +649,8 @@ const Projectt = () => {
             </h2>
             <p className="text-white/50 text-base leading-relaxed">
               OSK incubates open-source projects that address genuine challenges
-              in Rwanda and Africa. Bring your idea — we'll help you build a team.
+              in Rwanda and Africa. Bring your idea — we'll help you build a
+              team.
             </p>
           </div>
 
@@ -562,8 +680,12 @@ const Projectt = () => {
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-2 w-full py-3 mt-7 rounded-xl text-white text-sm font-bold transition-colors"
               style={{ background: "#2b7fff" }}
-              onMouseEnter={(e) => (e.currentTarget.style.background = "#1a6fef")}
-              onMouseLeave={(e) => (e.currentTarget.style.background = "#2b7fff")}
+              onMouseEnter={(e) =>
+                (e.currentTarget.style.background = "#1a6fef")
+              }
+              onMouseLeave={(e) =>
+                (e.currentTarget.style.background = "#2b7fff")
+              }
             >
               Submit a Proposal <ArrowUpRight size={13} />
             </a>

@@ -32,7 +32,7 @@ export const FOOTER_LINKS: Record<string, NavLink[]> = {
   Connect: [
     {
       name: "GitHub",
-      path: "https://github.com/opensourcekigali",
+      path: "https://github.com/open-source-kigali",
       external: true,
     },
     {
