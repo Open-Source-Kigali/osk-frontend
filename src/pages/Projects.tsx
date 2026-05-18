@@ -1,26 +1,26 @@
-import { NavLink } from "react-router";
+import { Card, Loader, SectionLabel } from "@/components/UI";
+import { Badge } from "@/components/UI/";
+import EyebrowLabel from "@/components/UI/EyebrowLable";
+import { GOOD_FIRST_ISSUES } from "@/constants";
+import { useFilter, useProjects } from "@/hooks";
+import type { Issue, ProjectCategory, Projects, ProjectStatus } from "@/types";
 import {
-  Github,
-  ArrowUpRight,
-  GitPullRequest,
-  Users,
   AlertCircle,
-  Star,
-  GitFork,
-  Search,
-  Filter,
-  ExternalLink,
-  Code2,
-  Zap,
+  ArrowUpRight,
   CheckCircle2,
   Clock,
+  Code2,
+  ExternalLink,
+  Filter,
+  GitFork,
+  Github,
+  GitPullRequest,
+  Search,
+  Star,
+  Users,
+  Zap,
 } from "lucide-react";
-import { Badge } from "@/components/UI/";
-import { Card, SectionLabel, Loader } from "@/components/UI";
-import { useFilter, useProjects } from "@/hooks";
-import { GOOD_FIRST_ISSUES } from "@/constants";
-import type { Projects, Issue, ProjectStatus, ProjectCategory } from "@/types";
-import EyebrowLabel from "@/components/UI/EyebrowLable";
+import { NavLink } from "react-router";
 
 // ─── Meta maps
 const STATUS_META: Record<
@@ -585,7 +585,8 @@ const Projectt = () => {
               </p>
             </div>
             <a
-              href="https://github.com/open-source-kigali"
+              // ✅ Fixed
+              href="https://github.com/Open-Source-Kigali/osk-frontend/issues"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-white text-sm font-bold transition-colors"
