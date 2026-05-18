@@ -168,9 +168,8 @@ and open-source enthusiasts of all skill levels.
 
 Please read:
 
-```bash
-CONTRIBUTING.md
-```
+
+[CONTRIBUTING.md](https://github.com/Open-Source-Kigali/osk-frontend/blob/development/CONTRIBUTING.md)
 
 before opening a pull request, do this.
 
