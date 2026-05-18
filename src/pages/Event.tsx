@@ -657,12 +657,15 @@ const Event = () => {
             >
               Join Discord
             </a>
-            <button
-              className="px-5 py-2.5 rounded-full text-sm font-bold border transition-colors hover:cursor-pointer"
+            <a
+              href="https://chat.whatsapp.com/GimdjJcYLyyG62zpgsI0zB"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-5 py-2.5 rounded-full text-sm font-bold border transition-colors"
               style={{ borderColor: "#2b7fff", color: "#2b7fff" }}
             >
               WhatsApp group
-            </button>
+            </a>
           </div>
         </div>
       </section>
