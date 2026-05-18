@@ -1,8 +1,9 @@
 import { NavLink } from "react-router";
 import whiteLogo from "@/assets/Logo/OSK-primary-logo-1200-400-white.svg";
 
-import { MessageCircle, Mail } from "lucide-react";
+import { Mail } from "lucide-react";
 import { FiGithub, FiTwitter, FiLinkedin } from "react-icons/fi";
+import { FaWhatsapp } from "react-icons/fa";
 
 interface FooterLinkGroup {
   heading: string;
@@ -43,8 +44,8 @@ const linkGroups: FooterLinkGroup[] = [
         external: true,
       },
       {
-        label: "Discord",
-        to: "https://discord.com/invite/3dTFZSn6Tq",
+        label: "WhatsApp",
+        to: "https://chat.whatsapp.com/GimdjJcYLyyG62zpgsI0zB",
         external: true,
       },
       {
@@ -78,9 +79,9 @@ const socialLinks = [
     label: "LinkedIn",
   },
   {
-    icon: <MessageCircle size={18} />,
-    href: "https://discord.com/invite/3dTFZSn6Tq",
-    label: "Discord",
+    icon: <FaWhatsapp size={18} />,
+    href: "https://chat.whatsapp.com/GimdjJcYLyyG62zpgsI0zB",
+    label: "WhatsApp",
   },
   {
     icon: <Mail size={18} />,
