@@ -18,8 +18,10 @@ import {
 import { Badge } from "@/components/UI/";
 import { Card, SectionLabel, Loader } from "@/components/UI";
 import { useFilter, useProjects } from "@/hooks";
-import { GOOD_FIRST_ISSUES } from "@/constants";
-import type { Projects, Issue, ProjectStatus, ProjectCategory } from "@/types";
+import { useState, useEffect } from "react";
+import { fetchGoodFirstIssues } from "@/api/github";
+import type { Issue } from "@/types";
+import type { Projects, ProjectStatus, ProjectCategory } from "@/types";
 import EyebrowLabel from "@/components/UI/EyebrowLable";
 
 // ─── Meta maps
@@ -357,6 +359,17 @@ const IssueRow = ({ issue }: { issue: Issue }) => (
 const Projectt = () => {
   const { projects, loading, error } = useProjects();
 
+  const [issues, setIssues] = useState<Issue[]>([]);
+  const [issuesLoading, setIssuesLoading] = useState(true);
+  const [issuesError, setIssuesError] = useState(false);
+
+  useEffect(() => {
+    fetchGoodFirstIssues()
+      .then(setIssues)
+      .catch(() => setIssuesError(true))
+      .finally(() => setIssuesLoading(false));
+  }, []);
+
   // ── Filter hook — replaces all the inline useState filter logic
   const {
     filtered,
@@ -606,12 +619,14 @@ const Projectt = () => {
             <div className="flex items-center justify-between mb-2 pb-3 border-b border-gray-100">
               <p className="text-sm font-black text-gray-900">Open Issues</p>
               <span className="text-xs font-mono text-gray-400">
-                {GOOD_FIRST_ISSUES.length} issues
-              </span>
+                {issues.length} issues              </span>
             </div>
-            {GOOD_FIRST_ISSUES.map((issue) => (
-              <IssueRow key={issue.id} issue={issue} />
+            {issuesLoading && <p className="text-sm text-gray-500">Loading issues...</p>}
+           {issuesError && <p className="text-sm text-red-500">Failed to load issues.</p>}
+           {!issuesLoading && !issuesError && issues.map((issue) => (
+           <IssueRow key={issue.id} issue={issue} />
             ))}
+            
           </div>
         </div>
       </section>
