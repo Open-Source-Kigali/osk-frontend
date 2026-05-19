@@ -105,6 +105,13 @@ const HomePage = () => {
   const testimonialsRef = useInView();
   const ctaRef = useInView();
 
+  const { ref: aboutElRef, inView: aboutInView } = aboutRef;
+  const { ref: projectsElRef, inView: projectsInView } = projectsRef;
+  const { ref: exploreElRef, inView: exploreInView } = exploreRef;
+  const { ref: eventsElRef, inView: eventsInView } = eventsRef;
+  const { ref: testimonialsElRef, inView: testimonialsInView } = testimonialsRef;
+  const { ref: ctaElRef, inView: ctaInView } = ctaRef;
+
   // GitHub real stats — falls back to HERO_STATS if fetch fails
   const { stats: ghStats, loading: statsLoading } = useGitHubStats();
   const heroStats = [
@@ -221,8 +228,8 @@ const HomePage = () => {
       {/* ABOUT STRIP */}
       <section className="py-16 md:py-28 px-4 md:px-20 bg-white">
         <div
-          ref={aboutRef.ref}
-          className={`max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-8 ${aboutRef.inView ? "animate-fade-up" : "opacity-0"}`}
+          ref={aboutElRef}
+          className={`max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-8 ${aboutInView ? "animate-fade-up" : "opacity-0"}`}
         >
           {/* Left */}
           <div className="w-full md:w-1/2">
@@ -252,8 +259,8 @@ const HomePage = () => {
       {/* FEATURED PROJECTS */}
       <section className="py-20 px-4 md:px-20 bg-gray-50">
         <div
-          ref={projectsRef.ref}
-          className={`max-w-7xl mx-auto ${projectsRef.inView ? "animate-fade-up" : "opacity-0"}`}
+          ref={projectsElRef}
+          className={`max-w-7xl mx-auto ${projectsInView ? "animate-fade-up" : "opacity-0"}`}
         >
           <EyebrowLabel text="Open Source Project" align="left" />
           <div className="flex justify-between flex-wrap items-center mb-8 gap-4">
@@ -446,7 +453,7 @@ const HomePage = () => {
 
       {/* EXPLORE / CONNECT */}
       <section className="bg-[#FFF7F5] py-20 px-4 md:px-20">
-        <div ref={exploreRef.ref} className={exploreRef.inView ? "animate-fade-up" : "opacity-0"}>
+        <div ref={exploreElRef} className={exploreInView ? "animate-fade-up" : "opacity-0"}>
         <EyebrowLabel text="Connect, Contribute and Learn" className="mb-4" />
         {/* Nav pills — from EXPLORE_LINKS constant */}
         <div className="flex flex-wrap justify-center items-center mb-16 gap-4 md:gap-8">
@@ -499,8 +506,8 @@ const HomePage = () => {
       {/* EVENTS PREVIEW */}
       <section className="py-20 px-4 md:px-20 bg-gray-50">
         <div
-          ref={eventsRef.ref}
-          className={`max-w-7xl mx-auto ${eventsRef.inView ? "animate-fade-up" : "opacity-0"}`}
+          ref={eventsElRef}
+          className={`max-w-7xl mx-auto ${eventsInView ? "animate-fade-up" : "opacity-0"}`}
         >
           <div className="flex flex-wrap justify-between items-center mb-12 gap-4">
             <div>
@@ -655,8 +662,8 @@ const HomePage = () => {
       {/* TESTIMONIAL */}
       <section className="py-20 px-4 md:px-20 bg-white">
         <div
-          ref={testimonialsRef.ref}
-          className={`max-w-7xl mx-auto ${testimonialsRef.inView ? "animate-fade-up" : "opacity-0"}`}
+          ref={testimonialsElRef}
+          className={`max-w-7xl mx-auto ${testimonialsInView ? "animate-fade-up" : "opacity-0"}`}
         >
           <div className="text-center mb-14">
             <EyebrowLabel text="Community Voices" align="center" />
@@ -875,8 +882,8 @@ const HomePage = () => {
         />
 
         <div
-          ref={ctaRef.ref}
-          className={`relative max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center ${ctaRef.inView ? "animate-fade-up" : "opacity-0"}`}
+          ref={ctaElRef}
+          className={`relative max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center ${ctaInView ? "animate-fade-up" : "opacity-0"}`}
         >
           {/* Left */}
           <div>
