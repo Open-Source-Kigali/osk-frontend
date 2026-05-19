@@ -1,5 +1,4 @@
-import { NavLink } from "react-router";
-import { Search, BookOpen, Play, Wrench, FileCode, Newspaper, Layout, Clock, ArrowUpRight, ExternalLink,  Github, Star, ChevronRight, Rss, Terminal, Globe, Youtube, PenLine,
+import { Search, BookOpen, Play, Wrench, FileCode, Newspaper, Layout, Clock, ArrowUpRight, ExternalLink, Github, Star, ChevronRight, Rss, Terminal, Globe, Youtube, PenLine,
 } from "lucide-react";
 
 import { useFilter } from "@/hooks";
@@ -260,9 +259,11 @@ const FeaturedResourceCard = ({ resource }: { resource: Resource }) => (
         </a>
         <a
           href={resource.link}
+          target="_blank"
+          rel="noopener noreferrer"
           className="flex items-center justify-center gap-2 px-5 py-3 border border-primary-colour text-brand-50 hover:text-primary-colour text-sm font-semibold rounded-xl transition-colors"
         >
-          Save for later
+          Open resource
         </a>
       </div>
     </div>
@@ -693,12 +694,14 @@ const Resources = () => {
             >
               Submit via email <ArrowUpRight size={14} />
             </a>
-            <NavLink
-              to="/community"
+            <a
+              href="https://chat.whatsapp.com/GimdjJcYLyyG62zpgsI0zB"
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center justify-center gap-2 w-full py-3 mt-2 border border-gray-200 text-gray-500 hover:text-gray-800 hover:border-gray-400 text-sm font-semibold rounded-xl transition-colors"
             >
-              Or post in #resources on Discord
-            </NavLink>
+              Or share it on WhatsApp
+            </a>
           </div>
         </div>
       </section>
