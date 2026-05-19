@@ -15,7 +15,6 @@ export function useEvents(): UseEventsReturn {
 
   useEffect(() => {
     let cancelled = false;
-    setLoading(true);
     fetchEvents()
       .then((data) => {
         if (!cancelled) {
