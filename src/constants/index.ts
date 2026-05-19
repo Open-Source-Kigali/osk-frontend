@@ -6,7 +6,6 @@ export { NAV_LINKS, FOOTER_LINKS } from "./navigation";
 export { ABOUT_STATS, STORY_POINTS, VALUES, ABOUT_TEAM } from "./about";
 export {
   COMMUNITY_STATS,
-  CHANNELS,
   GUIDELINES,
   SOCIAL_PLATFORMS,
 } from "./community";
