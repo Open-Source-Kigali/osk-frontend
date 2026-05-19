@@ -173,7 +173,7 @@ const HomePage = () => {
             <SecondaryButton to="/about">Know More About Us</SecondaryButton>
           </div>
 
-          {/* Stats — from HERO_STATS constant */}
+          {/* Stats - from HERO_STATS constant */}
           <div className="flex flex-wrap justify-center md:justify-start items-center gap-6 md:gap-16 mt-16 pt-6">
             {HERO_STATS.map((stat, index) => (
               <ScrollAnimatedItem
@@ -252,7 +252,7 @@ const HomePage = () => {
             </p>
           ) : null}
 
-          {/* Featured — first project */}
+          {/* Featured - first project */}
           {!projectsLoading && !projectsError && featuredProject && (
             <div className="relative w-full bg-white rounded-2xl overflow-hidden shadow-lg mb-12 md:flex md:items-stretch border border-gray-100">
               <div className="md:w-1/2 h-64 sm:h-80 md:h-auto relative">
@@ -292,7 +292,7 @@ const HomePage = () => {
             </div>
           )}
 
-          {/* Other projects grid — remaining 3 */}
+          {/* Other projects grid - remaining 3 */}
           {!projectsLoading && !projectsError && (
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
               {homeProjects.slice(1).map((project, idx) => (
@@ -351,7 +351,7 @@ const HomePage = () => {
             grow your skills, and make meaningful impact.
           </p>
 
-          {/* Embla Carousel — from CONTRIBUTION_SLIDES constant 
+          {/* Embla Carousel - from CONTRIBUTION_SLIDES constant 
           <div className="max-w-6xl mx-auto">
             <div className="overflow-hidden" ref={emblaRef}>
               <div className="flex gap-6">
@@ -360,7 +360,7 @@ const HomePage = () => {
                     key={index}
                     className="flex-[0_0_100%] sm:flex-[0_0_50%] md:flex-[0_0_33.3333%]"
                   >
-                    {/* Contribution Card — inline 
+                    {/* Contribution Card - inline 
                     <div className="bg-slate-100 rounded-3xl p-8 flex flex-col justify-between min-h-90 transition duration-300 hover:shadow-xl text-left">
                       <div>
                         <div className="text-blue-500 mb-4">
@@ -422,7 +422,7 @@ const HomePage = () => {
       {/* EXPLORE / CONNECT */}
       <section className="bg-[#FFF7F5] py-20 px-4 md:px-20">
         <EyebrowLabel text="Connect, Contribute and Learn" className="mb-4" />
-        {/* Nav pills — from EXPLORE_LINKS constant */}
+        {/* Nav pills - from EXPLORE_LINKS constant */}
         <div className="flex flex-wrap justify-center items-center mb-16 gap-4 md:gap-8">
           {EXPLORE_LINKS.map((link) =>
             link.variant === "primary" ? (
@@ -636,7 +636,7 @@ const HomePage = () => {
             </p>
           </div>
 
-          {/* Cards — pause on hover */}
+          {/* Cards - pause on hover */}
           <div
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
             onMouseEnter={() => setPaused(true)}
@@ -750,7 +750,7 @@ const HomePage = () => {
             projects, and what to expect from the Community.
           </p>
 
-          {/* Accordion — data from FAQ_ITEMS constant */}
+          {/* Accordion - data from FAQ_ITEMS constant */}
           <div className="flex flex-col gap-3 mb-8">
             {FAQ_ITEMS.map((faq) => {
               const isOpen = openFaq === faq.id;
@@ -874,7 +874,7 @@ const HomePage = () => {
               <SecondaryButton to="">View Open Issues</SecondaryButton>
             </div>
 
-            {/* Stat pills — from CTA_STATS constant */}
+            {/* Stat pills - from CTA_STATS constant */}
             <div className="flex flex-wrap gap-3">
               {CTA_STATS.map((s) => (
                 <div
@@ -892,7 +892,7 @@ const HomePage = () => {
             </div>
           </div>
 
-          {/* Right: Activity feed — from CTA_ACTIVITY constant */}
+          {/* Right: Activity feed - from CTA_ACTIVITY constant */}
           <div className="relative">
             <div
               className="rounded-2xl overflow-hidden border border-white/10"

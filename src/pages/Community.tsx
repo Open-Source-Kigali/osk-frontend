@@ -68,7 +68,7 @@ const Community = () => (
             </p>
           </div>
 
-          {/* Right: stats — from COMMUNITY_STATS constant */}
+          {/* Right: stats - from COMMUNITY_STATS constant */}
           <div className="grid grid-cols-2 gap-3 lg:min-w-[320px]">
             {COMMUNITY_STATS.map((s) => (
               <div
@@ -109,7 +109,7 @@ const Community = () => (
           </div>
           <p className="text-gray-500 text-sm">
             <span className="font-semibold text-gray-900">1500+ people</span>{" "}
-            already building — come meet them.
+            already building - come meet them.
           </p>
           <PrimaryButton
             to="https://docs.google.com/forms/d/1L4saCJxfIi_jha0lBanIjAl-o2sEXvPs6d0J1TyW9DM/viewform"
@@ -137,7 +137,7 @@ const Community = () => (
           </p>
         </div>
 
-        {/* Social platforms — from SOCIAL_PLATFORMS constant */}
+        {/* Social platforms - from SOCIAL_PLATFORMS constant */}
         <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {SOCIAL_PLATFORMS.map((p, idx) => (
             <ScrollAnimatedItem key={p.name} delay={idx * 0.15}>
@@ -187,7 +187,7 @@ const Community = () => (
           </h2>
           <p className="text-gray-400 text-base leading-relaxed mb-8">
             OSK is only as good as the people in it. These aren't policies
-            written by a lawyer — they're the norms that have made this
+            written by a lawyer - they're the norms that have made this
             community a place people actually want to spend time.
           </p>
           <div className="flex items-center gap-3">
@@ -199,7 +199,7 @@ const Community = () => (
           </div>
         </div>
 
-        {/* Right: rules — from GUIDELINES constant */}
+        {/* Right: rules - from GUIDELINES constant */}
         <div className="space-y-3">
           {GUIDELINES.map((g, i) => (
             <ScrollAnimatedItem
@@ -226,7 +226,7 @@ const Community = () => (
             the Community tab won't close itself.
           </h2>
           <p className="text-gray-500 text-base md:text-lg leading-relaxed">
-            You've read enough. The next step isn't another page — it's joining
+            You've read enough. The next step isn't another page - it's joining
             the Discord, saying hi in #general, and finding your first issue.
             Takes 10 minutes.
           </p>

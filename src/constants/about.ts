@@ -17,7 +17,7 @@ export const STORY_POINTS = [
   {
     number: "01",
     title: "6 years of intense research",
-    body: "Rwanda has real talent. The gap was never skill — it was access to mentors, meaningful projects, and a community that made contribution feel possible.",
+    body: "Rwanda has real talent. The gap was never skill - it was access to mentors, meaningful projects, and a community that made contribution feel possible.",
   },
   {
     number: "02",
@@ -50,7 +50,7 @@ export const VALUES = [
   {
     number: "04",
     title: "Consistency over Hype",
-    body: "We show up every week, not just when it's exciting. The Wednesday sessions, the code reviews, the slow PRs — that's where the real growth happens.",
+    body: "We show up every week, not just when it's exciting. The Wednesday sessions, the code reviews, the slow PRs - that's where the real growth happens.",
   },
   {
     number: "05",

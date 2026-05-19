@@ -51,7 +51,7 @@ export const CHANNELS = [
   {
     name: "events",
     emoji: "📅",
-    desc: "Hackathons, meetups, workshops — everything calendar-worthy.",
+    desc: "Hackathons, meetups, workshops - everything calendar-worthy.",
     members: 77,
     active: true,
   },
@@ -69,7 +69,7 @@ export const GUIDELINES = [
   { rule: "Ask dumb questions. There are no dumb questions in #general." },
   { rule: "Give feedback on code, not people. Be direct, not unkind." },
   {
-    rule: "Share opportunities. If it's good for you, share it — someone else needs it too.",
+    rule: "Share opportunities. If it's good for you, share it - someone else needs it too.",
   },
   {
     rule: "Show up. You don't have to be perfect, but you have to be present.",
@@ -77,7 +77,7 @@ export const GUIDELINES = [
   { rule: "Violations of safety or respect get you removed. No negotiation." },
 ];
 
-// Social platforms — icon is injected in the component to keep this file JSX-free
+// Social platforms - icon is injected in the component to keep this file JSX-free
 export const SOCIAL_PLATFORMS = [
   {
     name: "Discord",

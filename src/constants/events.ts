@@ -7,7 +7,7 @@ export const EVENTS: OSKEvent[] = [
     type: "hackathon",
     status: "upcoming",
     mode: "in-person",
-    title: "OSK Build Challenge — Q3 2025",
+    title: "OSK Build Challenge - Q3 2025",
     tagline: "48 hours. Real problems. Real code.",
     description:
       "Our biggest event of the year. Teams of 2–5 tackle real societal challenges in Rwanda using open-source tools. Mentors on standby. Cash prizes for the top three teams.",
@@ -22,7 +22,7 @@ export const EVENTS: OSKEvent[] = [
     capacity: 120,
     speakers: [
       { name: "Didas Mbarushimana", role: "Community Lead", initials: "DD" },
-      { name: "Guest Mentor — TBA", role: "Industry Expert", initials: "GM" },
+      { name: "Guest Mentor - TBA", role: "Industry Expert", initials: "GM" },
     ],
     tags: ["hackathon", "open source", "prizes"],
     featured: true,
@@ -34,7 +34,7 @@ export const EVENTS: OSKEvent[] = [
     type: "session",
     status: "upcoming",
     mode: "virtual",
-    title: "Wednesday Tech Session — APIs & Authentication",
+    title: "Wednesday Tech Session - APIs & Authentication",
     tagline: "Build a secure Node.js API from scratch.",
     description:
       "Live coding session covering REST API design, JWT authentication, and deploying to Vercel. Bring your laptop.",
@@ -44,7 +44,7 @@ export const EVENTS: OSKEvent[] = [
     month: "JUL",
     year: 2025,
     time: "7:00 PM – 8:30 PM",
-    location: "Discord — #tech-session",
+    location: "Discord - #tech-session",
     attendees: 34,
     capacity: null,
     speakers: [{ name: "Tech Lead", role: "OSK Maintainer", initials: "TL" }],
@@ -84,7 +84,7 @@ export const EVENTS: OSKEvent[] = [
     type: "session",
     status: "past",
     mode: "virtual",
-    title: "Wednesday Session — Git Rebase Deep Dive",
+    title: "Wednesday Session - Git Rebase Deep Dive",
     tagline: "Interactive history rewriting with confidence.",
     description:
       "A live walkthrough of git rebase, interactive rebase, and squashing commits on real OSK project history.",

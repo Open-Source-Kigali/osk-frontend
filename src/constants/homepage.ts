@@ -93,12 +93,12 @@ export const HOME_EVENTS: HomeEvent[] = [
   {
     id: 1,
     type: "hackathon",
-    title: "OSK Quarterly Hackathon — Build for Rwanda",
+    title: "OSK Quarterly Hackathon - Build for Rwanda",
     date: "July 26–27, 2025",
     time: "8:00 AM – 6:00 PM",
     location: "Kigali Innovation City, Rwanda",
     description:
-      "A 48-hour open source build challenge where teams tackle real societal problems. Open to all skill levels — developers, designers, and writers welcome.",
+      "A 48-hour open source build challenge where teams tackle real societal problems. Open to all skill levels - developers, designers, and writers welcome.",
     tag: "Hackathon",
   },
   {
@@ -115,7 +115,7 @@ export const HOME_EVENTS: HomeEvent[] = [
   {
     id: 3,
     type: "meetup",
-    title: "Monthly Community Meetup — July Edition",
+    title: "Monthly Community Meetup - July Edition",
     date: "July 5, 2025",
     time: "3:00 PM – 5:30 PM",
     location: "Norrsken Kigali",
@@ -126,7 +126,7 @@ export const HOME_EVENTS: HomeEvent[] = [
   {
     id: 4,
     type: "session",
-    title: "Weekly Technical Session — Code Review & Contributions",
+    title: "Weekly Technical Session - Code Review & Contributions",
     date: "Every Wednesday",
     time: "7:00 PM – 8:30 PM",
     location: "Virtual (Discord)",
@@ -163,7 +163,7 @@ export const TESTIMONIALS: Testimonial[] = [
     initials: "JH",
     color: "#10b981",
     quote:
-      "I came in knowing very little about collaboration. The weekly sessions and code reviews transformed how I think about software. OSK doesn't just teach you to code — it teaches you to build.",
+      "I came in knowing very little about collaboration. The weekly sessions and code reviews transformed how I think about software. OSK doesn't just teach you to code - it teaches you to build.",
   },
   {
     id: 3,
@@ -231,7 +231,7 @@ export const CTA_ACTIVITY: ActivityItem[] = [
     id: 4,
     iconKey: "event",
     iconBg: "bg-yellow-500",
-    text: "OSK Hackathon Q3 — registration is now open",
+    text: "OSK Hackathon Q3 - registration is now open",
     time: "1 hr ago",
   },
   {
@@ -261,13 +261,13 @@ export const FAQ_ITEMS: FAQItem[] = [
     id: 1,
     question: "Do I need prior experience to join Open Source Kigali?",
     answer:
-      "Not at all. OSK is open to everyone — from complete beginners to seasoned engineers. We have beginner-friendly issues labelled 'Good First Issue', structured onboarding, and mentors who will guide you through your first contribution step by step.",
+      "Not at all. OSK is open to everyone - from complete beginners to seasoned engineers. We have beginner-friendly issues labelled 'Good First Issue', structured onboarding, and mentors who will guide you through your first contribution step by step.",
   },
   {
     id: 2,
     question: "How is OSK different from just learning on YouTube or Udemy?",
     answer:
-      "Passive learning gives you knowledge; OSK gives you experience. You'll work on real projects used by real people, collaborate with a team, get your code reviewed, and build a GitHub profile that shows employers what you can actually do — not just what courses you've completed.",
+      "Passive learning gives you knowledge; OSK gives you experience. You'll work on real projects used by real people, collaborate with a team, get your code reviewed, and build a GitHub profile that shows employers what you can actually do - not just what courses you've completed.",
   },
   {
     id: 3,
@@ -280,7 +280,7 @@ export const FAQ_ITEMS: FAQItem[] = [
     id: 4,
     question: "How much time do I need to commit each week?",
     answer:
-      "There's no hard minimum. Even a few hours a week is enough to make meaningful contributions. We have weekly technical sessions (Wednesday evenings), monthly meetups, and quarterly hackathons — but you can participate at whatever pace works for your schedule.",
+      "There's no hard minimum. Even a few hours a week is enough to make meaningful contributions. We have weekly technical sessions (Wednesday evenings), monthly meetups, and quarterly hackathons - but you can participate at whatever pace works for your schedule.",
   },
   {
     id: 5,

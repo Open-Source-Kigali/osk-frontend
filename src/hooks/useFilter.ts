@@ -35,7 +35,7 @@ export function useFilter<T, F extends Record<string, string>>({
   searchKeys,
   filterKeys = [],
 }: UseFilterConfig<T>): UseFilterReturn<T, F> {
-  // Build initial filter state — all set to "all"
+  // Build initial filter state - all set to "all"
   const initialFilters = Object.fromEntries(
     filterKeys.map((k) => [k as string, "all"])
   ) as F;

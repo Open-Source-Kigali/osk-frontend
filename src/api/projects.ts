@@ -24,10 +24,10 @@ function transform(p: ApiProject): Projects {
       forks:        p.ghForks,
     },
     featured:     p.featured,
-    language:     p.ghLanguage ?? "—",
+    language:     p.ghLanguage ?? "-",
     langColor:    p.langColor ?? "#9ca3af",
     lastActivity: formatRelativeTime(p.ghPushedAt),
-    maintainer:   p.maintainer ?? "—",
+    maintainer:   p.maintainer ?? "-",
     repoUrl:      `https://github.com/${p.repoOwner}/${p.repoName}`,
     createdAt:    p.createdAt,
   };

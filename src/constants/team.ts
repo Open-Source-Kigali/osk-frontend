@@ -21,7 +21,7 @@ export const TEAM: TeamMember[] = [
     name: "Operations Lead",
     role: "operations-lead",
     label: "Operations Lead",
-    bio: "Turns strategy into execution — coordinating teams, tracking progress, and clearing blockers.",
+    bio: "Turns strategy into execution - coordinating teams, tracking progress, and clearing blockers.",
     initials: "OL",
     avatarBg: "#1a6fef",
     links: {},

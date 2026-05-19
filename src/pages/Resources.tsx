@@ -8,7 +8,7 @@ import { RESOURCES, EXTERNAL_TOOLS, LEARNING_PATHS } from "@/constants";
 import type { Resource, ResourceType, ResourceCategory } from "@/types";
 import EyebrowLabel from "../components/UI/EyebrowLable";
 
-// ─── Meta maps — kept in the component file since they
+// ─── Meta maps - kept in the component file since they
 //     contain JSX (icons) and are only used here ─────────────────────────────
 
 const TYPE_META: Record<
@@ -382,7 +382,7 @@ const Resources = () => {
               </span>
             </h1>
             <p className="text-gray-500 text-base md:text-lg leading-relaxed max-w-xl">
-              Tutorials, guides, templates, tools, and recorded sessions — all
+              Tutorials, guides, templates, tools, and recorded sessions - all
               written by OSK contributors, for OSK contributors. Practical.
               Rwanda-specific. Free.
             </p>
@@ -644,7 +644,7 @@ const Resources = () => {
               <span className="text-primary-colour">Teach the Community.</span>
             </h2>
             <p className="text-gray-400 text-base leading-relaxed">
-              The best resources on this page were written by OSK contributors —
+              The best resources on this page were written by OSK contributors -
               not staff. If you've learned something the hard way, write it up
               and share it. A good tutorial saves the next ten people your pain.
             </p>
@@ -655,7 +655,7 @@ const Resources = () => {
               Submit a resource
             </h3>
             <p className="text-gray-500 text-sm leading-relaxed mb-6">
-              Tutorials, guides, templates, recorded sessions — anything that
+              Tutorials, guides, templates, recorded sessions - anything that
               helps someone contribute better.
             </p>
 

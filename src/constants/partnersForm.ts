@@ -18,19 +18,19 @@ export const PARTNERSHIP_TIERS = [
   {
     value: "gold",
     label: "Gold Partner",
-    desc: "Major commitment — deepest collaboration, highest visibility.",
+    desc: "Major commitment - deepest collaboration, highest visibility.",
     dot: "#f59e0b",
   },
   {
     value: "silver",
     label: "Silver Partner",
-    desc: "Regular involvement — recurring sessions, shared deliverables.",
+    desc: "Regular involvement - recurring sessions, shared deliverables.",
     dot: "#9ca3af",
   },
   {
     value: "community",
     label: "Community Partner",
-    desc: "Lighter touch — specific projects or events, no long-term obligation.",
+    desc: "Lighter touch - specific projects or events, no long-term obligation.",
     dot: "#2b7fff",
   },
   {

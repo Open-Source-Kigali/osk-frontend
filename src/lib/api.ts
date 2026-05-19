@@ -23,7 +23,7 @@ export async function postForm<T>(path: string, form: FormData): Promise<T> {
   const response = await fetch(`${BASE}${path}`, {
     method: "POST",
     body:   form,
-    // No Content-Type header — browser sets it automatically with the boundary
+    // No Content-Type header - browser sets it automatically with the boundary
   });
 
   const json = await response.json();

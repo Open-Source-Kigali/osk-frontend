@@ -23,7 +23,7 @@ interface DotProps {
 
 //Sub-components
 
-// Purely decorative floating blob — no logic, no state
+// Purely decorative floating blob - no logic, no state
 const Dot = ({ color, size, style }: DotProps) => (
   <div
     className={`absolute rounded-full ${color} ${size}`}
@@ -101,7 +101,7 @@ const About = () => (
         </div>
       </div>
 
-      {/* Stats strip — data from ABOUT_STATS constant */}
+      {/* Stats strip - data from ABOUT_STATS constant */}
       <div className="border-b border-gray-100 bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-20 flex flex-wrap items-center justify-center gap-10 py-4">
           {ABOUT_STATS.map((s) => (
@@ -151,7 +151,7 @@ const About = () => (
           </div>
         </div>
 
-        {/* Right — numbered story points from constant */}
+        {/* Right - numbered story points from constant */}
         <div className="flex flex-col divide-y divide-gray-100">
           {STORY_POINTS.map((sp, idx) => (
             <ScrollAnimatedItem key={sp.number} delay={idx * 0.15} className="py-6 first:pt-0 last:pb-0">
@@ -205,7 +205,7 @@ const About = () => (
           <div className="space-y-4 text-gray-500 text-sm md:text-base leading-relaxed">
             <p>
               We believe Rwanda will look different after a generation of
-              developers who learned by shipping — not by watching. Just as open
+              developers who learned by shipping - not by watching. Just as open
               source transformed the global tech industry, we believe it can
               transform ours.
             </p>
@@ -236,7 +236,7 @@ const About = () => (
           </p>
         </div>
 
-        {/* Values list — data from VALUES constant */}
+        {/* Values list - data from VALUES constant */}
         <div className="divide-y divide-gray-100">
           {VALUES.map((v, idx) => (
             <ScrollAnimatedItem

@@ -73,8 +73,8 @@ function validate(values: PartnerFormState): Errors {
 
 // ─── Payload builder ──────────────────────────────────────────────────────────
 // The API expects multipart/form-data because it includes a binary file.
-// We build a FormData object — field names must match the API exactly.
-// "partershipReason" is the real field name in the API (one 'n') — intentional typo.
+// We build a FormData object - field names must match the API exactly.
+// "partershipReason" is the real field name in the API (one 'n') - intentional typo.
 
 function buildFormData(values: PartnerFormState): FormData {
   const form = new FormData();
@@ -185,10 +185,10 @@ const PartnersForm = () => {
     setSubmitting(true);
 
     try {
-      // Build FormData — not JSON — because the request includes a file
+      // Build FormData - not JSON - because the request includes a file
       const formData = buildFormData(values);
 
-      // POST /partners — returns ApiPartner on success, throws on failure
+      // POST /partners - returns ApiPartner on success, throws on failure
       const partner = await postForm<ApiPartner>("/partners", formData);
 
       setCreatedPartner(partner);
@@ -273,7 +273,7 @@ const PartnersForm = () => {
         </h1>
         <p className="text-gray-500 text-base max-w-md mx-auto leading-relaxed">
           Tell us about your organisation. Our partnerships lead will follow up
-          within 48 hours — no RFPs, no bureaucracy.
+          within 48 hours - no RFPs, no bureaucracy.
         </p>
       </div>
 

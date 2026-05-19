@@ -18,7 +18,7 @@ export type ApiResponse<T> = ApiSuccess<T> | ApiError;
 
 // ── Member ─────────────────────────────────────────────────────────────────────
 
-// The three values the API accepts for codingLevel — nothing else is valid
+// The three values the API accepts for codingLevel - nothing else is valid
 export type CodingLevel = "beginner" | "intermediate" | "advanced";
 
 // Shape of a member returned by the API
@@ -64,7 +64,7 @@ export interface CreatePartnerPayload {
   logoUrl:          string;
   description:      string;
   email:            string;
-  partershipReason: string; // intentional — matches the API typo
+  partershipReason: string; // intentional - matches the API typo
 }
 
 // ── Project ────────────────────────────────────────────────────────────────────

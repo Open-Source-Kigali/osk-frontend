@@ -8,7 +8,7 @@ import SecondaryButton from "@/components/UI/SecondaryButton";
 import { ScrollAnimatedItem } from "@/components/UI/ScrollAnimatedItem";
 
 
-// Icon map for benefits — keeps PARTNER_BENEFITS JSX-free in constants
+// Icon map for benefits - keeps PARTNER_BENEFITS JSX-free in constants
 const BENEFIT_ICONS: Record<string, React.ReactNode> = {
   users: <Users size={20} />,
   book: <BookOpen size={20} />,
@@ -60,7 +60,7 @@ const Partners = () => (
     {/* ── MARQUEE */}
     <PartnerMarquee showSecondary={false} />
 
-    {/* STAT CARDS — from PARTNER_STATS constant 
+    {/* STAT CARDS - from PARTNER_STATS constant 
     <section className="py-14 px-6 md:px-20 bg-white border-b border-gray-100">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-4 gap-5">
         {PARTNER_STATS.map((s, i) => (
@@ -100,7 +100,7 @@ const Partners = () => (
           </PrimaryButton>
         </div>
 
-        {/* Partner type breakdown — derived from PARTNERS constant */}
+        {/* Partner type breakdown - derived from PARTNERS constant */}
         <div className="grid grid-cols-2 gap-4">
           {[
             {
@@ -161,7 +161,7 @@ const Partners = () => (
       </div>
     </div>
 
-    {/* ── BENEFITS — from PARTNER_BENEFITS constant */}
+    {/* ── BENEFITS - from PARTNER_BENEFITS constant */}
     <section className="py-20 px-6 md:px-20 bg-white md:mt-10">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
 
@@ -172,7 +172,7 @@ const Partners = () => (
             <br />you build with us.
           </h2>
           <p className="text-gray-500 text-base leading-relaxed mb-8">
-            Partnerships are mutual. We ask for your support and we give something real back —
+            Partnerships are mutual. We ask for your support and we give something real back -
             every time.
           </p>
           <Link
@@ -201,7 +201,7 @@ const Partners = () => (
       </div>
     </section>
 
-    {/* ── HOW IT WORKS — from PARTNERSHIP_STEPS constant */}
+    {/* ── HOW IT WORKS - from PARTNERSHIP_STEPS constant */}
     <section className="py-20 px-6 md:px-20 bg-gray-50 border-t border-gray-100">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
 
@@ -242,7 +242,7 @@ const Partners = () => (
             </div>
             <div className="pt-6 border-t border-gray-100">
               <p className="text-gray-400 text-sm leading-relaxed">
-                Partnerships are open to any organisation — big or small. If you're unsure
+                Partnerships are open to any organisation - big or small. If you're unsure
                 whether you qualify, just reach out. The worst we can say is{" "}
                 <em>not yet.</em>
               </p>
@@ -303,7 +303,7 @@ const Partners = () => (
               <ArrowUpRight size={16} className="text-gray-400 group-hover:text-gray-700 transition-colors" />
             </NavLink>
 
-            {/* Social proof — derived from PARTNERS constant */}
+            {/* Social proof - derived from PARTNERS constant */}
             <div className="flex items-center gap-3 pt-2 pl-1">
               <div className="flex -space-x-2">
                 {["bg-violet-500", "bg-blue-500", "bg-emerald-500", "bg-orange-500"].map((c, i) => (

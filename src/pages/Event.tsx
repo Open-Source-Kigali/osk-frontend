@@ -325,7 +325,7 @@ const EventCard = ({ event }: { event: OSKEvent }) => {
         {/* Past dim overlay */}
         {isPast && <div className="absolute inset-0 bg-black/20" />}
 
-        {/* Date chip — bottom-left, overlaid on header */}
+        {/* Date chip - bottom-left, overlaid on header */}
         <div className="absolute bottom-3 left-3">
           <div
             className="px-3 py-2 rounded-xl"
@@ -344,7 +344,7 @@ const EventCard = ({ event }: { event: OSKEvent }) => {
           </div>
         </div>
 
-        {/* Type badge — top-right */}
+        {/* Type badge - top-right */}
         <div className="absolute top-3 right-3">
           <TypeBadge type={event.type} />
         </div>
@@ -407,7 +407,7 @@ const EventCard = ({ event }: { event: OSKEvent }) => {
 
         <div className="flex-1" />
 
-        {/* Meta — horizontal, compact */}
+        {/* Meta - horizontal, compact */}
         <div className="flex flex-wrap gap-x-3 gap-y-1 text-xs text-gray-400 mb-4">
           {event.time && (
             <span className="flex items-center gap-1"><Clock size={10} style={{ color: "#5b9fff" }} />{event.time}</span>
@@ -525,13 +525,13 @@ const Event = () => {
 
               <p className="text-gray-500 text-base md:text-lg leading-relaxed max-w-lg">
                 Weekly sessions, monthly meetups, and quarterly hackathons.
-                Every event is open to all skill levels — and all of them are free.
+                Every event is open to all skill levels - and all of them are free.
               </p>
             </div>
 
             {/* Right: stats + mini calendar */}
             <div className="flex flex-col gap-4 shrink-0 w-full lg:w-72">
-              {/* Stats — derived from EVENTS constant */}
+              {/* Stats - derived from EVENTS constant */}
               <div className="grid grid-cols-3 gap-2">
                 {[
                   { n: upcomingCount,    label: "Upcoming"  },
@@ -723,7 +723,7 @@ const Event = () => {
             </h2>
             <p className="text-[#93bbff] text-base leading-relaxed mb-8">
               We run 50+ events a year. Many of the best ones were proposed by
-              community members — not the leadership team.
+              community members - not the leadership team.
             </p>
             <div className="grid grid-cols-2 gap-3">
               {[

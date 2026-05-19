@@ -358,7 +358,7 @@ const IssueRow = ({ issue }: { issue: Issue }) => (
 const Projectt = () => {
   const { projects, loading, error } = useProjects();
 
-  // ── Filter hook — replaces all the inline useState filter logic
+  // ── Filter hook - replaces all the inline useState filter logic
   const {
     filtered,
     search,
@@ -430,7 +430,7 @@ const Projectt = () => {
               </p>
             </div>
 
-            {/* Stats — derived from PROJECTS constant, always accurate */}
+            {/* Stats - derived from PROJECTS constant, always accurate */}
             <div className="grid grid-cols-3 gap-px bg-white/10 rounded-2xl overflow-hidden shrink-0">
               {[
                 { n: projects.length, label: "Projects" },
@@ -526,7 +526,7 @@ const Projectt = () => {
             </div>
           ) : (
             <>
-              {/* Featured card — only when no filters active */}
+              {/* Featured card - only when no filters active */}
               {showFeatured && featured && <FeaturedCard project={featured} />}
 
               {nonFeatured.length > 0 ? (
@@ -604,7 +604,7 @@ const Projectt = () => {
             </a>
           </div>
 
-          {/* Issue list — comes from GOOD_FIRST_ISSUES constant */}
+          {/* Issue list - comes from GOOD_FIRST_ISSUES constant */}
           <div className="lg:col-span-3 bg-white rounded-2xl border border-gray-100 p-5 shadow-sm">
             <div className="flex items-center justify-between mb-2 pb-3 border-b border-gray-100">
               <p className="text-sm font-black text-gray-900">Open Issues</p>
@@ -652,7 +652,7 @@ const Projectt = () => {
             </h2>
             <p className="text-white/50 text-base leading-relaxed">
               OSK incubates open-source projects that address genuine challenges
-              in Rwanda and Africa. Bring your idea — we'll help you build a
+              in Rwanda and Africa. Bring your idea - we'll help you build a
               team.
             </p>
           </div>

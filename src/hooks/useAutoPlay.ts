@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback, useRef } from "react";
 
 interface UseAutoPlayOptions {
   length:    number;
-  interval?: number; // ms — default 4000
+  interval?: number; // ms - default 4000
 }
 
 interface UseAutoPlayReturn {

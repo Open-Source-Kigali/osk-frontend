@@ -15,7 +15,7 @@ const CODING_LEVELS: { value: CodingLevel; label: string; desc: string }[] = [
   {
     value: "beginner",
     label: "Beginner",
-    desc:  "I'm just getting started — first PR territory",
+    desc:  "I'm just getting started - first PR territory",
   },
   {
     value: "intermediate",
@@ -36,7 +36,7 @@ const AFRICAN_COUNTRIES = [
 ];
 
 // ─── Form state type ──────────────────────────────────────────────────────────
-// This is what lives in the form — friendly for the user.
+// This is what lives in the form - friendly for the user.
 // It gets mapped to CreateMemberPayload on submit.
 
 interface MemberFormState {
@@ -164,7 +164,7 @@ const MembersForm = () => {
     e.preventDefault();
     setApiError(null);
 
-    // Client-side validation first — don't hit the server if we already know it's wrong
+    // Client-side validation first - don't hit the server if we already know it's wrong
     const validationErrors = validate(values);
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
@@ -179,7 +179,7 @@ const MembersForm = () => {
       // Build the exact payload the backend expects
       const payload = buildPayload(values);
 
-      // POST /members — returns ApiMember on success, throws on failure
+      // POST /members - returns ApiMember on success, throws on failure
       const member = await post<ApiMember>("/members", payload);
 
       // Store the response so we can show the member's name in the success screen
@@ -270,7 +270,7 @@ const MembersForm = () => {
           style={{ borderColor: "#c5d9ff", boxShadow: "0 1px 24px rgba(43,127,255,0.07)" }}
         >
 
-          {/* API error banner — shown when the server rejects the request */}
+          {/* API error banner - shown when the server rejects the request */}
           {apiError && (
             <div className="flex items-start gap-3 mb-6 p-4 rounded-xl bg-red-50 border border-red-200">
               <AlertCircle size={16} className="text-red-500 shrink-0 mt-0.5" />

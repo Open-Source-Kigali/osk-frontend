@@ -23,7 +23,7 @@ export const GOOD_FIRST_ISSUES: Issue[] = [
   },
   {
     id: 3,
-    title: "Fix attendance export to CSV — wrong headers",
+    title: "Fix attendance export to CSV - wrong headers",
     label: "bug",
     project: "EduTrack Rwanda",
     projectSlug: "edutrack-rwanda",

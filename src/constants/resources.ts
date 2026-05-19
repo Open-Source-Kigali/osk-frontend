@@ -17,7 +17,7 @@ export const RESOURCES: Resource[] = [
     type:        "tutorial",
     category:    "git",
     title:       "Your First Pull Request: A Complete Walkthrough",
-    description: "Everything you need to go from zero to merged PR — forking, branching, committing, and opening a pull request against an OSK project. Written for absolute beginners.",
+    description: "Everything you need to go from zero to merged PR - forking, branching, committing, and opening a pull request against an OSK project. Written for absolute beginners.",
     author:      "Didas Mbarushimana",
     authorRole:  "Community Lead",
     readTime:    "12 min read",
@@ -34,7 +34,7 @@ export const RESOURCES: Resource[] = [
     type:        "guide",
     category:    "open-source",
     title:       "How to Read Someone Else's Codebase",
-    description: "Jumping into an unfamiliar project is intimidating. This guide breaks down a repeatable system for understanding code you didn't write — fast.",
+    description: "Jumping into an unfamiliar project is intimidating. This guide breaks down a repeatable system for understanding code you didn't write - fast.",
     author:      "Tech Lead",
     authorRole:  "OSK Maintainer",
     readTime:    "8 min read",
@@ -50,7 +50,7 @@ export const RESOURCES: Resource[] = [
     slug:        "git-rebase-vs-merge",
     type:        "video",
     category:    "git",
-    title:       "Git Rebase vs Merge — Explained Simply",
+    title:       "Git Rebase vs Merge - Explained Simply",
     description: "A recorded OSK Wednesday session covering one of the most confusing Git concepts. Live examples, real project history, no hand-waving.",
     author:      "Jean-Paul H.",
     authorRole:  "OSK Contributor",
@@ -101,7 +101,7 @@ export const RESOURCES: Resource[] = [
     slug:        "open-source-career-story",
     type:        "article",
     category:    "career",
-    title:       "How Open Source Changed My Career — And How It Can Change Yours",
+    title:       "How Open Source Changed My Career - And How It Can Change Yours",
     description: "Amina Uwase went from student to Andela engineer partly through OSK. Here she breaks down how open source contribution accelerated her trajectory.",
     author:      "Amina Uwase",
     authorRole:  "Software Developer, Andela",
@@ -135,8 +135,8 @@ export const RESOURCES: Resource[] = [
     slug:        "django-beginners",
     type:        "tutorial",
     category:    "python",
-    title:       "Django for Beginners — Build Your First Model and View",
-    description: "Used in the EduTrack Rwanda sessions. Covers Django project setup, models, views, URL routing, and the admin panel — all from scratch.",
+    title:       "Django for Beginners - Build Your First Model and View",
+    description: "Used in the EduTrack Rwanda sessions. Covers Django project setup, models, views, URL routing, and the admin panel - all from scratch.",
     author:      "Tech Lead",
     authorRole:  "OSK Maintainer",
     readTime:    "25 min read",
@@ -208,7 +208,7 @@ export const EXTERNAL_TOOLS: ExternalTool[] = [
     free:        true,
   },
   {
-    name:        "YouTube — OSK Sessions",
+    name:        "YouTube - OSK Sessions",
     description: "Recorded Wednesday sessions. Full replays of every technical session we've run.",
     link:        "https://www.youtube.com/@opensourcekigali",
     iconKey:     "youtube",
@@ -217,18 +217,18 @@ export const EXTERNAL_TOOLS: ExternalTool[] = [
   },
 ];
 
-// Learning path data — used by the 3-path section
+// Learning path data - used by the 3-path section
 export const LEARNING_PATHS = [
   {
     key:     "developers",
     color:   "blue",
     icon:    "terminal",
-    label:   "Path 1 — Developers",
+    label:   "Path 1 - Developers",
     heading: "New to open source?\nStart here.",
     items: [
       "Your First Pull Request: A Complete Walkthrough",
       "How to Read Someone Else's Codebase",
-      "Git Rebase vs Merge — Explained Simply",
+      "Git Rebase vs Merge - Explained Simply",
     ],
     filterType:     "tutorial" as const,
     filterCategory: "git"      as const,
@@ -237,7 +237,7 @@ export const LEARNING_PATHS = [
     key:     "designers",
     color:   "violet",
     icon:    "layout",
-    label:   "Path 2 — Designers",
+    label:   "Path 2 - Designers",
     heading: "Never opened a PR?\nThat's okay.",
     items: [
       "Contributing to Open Source as a Designer",
@@ -251,7 +251,7 @@ export const LEARNING_PATHS = [
     key:     "writers",
     color:   "emerald",
     icon:    "rss",
-    label:   "Path 3 — Writers",
+    label:   "Path 3 - Writers",
     heading: "Words are code too.\nStart writing.",
     items: [
       "OSK Project README Template",

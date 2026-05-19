@@ -1,6 +1,6 @@
 import type { Partner } from "@/types";
 
-// Partner logos — copy your uploaded images to src/assets/partners/
+// Partner logos - copy your uploaded images to src/assets/partners/
 
 import digitalTransform from "@/assets/partners/DTCR.png";
 import giz from "@/assets/partners/GIZ.png";
@@ -102,7 +102,7 @@ export const PARTNERS: Partner[] = [
   },
 ];
 
-// Only partners that have a real logo image — used by the marquee
+// Only partners that have a real logo image - used by the marquee
 export const MARQUEE_PARTNERS = PARTNERS.filter((p) => Boolean(p.logo));
 
 // Add these exports at the bottom of your existing src/constants/partners.ts
@@ -134,7 +134,7 @@ export const PARTNER_BENEFITS = [
     iconBg: "bg-orange-100",
     iconColor: "text-orange-500",
     title: "Build real products",
-    body: "Bring a problem. We'll scope, build, and maintain an open-source tool together — you get the asset.",
+    body: "Bring a problem. We'll scope, build, and maintain an open-source tool together - you get the asset.",
   },
   {
     iconKey: "building",
@@ -156,12 +156,12 @@ export const PARTNERSHIP_STEPS = [
   {
     n: "01",
     title: "Reach out",
-    body: "Send us an email — no formal proposal needed. Just tell us who you are and what you're thinking.",
+    body: "Send us an email - no formal proposal needed. Just tell us who you are and what you're thinking.",
   },
   {
     n: "02",
     title: "We talk",
-    body: "A 30-minute call. We share what OSK does and what we need. No pitch — just an honest conversation.",
+    body: "A 30-minute call. We share what OSK does and what we need. No pitch - just an honest conversation.",
   },
   {
     n: "03",
@@ -201,6 +201,6 @@ export const PARTNER_STATS = [
 export const WHAT_WE_LOOK_FOR = [
   "Genuine interest in Rwanda's developer ecosystem",
   "Willingness to commit time, not just logo placement",
-  "Alignment with open source values — transparency, collaboration",
+  "Alignment with open source values - transparency, collaboration",
   "A specific thing you can offer: space, mentors, stipends, or hiring",
 ];

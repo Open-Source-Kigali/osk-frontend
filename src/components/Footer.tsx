@@ -108,7 +108,7 @@ const Footer = () => {
               />
             </NavLink>
             <p className="text-sm leading-relaxed text-gray-500">
-              Building Rwanda's open source ecosystem — one contribution at a
+              Building Rwanda's open source ecosystem - one contribution at a
               time.
             </p>
             {/* Socials */}

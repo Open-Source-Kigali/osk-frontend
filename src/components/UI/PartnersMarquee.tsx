@@ -2,7 +2,7 @@ import { MARQUEE_PARTNERS } from "@/constants";
 import PrimaryButton from "./PrimaryButton";
 import SecondaryButton from "./SecondaryButton";
 
-// How fast the marquee scrolls — higher = slower
+// How fast the marquee scrolls - higher = slower
 const MARQUEE_DURATION = "30s";
 
 // Tripling the array for seamless loop
