@@ -6,3 +6,4 @@ export { useForm } from "./useForm";
 export { useLocalStorage } from "./useLocalStorage";
 export { useProjects } from "./useProjects";
 export { useEvents } from "./useEvents";
+export { useScrollAnimation } from "./useScrollAnimation";
