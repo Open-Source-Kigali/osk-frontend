@@ -641,13 +641,13 @@ const Event = () => {
                 Never miss an event.
               </p>
               <p className="text-gray-500 text-sm">
-                Get notified on Discord and WhatsApp before every session, meetup, and hackathon.
+            Get notified on WhatsApp before every session, meetup, and hackathon.
               </p>
             </div>
           </div>
           <div className="flex gap-3 shrink-0">
             <a
-              href="https://discord.com/invite/3dTFZSn6Tq"
+              href="https://chat.whatsapp.com/GimdjJcYLyyG62zpgsI0zB"
               target="_blank"
               rel="noopener noreferrer"
               className="px-5 py-2.5 rounded-full text-white text-sm font-bold transition-colors"
@@ -655,7 +655,7 @@ const Event = () => {
               onMouseEnter={(e) => (e.currentTarget.style.background = "#1a6fef")}
               onMouseLeave={(e) => (e.currentTarget.style.background = "#2b7fff")}
             >
-              Join Discord
+              Join WhatsApp
             </a>
             <a
               href="https://chat.whatsapp.com/GimdjJcYLyyG62zpgsI0zB"
@@ -783,7 +783,7 @@ const Event = () => {
                 className="flex items-center justify-center gap-2 w-full py-3 rounded-xl border text-sm font-semibold transition-colors"
                 style={{ borderColor: "#c5d9ff", color: "#2b7fff" }}
               >
-                Or suggest it in Discord
+                Or suggest it in WhatsApp
               </NavLink>
             </div>
           </div>

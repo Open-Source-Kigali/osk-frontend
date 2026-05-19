@@ -1,4 +1,4 @@
-import type { ReactNode, FC, RefObject } from "react";
+import type { ReactNode, FC } from "react";
 import { useScrollAnimation } from "@/hooks";
 
 interface Props {
@@ -11,7 +11,7 @@ export const ScrollAnimatedItem: FC<Props> = ({ children, delay = 0, className =
   const ref = useScrollAnimation();
   return (
     <div
-      ref={ref as RefObject<HTMLDivElement>}
+      ref={ref}
       className={`opacity-0 ${className}`}
       style={delay ? { animationDelay: `${delay}s` } : {}}
     >

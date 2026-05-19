@@ -130,7 +130,7 @@ const Community = () => (
             </h2>
           </div>
           <p className="text-gray-500 text-sm md:text-base max-w-sm md:text-right leading-relaxed">
-            We use Discord and WhatsApp. These are the channels you'll actually
+            We use WhatsApp and other platforms. These are the channels you'll actually
             use every day.
           </p>
         </div>
