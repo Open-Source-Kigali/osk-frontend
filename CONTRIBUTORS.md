@@ -19,6 +19,8 @@ Once your pull request has been merged, add your name to this list by opening a 
 | Name | GitHub | Contribution |
 | ---- | ------ | ------------ |
 | Open Source Kigali Team | [@open-source-kigali](https://github.com/open-source-kigali) | Project setup and initial codebase |
+| Didas Mbarushimana Daniel | [@didas](https://github.com/didas) | Project Founder |
+| Honoré | [@ninzizah](https://github.com/ninzizah) | Frontend Developer |
 
 ---
 

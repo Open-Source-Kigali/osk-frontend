@@ -7,7 +7,7 @@
 ### Built in public • By the community • For the community
 
 <p>
-  The official website for <strong>Open Source Kigali (OSK)</strong> — Rwanda’s growing open-source developer community.
+  The official website for <strong>Open Source Kigali (OSK)</strong> — Rwanda's growing open-source developer community.
 </p>
 
 <p>
@@ -16,7 +16,9 @@
 </p>
 
 <p>
-  <a href="https://oskigali.org">🌐 Live Website</a>
+  <a href="https://open-source-kigali-website.vercel.app/" target="_blank" rel="noopener noreferrer">
+  🌐 Live Website
+</a>
   •
   <a href="https://github.com/open-source-kigali/osk-frontend/issues">🐛 Report Bug</a>
   •
@@ -165,6 +167,8 @@ npm run typecheck  # Run TypeScript checks
 
 We welcome contributions from developers, designers, writers,
 and open-source enthusiasts of all skill levels.
+
+See all contributors → [CONTRIBUTORS.md](./CONTRIBUTORS.md)
 
 Please read [CONTRIBUTING.md](./CONTRIBUTING.md) before opening a pull request.
 

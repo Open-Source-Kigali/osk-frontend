@@ -21,6 +21,7 @@ import { useFilter, useProjects } from "@/hooks";
 import { GOOD_FIRST_ISSUES } from "@/constants";
 import type { Projects, Issue, ProjectStatus, ProjectCategory } from "@/types";
 import EyebrowLabel from "@/components/UI/EyebrowLable";
+import { ScrollAnimatedItem } from "@/components/UI/ScrollAnimatedItem";
 
 // ─── Meta maps
 const STATUS_META: Record<
@@ -530,8 +531,10 @@ const Projectt = () => {
 
               {nonFeatured.length > 0 ? (
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-                  {nonFeatured.map((p) => (
-                    <ProjectCard key={p.id} project={p} />
+                  {nonFeatured.map((p, idx) => (
+                    <ScrollAnimatedItem key={p.id} delay={idx * 0.15}>
+                      <ProjectCard project={p} />
+                    </ScrollAnimatedItem>
                   ))}
                 </div>
               ) : (

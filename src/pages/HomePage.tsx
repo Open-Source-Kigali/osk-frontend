@@ -29,6 +29,7 @@ import {
 import type { HomeEventType, ActivityIconKey } from "@/constants";
 import PartnersMarquee from "@/components/UI/PartnersMarquee";
 import { Loader } from "@/components/UI";
+import { ScrollAnimatedItem } from "@/components/UI/ScrollAnimatedItem";
 
 // ── Assets
 import heroImage from "@/assets/images/HeroImage.jpeg";
@@ -319,9 +320,10 @@ const HomePage = () => {
           {/* Other projects grid — remaining 3 */}
           {!projectsLoading && !projectsError && (
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-              {homeProjects.slice(1).map((project) => (
-                <div
+              {homeProjects.slice(1).map((project, idx) => (
+                <ScrollAnimatedItem
                   key={project.id}
+                  delay={idx * 0.15}
                   className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden flex flex-col hover:shadow-lg transition-shadow duration-300"
                 >
                   <div className="h-48 w-full overflow-hidden">
@@ -354,7 +356,7 @@ const HomePage = () => {
                       </SecondaryButton>
                     </div>
                   </div>
-                </div>
+                </ScrollAnimatedItem>
               ))}
             </div>
           )}
@@ -595,9 +597,10 @@ const HomePage = () => {
           {/* Other events grid */}
           {!eventsLoading && !eventsError && (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {restHomeEvents.map((event) => (
-                <div
+              {restHomeEvents.map((event, idx) => (
+                <ScrollAnimatedItem
                   key={event.id}
+                  delay={idx * 0.15}
                   className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden flex flex-col hover:shadow-md transition-shadow"
                 >
                   {event.coverImage && (
@@ -642,7 +645,7 @@ const HomePage = () => {
                       RSVP →
                     </NavLink>
                   </div>
-                </div>
+                </ScrollAnimatedItem>
               ))}
             </div>
           )}
@@ -673,8 +676,9 @@ const HomePage = () => {
             onMouseLeave={() => setPaused(false)}
           >
             {visibleTestimonials.map((t, i) => (
-              <div
+              <ScrollAnimatedItem
                 key={`${t.id}-${current}-${i}`}
+                delay={i * 0.15}
                 className={`bg-gray-50 rounded-2xl p-6 sm:p-8 flex flex-col gap-4 ${
                   i === 0
                     ? "flex"
@@ -699,7 +703,7 @@ const HomePage = () => {
                     <p className="text-gray-400 text-xs">{t.role}</p>
                   </div>
                 </div>
-              </div>
+              </ScrollAnimatedItem>
             ))}
           </div>
 
