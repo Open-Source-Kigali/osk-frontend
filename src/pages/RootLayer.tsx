@@ -2,6 +2,7 @@ import { useEffect } from "react"
 import { Outlet, useLocation } from "react-router"
 import MainNavigation from "../components/MainNavigation"
 import Footer from "../components/Footer"
+import BackToTop from "../components/UI/BackToTop"
 
 const RootLayer = () => {
   const location = useLocation()
@@ -16,6 +17,7 @@ const RootLayer = () => {
       <main key={location.pathname} className="page-fade">
         <Outlet />
       </main>
+      <BackToTop />
       <Footer />
     </>
   )
