@@ -182,7 +182,7 @@ const HomePage = () => {
           </div>
 
           {/* Stats — from HERO_STATS constant */}
-          <div className="flex flex-wrap justify-center md:justify-start items-center gap-6 md:gap-16 mt-16 pt-6">
+          <div className="flex flex-wrap justify-center md:justify-start items-center gap-4 md:gap-8 mt-16 pt-6">
             {HERO_STATS.map((stat, index) => (
               <div
                 key={stat.label}
@@ -190,12 +190,12 @@ const HomePage = () => {
                   index !== HERO_STATS.length - 1
                     ? "md:border-r border-gray-300"
                     : ""
-                } text-center md:text-left`}
+                } text-left md:text-left`}
               >
-                <p className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">
+                <p className="text-2xl sm:text-3xl md:text-4xl font-bold text-white flex flex-wrap justify-center">
                   <CountUp end={stat.number} duration={5} separator="," />
                 </p>
-                <p className="text-sm sm:text-base md:text-lg text-primary-colour font-medium mt-1">
+                <p className="text-sm sm:text-base md:text-lg text-primary-colour font-medium mt-1 flex flex-wrap justify-center">
                   {stat.label}
                 </p>
               </div>
