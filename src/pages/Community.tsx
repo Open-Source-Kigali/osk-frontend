@@ -234,9 +234,9 @@ const Community = () => (
             href="https://chat.whatsapp.com/GimdjJcYLyyG62zpgsI0zB"
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex flex-col items-start p-7 bg-[#25D366] hover:bg-blue-400 rounded-2xl text-white transition-colors duration-200"
+            className="group flex flex-col items-start p-7 bg-[#25D366] hover:bg-[#25D366] rounded-2xl text-white transition-colors duration-200"
           >
-            <BsWhatsapp size={28} className="mb-4" />
+            <BsWhatsapp size={28} className="mb-4" />ratePerHour
             <p className="font-black text-xl mb-1">Join WhatsApp</p>
             <p className="text-blue-100 text-sm mb-6 leading-snug">
              Where learning and community come together.
