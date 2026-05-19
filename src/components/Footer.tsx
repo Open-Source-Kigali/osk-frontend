@@ -3,6 +3,7 @@ import whiteLogo from "@/assets/Logo/OSK-primary-logo-1200-400-white.svg";
 
 import { MessageCircle, Mail } from "lucide-react";
 import { FiGithub, FiTwitter, FiLinkedin } from "react-icons/fi";
+import { BsWhatsapp } from "react-icons/bs";
 
 interface FooterLinkGroup {
   heading: string;
@@ -86,6 +87,11 @@ const socialLinks = [
     icon: <Mail size={18} />,
     href: "https://mail.google.com/mail/?view=cm&to=contact@oskigali.org",
     label: "Email",
+  },
+  {
+    icon: <BsWhatsapp size={18} />,
+    href: "https://chat.whatsapp.com/GimdjJcYLyyG62zpgsI0zB",
+    label: "WhatsApp",
   },
 ];
 
