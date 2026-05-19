@@ -1,45 +1,43 @@
 import { useState } from "react";
 import { NavLink } from "react-router";
 //import useEmblaCarousel from "embla-carousel-react";
-import CountUp from "react-countup";
+import { Loader } from "@/components/UI";
+import PartnersMarquee from "@/components/UI/PartnersMarquee";
+import { ScrollAnimatedItem } from "@/components/UI/ScrollAnimatedItem";
+import type { ActivityIconKey, HomeEventType } from "@/constants";
 import {
-  ChevronLeft,
-  ChevronRight,
-  Quote,
-  GitMerge,
-  UserPlus,
-  GitPullRequest,
-  Zap,
-  ArrowRight,
-  Calendar,
-  Clock,
-  MapPin,
-  Plus,
-  Minus,
-} from "lucide-react";
-import { useAutoPlay, useProjects, useEvents } from "@/hooks";
-import {
-  HERO_STATS,
-  EXPLORE_LINKS,
-  TESTIMONIALS,
   CTA_ACTIVITY,
   CTA_STATS,
+  EXPLORE_LINKS,
   FAQ_ITEMS,
+  HERO_STATS,
+  TESTIMONIALS,
 } from "@/constants";
-import type { HomeEventType, ActivityIconKey } from "@/constants";
-import PartnersMarquee from "@/components/UI/PartnersMarquee";
-import { Loader } from "@/components/UI";
-import { ScrollAnimatedItem } from "@/components/UI/ScrollAnimatedItem";
+import { useAutoPlay, useEvents, useProjects } from "@/hooks";
+import {
+  ArrowRight,
+  Calendar,
+  ChevronLeft,
+  ChevronRight,
+  Clock,
+  GitMerge,
+  GitPullRequest,
+  MapPin,
+  Minus,
+  Plus,
+  Quote,
+  UserPlus,
+  Zap,
+} from "lucide-react";
+import CountUp from "react-countup";
 
 // ── Assets
-import heroImage from "@/assets/images/HeroImage.jpeg";
-import peopleImg from "@/assets/images/People.jpeg";
 import groupImg from "@/assets/images/did.jpeg.jpeg";
-import coachImg from "@/assets/images/People.jpeg";
-import youthImg from "@/assets/images/Youth meetup.jpg";
-import peopleImg2 from "@/assets/images/People.jpeg";
-import smartImg from "@/assets/images/smart devices.jpg";
+import heroImage from "@/assets/images/HeroImage.jpeg";
 import mapImg from "@/assets/images/Map.jpg";
+import { default as coachImg, default as peopleImg, default as peopleImg2 } from "@/assets/images/People.jpeg";
+import smartImg from "@/assets/images/smart devices.jpg";
+import youthImg from "@/assets/images/Youth meetup.jpg";
 import EyebrowLabel from "@/components/UI/EyebrowLable";
 import PrimaryButton from "@/components/UI/PrimaryButton";
 import SecondaryButton from "@/components/UI/SecondaryButton";
@@ -185,10 +183,10 @@ const HomePage = () => {
                     : ""
                 } text-center md:text-left`}
               >
-                <p className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">
+                <p className="text-center ext-2xl sm:text-3xl md:text-4xl font-bold text-white">
                   <CountUp end={stat.number} duration={5} separator="," />
                 </p>
-                <p className="text-sm sm:text-base md:text-lg text-primary-colour font-medium mt-1">
+                <p className="text-center text-sm sm:text-base md:text-lg text-primary-colour font-medium mt-1">
                   {stat.label}
                 </p>
               </ScrollAnimatedItem>
