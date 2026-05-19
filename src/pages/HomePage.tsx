@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { NavLink } from "react-router";
-//import useEmblaCarousel from "embla-carousel-react";
 import CountUp from "react-countup";
 import {
   ChevronLeft,
@@ -17,12 +16,11 @@ import {
   Plus,
   Minus,
 } from "lucide-react";
-import { useAutoPlay, useProjects, useEvents } from "@/hooks";
+import { useAutoPlay, useProjects, useEvents, useGithubActivity } from "@/hooks";
 import {
   HERO_STATS,
   EXPLORE_LINKS,
   TESTIMONIALS,
-  CTA_ACTIVITY,
   CTA_STATS,
   FAQ_ITEMS,
 } from "@/constants";
@@ -43,22 +41,14 @@ import EyebrowLabel from "@/components/UI/EyebrowLable";
 import PrimaryButton from "@/components/UI/PrimaryButton";
 import SecondaryButton from "@/components/UI/SecondaryButton";
 
-{
-  /* ── Static icon maps
-const CONTRIBUTION_ICONS: Record<ContributionType, React.ReactNode> = {
-  developer: <Laptop size={28} />,
-  designer: <Palette size={28} />,
-  documentation: <FileText size={28} />,
-  moderator: <Users size={28} />,
-};
-*/
-}
-
-const ACTIVITY_ICONS: Record<ActivityIconKey, React.ReactNode> = {
+const ACTIVITY_ICONS: Record<string, React.ReactNode> = {
+  push: <GitMerge size={13} />,
   merge: <GitMerge size={13} />,
   join: <UserPlus size={13} />,
   pr: <GitPullRequest size={13} />,
+  issue: <GitPullRequest size={13} />,
   event: <Zap size={13} />,
+  default: <Zap size={13} />,
 };
 
 const EVENT_TYPE_STYLES: Record<HomeEventType, string> = {
@@ -68,7 +58,6 @@ const EVENT_TYPE_STYLES: Record<HomeEventType, string> = {
   session: "bg-orange-100 text-orange-600",
 };
 
-// Project images map by slug
 const PROJECT_IMAGES: Record<string, string> = {
   "kigali-community-hub": youthImg,
   "edutrack-rwanda": peopleImg2,
@@ -76,37 +65,19 @@ const PROJECT_IMAGES: Record<string, string> = {
   "openrwanda-map": mapImg,
 };
 
-// ─── Page
 const HomePage = () => {
-  // Testimonials auto-play
   const { current, paused, next, prev, goTo, setPaused } = useAutoPlay({
     length: TESTIMONIALS.length,
     interval: 4000,
   });
 
-  {
-    /*Contribution carousel
-  const [emblaRef, emblaApi] = useEmblaCarousel({
-    loop: false,
-    align: "start",
-  });
-  const [emblaIndex, setEmblaIndex] = useState(0);
-  const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
-  const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
-
-  */
-  }
-
-  // FAQ accordion
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
-  // Visible testimonials
   const visibleTestimonials = Array.from(
     { length: 3 },
     (_, i) => TESTIMONIALS[(current + i) % TESTIMONIALS.length],
   );
 
-  // Projects for homepage (first 4)
   const {
     projects,
     loading: projectsLoading,
@@ -115,8 +86,8 @@ const HomePage = () => {
   const homeProjects = projects.slice(0, 4);
   const featuredProject = homeProjects[0];
 
-  // Events for homepage (upcoming, capped at 4)
   const { events, loading: eventsLoading, error: eventsError } = useEvents();
+  const { activities, isLoading } = useGithubActivity();
   const homeEvents = events
     .filter((e) => e.status !== "past")
     .slice(0, 4)
@@ -139,22 +110,20 @@ const HomePage = () => {
 
   return (
     <div className="font-sans">
-      {/*  1. HERO */}
+      {/* 1. HERO */}
       <section className="relative w-full min-h-screen">
-        {/* Background */}
         <div
           className="absolute inset-0 -z-10 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: `url('${heroImage}')` }}
         />
         <div className="absolute inset-0 -z-10 bg-gray-950/75" />
 
-        {/* Content */}
         <div className="z-10 h-full pt-28 md:pt-34 px-4 md:px-25 space-y-8">
           <h1 className="text-3xl text-center sm:text-start sm:text-3xl md:text-4xl lg:text-6xl leading-snug text-white font-bold max-w-3xl">
-            Empowering Rwanda <br className="sm:hidden " />
+            Empowering Rwanda <br className="sm:hidden" />
             to Build the{" "}
             <span>
-              Future <br className="sm:hidden " />
+              Future <br className="sm:hidden" />
               of Open Source
             </span>
           </h1>
@@ -172,7 +141,6 @@ const HomePage = () => {
             <SecondaryButton to="/about">Know More About Us</SecondaryButton>
           </div>
 
-          {/* Stats — from HERO_STATS constant */}
           <div className="flex flex-wrap justify-center md:justify-start items-center gap-6 md:gap-16 mt-16 pt-6">
             {HERO_STATS.map((stat, index) => (
               <div
@@ -194,13 +162,12 @@ const HomePage = () => {
           </div>
         </div>
       </section>
-      {/* PARTNERS MARQUEE */}
+
       <PartnersMarquee />
 
       {/* ABOUT STRIP */}
       <section className="py-16 md:py-28 px-4 md:px-20 bg-white">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-8">
-          {/* Left */}
           <div className="w-full md:w-1/2">
             <EyebrowLabel text="About Us" align="left" className="mb-4" />
             <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 leading-tight mb-4">
@@ -214,7 +181,6 @@ const HomePage = () => {
             <SecondaryButton to="/about">Learn More</SecondaryButton>
           </div>
 
-          {/* Right */}
           <div className="w-full md:w-1/2">
             <img
               src={peopleImg}
@@ -241,7 +207,6 @@ const HomePage = () => {
             </NavLink>
           </div>
 
-          {/* Projects content */}
           {projectsLoading ? (
             <Loader />
           ) : projectsError ? (
@@ -250,7 +215,6 @@ const HomePage = () => {
             </p>
           ) : null}
 
-          {/* Featured — first project */}
           {!projectsLoading && !projectsError && featuredProject && (
             <div className="relative w-full bg-white rounded-2xl overflow-hidden shadow-lg mb-12 md:flex md:items-stretch border border-gray-100">
               <div className="md:w-1/2 h-64 sm:h-80 md:h-auto relative">
@@ -290,7 +254,6 @@ const HomePage = () => {
             </div>
           )}
 
-          {/* Other projects grid — remaining 3 */}
           {!projectsLoading && !projectsError && (
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
               {homeProjects.slice(1).map((project) => (
@@ -335,91 +298,9 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* CONTRIBUTION SECTION 
-      <section className="py-20 px-4 md:px-20 text-center bg-white">
-        <div className="max-w-7xl mx-auto">
-          <EyebrowLabel text="Ways to Contribute" />
-          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 max-w-3xl mx-auto leading-tight">
-            Ways you can get involved and shape the open source community
-          </h2>
-          <p className="mt-6 text-base md:text-lg text-gray-500 max-w-2xl mx-auto mb-12">
-            Whether you code, design, write, or mentor, there's a place for you
-            in the open source community. Explore opportunities to contribute,
-            grow your skills, and make meaningful impact.
-          </p>
-
-          {/* Embla Carousel — from CONTRIBUTION_SLIDES constant 
-          <div className="max-w-6xl mx-auto">
-            <div className="overflow-hidden" ref={emblaRef}>
-              <div className="flex gap-6">
-                {CONTRIBUTION_SLIDES.map((slide, index) => (
-                  <div
-                    key={index}
-                    className="flex-[0_0_100%] sm:flex-[0_0_50%] md:flex-[0_0_33.3333%]"
-                  >
-                    {/* Contribution Card — inline 
-                    <div className="bg-slate-100 rounded-3xl p-8 flex flex-col justify-between min-h-90 transition duration-300 hover:shadow-xl text-left">
-                      <div>
-                        <div className="text-blue-500 mb-4">
-                          {CONTRIBUTION_ICONS[slide.type]}
-                        </div>
-                        <h3 className="text-2xl font-semibold text-gray-900 mb-4">
-                          {slide.title}
-                        </h3>
-                        <p className="text-gray-700 leading-relaxed">
-                          {slide.description}
-                        </p>
-                      </div>
-                      <SecondaryButton to="">
-                        Contribution Guide
-                      </SecondaryButton>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Carousel navigation 
-            <div className="flex justify-center items-center mt-6 gap-4">
-              <button
-                onClick={scrollPrev}
-                className="w-10 h-10 flex items-center justify-center border border-gray-200 rounded-full hover:bg-gray-100 transition"
-                aria-label="Previous"
-              >
-                <ChevronLeft size={18} />
-              </button>
-              <div className="flex gap-2">
-                {CONTRIBUTION_SLIDES.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => {
-                      emblaApi?.scrollTo(index);
-                      setEmblaIndex(index);
-                    }}
-                    aria-label={`Go to slide ${index + 1}`}
-                    className={`w-3 h-3 rounded-full transition-colors ${
-                      index === emblaIndex ? "bg-blue-500" : "bg-gray-300"
-                    }`}
-                  />
-                ))}
-              </div>
-              <button
-                onClick={scrollNext}
-                className="w-10 h-10 flex items-center justify-center border border-gray-200 rounded-full hover:bg-gray-100 transition"
-                aria-label="Next"
-              >
-                <ChevronRight size={18} />
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
-      */}
-
       {/* EXPLORE / CONNECT */}
       <section className="bg-[#FFF7F5] py-20 px-4 md:px-20">
         <EyebrowLabel text="Connect, Contribute and Learn" className="mb-4" />
-        {/* Nav pills — from EXPLORE_LINKS constant */}
         <div className="flex flex-wrap justify-center items-center mb-16 gap-4 md:gap-8">
           {EXPLORE_LINKS.map((link) =>
             link.variant === "primary" ? (
@@ -484,7 +365,6 @@ const HomePage = () => {
             </NavLink>
           </div>
 
-          {/* Events content */}
           {eventsLoading ? (
             <Loader />
           ) : eventsError ? (
@@ -493,7 +373,6 @@ const HomePage = () => {
             </p>
           ) : null}
 
-          {/* Featured event */}
           {!eventsLoading && !eventsError && featuredHomeEvent && (
             <div className="bg-white rounded-2xl shadow-md overflow-hidden mb-8 border border-gray-100">
               <div className="md:flex">
@@ -524,16 +403,10 @@ const HomePage = () => {
                     </span>
                   </div>
                   <div className="flex flex-wrap gap-3">
-                    <PrimaryButton
-                      to=""
-                      className="w-full md:w-auto mb-3 md:mb-0"
-                    >
+                    <PrimaryButton to="" className="w-full md:w-auto mb-3 md:mb-0">
                       Register Now
                     </PrimaryButton>
-                    <SecondaryButton
-                      to=""
-                      className="w-full md:w-auto mb-3 md:mb-0"
-                    >
+                    <SecondaryButton to="" className="w-full md:w-auto mb-3 md:mb-0">
                       Learn More
                     </SecondaryButton>
                   </div>
@@ -561,7 +434,6 @@ const HomePage = () => {
             </div>
           )}
 
-          {/* Other events grid */}
           {!eventsLoading && !eventsError && (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {restHomeEvents.map((event) => (
@@ -632,7 +504,6 @@ const HomePage = () => {
             </p>
           </div>
 
-          {/* Cards — pause on hover */}
           <div
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
             onMouseEnter={() => setPaused(true)}
@@ -669,7 +540,6 @@ const HomePage = () => {
             ))}
           </div>
 
-          {/* Navigation dots */}
           <div className="flex justify-center items-center mt-10 gap-4">
             <button
               onClick={prev}
@@ -727,25 +597,21 @@ const HomePage = () => {
       {/* FAQ */}
       <section className="py-20 px-4 md:px-20 bg-gray-50">
         <div className="max-w-3xl mx-auto">
-          {/* Badge */}
           <div className="flex justify-center mb-5">
             <span className="inline-block px-4 py-1.5 rounded-full border border-primary-colour/40 bg-primary-colour/10 text-primary-colour text-xs font-semibold tracking-widest uppercase">
               Clear the Confusion
             </span>
           </div>
 
-          {/* Heading */}
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 text-center mb-4">
             Frequently Asked Questions
           </h2>
 
-          {/* Subtitle */}
           <p className="text-center text-gray-500 text-base md:text-lg mb-12">
             Everything you need to know about joining OSK, contributing to
             projects, and what to expect from the Community.
           </p>
 
-          {/* Accordion — data from FAQ_ITEMS constant */}
           <div className="flex flex-col gap-3 mb-8">
             {FAQ_ITEMS.map((faq) => {
               const isOpen = openFaq === faq.id;
@@ -767,7 +633,6 @@ const HomePage = () => {
                     </span>
                   </button>
 
-                  {/* Animated answer */}
                   <div
                     className={`overflow-hidden transition-all duration-300 ease-in-out ${
                       isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
@@ -782,9 +647,7 @@ const HomePage = () => {
             })}
           </div>
 
-          {/* Still have questions card */}
           <div className="bg-white rounded-2xl border border-gray-100 flex flex-col sm:flex-row items-center justify-between px-6 py-5 gap-4 overflow-hidden relative">
-            {/* Left accent border */}
             <div className="absolute left-0 top-0 bottom-0 w-1 bg-primary-colour rounded-l-2xl" />
 
             <div className="flex items-center gap-4 pl-4">
@@ -820,7 +683,6 @@ const HomePage = () => {
         className="relative overflow-hidden py-24 px-4 md:px-20"
         style={{ background: "#0a0f1e" }}
       >
-        {/* Glow blobs */}
         <div
           className="absolute top-0 left-0 w-80 h-80 rounded-full pointer-events-none"
           style={{
@@ -837,7 +699,6 @@ const HomePage = () => {
         />
 
         <div className="relative max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          {/* Left */}
           <div>
             <div className="inline-flex items-center gap-2 mb-6 px-4 py-1.5 rounded-full border border-white/10 bg-white/5">
               <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
@@ -869,7 +730,6 @@ const HomePage = () => {
               <SecondaryButton to="">View Open Issues</SecondaryButton>
             </div>
 
-            {/* Stat pills — from CTA_STATS constant */}
             <div className="flex flex-wrap gap-3">
               {CTA_STATS.map((s) => (
                 <div
@@ -887,7 +747,6 @@ const HomePage = () => {
             </div>
           </div>
 
-          {/* Right: Activity feed — from CTA_ACTIVITY constant */}
           <div className="relative">
             <div
               className="rounded-2xl overflow-hidden border border-white/10"
@@ -897,7 +756,6 @@ const HomePage = () => {
                   "0 0 0 1px rgba(59,130,246,0.1), 0 32px 64px rgba(0,0,0,0.5)",
               }}
             >
-              {/* Mac-style header */}
               <div className="flex items-center justify-between px-5 py-3.5 border-b border-white/8 bg-white/3">
                 <div className="flex items-center gap-1.5">
                   <span className="w-2.5 h-2.5 rounded-full bg-red-500/60" />
@@ -913,26 +771,30 @@ const HomePage = () => {
               </div>
 
               <ul className="divide-y divide-white/5">
-                {CTA_ACTIVITY.map((item) => (
-                  <li
-                    key={item.id}
-                    className="flex items-start gap-3 px-5 py-4 hover:bg-white/3 transition-colors"
-                  >
-                    <div
-                      className={`mt-0.5 w-6 h-6 rounded-full flex items-center justify-center shrink-0 text-white ${item.iconBg}`}
+                {isLoading ? (
+                  <p className="text-gray-400 p-5 text-sm">Loading live updates...</p>
+                ) : (
+                  activities.map((item) => (
+                    <li
+                      key={item.id}
+                      className="flex items-start gap-3 px-5 py-4 hover:bg-white/3 transition-colors"
                     >
-                      {ACTIVITY_ICONS[item.iconKey]}
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <p className="text-gray-300 text-sm leading-snug">
-                        {item.text}
-                      </p>
-                      <p className="text-gray-600 text-xs mt-0.5">
-                        {item.time}
-                      </p>
-                    </div>
-                  </li>
-                ))}
+                      <div
+                        className="mt-0.5 w-6 h-6 rounded-full flex items-center justify-center shrink-0 text-white bg-gray-700"
+                      >
+                        {ACTIVITY_ICONS[item.iconKey] || ACTIVITY_ICONS["default"]}
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <p className="text-gray-300 text-sm leading-snug">
+                          {item.text}
+                        </p>
+                        <p className="text-gray-600 text-xs mt-0.5">
+                          {item.time}
+                        </p>
+                      </div>
+                    </li>
+                  ))
+                )}
               </ul>
 
               <div className="px-5 py-3.5 border-t border-white/8 bg-white/2 flex items-center justify-between">
