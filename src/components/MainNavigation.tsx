@@ -70,14 +70,15 @@ const Navbar = () => {
             </NavLink>
           ))}
         </div>
-
-        {/* CTA button (desktop) */}
+        {/* 770px button */}
         <PrimaryButton
-          to="https://docs.google.com/forms/d/e/1FAIpQLSfP6ysp6y_SNcuHb1x9v-nMxfXR7-kcyBogN2ZMF--2byOzyg/viewform"
-          className="hidden md:inline-flex"
-        >
-          Contribute to OSK
-        </PrimaryButton>
+  to="https://docs.google.com/forms/d/e/1FAIpQLSfP6ysp6y_SNcuHb1x9v-nMxfXR7-kcyBogN2ZMF--2byOzyg/viewform"
+  className="hidden md:inline-flex whitespace-nowrap min-[770px]:max-[980px]:px-3 min-[770px]:max-[980px]:py-2 min-[770px]:max-[980px]:text-xs lg:px-7 lg:py-3.5 lg:text-base"
+>
+  Contribute to OSK
+</PrimaryButton>
+
+        
         {/* Mobile hamburger */}
         <button
           className="md:hidden z-50 p-1"
