@@ -80,13 +80,13 @@ export const GUIDELINES = [
 // Social platforms — icon is injected in the component to keep this file JSX-free
 export const SOCIAL_PLATFORMS = [
   {
-    name: "Discord",
+    name: "whatsapp",
     handle: "OSK Community",
     desc: "Main hub for daily chat, sessions, and support",
     color: "bg-indigo-500",
-    link: "https://discord.com/invite/3dTFZSn6Tq",
+    link: "https://chat.whatsapp.com/GimdjJcYLyyG62zpgsI0zB",
     cta: "Join Server",
-    iconKey: "discord",
+    iconKey: "whatsapp",
   },
   {
     name: "GitHub",

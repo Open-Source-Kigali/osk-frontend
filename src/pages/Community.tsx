@@ -11,7 +11,7 @@ import EyebrowLabel from "@/components/UI/EyebrowLable";
 import PrimaryButton from "@/components/UI/PrimaryButton";
 
 const SOCIAL_ICONS: Record<string, React.ReactNode> = {
-  discord: <MessageCircle size={22} />,
+  whatsapp: <MessageCircle size={22} />,
   github: <Github size={22} />,
   linkedin: <Linkedin size={22} />,
   twitter: <Twitter size={22} />,

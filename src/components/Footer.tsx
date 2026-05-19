@@ -43,8 +43,8 @@ const linkGroups: FooterLinkGroup[] = [
         external: true,
       },
       {
-        label: "Discord",
-        to: "https://discord.com/invite/3dTFZSn6Tq",
+        label: "whatsapp",
+        to: "https://chat.whatsapp.com/GimdjJcYLyyG62zpgsI0zB",
         external: true,
       },
       {
@@ -79,7 +79,7 @@ const socialLinks = [
   },
   {
     icon: <MessageCircle size={18} />,
-    href: "https://discord.com/invite/3dTFZSn6Tq",
+    href: "https://chat.whatsapp.com/GimdjJcYLyyG62zpgsI0zB",
     label: "Discord",
   },
   {
