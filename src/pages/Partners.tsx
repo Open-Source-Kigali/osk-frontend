@@ -5,6 +5,7 @@ import EyebrowLabel from "../components/UI/EyebrowLable";
 import PartnerMarquee from '@/components/UI/PartnersMarquee';
 import PrimaryButton from "@/components/UI/PrimaryButton";
 import SecondaryButton from "@/components/UI/SecondaryButton";
+import { ScrollAnimatedItem } from "@/components/UI/ScrollAnimatedItem";
 
 
 // Icon map for benefits — keeps PARTNER_BENEFITS JSX-free in constants
@@ -48,7 +49,7 @@ const Partners = () => (
           hubs to grow Rwanda's open-source ecosystem and build software that matters.
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-          <PrimaryButton to="/partnersform">
+          <PrimaryButton to="#become">
             Become a Partner
           </PrimaryButton>
           
@@ -94,7 +95,7 @@ const Partners = () => (
             <strong className="text-gray-900">{PARTNERS.length} organisations</strong>{" "}
             across Rwanda and we're actively looking for more.
           </p>
-          <PrimaryButton to="/partnersform" className="md:w-1/2">
+          <PrimaryButton to="#become" className="md:w-1/2">
             Partner with Us
           </PrimaryButton>
         </div>
@@ -131,11 +132,11 @@ const Partners = () => (
               border: "border-rose-100",
             },
           ].map((item, i) => (
-            <div key={i} className={`${item.bg} border ${item.border} rounded-2xl p-6`}>
+            <ScrollAnimatedItem key={i} delay={i * 0.15} className={`${item.bg} border ${item.border} rounded-2xl p-6`}>
               <div className="mb-3">{item.icon}</div>
               <p className="text-3xl font-black text-gray-900 mb-1">{item.count}</p>
               <p className="text-sm font-semibold text-gray-600">{item.label}</p>
-            </div>
+            </ScrollAnimatedItem>
           ))}
         </div>
       </div>
@@ -184,8 +185,9 @@ const Partners = () => (
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {PARTNER_BENEFITS.map((b, i) => (
-            <div
+            <ScrollAnimatedItem
               key={i}
+              delay={i * 0.15}
               className="border border-gray-100 rounded-2xl p-6 hover:border-gray-200 hover:shadow-sm transition-all"
             >
               <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${b.iconBg} ${b.iconColor} mb-4`}>
@@ -193,7 +195,7 @@ const Partners = () => (
               </div>
               <h3 className="text-base font-black text-gray-900 mb-2">{b.title}</h3>
               <p className="text-gray-500 text-sm leading-relaxed">{b.body}</p>
-            </div>
+            </ScrollAnimatedItem>
           ))}
         </div>
       </div>
