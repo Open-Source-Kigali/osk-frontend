@@ -115,4 +115,13 @@ export const SOCIAL_PLATFORMS = [
     cta: "Follow",
     iconKey: "twitter",
   },
+  {
+    name:"Whatsapp",
+    handle: "OSK Community",
+    desc: "For quick discussions and updates",
+    color: "bg-green-500",
+    link:"https://chat.whatsapp.com/GimdjJcYLyyG62zpgsI0zB",
+    cta: "Join Group",
+    iconKey: "whatsapp",
+  },
 ];
