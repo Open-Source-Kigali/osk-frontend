@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router";
 import { RxHamburgerMenu } from "react-icons/rx";
-import { X } from "lucide-react";
+import { Moon, Sun, X } from "lucide-react";
 
 import LogoImage from "@/assets/Logo/OSK-primary-logo.svg";
 import LogoWhite from "@/assets/Logo/OSK-primary-logo-1200-400-white.svg";
@@ -12,6 +12,7 @@ import PrimaryButton from "./UI/PrimaryButton";
 const Navbar = () => {
   const scrolled = useScrolled(50);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [darkMode, setDarkMode] = useState(false);
 
   const location = useLocation();
   const isHome = location.pathname === "/";
@@ -20,6 +21,18 @@ const Navbar = () => {
 
   const showWhiteLogo = isHome && !scrolled;
   const logo = showWhiteLogo ? LogoWhite : LogoImage;
+
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("theme");
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+    setDarkMode(savedTheme ? savedTheme === "dark" : prefersDark);
+  }, []);
+
+  useEffect(() => {
+    document.documentElement.classList.toggle("dark", darkMode);
+    localStorage.setItem("theme", darkMode ? "dark" : "light");
+  }, [darkMode]);
 
   useEffect(() => {
     if (mobileOpen) {
@@ -115,6 +128,15 @@ const Navbar = () => {
           <PrimaryButton to="">OSK</PrimaryButton> */}
         </div>
       )}
+
+      <button
+        type="button"
+        onClick={() => setDarkMode((mode) => !mode)}
+        className="fixed bottom-5 right-5 z-30 inline-flex h-11 w-11 items-center justify-center rounded-full border border-gray-200 bg-white text-gray-900 shadow-lg transition-colors hover:text-primary-colour dark:border-white/15 dark:bg-gray-900 dark:text-white"
+        aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}
+      >
+        {darkMode ? <Sun size={18} /> : <Moon size={18} />}
+      </button>
     </>
   );
 };
