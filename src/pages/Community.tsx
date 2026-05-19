@@ -1,6 +1,5 @@
 import {
   Github,
-  MessageCircle,
   Linkedin,
   Twitter,
   ArrowUpRight,
@@ -11,7 +10,6 @@ import EyebrowLabel from "@/components/UI/EyebrowLable";
 import PrimaryButton from "@/components/UI/PrimaryButton";
 
 const SOCIAL_ICONS: Record<string, React.ReactNode> = {
-  discord: <MessageCircle size={22} />,
   github: <Github size={22} />,
   linkedin: <Linkedin size={22} />,
   twitter: <Twitter size={22} />,
@@ -223,28 +221,12 @@ const Community = () => (
           </h2>
           <p className="text-gray-500 text-base md:text-lg leading-relaxed">
             You've read enough. The next step isn't another page — it's joining
-            the Discord, saying hi in #general, and finding your first issue.
+            the community, saying hi, and finding your first issue.
             Takes 10 minutes.
           </p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 max-w-2xl mx-auto">
-          <a
-            href="https://discord.com/invite/3dTFZSn6Tq"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group flex flex-col items-start p-7 bg-blue-500 hover:bg-blue-400 rounded-2xl text-white transition-colors duration-200"
-          >
-            <MessageCircle size={28} className="mb-4" />
-            <p className="font-black text-xl mb-1">Join Discord</p>
-            <p className="text-blue-100 text-sm mb-6 leading-snug">
-              Where the sessions happen and the Community lives.
-            </p>
-            <span className="mt-auto inline-flex items-center gap-1.5 text-sm font-semibold group-hover:gap-2.5 transition-all">
-              Open server <ArrowUpRight size={14} />
-            </span>
-          </a>
-
           <a
             href="https://github.com/Open-Source-Kigali"
             target="_blank"
