@@ -37,3 +37,4 @@ export async function fetchProjects(): Promise<Projects[]> {
   const data = await apiGet<ApiProject[]>("/projects");
   return data.map(transform);
 }
+
