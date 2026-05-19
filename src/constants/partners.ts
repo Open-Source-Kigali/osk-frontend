@@ -80,7 +80,7 @@ export const PARTNERS: Partner[] = [
     website: "https://wikisuite.org",
     logo: wikiSuite,
     initials: "WS",
-    bg: "#1a6fef",
+    bg: "oklch(#132745)",
     since: "2025",
     collab: "Open-source tooling, collaboration infrastructure",
     featured: false,
