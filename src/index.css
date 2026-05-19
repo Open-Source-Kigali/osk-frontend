@@ -13,6 +13,36 @@ html {
   animation: page-fade-in 280ms ease-out both;
 }
 
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(32px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes fade-left {
+  from { opacity: 0; transform: translateX(-32px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fade-right {
+  from { opacity: 0; transform: translateX(32px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+.animate-fade-up   { animation: fade-up   600ms ease-out both; }
+.animate-fade-in   { animation: fade-in   600ms ease-out both; }
+.animate-fade-left { animation: fade-left 600ms ease-out both; }
+.animate-fade-right{ animation: fade-right 600ms ease-out both; }
+
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+
 @theme {
   --color-primary-colour: #0ba3df;
   --color-brand-50: #eff6ff;

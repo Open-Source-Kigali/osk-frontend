@@ -166,13 +166,7 @@ npm run typecheck  # Run TypeScript checks
 We welcome contributions from developers, designers, writers,
 and open-source enthusiasts of all skill levels.
 
-Please read:
-
-```bash
-CONTRIBUTING.md
-```
-
-before opening a pull request, do this.
+Please read [CONTRIBUTING.md](./CONTRIBUTING.md) before opening a pull request.
 
 ---
 
@@ -194,9 +188,9 @@ and reviewed quickly by maintainers.
 | Platform | Link                                             |
 | -------- | ------------------------------------------------ |
 | Discord  | https://discord.com/invite/3dTFZSn6Tq/invite/osk |
-| LinkedIn | https://linkedin.com/company/osk                 |
+| LinkedIn | https://www.linkedin.com/company/open-source-kigali/ |
 | GitHub   | https://github.com/open-source-kigali            |
-| Email    | opensourcekigali@gmail.com                       |
+| Email    | [opensourcekigali@gmail.com](mailto:opensourcekigali@gmail.com) |
 
 ---
 
@@ -204,13 +198,7 @@ and reviewed quickly by maintainers.
 
 This project is licensed under the **MIT License**.
 
-See:
-
-```bash
-LICENSE
-```
-
-for more information.
+See [LICENSE](./LICENSE) for more information.
 
 ---
 

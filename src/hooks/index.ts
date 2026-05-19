@@ -6,3 +6,6 @@ export { useForm } from "./useForm";
 export { useLocalStorage } from "./useLocalStorage";
 export { useProjects } from "./useProjects";
 export { useEvents } from "./useEvents";
+export { useGitHubActivity } from "./useGitHubActivity";
+export { useGitHubStats } from "./useGitHubStats";
+export { useInView } from "./useInView";

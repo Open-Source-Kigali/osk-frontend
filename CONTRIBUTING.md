@@ -27,7 +27,7 @@ By contributing to this project, you agree to follow our Code of Conduct.
 
 Please read it here:
 
-[CODE_OF_CONDUCT.md](https://github.com/Open-Source-Kigali/osk-frontend/blob/main/CODE_OF_CONDUCT.md)
+[CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md)
 
 We expect all contributors to be respectful, collaborative, and inclusive.
 
@@ -47,7 +47,7 @@ All work is tracked using GitHub Issues.
 | `design`           | UI/UX improvements      |
 
 Start here →
-https://github.com/Open-Source-Kigali/osk-frontend/issues
+[https://github.com/open-source-kigali/osk-frontend/issues](https://github.com/open-source-kigali/osk-frontend/issues)
 
 ---
 
