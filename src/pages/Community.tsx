@@ -9,6 +9,8 @@ import {
 import { COMMUNITY_STATS, GUIDELINES, SOCIAL_PLATFORMS } from "@/constants";
 import EyebrowLabel from "@/components/UI/EyebrowLable";
 import PrimaryButton from "@/components/UI/PrimaryButton";
+import { ScrollAnimatedItem } from "@/components/UI/ScrollAnimatedItem";
+import { BsWhatsapp } from "react-icons/bs";
 
 const SOCIAL_ICONS: Record<string, React.ReactNode> = {
   discord: <MessageCircle size={22} />,
@@ -137,14 +139,14 @@ const Community = () => (
 
         {/* Social platforms — from SOCIAL_PLATFORMS constant */}
         <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {SOCIAL_PLATFORMS.map((p) => (
-            <a
-              key={p.name}
-              href={p.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group flex items-start gap-4 p-5 rounded-2xl bg-gray-50 hover:bg-white hover:shadow-md border border-transparent hover:border-gray-100 transition-all duration-300"
-            >
+          {SOCIAL_PLATFORMS.map((p, idx) => (
+            <ScrollAnimatedItem key={p.name} delay={idx * 0.15}>
+              <a
+                href={p.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-start gap-4 p-5 rounded-2xl bg-gray-50 hover:bg-white hover:shadow-md border border-transparent hover:border-gray-100 transition-all duration-300"
+              >
               <div
                 className={`w-11 h-11 rounded-xl flex items-center justify-center text-white shrink-0 shadow-sm group-hover:scale-105 transition-transform ${p.color}`}
               >
@@ -165,7 +167,8 @@ const Community = () => (
                 </p>
                 <p className="text-gray-400 text-xs leading-snug">{p.desc}</p>
               </div>
-            </a>
+              </a>
+            </ScrollAnimatedItem>
           ))}
         </div>
       </div>
@@ -199,15 +202,16 @@ const Community = () => (
         {/* Right: rules — from GUIDELINES constant */}
         <div className="space-y-3">
           {GUIDELINES.map((g, i) => (
-            <div
+            <ScrollAnimatedItem
               key={i}
+              delay={i * 0.15}
               className="flex items-start gap-4 bg-white/5 border border-white/10 rounded-xl px-5 py-4 hover:bg-white/8 transition-colors duration-200"
             >
               <span className="text-gray-600 font-mono text-sm shrink-0 mt-0.5">
                 {String(i + 1).padStart(2, "0")}
               </span>
               <p className="text-gray-300 text-sm leading-relaxed">{g.rule}</p>
-            </div>
+            </ScrollAnimatedItem>
           ))}
         </div>
       </div>
@@ -230,18 +234,18 @@ const Community = () => (
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 max-w-2xl mx-auto">
           <a
-            href="https://discord.com/invite/3dTFZSn6Tq"
+            href="https://chat.whatsapp.com/GimdjJcYLyyG62zpgsI0zB"
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex flex-col items-start p-7 bg-blue-500 hover:bg-blue-400 rounded-2xl text-white transition-colors duration-200"
+            className="group flex flex-col items-start p-7 bg-[#25D366] hover:bg-blue-400 rounded-2xl text-white transition-colors duration-200"
           >
-            <MessageCircle size={28} className="mb-4" />
-            <p className="font-black text-xl mb-1">Join Discord</p>
+            <BsWhatsapp size={28} className="mb-4" />
+            <p className="font-black text-xl mb-1">Join WhatsApp</p>
             <p className="text-blue-100 text-sm mb-6 leading-snug">
-              Where the sessions happen and the Community lives.
+             Where learning and community come together.
             </p>
             <span className="mt-auto inline-flex items-center gap-1.5 text-sm font-semibold group-hover:gap-2.5 transition-all">
-              Open server <ArrowUpRight size={14} />
+              Open WhatsApp <ArrowUpRight size={14} />
             </span>
           </a>
 

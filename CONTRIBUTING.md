@@ -229,6 +229,7 @@ If you are stuck:
 - **GitHub Issues** — for bugs and feature discussions
 - **WhatsApp Community** — for questions and code help → [Join here](https://chat.whatsapp.com/GimdjJcYLyyG62zpgsI0zB)
 - **Email** — [opensourcekigali@gmail.com](mailto:opensourcekigali@gmail.com)
+- **Discord** - [Open Source Kigali](https://discord.com/invite/3dTFZSn6Tq)
 
 We aim to review all pull requests within **48 hours on weekdays**.
 
