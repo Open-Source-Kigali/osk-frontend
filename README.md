@@ -16,7 +16,9 @@
 </p>
 
 <p>
-  <a href="https://oskigali.org">🌐 Live Website</a>
+  <a href="https://open-source-kigali-website.vercel.app/" target="_blank" rel="noopener noreferrer">
+  🌐 Live Website
+</a>
   •
   <a href="https://github.com/open-source-kigali/osk-frontend/issues">🐛 Report Bug</a>
   •
