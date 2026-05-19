@@ -1,6 +1,7 @@
 import { MARQUEE_PARTNERS } from "@/constants";
 import PrimaryButton from "./PrimaryButton";
 import SecondaryButton from "./SecondaryButton";
+import { useState } from "react";
 
 // How fast the marquee scrolls — higher = slower
 const MARQUEE_DURATION = "30s";
@@ -13,6 +14,14 @@ type Props = {
 };
 
 const PartnersMarquee = ({ showSecondary = true }: Props) => {
+  const [isHovered, setIsHovered] = useState(false);
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+  };
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+  };
+
   return (
     <section
       className="py-16 overflow-hidden"
@@ -49,7 +58,7 @@ const PartnersMarquee = ({ showSecondary = true }: Props) => {
       <div className="relative">
         {/* fades */}
         <div
-          className="absolute left-0 top-0 bottom-0 w-24 z-10 pointer-events-none"
+          className="absolute left-0 top-0 bottom-0 w-24 z-10 pointer-events-none" 
           style={{
             background: "linear-gradient(to right, #f0f6ff, transparent)",
           }}
@@ -66,10 +75,13 @@ const PartnersMarquee = ({ showSecondary = true }: Props) => {
           className="flex gap-10 w-max"
           style={{
             animation: `osk-marquee ${MARQUEE_DURATION} linear infinite`,
+            animationPlayState: isHovered ? "paused" : "running",
           }}
         >
           {track.map((partner, i) => (
             <a
+              onMouseEnter={() => handleMouseEnter()}
+              onMouseLeave={handleMouseLeave}
               key={`${partner.id}-${i}`}
               href={partner.website}
               target="_blank"
@@ -112,10 +124,9 @@ const PartnersMarquee = ({ showSecondary = true }: Props) => {
               n: `${MARQUEE_PARTNERS.length}`,
               label: "Partner organisations",
             },
-
             { n: "1", label: "Government partnerships" },
           ].map((s) => (
-            <div key={s.label} className="flex items-baseline  gap-1.5">
+            <div key={s.label} className="flex items-baseline gap-1.5">
               <span className="text-xl font-black" style={{ color: "#2b7fff" }}>
                 {s.n}
               </span>
