@@ -6,7 +6,7 @@ export const HERO_STATS = [
   { number: 12, label: "Contributors" },
   { number: 25, label: "Pull Requests" },
   { number: 3, label: "Projects" },
-  { number: 1500, label: "Active Memebers" },
+  { number: 1500, label: "Active Members" },
 ];
 
 // ─── About strip
