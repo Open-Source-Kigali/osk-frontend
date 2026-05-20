@@ -176,9 +176,9 @@ const Footer = () => {
             >
               Code of Conduct
             </a>
-            <NavLink to="/charter" className="hover:text-gray-400 transition">
+            {/* <NavLink to="/charter" className="hover:text-gray-400 transition">
               Community Charter
-            </NavLink>
+            </NavLink> */}
           </div>
         </div>
       </div>
