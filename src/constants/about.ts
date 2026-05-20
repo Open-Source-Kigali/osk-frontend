@@ -79,7 +79,7 @@ export const ABOUT_TEAM = [
   },
   {
     name: "Nancy Teta Kwizera",
-    role: "OPERATIONS LEAD",
+    role: "Operations Lead",
     initials: "OL",
     bg: "bg-emerald-500",
     avatar: zaraImg,
