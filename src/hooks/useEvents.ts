@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import type { OSKEvent } from "@/types";
 import { fetchEvents } from "@/api";
+import { EVENTS } from "@/constants";
 
 interface UseEventsReturn {
   events: OSKEvent[];
@@ -22,8 +23,11 @@ export function useEvents(): UseEventsReturn {
           setError(null);
         }
       })
-      .catch((err: Error) => {
-        if (!cancelled) setError(err.message);
+      .catch(() => {
+        if (!cancelled) {
+          setEvents(EVENTS);
+          setError(null);
+        }
       })
       .finally(() => {
         if (!cancelled) setLoading(false);
