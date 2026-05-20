@@ -158,9 +158,6 @@ const Footer = () => {
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-600">
           <p>© {currentYear} Open Source Kigali. All rights reserved.</p>
           <div className="flex gap-5">
-            <NavLink to="/privacy" className="hover:text-gray-400 transition">
-              Privacy Policy
-            </NavLink>
             <a
               href="https://docs.google.com/document/d/1K_bIZT09p-8IiPpg1v3RsMD2dZmUzRFWlMp8tfOavcE/edit?usp=sharing"
               target="_blank"
@@ -169,9 +166,6 @@ const Footer = () => {
             >
               Code of Conduct
             </a>
-            <NavLink to="/charter" className="hover:text-gray-400 transition">
-              Community Charter
-            </NavLink>
           </div>
         </div>
       </div>

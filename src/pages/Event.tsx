@@ -647,17 +647,6 @@ const Event = () => {
           </div>
           <div className="flex gap-3 shrink-0">
             <a
-              href="https://discord.com/invite/3dTFZSn6Tq"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-5 py-2.5 rounded-full text-white text-sm font-bold transition-colors"
-              style={{ background: "#2b7fff" }}
-              onMouseEnter={(e) => (e.currentTarget.style.background = "#1a6fef")}
-              onMouseLeave={(e) => (e.currentTarget.style.background = "#2b7fff")}
-            >
-              Join Discord
-            </a>
-            <a
               href="https://chat.whatsapp.com/GimdjJcYLyyG62zpgsI0zB"
               target="_blank"
               rel="noopener noreferrer"
