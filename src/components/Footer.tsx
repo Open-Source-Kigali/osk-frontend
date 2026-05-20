@@ -27,14 +27,7 @@ const linkGroups: FooterLinkGroup[] = [
       { label: "Contribution Guide", to: "/projects" },
     ],
   },
-  {
-    heading: "Resources",
-    links: [
-      // { label: "Tutorials", to: "/resources" },
-      { label: "Blog", to: "/blog" },
-      { label: "Events", to: "/events" },
-    ],
-  },
+
   {
     heading: "Connect",
     links: [
@@ -54,7 +47,7 @@ const linkGroups: FooterLinkGroup[] = [
         external: true,
       },
       {
-        label: "contact@oskigali.org",
+        label: "Contact Us",
         to: "https://mail.google.com/mail/?view=cm&to=contact@oskigali.org",
         external: true,
       },
