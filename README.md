@@ -16,7 +16,9 @@
 </p>
 
 <p>
-  <a href="https://oskigali.org">🌐 Live Website</a>
+  <a href="https://open-source-kigali-website.vercel.app/" target="_blank" rel="noopener noreferrer">
+  🌐 Live Website
+</a>
   •
   <a href="https://github.com/open-source-kigali/osk-frontend/issues">🐛 Report Bug</a>
   •
@@ -166,11 +168,12 @@ npm run typecheck  # Run TypeScript checks
 We welcome contributions from developers, designers, writers,
 and open-source enthusiasts of all skill levels.
 
+See all contributors → [CONTRIBUTORS.md](./CONTRIBUTORS.md)
+
 Please read:
 
-```bash
-CONTRIBUTING.md
-```
+
+[CONTRIBUTING.md](https://github.com/Open-Source-Kigali/osk-frontend/blob/development/CONTRIBUTING.md)
 
 before opening a pull request, do this.
 
@@ -192,11 +195,12 @@ and reviewed quickly by maintainers.
 # Community & Contact
 
 | Platform | Link                                             |
+| -------- | ------------------------------------------------ | |
 | -------- | ------------------------------------------------ |
 | Discord  | https://discord.com/invite/3dTFZSn6Tq/invite/osk |
-| LinkedIn | https://linkedin.com/company/osk                 |
+| LinkedIn | https://www.linkedin.com/company/open-source-kigali/?viewAsMember=true |
 | GitHub   | https://github.com/open-source-kigali            |
-| Email    | opensourcekigali@gmail.com                       |
+| Email    | mailto:opensourcekigali@gmail.com                      |
 
 ---
 

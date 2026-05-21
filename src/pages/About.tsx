@@ -12,6 +12,7 @@ import groupImg from "@/assets/images/did.jpeg.jpeg";
 import EyebrowLabel from "@/components/UI/EyebrowLable";
 import PrimaryButton from "@/components/UI/PrimaryButton";
 import SecondaryButton from "@/components/UI/SecondaryButton";
+import { ScrollAnimatedItem } from "@/components/UI/ScrollAnimatedItem";
 
 //Types
 interface DotProps {
@@ -152,8 +153,8 @@ const About = () => (
 
         {/* Right — numbered story points from constant */}
         <div className="flex flex-col divide-y divide-gray-100">
-          {STORY_POINTS.map((sp) => (
-            <div key={sp.number} className="py-6 first:pt-0 last:pb-0">
+          {STORY_POINTS.map((sp, idx) => (
+            <ScrollAnimatedItem key={sp.number} delay={idx * 0.15} className="py-6 first:pt-0 last:pb-0">
               <div className="flex gap-4">
                 <span className="text-blue-500 font-black text-base w-8 shrink-0">
                   {sp.number}.
@@ -167,7 +168,7 @@ const About = () => (
                   </p>
                 </div>
               </div>
-            </div>
+            </ScrollAnimatedItem>
           ))}
         </div>
       </div>
@@ -237,9 +238,10 @@ const About = () => (
 
         {/* Values list — data from VALUES constant */}
         <div className="divide-y divide-gray-100">
-          {VALUES.map((v) => (
-            <div
+          {VALUES.map((v, idx) => (
+            <ScrollAnimatedItem
               key={v.number}
+              delay={idx * 0.15}
               className="group py-8 grid grid-cols-12 gap-6 items-start hover:bg-gray-50 hover:-mx-6 hover:px-6 rounded-xl transition-all duration-200 cursor-default"
             >
               <span className="col-span-2 md:col-span-1 text-gray-200 font-black text-2xl group-hover:text-blue-500 transition-colors font-mono">
@@ -253,7 +255,7 @@ const About = () => (
                   {v.body}
                 </p>
               </div>
-            </div>
+            </ScrollAnimatedItem>
           ))}
         </div>
       </div>
@@ -277,7 +279,7 @@ const About = () => (
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {ABOUT_TEAM.map((m) => {
+          {ABOUT_TEAM.map((m, idx) => {
             // Build only the social links that are not null
             const socialLinks = [
               m.links.linkedin && {
@@ -317,8 +319,9 @@ const About = () => (
             }[];
 
             return (
-              <div
+              <ScrollAnimatedItem
                 key={m.initials}
+                delay={idx * 0.15}
                 className="bg-white rounded-2xl overflow-hidden border border-gray-100 hover:shadow-md transition-shadow duration-200"
               >
                 {/* Avatar area */}
@@ -371,7 +374,7 @@ const About = () => (
                     </div>
                   )}
                 </div>
-              </div>
+              </ScrollAnimatedItem>
             );
           })}
         </div>
