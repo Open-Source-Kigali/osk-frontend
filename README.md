@@ -114,8 +114,8 @@ Before running the project locally, ensure you have:
 ### 1️⃣ Fork and Clone the Repository
 
 ```bash
-git clone https://github.com/Open-Source-Kigali/-Open-Source-Kigali-Website.git
-```
+ git clone https://github.com/Open-Source-Kigali/osk-frontend.git
+ ```
 
 ### 2️⃣ Install Dependencies
 

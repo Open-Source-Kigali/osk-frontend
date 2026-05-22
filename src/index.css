@@ -4,6 +4,7 @@ html {
   scroll-behavior: smooth;
 }
 
+
 @media (prefers-reduced-motion: reduce) {
   * {
     animation: none !important;
@@ -75,3 +76,8 @@ html {
   }
 }
 
+@layer utilities {
+  .scrollbar{
+    scrollbar-width: none;
+  }
+}

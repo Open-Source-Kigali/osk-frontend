@@ -355,7 +355,7 @@ const IssueRow = ({ issue }: { issue: Issue }) => (
 );
 
 // ─── Page
-const Projectt = () => {
+const Project = () => {
   const { projects, loading, error } = useProjects();
 
   // ── Filter hook — replaces all the inline useState filter logic
@@ -699,4 +699,4 @@ const Projectt = () => {
   );
 };
 
-export default Projectt;
+export default Project;
