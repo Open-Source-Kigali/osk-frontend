@@ -646,7 +646,7 @@ const Event = () => {
             </div>
           </div>
           <div className="flex gap-3 shrink-0">
-            <a
+            {/* <a
               href="https://discord.com/invite/3dTFZSn6Tq"
               target="_blank"
               rel="noopener noreferrer"
@@ -656,7 +656,7 @@ const Event = () => {
               onMouseLeave={(e) => (e.currentTarget.style.background = "#2b7fff")}
             >
               Join Discord
-            </a>
+            </a> */}
             <a
               href="https://chat.whatsapp.com/GimdjJcYLyyG62zpgsI0zB"
               target="_blank"
