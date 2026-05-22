@@ -17,7 +17,7 @@ import {
   Plus,
   Minus,
 } from "lucide-react";
-import { useAutoPlay, useProjects, useEvents } from "@/hooks";
+import { useAutoPlay, useProjects, useEvents, useGitHubActivity, useGitHubStats, useInView } from "@/hooks";
 import {
   HERO_STATS,
   EXPLORE_LINKS,
@@ -98,6 +98,33 @@ const HomePage = () => {
   */
   }
 
+  const aboutRef = useInView();
+  const projectsRef = useInView();
+  const exploreRef = useInView();
+  const eventsRef = useInView();
+  const testimonialsRef = useInView();
+  const ctaRef = useInView();
+
+  const { ref: aboutElRef, inView: aboutInView } = aboutRef;
+  const { ref: projectsElRef, inView: projectsInView } = projectsRef;
+  const { ref: exploreElRef, inView: exploreInView } = exploreRef;
+  const { ref: eventsElRef, inView: eventsInView } = eventsRef;
+  const { ref: testimonialsElRef, inView: testimonialsInView } = testimonialsRef;
+  const { ref: ctaElRef, inView: ctaInView } = ctaRef;
+
+  // GitHub real stats — falls back to HERO_STATS if fetch fails
+  const { stats: ghStats, loading: statsLoading } = useGitHubStats();
+  const heroStats = [
+    { number: ghStats?.contributors ?? HERO_STATS[0].number, label: "Contributors" },
+    { number: ghStats?.pullRequests ?? HERO_STATS[1].number, label: "Pull Requests" },
+    { number: ghStats?.projects ?? HERO_STATS[2].number, label: "Projects" },
+    { number: HERO_STATS[3].number, label: HERO_STATS[3].label },
+  ];
+
+  // GitHub activity feed — falls back to hardcoded CTA_ACTIVITY if fetch fails
+  const { activity: githubActivity, loading: activityLoading } = useGitHubActivity(5);
+  const activityFeed = activityLoading || githubActivity.length === 0 ? CTA_ACTIVITY : githubActivity;
+
   // FAQ accordion
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
@@ -175,10 +202,9 @@ const HomePage = () => {
 
           {/* Stats — from HERO_STATS constant */}
           <div className="flex flex-wrap justify-center md:justify-start items-center gap-6 md:gap-16 mt-16 pt-6">
-            {HERO_STATS.map((stat, index) => (
-              <ScrollAnimatedItem
+            {!statsLoading && heroStats.map((stat, index) => (
+              <div
                 key={stat.label}
-                delay={index * 0.15}
                 className={`flex-1 min-w-20 py-4 ${
                   index !== HERO_STATS.length - 1
                     ? "md:border-r border-gray-300"
@@ -191,7 +217,7 @@ const HomePage = () => {
                 <p className="text-sm sm:text-base md:text-lg text-primary-colour font-medium mt-1">
                   {stat.label}
                 </p>
-              </ScrollAnimatedItem>
+              </div>
             ))}
           </div>
         </div>
@@ -201,7 +227,10 @@ const HomePage = () => {
 
       {/* ABOUT STRIP */}
       <section className="py-16 md:py-28 px-4 md:px-20 bg-white">
-        <ScrollAnimatedItem className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-8">
+        <div
+          ref={aboutElRef}
+          className={`max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-8 ${aboutInView ? "animate-fade-up" : "opacity-0"}`}
+        >
           {/* Left */}
           <div className="w-full md:w-1/2">
             <EyebrowLabel text="About Us" align="left" className="mb-4" />
@@ -224,12 +253,15 @@ const HomePage = () => {
               className="w-full rounded-lg object-cover"
             />
           </div>
-        </ScrollAnimatedItem>
+        </div>
       </section>
 
       {/* FEATURED PROJECTS */}
       <section className="py-20 px-4 md:px-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto">
+        <div
+          ref={projectsElRef}
+          className={`max-w-7xl mx-auto ${projectsInView ? "animate-fade-up" : "opacity-0"}`}
+        >
           <EyebrowLabel text="Open Source Project" align="left" />
           <div className="flex justify-between flex-wrap items-center mb-8 gap-4">
             <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900">
@@ -421,6 +453,7 @@ const HomePage = () => {
 
       {/* EXPLORE / CONNECT */}
       <section className="bg-[#FFF7F5] py-20 px-4 md:px-20">
+        <div ref={exploreElRef} className={exploreInView ? "animate-fade-up" : "opacity-0"}>
         <EyebrowLabel text="Connect, Contribute and Learn" className="mb-4" />
         {/* Nav pills — from EXPLORE_LINKS constant */}
         <div className="flex flex-wrap justify-center items-center mb-16 gap-4 md:gap-8">
@@ -467,11 +500,15 @@ const HomePage = () => {
             />
           </div>
         </div>
+        </div>
       </section>
 
       {/* EVENTS PREVIEW */}
       <section className="py-20 px-4 md:px-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto">
+        <div
+          ref={eventsElRef}
+          className={`max-w-7xl mx-auto ${eventsInView ? "animate-fade-up" : "opacity-0"}`}
+        >
           <div className="flex flex-wrap justify-between items-center mb-12 gap-4">
             <div>
               <EyebrowLabel text="Community Events" align="left" />
@@ -528,13 +565,13 @@ const HomePage = () => {
                   </div>
                   <div className="flex flex-wrap gap-3">
                     <PrimaryButton
-                      to=""
+                      to="/event"
                       className="w-full md:w-auto mb-3 md:mb-0"
                     >
                       Register Now
                     </PrimaryButton>
                     <SecondaryButton
-                      to=""
+                      to="/event"
                       className="w-full md:w-auto mb-3 md:mb-0"
                     >
                       Learn More
@@ -624,7 +661,10 @@ const HomePage = () => {
 
       {/* TESTIMONIAL */}
       <section className="py-20 px-4 md:px-20 bg-white">
-        <div className="max-w-7xl mx-auto">
+        <div
+          ref={testimonialsElRef}
+          className={`max-w-7xl mx-auto ${testimonialsInView ? "animate-fade-up" : "opacity-0"}`}
+        >
           <div className="text-center mb-14">
             <EyebrowLabel text="Community Voices" align="center" />
             <h2 className="text-xl sm:text-2xl md:text-3xl font-black text-gray-900">
@@ -841,7 +881,10 @@ const HomePage = () => {
           }}
         />
 
-        <div className="relative max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div
+          ref={ctaElRef}
+          className={`relative max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center ${ctaInView ? "animate-fade-up" : "opacity-0"}`}
+        >
           {/* Left */}
           <div>
             <div className="inline-flex items-center gap-2 mb-6 px-4 py-1.5 rounded-full border border-white/10 bg-white/5">
@@ -871,7 +914,7 @@ const HomePage = () => {
                   className="group-hover:translate-x-0.5 transition-transform"
                 />
               </PrimaryButton>
-              <SecondaryButton to="">View Open Issues</SecondaryButton>
+              <SecondaryButton to="/projects#issues">View Open Issues</SecondaryButton>
             </div>
 
             {/* Stat pills — from CTA_STATS constant */}
@@ -918,7 +961,7 @@ const HomePage = () => {
               </div>
 
               <ul className="divide-y divide-white/5">
-                {CTA_ACTIVITY.map((item) => (
+                {activityFeed.map((item) => (
                   <li
                     key={item.id}
                     className="flex items-start gap-3 px-5 py-4 hover:bg-white/3 transition-colors"

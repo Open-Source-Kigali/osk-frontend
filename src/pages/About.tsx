@@ -330,6 +330,7 @@ const About = () => (
                     <img
                       src={m.avatar}
                       alt={m.name}
+                      loading="lazy"
                       className="w-full h-full object-cover"
                       style={{ objectPosition: m.objectPosition ?? "top" }}
                     />

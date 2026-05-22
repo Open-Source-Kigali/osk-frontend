@@ -39,7 +39,7 @@ const PartnersMarquee = ({ showSecondary = true }: Props) => {
             <PrimaryButton to="/partnersform">Become a partner</PrimaryButton>
 
             {showSecondary && (
-              <SecondaryButton to="">Learn more</SecondaryButton>
+              <SecondaryButton to="/partners">Learn more</SecondaryButton>
             )}
           </div>
         </div>
@@ -85,6 +85,7 @@ const PartnersMarquee = ({ showSecondary = true }: Props) => {
                 <img
                   src={partner.logo}
                   alt={partner.name}
+                  loading="lazy"
                   className="max-h-12 max-w-full w-auto object-contain"
                   draggable={false}
                 />

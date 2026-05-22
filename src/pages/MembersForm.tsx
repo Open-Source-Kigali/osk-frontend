@@ -297,6 +297,7 @@ const MembersForm = () => {
                         value={values.firstName}
                         onChange={(e) => set("firstName", e.target.value)}
                         placeholder="Amina"
+                        autoComplete="given-name"
                       />
                     </FieldWrapper>
                     <FieldWrapper label="Last name" required error={errors.lastName}>
@@ -305,6 +306,7 @@ const MembersForm = () => {
                         value={values.lastName}
                         onChange={(e) => set("lastName", e.target.value)}
                         placeholder="Uwase"
+                        autoComplete="family-name"
                       />
                     </FieldWrapper>
                   </div>
@@ -316,6 +318,7 @@ const MembersForm = () => {
                       value={values.email}
                       onChange={(e) => set("email", e.target.value)}
                       placeholder="amina@example.com"
+                      autoComplete="email"
                     />
                   </FieldWrapper>
 
@@ -338,6 +341,7 @@ const MembersForm = () => {
                         value={values.city}
                         onChange={(e) => set("city", e.target.value)}
                         placeholder="Kigali"
+                        autoComplete="address-level2"
                       />
                     </FieldWrapper>
                   </div>

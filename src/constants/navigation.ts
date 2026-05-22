@@ -40,7 +40,7 @@ export const FOOTER_LINKS: Record<string, NavLink[]> = {
       path: "https://discord.com/invite/3dTFZSn6Tq",
       external: true,
     },
-    { name: "LinkedIn", path: "https://linkedin.com", external: true },
+    { name: "LinkedIn", path: "https://www.linkedin.com/company/open-source-kigali/", external: true },
     {
       name: "Email",
       path: "https://mail.google.com/mail/?view=cm&to=contact@oskigali.org",

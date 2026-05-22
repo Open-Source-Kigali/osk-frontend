@@ -1,6 +1,5 @@
 import {
   Github,
-  MessageCircle,
   Linkedin,
   Twitter,
   ArrowUpRight,
@@ -13,7 +12,6 @@ import { ScrollAnimatedItem } from "@/components/UI/ScrollAnimatedItem";
 import { BsWhatsapp } from "react-icons/bs";
 
 const SOCIAL_ICONS: Record<string, React.ReactNode> = {
-  discord: <MessageCircle size={22} />,
   github: <Github size={22} />,
   linkedin: <Linkedin size={22} />,
   twitter: <Twitter size={22} />,
@@ -132,13 +130,13 @@ const Community = () => (
             </h2>
           </div>
           <p className="text-gray-500 text-sm md:text-base max-w-sm md:text-right leading-relaxed">
-            We use Discord and WhatsApp. These are the channels you'll actually
+            We use WhatsApp and other platforms. These are the channels you'll actually
             use every day.
           </p>
         </div>
 
         {/* Social platforms — from SOCIAL_PLATFORMS constant */}
-        <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {SOCIAL_PLATFORMS.map((p, idx) => (
             <ScrollAnimatedItem key={p.name} delay={idx * 0.15}>
               <a
@@ -227,7 +225,7 @@ const Community = () => (
           </h2>
           <p className="text-gray-500 text-base md:text-lg leading-relaxed">
             You've read enough. The next step isn't another page — it's joining
-            the Discord, saying hi in #general, and finding your first issue.
+            the community, saying hi, and finding your first issue.
             Takes 10 minutes.
           </p>
         </div>
@@ -237,12 +235,12 @@ const Community = () => (
             href="https://chat.whatsapp.com/GimdjJcYLyyG62zpgsI0zB"
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex flex-col items-start p-7 bg-[#25D366] hover:bg-blue-400 rounded-2xl text-white transition-colors duration-200"
+            className="group flex flex-col items-start p-7 bg-[#25D366] hover:bg-green-400 rounded-2xl text-white transition-colors duration-200"
           >
             <BsWhatsapp size={28} className="mb-4" />
             <p className="font-black text-xl mb-1">Join WhatsApp</p>
-            <p className="text-blue-100 text-sm mb-6 leading-snug">
-             Where learning and community come together.
+            <p className="text-white/80 text-sm mb-6 leading-snug">
+              Where learning and community come together.
             </p>
             <span className="mt-auto inline-flex items-center gap-1.5 text-sm font-semibold group-hover:gap-2.5 transition-all">
               Open WhatsApp <ArrowUpRight size={14} />

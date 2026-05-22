@@ -273,6 +273,8 @@ const Partners = () => (
           <div className="space-y-4">
             <a
               href="https://mail.google.com/mail/?view=cm&to=partnerships@oskigali.org&su=Partnership+Enquiry"
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center gap-4 p-5 rounded-2xl border-2 border-blue-200 bg-blue-50 hover:border-blue-400 hover:shadow-md transition-all group"
             >
               <div className="w-12 h-12 rounded-xl bg-blue-500 flex items-center justify-center shrink-0">

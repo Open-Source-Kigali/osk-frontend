@@ -7,7 +7,7 @@
 ### Built in public • By the community • For the community
 
 <p>
-  The official website for <strong>Open Source Kigali (OSK)</strong> — Rwanda’s growing open-source developer community.
+  The official website for <strong>Open Source Kigali (OSK)</strong> — Rwanda's growing open-source developer community.
 </p>
 
 <p>
@@ -170,12 +170,7 @@ and open-source enthusiasts of all skill levels.
 
 See all contributors → [CONTRIBUTORS.md](./CONTRIBUTORS.md)
 
-Please read:
-
-
-[CONTRIBUTING.md](https://github.com/Open-Source-Kigali/osk-frontend/blob/development/CONTRIBUTING.md)
-
-before opening a pull request, do this.
+Please read [CONTRIBUTING.md](./CONTRIBUTING.md) before opening a pull request.
 
 ---
 
@@ -195,12 +190,11 @@ and reviewed quickly by maintainers.
 # Community & Contact
 
 | Platform | Link                                             |
-| -------- | ------------------------------------------------ | |
 | -------- | ------------------------------------------------ |
 | Discord  | https://discord.com/invite/3dTFZSn6Tq/invite/osk |
-| LinkedIn | https://www.linkedin.com/company/open-source-kigali/?viewAsMember=true |
+| LinkedIn | https://www.linkedin.com/company/open-source-kigali/ |
 | GitHub   | https://github.com/open-source-kigali            |
-| Email    | mailto:opensourcekigali@gmail.com                      |
+| Email    | [opensourcekigali@gmail.com](mailto:opensourcekigali@gmail.com) |
 
 ---
 
@@ -208,13 +202,7 @@ and reviewed quickly by maintainers.
 
 This project is licensed under the **MIT License**.
 
-See:
-
-```bash
-LICENSE
-```
-
-for more information.
+See [LICENSE](./LICENSE) for more information.
 
 ---
 

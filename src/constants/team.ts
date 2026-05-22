@@ -50,6 +50,6 @@ export const TEAM: TeamMember[] = [
     avatarBg: "#5b9fff",
     links: {},
     featured: false,
-    handles: ["Onboarding", "General questions", "Discord"],
+    handles: ["Onboarding", "General questions", "WhatsApp"],
   },
 ];
