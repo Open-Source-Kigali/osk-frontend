@@ -30,9 +30,8 @@ const linkGroups: FooterLinkGroup[] = [
   {
     heading: "Resources",
     links: [
-      // { label: "Tutorials", to: "/resources" },
-      { label: "Blog", to: "/blog" },
-      { label: "Events", to: "/events" },
+      { label: "Events", to: "/event" },
+      { label: "Opportunities", to: "/community" },
     ],
   },
   {
@@ -54,8 +53,8 @@ const linkGroups: FooterLinkGroup[] = [
         external: true,
       },
       {
-        label: "contact@oskigali.org",
-        to: "https://mail.google.com/mail/?view=cm&to=contact@oskigali.org",
+        label: "Contact Us",
+        to: "mailto:contact@oskigali.org",
         external: true,
       },
     ],
@@ -165,9 +164,6 @@ const Footer = () => {
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-600">
           <p>© {currentYear} Open Source Kigali. All rights reserved.</p>
           <div className="flex gap-5">
-            <NavLink to="/privacy" className="hover:text-gray-400 transition">
-              Privacy Policy
-            </NavLink>
             <a
               href="https://docs.google.com/document/d/1K_bIZT09p-8IiPpg1v3RsMD2dZmUzRFWlMp8tfOavcE/edit?usp=sharing"
               target="_blank"
