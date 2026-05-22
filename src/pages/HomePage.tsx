@@ -866,7 +866,7 @@ const HomePage = () => {
                   className="group-hover:translate-x-0.5 transition-transform"
                 />
               </PrimaryButton>
-              <SecondaryButton to="">View Open Issues</SecondaryButton>
+              <SecondaryButton to="https://github.com/Open-Source-Kigali/osk-frontend/issues">View Open Issues</SecondaryButton>
             </div>
 
             {/* Stat pills — from CTA_STATS constant */}
