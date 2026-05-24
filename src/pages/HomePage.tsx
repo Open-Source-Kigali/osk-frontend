@@ -29,6 +29,7 @@ import {
 import type { HomeEventType, ActivityIconKey } from "@/constants";
 import PartnersMarquee from "@/components/UI/PartnersMarquee";
 import { Loader } from "@/components/UI";
+import { ScrollAnimatedItem } from "@/components/UI/ScrollAnimatedItem";
 
 // ── Assets
 import heroImage from "@/assets/images/HeroImage.jpeg";
@@ -140,7 +141,7 @@ const HomePage = () => {
   return (
     <div className="font-sans">
       {/*  1. HERO */}
-      <section className="relative w-full min-h-screen">
+      <section className="relative  w-full min-h-screen">
         {/* Background */}
         <div
           className="absolute inset-0 -z-10 bg-cover bg-center bg-no-repeat"
@@ -175,8 +176,9 @@ const HomePage = () => {
           {/* Stats — from HERO_STATS constant */}
           <div className="flex flex-wrap justify-center md:justify-start items-center gap-6 md:gap-16 mt-16 pt-6">
             {HERO_STATS.map((stat, index) => (
-              <div
+              <ScrollAnimatedItem
                 key={stat.label}
+                delay={index * 0.15}
                 className={`flex-1 min-w-20 py-4 ${
                   index !== HERO_STATS.length - 1
                     ? "md:border-r border-gray-300"
@@ -189,7 +191,7 @@ const HomePage = () => {
                 <p className="text-sm sm:text-base md:text-lg text-primary-colour font-medium mt-1">
                   {stat.label}
                 </p>
-              </div>
+              </ScrollAnimatedItem>
             ))}
           </div>
         </div>
@@ -199,7 +201,7 @@ const HomePage = () => {
 
       {/* ABOUT STRIP */}
       <section className="py-16 md:py-28 px-4 md:px-20 bg-white">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-8">
+        <ScrollAnimatedItem className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-8">
           {/* Left */}
           <div className="w-full md:w-1/2">
             <EyebrowLabel text="About Us" align="left" className="mb-4" />
@@ -222,7 +224,7 @@ const HomePage = () => {
               className="w-full rounded-lg object-cover"
             />
           </div>
-        </div>
+        </ScrollAnimatedItem>
       </section>
 
       {/* FEATURED PROJECTS */}
@@ -293,9 +295,10 @@ const HomePage = () => {
           {/* Other projects grid — remaining 3 */}
           {!projectsLoading && !projectsError && (
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-              {homeProjects.slice(1).map((project) => (
-                <div
+              {homeProjects.slice(1).map((project, idx) => (
+                <ScrollAnimatedItem
                   key={project.id}
+                  delay={idx * 0.15}
                   className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden flex flex-col hover:shadow-lg transition-shadow duration-300"
                 >
                   <div className="h-48 w-full overflow-hidden">
@@ -328,7 +331,7 @@ const HomePage = () => {
                       </SecondaryButton>
                     </div>
                   </div>
-                </div>
+                </ScrollAnimatedItem>
               ))}
             </div>
           )}
@@ -564,9 +567,10 @@ const HomePage = () => {
           {/* Other events grid */}
           {!eventsLoading && !eventsError && (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {restHomeEvents.map((event) => (
-                <div
+              {restHomeEvents.map((event, idx) => (
+                <ScrollAnimatedItem
                   key={event.id}
+                  delay={idx * 0.15}
                   className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden flex flex-col hover:shadow-md transition-shadow"
                 >
                   {event.coverImage && (
@@ -611,7 +615,7 @@ const HomePage = () => {
                       RSVP →
                     </NavLink>
                   </div>
-                </div>
+                </ScrollAnimatedItem>
               ))}
             </div>
           )}
@@ -639,8 +643,9 @@ const HomePage = () => {
             onMouseLeave={() => setPaused(false)}
           >
             {visibleTestimonials.map((t, i) => (
-              <div
+              <ScrollAnimatedItem
                 key={`${t.id}-${current}-${i}`}
+                delay={i * 0.15}
                 className={`bg-gray-50 rounded-2xl p-6 sm:p-8 flex flex-col gap-4 ${
                   i === 0
                     ? "flex"
@@ -665,7 +670,7 @@ const HomePage = () => {
                     <p className="text-gray-400 text-xs">{t.role}</p>
                   </div>
                 </div>
-              </div>
+              </ScrollAnimatedItem>
             ))}
           </div>
 

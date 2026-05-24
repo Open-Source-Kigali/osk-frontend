@@ -15,7 +15,6 @@ export function useProjects(): UseProjectsReturn {
 
   useEffect(() => {
     let cancelled = false;
-    setLoading(true);
     fetchProjects()
       .then((data) => {
         if (!cancelled) {
