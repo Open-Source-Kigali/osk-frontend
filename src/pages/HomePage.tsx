@@ -871,7 +871,17 @@ const HomePage = () => {
                   className="group-hover:translate-x-0.5 transition-transform"
                 />
               </PrimaryButton>
-              <SecondaryButton to="">View Open Issues</SecondaryButton>
+              <SecondaryButton to="">
+                View Open Issues
+                <a
+                  href="https://github.com/opensourcekigali"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="your existing secondary button classes"
+                >
+                  View Open Issues
+                </a>
+              </SecondaryButton>
             </div>
 
             {/* Stat pills — from CTA_STATS constant */}
