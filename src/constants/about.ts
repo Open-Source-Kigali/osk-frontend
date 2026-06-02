@@ -62,7 +62,7 @@ export const VALUES = [
 export const ABOUT_TEAM = [
   {
     name: "Didas Mbarushimana Daniel",
-    role: "COMMUNITY LEAD",
+    role: "Community Lead",
     initials: "DD",
     bg: "bg-blue-500",
     avatar: didasImg,
@@ -79,7 +79,7 @@ export const ABOUT_TEAM = [
   },
   {
     name: "Nancy Teta Kwizera",
-    role: "Tech Team Lead",
+    role: "Operations Lead",
     initials: "OL",
     bg: "bg-emerald-500",
     avatar: zaraImg,
