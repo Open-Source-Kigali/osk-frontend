@@ -141,7 +141,7 @@ const HomePage = () => {
   return (
     <div className="font-sans">
       {/*  1. HERO */}
-      <section className="relative w-full min-h-screen">
+      <section className="relative  w-full min-h-screen">
         {/* Background */}
         <div
           className="absolute inset-0 -z-10 bg-cover bg-center bg-no-repeat"

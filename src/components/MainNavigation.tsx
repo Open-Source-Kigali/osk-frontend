@@ -35,7 +35,7 @@ const Navbar = () => {
   return (
     <>
       <nav
-        className={`flex justify-between items-center px-4 sm:px-8 lg:px-20 fixed py-4 w-full z-20 transition-colors duration-300 ${
+        className={`flex justify-between items-center px-4 sm:px-0 lg:px-20 fixed py-4 w-full z-20 transition-colors duration-300 ${
           isLight
             ? "bg-white shadow-xl text-gray-900"
             : "bg-transparent text-white"
@@ -74,7 +74,7 @@ const Navbar = () => {
         {/* CTA button (desktop) */}
         <PrimaryButton
           to="https://docs.google.com/forms/d/e/1FAIpQLSfP6ysp6y_SNcuHb1x9v-nMxfXR7-kcyBogN2ZMF--2byOzyg/viewform"
-          className="hidden md:inline-flex"
+          className="hidden md:inline-flex sm:h-10 sm:text-nowrap sm:w-40 sm:text-center sm:scale-78"
         >
           Contribute to OSK
         </PrimaryButton>
@@ -111,7 +111,7 @@ const Navbar = () => {
           ))}
 
           {/* CTA button (mobile) */}
-          <PrimaryButton to="">Contribute to OSK</PrimaryButton>
+          <PrimaryButton to="https://docs.google.com/forms/d/e/1FAIpQLSfP6ysp6y_SNcuHb1x9v-nMxfXR7-kcyBogN2ZMF--2byOzyg/viewform">Contribute to OSK</PrimaryButton>
         </div>
       )}
     </>

@@ -6,7 +6,7 @@ import type { ComponentType } from "react";
 import HomePage from "./pages/HomePage";
 import About from "./pages/About";
 import Community from "./pages/Community";
-import Projectt from "./pages/Projects";
+import Project from "./pages/Projects";
 // import Resources from "./pages/Resources";
 import RootLayer from "./pages/RootLayer";
 import Partners from "./pages/Partners";
@@ -32,7 +32,7 @@ const router = createBrowserRouter([
       { path: "/community", Component: Community },
       { path: "/event", Component: Event },
       // {path:'/resources', Component: Resources},
-      { path: "/projects", Component: Projectt },
+      { path: "/projects", Component: Project },
       { path: "/partners", Component: Partners },
       { path: "/membersform", element: wrap(MembersForm) },
       { path: "/partnersform", element: wrap(PartnersForm) },
