@@ -2,12 +2,12 @@ import { useEffect, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { X } from "lucide-react";
-
 import LogoImage from "@/assets/Logo/OSK-primary-logo.svg";
 import LogoWhite from "@/assets/Logo/OSK-primary-logo-1200-400-white.svg";
 import { useScrolled } from "@/hooks";
 import { NAV_LINKS } from "@/constants";
-import PrimaryButton from "./UI/PrimaryButton";
+import PrimaryButton from "@/components/UI/PrimaryButton";
+import primaryCTALink from '@/config/links'
 
 const Navbar = () => {
   const scrolled = useScrolled(50);
@@ -73,8 +73,8 @@ const Navbar = () => {
 
         {/* CTA button (desktop) */}
         <PrimaryButton
-          to="https://docs.google.com/forms/d/e/1FAIpQLSfP6ysp6y_SNcuHb1x9v-nMxfXR7-kcyBogN2ZMF--2byOzyg/viewform"
-          className="hidden md:inline-flex sm:h-10 sm:text-nowrap sm:w-40 sm:text-center sm:scale-78"
+          to={primaryCTALink.primaryCTA}
+          className="hidden md:inline-flex items-center justify-center h-12 px-6 text-sm font-medium whitespace-nowrap rounded-full"
         >
           Contribute to OSK
         </PrimaryButton>

@@ -3,7 +3,7 @@ import { RouterProvider } from "react-router/dom";
 import { lazy, Suspense } from "react";
 import type { ComponentType } from "react";
 
-import HomePage from "./pages/HomePage";
+import HomePage from "./pages/Home/HomePage";
 import About from "./pages/About";
 import Community from "./pages/Community";
 import Project from "./pages/Projects";
