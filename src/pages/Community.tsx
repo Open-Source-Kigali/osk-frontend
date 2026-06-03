@@ -1,16 +1,11 @@
-import {
-  Github,
-  MessageCircle,
-  Linkedin,
-  Twitter,
-  ArrowUpRight,
-  Shield,
-} from "lucide-react";
+import {Github,MessageCircle,Linkedin,Twitter,ArrowUpRight,Shield} from "lucide-react";
 import { COMMUNITY_STATS, GUIDELINES, SOCIAL_PLATFORMS } from "@/constants";
 import EyebrowLabel from "@/components/UI/EyebrowLable";
 import PrimaryButton from "@/components/UI/PrimaryButton";
 import { ScrollAnimatedItem } from "@/components/UI/ScrollAnimatedItem";
 import { BsWhatsapp } from "react-icons/bs";
+import primaryCTALink from '@/config/links'
+
 
 const SOCIAL_ICONS: Record<string, React.ReactNode> = {
   discord: <MessageCircle size={22} />,
@@ -112,7 +107,7 @@ const Community = () => (
             already building — come meet them.
           </p>
           <PrimaryButton
-            to="https://docs.google.com/forms/d/1L4saCJxfIi_jha0lBanIjAl-o2sEXvPs6d0J1TyW9DM/viewform"
+            to={primaryCTALink.primaryCTA}
             className=""
           >
             Join the Community Now <ArrowUpRight size={14} />

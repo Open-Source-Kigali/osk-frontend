@@ -1,18 +1,13 @@
-import {
-  FaXTwitter,
-  FaLinkedinIn,
-  FaInstagram,
-  FaFacebookF,
-  FaGithub,
-  FaFigma,
-} from "react-icons/fa6";
+import { FaXTwitter, FaLinkedinIn, FaInstagram, FaFacebookF,FaGithub, FaFigma,} from "react-icons/fa6";
 import { ABOUT_STATS, STORY_POINTS, VALUES, ABOUT_TEAM } from "@/constants";
-import peopleImg from "@/assets/images/People.jpeg";
-import groupImg from "@/assets/images/did.jpeg.jpeg";
+import image13 from "@/assets/images/open13.jpg";
+import image4 from "@/assets/images/open4.jpg";
 import EyebrowLabel from "@/components/UI/EyebrowLable";
 import PrimaryButton from "@/components/UI/PrimaryButton";
 import SecondaryButton from "@/components/UI/SecondaryButton";
 import { ScrollAnimatedItem } from "@/components/UI/ScrollAnimatedItem";
+import primaryCTALink from '@/config/links'
+
 
 //Types
 interface DotProps {
@@ -82,7 +77,7 @@ const About = () => (
         {/* CTAs */}
         <div className="flex flex-wrap gap-4 md:gap-6 justify-center mt-6 mb-14">
           <PrimaryButton
-            to="https://docs.google.com/forms/d/1L4saCJxfIi_jha0lBanIjAl-o2sEXvPs6d0J1TyW9DM/viewform"
+            to={primaryCTALink.primaryCTA}
             className="w-full md:w-auto"
           >
             Join the Community
@@ -94,7 +89,7 @@ const About = () => (
 
         <div className="w-full">
           <img
-            src={peopleImg}
+            src={image13}
             alt="OSK team collaboration"
             className="w-full rounded-lg object-cover"
           />
@@ -180,7 +175,7 @@ const About = () => (
         {/* Left: image */}
         <div className="rounded-2xl overflow-hidden shadow-lg">
           <img
-            src={groupImg}
+            src={image4}
             alt="Community collaboration"
             className="w-full h-full object-cover"
           />
@@ -403,7 +398,7 @@ const About = () => (
           </h2>
         </div>
         <div className="flex flex-col sm:flex-row gap-4 shrink-0">
-          <PrimaryButton to="https://docs.google.com/forms/d/1L4saCJxfIi_jha0lBanIjAl-o2sEXvPs6d0J1TyW9DM/viewform">
+          <PrimaryButton to={primaryCTALink.primaryCTA}>
             Join the Community
           </PrimaryButton>
           <SecondaryButton to="/projects">Browse Projects</SecondaryButton>
