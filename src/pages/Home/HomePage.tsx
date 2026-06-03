@@ -16,7 +16,7 @@ import primaryCTALink from '@/config/links'
 // ── Assets
 
 import image2 from "@/assets/images/open2.jpg";
-import image91 from '@/assets/images/open9.jpg';
+import image12 from '@/assets/images/open12.jpg';
 import coachImg from "@/assets/images/People.jpeg";
 import youthImg from "@/assets/images/Youth meetup.jpg";
 import peopleImg2 from "@/assets/images/People.jpeg";
@@ -352,7 +352,7 @@ const HomePage = () => {
           </div>
           <div className="rounded-2xl overflow-hidden shadow-lg">
             <img
-              src={image91}
+              src={image12}
               alt="Community collaboration"
               className="w-full h-full object-cover"
             />

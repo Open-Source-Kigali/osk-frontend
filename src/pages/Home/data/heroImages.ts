@@ -6,11 +6,10 @@ import image5 from '@/assets/images/open5.jpg'
 import image6 from '@/assets/images/open6.jpg'
 import image7 from '@/assets/images/open7.jpg'
 import image8 from '@/assets/images/open8.jpg'
-import image9 from '@/assets/images/open9.jpg'
 import image12 from '@/assets/images/open12.jpg'
 
 const heroImages = [
-    image1,image2,image3,image4, image5,image6, image7, image8, image9, image12
+    image1,image2,image3,image4, image5,image6, image7, image8,  image12
 ]
 
 export default heroImages;
