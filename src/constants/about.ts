@@ -6,6 +6,7 @@ import jeanImg from "@/assets/team/Jean Pual.jpg";
 import kingImg from "@/assets/team/Kinf.jpg";
 import zaraImg from "@/assets/team/Zara.jpg";
 import felixImg from "@/assets/team/Felix.jpg";
+import nandineImg from '@/assets/team/Nandin.jpg'
 
 export const ABOUT_STATS = [
   { value: "12+", label: "Active Contributors" },
@@ -191,6 +192,23 @@ export const ABOUT_TEAM = [
     links: {
       linkedin: "https://www.linkedin.com/in/ariweriokuma-king-son",
       github: null,
+      twitter: null,
+      instagram: null,
+      facebook: null,
+      figma: null,
+    },
+  },
+  {
+    name: "Nadine Fiona BYUKUSENGE",
+    role: "Tech Team",
+    initials: "NF",
+    bg: "bg-cyan-500",
+    avatar: nandineImg,
+    featured: false,
+    objectPosition: "50% 40%",
+    links: {
+      linkedin: "https://www.linkedin.com/in/nadine-fiona-byukusenge/",
+      github: "https://github.com/Nadinefiona",
       twitter: null,
       instagram: null,
       facebook: null,
