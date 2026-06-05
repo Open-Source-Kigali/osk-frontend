@@ -15,6 +15,14 @@ export function formatCount(n: number, suffix = "+"): string {
 }
 
 /**
+ * Formats a community stat with a leading "+".
+ * formatStat(1500) → "+1,500"
+ */
+export function formatStat(value: number): string {
+  return `+${formatNumber(value)}`;
+}
+
+/**
  * Returns a capacity string.
  * formatCapacity(34, null) → "Unlimited"
  * formatCapacity(34, 80)   → "34 / 80"

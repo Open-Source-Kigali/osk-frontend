@@ -1,19 +1,21 @@
 // src/constants/homepage.ts
 // ── All data that lives exclusively on the homepage
 
-// ─── Hero
-export const HERO_STATS = [
-  { number: 12, label: "Contributors" },
-  { number: 25, label: "Pull Requests" },
-  { number: 3, label: "Projects" },
-  { number: 1500, label: "Active Members" },
+import type { StatDisplay } from "@/types";
+
+// ─── Hero — numbers come live from GET /stats; these define which stat + label
+export const HERO_STATS: StatDisplay[] = [
+  { key: "contributors", label: "Contributors" },
+  { key: "pullRequests", label: "Pull Requests" },
+  { key: "projects",     label: "Projects" },
+  { key: "members",      label: "Active Members" },
 ];
 
 // ─── About strip
-export const ABOUT_STRIP_STATS = [
-  { value: "12+", label: "Active Contributors" },
-  { value: "10", label: "Projects Shipped" },
-  { value: "25+", label: "Pull Requests Merged" },
+export const ABOUT_STRIP_STATS: StatDisplay[] = [
+  { key: "contributors", label: "Active Contributors" },
+  { key: "projects",     label: "Projects Shipped" },
+  { key: "pullRequests", label: "Pull Requests Merged" },
 ];
 
 // ─── Contribution roles
@@ -243,10 +245,10 @@ export const CTA_ACTIVITY: ActivityItem[] = [
   },
 ];
 
-export const CTA_STATS = [
-  { value: "12+", label: "Contributors" },
-  { value: "25+", label: "Pull Requests" },
-  { value: "10", label: "Active Projects" },
+export const CTA_STATS: StatDisplay[] = [
+  { key: "contributors", label: "Contributors" },
+  { key: "pullRequests", label: "Pull Requests" },
+  { key: "projects",     label: "Active Projects" },
 ];
 
 // ─── FAQ
