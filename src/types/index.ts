@@ -51,3 +51,9 @@ export type {
 } from "./api.types";
 
 export type { PartnerFormState } from "./partnersForm.types";
+
+export type {
+  Stats,
+  StatKey,
+  StatDisplay,
+} from "./stats.types";

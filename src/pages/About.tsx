@@ -1,5 +1,7 @@
 import { FaXTwitter, FaLinkedinIn, FaInstagram, FaFacebookF,FaGithub, FaFigma,} from "react-icons/fa6";
 import { ABOUT_STATS, STORY_POINTS, VALUES, ABOUT_TEAM } from "@/constants";
+import { useStats } from "@/hooks";
+import { formatStat } from "@/lib/formatters";
 import image13 from "@/assets/images/open13.jpg";
 import image4 from "@/assets/images/open4.jpg";
 import EyebrowLabel from "@/components/UI/EyebrowLable";
@@ -29,7 +31,10 @@ const Dot = ({ color, size, style }: DotProps) => (
 // Reusable pill badge used in every section header
 
 //Page
-const About = () => (
+const About = () => {
+  const { stats } = useStats();
+
+  return (
   <div className="font-sans">
     {/* ── HERO */}
     <section className="relative bg-white overflow-hidden pt-16 pb-0">
@@ -102,7 +107,7 @@ const About = () => (
           {ABOUT_STATS.map((s) => (
             <div key={s.label} className="flex items-center gap-3 text-center">
               <span className="font-black text-primary-colour text-3xl md:text-4xl">
-                {s.value}
+                {formatStat(stats?.[s.key] ?? 0, s.suffix)}
               </span>
               <span className="text-gray-500 text-base uppercase">
                 {s.label}
@@ -406,6 +411,7 @@ const About = () => (
       </div>
     </section>
   </div>
-);
+  );
+};
 
 export default About;

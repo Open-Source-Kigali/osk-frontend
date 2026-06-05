@@ -15,6 +15,15 @@ export function formatCount(n: number, suffix = "+"): string {
 }
 
 /**
+ * Formats a community stat: number with commas plus an optional suffix.
+ * formatStat(1500)        → "1,500"
+ * formatStat(12, "+")     → "12+"
+ */
+export function formatStat(value: number, suffix = ""): string {
+  return `${formatNumber(value)}${suffix}`;
+}
+
+/**
  * Returns a capacity string.
  * formatCapacity(34, null) → "Unlimited"
  * formatCapacity(34, 80)   → "34 / 80"

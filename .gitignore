@@ -18,6 +18,7 @@ dist-ssr
 # Environment variables (CRITICAL)
 .env
 .env.*
+!.env.example
 *.local
 
 # Coverage

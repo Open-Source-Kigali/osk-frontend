@@ -7,11 +7,12 @@ import kingImg from "@/assets/team/Kinf.jpg";
 import zaraImg from "@/assets/team/Zara.jpg";
 import felixImg from "@/assets/team/Felix.jpg";
 import nandineImg from '@/assets/team/Nandin.jpg'
+import type { StatDisplay } from "@/types";
 
-export const ABOUT_STATS = [
-  { value: "12+", label: "Active Contributors" },
-  { value: "10", label: "Projects Shipped" },
-  { value: "25+", label: "Pull Requests Merged" },
+export const ABOUT_STATS: StatDisplay[] = [
+  { key: "contributors", label: "Active Contributors",  suffix: "+" },
+  { key: "projects",     label: "Projects Shipped" },
+  { key: "pullRequests", label: "Pull Requests Merged", suffix: "+" },
 ];
 
 export const STORY_POINTS = [

@@ -3,7 +3,8 @@ import { NavLink } from "react-router";
 //import useEmblaCarousel from "embla-carousel-react";
 import CountUp from "react-countup";
 import { ChevronLeft, ChevronRight, Quote, GitMerge, UserPlus, GitPullRequest, Zap, ArrowRight,  Calendar, Clock, MapPin, Plus, Minus} from "lucide-react";
-import { useAutoPlay, useProjects, useEvents } from "@/hooks";
+import { useAutoPlay, useProjects, useEvents, useStats } from "@/hooks";
+import { formatStat } from "@/lib/formatters";
 import { HERO_STATS, EXPLORE_LINKS, TESTIMONIALS, CTA_ACTIVITY, CTA_STATS, FAQ_ITEMS} from "@/constants";
 import type { HomeEventType, ActivityIconKey } from "@/constants";
 import PartnersMarquee from "@/components/UI/PartnersMarquee";
@@ -91,6 +92,7 @@ const HomePage = () => {
 
   // Events for homepage (upcoming, capped at 4)
   const { events, loading: eventsLoading, error: eventsError } = useEvents();
+  const { stats } = useStats();
   const homeEvents = events
     .filter((e) => e.status !== "past")
     .slice(0, 4)
@@ -155,7 +157,7 @@ const HomePage = () => {
                 } text-center md:text-left`}
               >
                 <p className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">
-                  <CountUp end={stat.number} duration={5} separator="," />
+                  <CountUp end={stats?.[stat.key] ?? 0} duration={5} separator="," />
                 </p>
                 <p className="text-sm sm:text-base md:text-lg text-primary-colour font-medium mt-1">
                   {stat.label}
@@ -773,7 +775,7 @@ const HomePage = () => {
                   className="px-4 py-2 rounded-full border border-white/10 bg-white/5"
                 >
                   <span className="text-white font-bold text-sm">
-                    {s.value}
+                    {formatStat(stats?.[s.key] ?? 0, s.suffix)}
                   </span>
                   <span className="text-gray-500 text-sm ml-1.5">
                     {s.label}
