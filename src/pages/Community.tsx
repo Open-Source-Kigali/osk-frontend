@@ -80,7 +80,7 @@ const Community = () => {
                   {loading ? (
                     <Skeleton className="h-7 w-16" />
                   ) : (
-                    formatStat(stats?.[s.key] ?? 0, s.suffix)
+                    formatStat(stats?.[s.key] ?? 0)
                   )}
                 </p>
                 <p className="text-gray-800 text-sm font-semibold">{s.label}</p>

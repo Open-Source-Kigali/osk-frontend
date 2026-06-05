@@ -15,12 +15,11 @@ export function formatCount(n: number, suffix = "+"): string {
 }
 
 /**
- * Formats a community stat: number with commas plus an optional suffix.
- * formatStat(1500)        → "1,500"
- * formatStat(12, "+")     → "12+"
+ * Formats a community stat with a leading "+".
+ * formatStat(1500) → "+1,500"
  */
-export function formatStat(value: number, suffix = ""): string {
-  return `${formatNumber(value)}${suffix}`;
+export function formatStat(value: number): string {
+  return `+${formatNumber(value)}`;
 }
 
 /**

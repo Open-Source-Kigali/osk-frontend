@@ -160,7 +160,7 @@ const HomePage = () => {
                   {statsLoading ? (
                     <Skeleton className="h-8 md:h-9 w-16 bg-white/20" />
                   ) : (
-                    <CountUp end={stats?.[stat.key] ?? 0} duration={5} separator="," />
+                    <CountUp prefix="+" end={stats?.[stat.key] ?? 0} duration={5} separator="," />
                   )}
                 </p>
                 <p className="text-sm sm:text-base md:text-lg text-primary-colour font-medium mt-1">
@@ -782,7 +782,7 @@ const HomePage = () => {
                     {statsLoading ? (
                       <Skeleton className="h-3.5 w-8 bg-white/20" />
                     ) : (
-                      formatStat(stats?.[s.key] ?? 0, s.suffix)
+                      formatStat(stats?.[s.key] ?? 0)
                     )}
                   </span>
                   <span className="text-gray-500 text-sm ml-1.5">

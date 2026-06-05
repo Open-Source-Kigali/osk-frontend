@@ -13,10 +13,9 @@ export interface Stats {
 export type StatKey = keyof Stats;
 
 // A stat as displayed on a page: which live value to show, its label, and
-// optional sub-text / suffix. The number itself comes from the API.
+// optional sub-text. The number itself comes from the API.
 export interface StatDisplay {
-  key:     StatKey;
-  label:   string;
-  sub?:    string;
-  suffix?: string;
+  key:   StatKey;
+  label: string;
+  sub?:  string;
 }

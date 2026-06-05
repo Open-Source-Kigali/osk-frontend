@@ -1,9 +1,9 @@
 import type { StatDisplay } from "@/types";
 
 export const COMMUNITY_STATS: StatDisplay[] = [
-  { key: "members",      label: "Members",       sub: "and growing",       suffix: "+" },
+  { key: "members",      label: "Members",       sub: "and growing" },
   { key: "events",       label: "Sessions held", sub: "More to come" },
-  { key: "pullRequests", label: "Pull requests", sub: "merged on GitHub",  suffix: "+" },
+  { key: "pullRequests", label: "Pull requests", sub: "merged on GitHub" },
   { key: "projects",     label: "Live projects", sub: "open to contribute" },
 ];
 

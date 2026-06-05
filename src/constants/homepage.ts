@@ -13,9 +13,9 @@ export const HERO_STATS: StatDisplay[] = [
 
 // ─── About strip
 export const ABOUT_STRIP_STATS: StatDisplay[] = [
-  { key: "contributors", label: "Active Contributors",   suffix: "+" },
+  { key: "contributors", label: "Active Contributors" },
   { key: "projects",     label: "Projects Shipped" },
-  { key: "pullRequests", label: "Pull Requests Merged",  suffix: "+" },
+  { key: "pullRequests", label: "Pull Requests Merged" },
 ];
 
 // ─── Contribution roles
@@ -246,8 +246,8 @@ export const CTA_ACTIVITY: ActivityItem[] = [
 ];
 
 export const CTA_STATS: StatDisplay[] = [
-  { key: "contributors", label: "Contributors",   suffix: "+" },
-  { key: "pullRequests", label: "Pull Requests",  suffix: "+" },
+  { key: "contributors", label: "Contributors" },
+  { key: "pullRequests", label: "Pull Requests" },
   { key: "projects",     label: "Active Projects" },
 ];
 

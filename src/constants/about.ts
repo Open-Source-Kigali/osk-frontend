@@ -10,9 +10,9 @@ import nandineImg from '@/assets/team/Nandin.jpg'
 import type { StatDisplay } from "@/types";
 
 export const ABOUT_STATS: StatDisplay[] = [
-  { key: "contributors", label: "Active Contributors",  suffix: "+" },
+  { key: "contributors", label: "Active Contributors" },
   { key: "projects",     label: "Projects Shipped" },
-  { key: "pullRequests", label: "Pull Requests Merged", suffix: "+" },
+  { key: "pullRequests", label: "Pull Requests Merged" },
 ];
 
 export const STORY_POINTS = [

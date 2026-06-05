@@ -111,7 +111,7 @@ const About = () => {
                 {loading ? (
                   <Skeleton className="h-7 md:h-8 w-14" />
                 ) : (
-                  formatStat(stats?.[s.key] ?? 0, s.suffix)
+                  formatStat(stats?.[s.key] ?? 0)
                 )}
               </span>
               <span className="text-gray-500 text-base uppercase">
