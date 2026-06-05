@@ -1,8 +1,10 @@
-export const COMMUNITY_STATS = [
-  { value: "1500+", label: "Members", sub: "and growing" },
-  { value: "1", label: "Sessions held", sub: "More to come" },
-  { value: "25+", label: "Pull requests", sub: "merged on GitHub" },
-  { value: "4", label: "Live projects", sub: "open to contribute" },
+import type { StatDisplay } from "@/types";
+
+export const COMMUNITY_STATS: StatDisplay[] = [
+  { key: "members",      label: "Members",       sub: "and growing" },
+  { key: "events",       label: "Sessions held", sub: "More to come" },
+  { key: "pullRequests", label: "Pull requests", sub: "merged on GitHub" },
+  { key: "projects",     label: "Live projects", sub: "open to contribute" },
 ];
 
 export const CHANNELS = [

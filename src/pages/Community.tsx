@@ -1,5 +1,8 @@
 import {Github,MessageCircle,Linkedin,Twitter,ArrowUpRight,Shield} from "lucide-react";
 import { COMMUNITY_STATS, GUIDELINES, SOCIAL_PLATFORMS } from "@/constants";
+import { useStats } from "@/hooks";
+import { formatStat } from "@/lib/formatters";
+import { Skeleton } from "@/components/UI";
 import EyebrowLabel from "@/components/UI/EyebrowLable";
 import PrimaryButton from "@/components/UI/PrimaryButton";
 import { ScrollAnimatedItem } from "@/components/UI/ScrollAnimatedItem";
@@ -17,7 +20,10 @@ const SOCIAL_ICONS: Record<string, React.ReactNode> = {
 // ─── Sub-components
 
 // ─── Page
-const Community = () => (
+const Community = () => {
+  const { stats, loading } = useStats();
+
+  return (
   <>
     {/* HERO */}
     <section className="pt-32 pb-20 px-6 md:px-20 bg-[#FFFBF7] relative overflow-hidden">
@@ -71,7 +77,11 @@ const Community = () => (
                 className="bg-white rounded-2xl border border-gray-100 p-5 shadow-sm"
               >
                 <p className="text-3xl font-black text-gray-900 leading-none mb-1">
-                  {s.value}
+                  {loading ? (
+                    <Skeleton className="h-7 w-16" />
+                  ) : (
+                    formatStat(stats?.[s.key] ?? 0)
+                  )}
                 </p>
                 <p className="text-gray-800 text-sm font-semibold">{s.label}</p>
                 <p className="text-gray-400 text-xs mt-0.5">{s.sub}</p>
@@ -263,6 +273,7 @@ const Community = () => (
       </div>
     </section>
   </>
-);
+  );
+};
 
 export default Community;
