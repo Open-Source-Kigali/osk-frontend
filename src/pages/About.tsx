@@ -2,6 +2,7 @@ import { FaXTwitter, FaLinkedinIn, FaInstagram, FaFacebookF,FaGithub, FaFigma,} 
 import { ABOUT_STATS, STORY_POINTS, VALUES, ABOUT_TEAM } from "@/constants";
 import { useStats } from "@/hooks";
 import { formatStat } from "@/lib/formatters";
+import { Skeleton } from "@/components/UI";
 import image13 from "@/assets/images/open13.jpg";
 import image4 from "@/assets/images/open4.jpg";
 import EyebrowLabel from "@/components/UI/EyebrowLable";
@@ -32,7 +33,7 @@ const Dot = ({ color, size, style }: DotProps) => (
 
 //Page
 const About = () => {
-  const { stats } = useStats();
+  const { stats, loading } = useStats();
 
   return (
   <div className="font-sans">
@@ -107,7 +108,11 @@ const About = () => {
           {ABOUT_STATS.map((s) => (
             <div key={s.label} className="flex items-center gap-3 text-center">
               <span className="font-black text-primary-colour text-3xl md:text-4xl">
-                {formatStat(stats?.[s.key] ?? 0, s.suffix)}
+                {loading ? (
+                  <Skeleton className="h-7 md:h-8 w-14" />
+                ) : (
+                  formatStat(stats?.[s.key] ?? 0, s.suffix)
+                )}
               </span>
               <span className="text-gray-500 text-base uppercase">
                 {s.label}

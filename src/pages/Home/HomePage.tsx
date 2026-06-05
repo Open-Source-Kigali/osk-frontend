@@ -8,7 +8,7 @@ import { formatStat } from "@/lib/formatters";
 import { HERO_STATS, EXPLORE_LINKS, TESTIMONIALS, CTA_ACTIVITY, CTA_STATS, FAQ_ITEMS} from "@/constants";
 import type { HomeEventType, ActivityIconKey } from "@/constants";
 import PartnersMarquee from "@/components/UI/PartnersMarquee";
-import { Loader } from "@/components/UI";
+import { Loader, Skeleton } from "@/components/UI";
 import { ScrollAnimatedItem } from "@/components/UI/ScrollAnimatedItem";
 import HeroSlideshow from '@/pages/Home/components/HeroSlideshow';
 import heroImages from '@/pages/Home/data/heroImages';
@@ -92,7 +92,7 @@ const HomePage = () => {
 
   // Events for homepage (upcoming, capped at 4)
   const { events, loading: eventsLoading, error: eventsError } = useEvents();
-  const { stats } = useStats();
+  const { stats, loading: statsLoading } = useStats();
   const homeEvents = events
     .filter((e) => e.status !== "past")
     .slice(0, 4)
@@ -157,7 +157,11 @@ const HomePage = () => {
                 } text-center md:text-left`}
               >
                 <p className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">
-                  <CountUp end={stats?.[stat.key] ?? 0} duration={5} separator="," />
+                  {statsLoading ? (
+                    <Skeleton className="h-8 md:h-9 w-16 bg-white/20" />
+                  ) : (
+                    <CountUp end={stats?.[stat.key] ?? 0} duration={5} separator="," />
+                  )}
                 </p>
                 <p className="text-sm sm:text-base md:text-lg text-primary-colour font-medium mt-1">
                   {stat.label}
@@ -775,7 +779,11 @@ const HomePage = () => {
                   className="px-4 py-2 rounded-full border border-white/10 bg-white/5"
                 >
                   <span className="text-white font-bold text-sm">
-                    {formatStat(stats?.[s.key] ?? 0, s.suffix)}
+                    {statsLoading ? (
+                      <Skeleton className="h-3.5 w-8 bg-white/20" />
+                    ) : (
+                      formatStat(stats?.[s.key] ?? 0, s.suffix)
+                    )}
                   </span>
                   <span className="text-gray-500 text-sm ml-1.5">
                     {s.label}
