@@ -7,14 +7,14 @@ import type { StatDisplay } from "@/types";
 export const HERO_STATS: StatDisplay[] = [
   { key: "contributors", label: "Contributors" },
   { key: "pullRequests", label: "Pull Requests" },
-  { key: "projects",     label: "Projects" },
-  { key: "members",      label: "Active Members" },
+  { key: "projects", label: "Projects" },
+  { key: "members", label: "Active Members" },
 ];
 
 // ─── About strip
 export const ABOUT_STRIP_STATS: StatDisplay[] = [
   { key: "contributors", label: "Active Contributors" },
-  { key: "projects",     label: "Projects Shipped" },
+  { key: "projects", label: "Projects Shipped" },
   { key: "pullRequests", label: "Pull Requests Merged" },
 ];
 
@@ -62,7 +62,7 @@ export const CONTRIBUTION_SLIDES: ContributionSlide[] = [
 export const EXPLORE_LINKS = [
   {
     label: "Connect with the Community",
-    to: "https://docs.google.com/forms/d/e/1FAIpQLSfP6ysp6y_SNcuHb1x9v-nMxfXR7-kcyBogN2ZMF--2byOzyg/viewform",
+    to: "https://discord.gg/QGVbfcezsf",
     variant: "primary" as const,
   },
   {
@@ -248,7 +248,7 @@ export const CTA_ACTIVITY: ActivityItem[] = [
 export const CTA_STATS: StatDisplay[] = [
   { key: "contributors", label: "Contributors" },
   { key: "pullRequests", label: "Pull Requests" },
-  { key: "projects",     label: "Active Projects" },
+  { key: "projects", label: "Active Projects" },
 ];
 
 // ─── FAQ
