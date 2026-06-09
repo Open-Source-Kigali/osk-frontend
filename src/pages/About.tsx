@@ -83,7 +83,7 @@ const About = () => {
         {/* CTAs */}
         <div className="flex flex-wrap gap-4 md:gap-6 justify-center mt-6 mb-14">
           <PrimaryButton
-            to={primaryCTALink.primaryCTA}
+            to={primaryCTALink.social.discord}
             className="w-full md:w-auto"
           >
             Join the Community
@@ -408,7 +408,7 @@ const About = () => {
           </h2>
         </div>
         <div className="flex flex-col sm:flex-row gap-4 shrink-0">
-          <PrimaryButton to={primaryCTALink.primaryCTA}>
+          <PrimaryButton to={primaryCTALink.social.discord} className="w-full sm:w-auto">
             Join the Community
           </PrimaryButton>
           <SecondaryButton to="/projects">Browse Projects</SecondaryButton>

@@ -6,7 +6,7 @@ import { Skeleton } from "@/components/UI";
 import EyebrowLabel from "@/components/UI/EyebrowLable";
 import PrimaryButton from "@/components/UI/PrimaryButton";
 import { ScrollAnimatedItem } from "@/components/UI/ScrollAnimatedItem";
-import { BsWhatsapp } from "react-icons/bs";
+import { FaDiscord } from "react-icons/fa6";
 import primaryCTALink from '@/config/links'
 
 
@@ -117,7 +117,7 @@ const Community = () => {
             already building — come meet them.
           </p>
           <PrimaryButton
-            to={primaryCTALink.primaryCTA}
+            to={primaryCTALink.social.discord}
             className=""
           >
             Join the Community Now <ArrowUpRight size={14} />
@@ -239,18 +239,18 @@ const Community = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 max-w-2xl mx-auto">
           <a
-            href="https://chat.whatsapp.com/GimdjJcYLyyG62zpgsI0zB"
+            href={primaryCTALink.social.discord}
             target="_blank"
             rel="noopener noreferrer"
             className="group flex flex-col items-start p-7 bg-[#25D366] hover:bg-blue-400 rounded-2xl text-white transition-colors duration-200"
           >
-            <BsWhatsapp size={28} className="mb-4" />
-            <p className="font-black text-xl mb-1">Join WhatsApp</p>
+            <FaDiscord size={28} className="mb-4" />
+            <p className="font-black text-xl mb-1">Join Discord</p>
             <p className="text-blue-100 text-sm mb-6 leading-snug">
              Where learning and community come together.
             </p>
             <span className="mt-auto inline-flex items-center gap-1.5 text-sm font-semibold group-hover:gap-2.5 transition-all">
-              Open WhatsApp <ArrowUpRight size={14} />
+              Open Discord <ArrowUpRight size={14} />
             </span>
           </a>
 
