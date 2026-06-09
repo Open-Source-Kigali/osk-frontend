@@ -1,5 +1,5 @@
 const links = {
-  primaryCTA: "https://discord.gg/QGVbfcezsf",
+  primaryCTA: "https://github.com/Open-Source-Kigali",
 };
 
 export default links;
