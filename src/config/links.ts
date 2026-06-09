@@ -1,6 +1,5 @@
 const links = {
-  primaryCTA: 'https://forms.gle/bBGgiNmKEx1xTVJRA', 
-
+  primaryCTA: "https://discord.gg/QGVbfcezsf",
 };
 
 export default links;
