@@ -1,6 +1,5 @@
 const links = {
-  primaryCTA: 'https://forms.gle/bBGgiNmKEx1xTVJRA', 
-
+  primaryCTA: "https://github.com/Open-Source-Kigali",
 };
 
 export default links;
