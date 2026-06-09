@@ -15,7 +15,6 @@ import heroImages from '@/pages/Home/data/heroImages';
 import primaryCTALink from '@/config/links'
 
 // ── Assets
-
 import image2 from "@/assets/images/open2.jpg";
 import image12 from '@/assets/images/open12.jpg';
 import coachImg from "@/assets/images/People.jpeg";
@@ -138,7 +137,7 @@ const HomePage = () => {
           </p>
 
           <div className="flex flex-wrap gap-4 md:gap-6 justify-center md:justify-start mt-16">
-            <PrimaryButton to={primaryCTALink.primaryCTA}>
+            <PrimaryButton to={primaryCTALink.social.discord}>
               Join the community
             </PrimaryButton>
             <SecondaryButton to="/about">Know More About Us</SecondaryButton>
@@ -706,7 +705,7 @@ const HomePage = () => {
             </div>
 
             <a
-              href="https://chat.whatsapp.com/GimdjJcYLyyG62zpgsI0zB"
+              href={primaryCTALink.social.discord}
               target="_blank"
               rel="noopener noreferrer"
               className="shrink-0 px-5 py-2.5 bg-primary-colour text-white text-sm font-medium rounded-full hover:opacity-90 transition-colors duration-200"
@@ -761,7 +760,7 @@ const HomePage = () => {
             </p>
 
             <div className="flex flex-wrap gap-4 mb-12">
-              <PrimaryButton to={primaryCTALink.primaryCTA}>
+              <PrimaryButton to={primaryCTALink.social.discord} className="group">
                 Join the Community
                 <ArrowRight
                   size={16}

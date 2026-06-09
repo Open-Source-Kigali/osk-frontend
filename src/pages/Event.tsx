@@ -5,6 +5,7 @@ import { useFilter, useEvents } from "@/hooks";
 import { AttendeeBar, Badge , SectionLabel, Loader} from "@/components/UI";
 import type {OSKEvent,EventType,} from "@/types";
 import EyebrowLabel from "@/components/UI/EyebrowLable";
+import socialLink from "@/config/links"
 
 
 
@@ -647,7 +648,7 @@ const Event = () => {
           </div>
           <div className="flex gap-3 shrink-0">
             <a
-              href="https://discord.com/invite/3dTFZSn6Tq"
+              href={socialLink.social.discord}
               target="_blank"
               rel="noopener noreferrer"
               className="px-5 py-2.5 rounded-full text-white text-sm font-bold transition-colors"

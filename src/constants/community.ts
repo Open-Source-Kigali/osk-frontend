@@ -1,4 +1,5 @@
 import type { StatDisplay } from "@/types";
+import socialLink from "@/config/links"
 
 export const COMMUNITY_STATS: StatDisplay[] = [
   { key: "members",      label: "Members",       sub: "and growing" },
@@ -86,7 +87,7 @@ export const SOCIAL_PLATFORMS = [
     handle: "OSK Community",
     desc: "Main hub for daily chat, sessions, and support",
     color: "bg-indigo-500",
-    link: "https://discord.com/invite/3dTFZSn6Tq",
+    link: socialLink.social.discord,
     cta: "Join Server",
     iconKey: "discord",
   },
