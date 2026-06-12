@@ -6,12 +6,12 @@ import jeanImg from "@/assets/team/Jean Pual.jpg";
 import kingImg from "@/assets/team/Kinf.jpg";
 import zaraImg from "@/assets/team/Zara.jpg";
 import felixImg from "@/assets/team/Felix.jpg";
-import nandineImg from '@/assets/team/Nandin.jpg'
+import nandineImg from "@/assets/team/Nandin.jpg";
 import type { StatDisplay } from "@/types";
 
 export const ABOUT_STATS: StatDisplay[] = [
   { key: "contributors", label: "Active Contributors" },
-  { key: "projects",     label: "Projects Shipped" },
+  { key: "projects", label: "Projects Shipped" },
   { key: "pullRequests", label: "Pull Requests Merged" },
 ];
 
@@ -148,17 +148,17 @@ export const ABOUT_TEAM = [
     },
   },
   {
-    name: "Innocencia Ndembera",
-    role: "Tech Team",
+    // name: "Innocencia Ndembera",
+    // role: "Tech Team",
     initials: "PL",
     bg: "bg-cyan-500",
-    avatar: innocenciaImg,
+    // avatar: innocenciaImg,
     featured: false,
     objectPosition: "50% 30%",
     links: {
-      linkedin: "https://www.linkedin.com/in/innocenciandembera",
+      // linkedin: "https://www.linkedin.com/in/innocenciandembera",
       github: null,
-      twitter: "https://x.com/queen_shecoder",
+      // twitter: "https://x.com/queen_shecoder",
       instagram: null,
       facebook: null,
       figma: null,
