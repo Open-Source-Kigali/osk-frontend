@@ -5,7 +5,6 @@ import {  CTA_ACTIVITY, CTA_STATS} from "@/constants";
 import primaryCTALink from '@/config/links'
 import { Skeleton } from "@/components/UI";
 import PrimaryButton from "@/components/UI/PrimaryButton";
-import SecondaryButton from "@/components/UI/SecondaryButton";
 import {   useStats } from "@/hooks";
 import type { ActivityIconKey } from "@/constants";
 
@@ -74,7 +73,14 @@ const CTA = () => {
                   className="group-hover:translate-x-0.5 transition-transform"
                 />
               </PrimaryButton>
-              <SecondaryButton to="">View Open Issues</SecondaryButton>
+              
+              <a href="https://github.com/Open-Source-Kigali/osk-frontend/issues"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 text-sm sm:text-base px-5 py-2.5 md:px-7 md:py-3 bg-transparent hover:bg-primary-colour text-blue-500 hover:text-white border border-blue-500 hover:scale-[1.05] hover:shadow-lg font-semibold rounded-full transition"
+              >
+                View Open Issues
+              </a>
             </div>
 
             {/* Stat pills — from CTA_STATS constant */}
