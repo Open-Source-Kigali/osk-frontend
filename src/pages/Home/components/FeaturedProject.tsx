@@ -1,7 +1,7 @@
 import { NavLink } from "react-router";
 import EyebrowLabel from "@/components/UI/EyebrowLabel";
 import {  useProjects } from "@/hooks";
-import youthImg from "@/assets/images/Youth meetup.jpg";
+import youthImg from "@/assets/images/youth-meetup.jpg";
 import PrimaryButton from "@/components/UI/PrimaryButton";
 import SecondaryButton from "@/components/UI/SecondaryButton";
 import { ScrollAnimatedItem } from "@/components/UI/ScrollAnimatedItem";

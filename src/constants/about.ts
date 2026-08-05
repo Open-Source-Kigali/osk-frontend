@@ -2,7 +2,7 @@ import nickImg from "@/assets/team/Nick.jpg";
 import didasImg from "@/assets/team/Didas.jpg";
 import debbieImg from "@/assets/team/debbie.jpg";
 import innocenciaImg from "@/assets/team/innocencia.jpg";
-import jeanImg from "@/assets/team/Jean Pual.jpg";
+import jeanImg from "@/assets/team/jean-paul.jpg";
 import kingImg from "@/assets/team/Kinf.jpg";
 import zaraImg from "@/assets/team/Zara.jpg";
 import felixImg from "@/assets/team/Felix.jpg";
