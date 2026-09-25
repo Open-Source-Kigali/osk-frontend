@@ -36,7 +36,13 @@ const PartnersMarquee = ({ showSecondary = true }: Props) => {
           </div>
 
           <div className="flex flex-wrap items-center gap-3 shrink-0">
-            <PrimaryButton to="/partnersform">Become a partner</PrimaryButton>
+          <PrimaryButton
+            to="https://mail.google.com/mail/u/0/?to=opensourcekigali@gmail.com&su=Partnership+Enquiry&fs=1&tf=cm"
+            popup={true}
+            className="w-full sm:w-auto"
+          >
+            Become a Partner
+          </PrimaryButton>
 
             {showSecondary && (
               <SecondaryButton to="">Learn more</SecondaryButton>
