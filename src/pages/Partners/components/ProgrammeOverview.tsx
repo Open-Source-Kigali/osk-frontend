@@ -27,7 +27,11 @@ const ProgrammeOverview = () => {
             <strong className="text-gray-900">{PARTNERS.length} organisations</strong>{" "}
             across Rwanda and we're actively looking for more.
           </p>
-          <PrimaryButton to="#become" className="md:w-1/2">
+          <PrimaryButton
+            to="https://mail.google.com/mail/u/0/?to=opensourcekigali@gmail.com&su=Partnership+Enquiry&fs=1&tf=cm"
+            popup={true}
+            className="w-full sm:w-auto"
+          >
             Partner with Us
           </PrimaryButton>
         </div>

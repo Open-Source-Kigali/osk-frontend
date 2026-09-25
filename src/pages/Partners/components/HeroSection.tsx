@@ -30,11 +30,15 @@ const HeroSection = () => {
           hubs to grow Rwanda's open-source ecosystem and build software that matters.
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-          <PrimaryButton to="#become">
+          <PrimaryButton
+            to="https://mail.google.com/mail/u/0/?to=opensourcekigali@gmail.com&su=Partnership+Enquiry&fs=1&tf=cm"
+            popup={true}
+            className="w-full sm:w-auto"
+          >
             Become a Partner
           </PrimaryButton>
-          
         </div>
+
       </div>
     </section>
   )
