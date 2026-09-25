@@ -13,7 +13,10 @@ import BottomCTA from './components/BottomCTA';
 const Partners = () => (
   <div className="bg-white">
     <HeroSection/>
-    <PartnerMarquee showSecondary={false} />
+    <PartnerMarquee
+      showSecondary={false}
+      ctaTo="mailto:opensourcekigali@gmail.com"
+    />
     <ProgrammeOverview/>
     <Banner />
     <Benefit/>

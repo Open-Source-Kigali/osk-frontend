@@ -30,7 +30,7 @@ const HeroSection = () => {
           hubs to grow Rwanda's open-source ecosystem and build software that matters.
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-          <PrimaryButton to="#become">
+          <PrimaryButton to="mailto:opensourcekigali@gmail.com">
             Become a Partner
           </PrimaryButton>
           
