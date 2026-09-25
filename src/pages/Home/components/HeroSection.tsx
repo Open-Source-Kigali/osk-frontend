@@ -17,7 +17,7 @@ const HeroSection = () => {
             <HeroSlideshow images={heroImages} />
 
 
-            <div className="z-10 h-full pt-28 md:pt-34 px-4 md:px-25 space-y-8">
+            <div className="z-10 h-full pt-28 md:pt-34 px-4 md:px-20 space-y-8">
                 <h1 className="text-3xl text-center sm:text-start sm:text-3xl md:text-4xl lg:text-6xl leading-snug text-white font-bold max-w-3xl">
                     Empowering Rwanda <br className="sm:hidden " />
                     to Build the{" "}
@@ -45,8 +45,8 @@ const HeroSection = () => {
                             key={stat.label}
                             delay={index * 0.15}
                             className={`flex-1 min-w-20 py-4 ${index !== HERO_STATS.length - 1
-                                    ? "md:border-r border-gray-300"
-                                    : ""
+                                ? "md:border-r border-gray-300"
+                                : ""
                                 } text-center md:text-left`}
                         >
                             <p className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">
