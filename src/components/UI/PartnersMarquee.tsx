@@ -10,9 +10,13 @@ const track = [...MARQUEE_PARTNERS, ...MARQUEE_PARTNERS, ...MARQUEE_PARTNERS];
 
 type Props = {
   showSecondary?: boolean;
+  ctaTo?: string;
 };
 
-const PartnersMarquee = ({ showSecondary = true }: Props) => {
+const PartnersMarquee = ({
+  showSecondary = true,
+  ctaTo = "/partnersform",
+}: Props) => {
   return (
     <section
       className="py-16 overflow-hidden"
@@ -36,7 +40,7 @@ const PartnersMarquee = ({ showSecondary = true }: Props) => {
           </div>
 
           <div className="flex flex-wrap items-center gap-3 shrink-0">
-            <PrimaryButton to="/partnersform">Become a partner</PrimaryButton>
+            <PrimaryButton to={ctaTo}>Become a partner</PrimaryButton>
 
             {showSecondary && (
               <SecondaryButton to="">Learn more</SecondaryButton>
