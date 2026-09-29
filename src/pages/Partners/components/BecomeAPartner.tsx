@@ -1,4 +1,5 @@
 import { PARTNERS } from "@/constants";
+import links from "@/config/links";
 import EyebrowLabel from "@/components/UI/EyebrowLabel";
 import { NavLink } from "react-router";
 import {  ArrowUpRight, Users, Globe,  Mail} from "lucide-react";
@@ -26,7 +27,7 @@ const BecomeAPartner = () => {
 
           <div className="space-y-4">
             <a
-              href="mailto:opensourcekigali@gmail.com"
+              href={links.partnerCTA}
               className="flex items-center gap-4 p-5 rounded-2xl border-2 border-blue-200 bg-blue-50 hover:border-blue-400 hover:shadow-md transition-all group"
             >
               <div className="w-12 h-12 rounded-xl bg-blue-500 flex items-center justify-center shrink-0">
@@ -35,7 +36,7 @@ const BecomeAPartner = () => {
               <div className="flex-1">
                 <p className="font-black text-gray-900 text-base">Email us directly</p>
                 <p className="text-gray-500 text-sm font-mono mt-0.5">
-                  opensourcekigali@gmail.com
+                  {links.partnerEmail}
                 </p>
               </div>
               <ArrowUpRight size={16} className="text-blue-400 group-hover:text-blue-600 transition-colors" />

@@ -6,6 +6,7 @@ import Benefit from "./components/Benefit";
 import Process from "./components/Process";
 import BecomeAPartner from "./components/BecomeAPartner";
 import BottomCTA from './components/BottomCTA';
+import links from '@/config/links';
 
 
 // ─── Page 
@@ -15,7 +16,7 @@ const Partners = () => (
     <HeroSection/>
     <PartnerMarquee
       showSecondary={false}
-      ctaTo="mailto:opensourcekigali@gmail.com"
+      ctaTo={links.partnerCTA}
     />
     <ProgrammeOverview/>
     <Banner />

@@ -1,5 +1,6 @@
 import PrimaryButton from "@/components/UI/PrimaryButton";
 import EyebrowLabel from "@/components/UI/EyebrowLabel";
+import links from "@/config/links";
 
 
 
@@ -30,7 +31,7 @@ const HeroSection = () => {
           hubs to grow Rwanda's open-source ecosystem and build software that matters.
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-          <PrimaryButton to="mailto:opensourcekigali@gmail.com">
+          <PrimaryButton to={links.partnerCTA}>
             Become a Partner
           </PrimaryButton>
           
