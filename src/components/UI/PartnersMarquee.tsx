@@ -43,7 +43,7 @@ const PartnersMarquee = ({
             <PrimaryButton to={ctaTo}>Become a partner</PrimaryButton>
 
             {showSecondary && (
-              <SecondaryButton to="">Learn more</SecondaryButton>
+              <SecondaryButton to="/partners">Learn more</SecondaryButton>
             )}
           </div>
         </div>
