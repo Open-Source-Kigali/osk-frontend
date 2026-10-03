@@ -3,12 +3,15 @@ import Hero from "@/components/projects/Hero";
 import ProjectsList from "@/components/projects/ProjectsList";
 import ProposeAProject from "@/components/projects/ProposeAProject";
 import LoadingSpinner from "@/components/UI/LoadingSpinner";
-import { useFilter, useProjects } from "@/hooks";
+import { useFilter, useProjects, useGoodFirstIssues } from "@/hooks";
 import type { ProjectCategory, Projects, ProjectStatus } from "@/types";
+import SEO from "@/components/SEO";
+import { PAGE_SEO } from "@/config/seo";
 
 // ─── Page
 const Project = () => {
   const { projects, loading, error } = useProjects();
+  const goodFirstIssues = useGoodFirstIssues();
 
   // ── Filter hook — replaces all the inline useState filter logic
   const {
@@ -42,11 +45,17 @@ const Project = () => {
   );
   //handle loading status
   if (loading) {
-    return <LoadingSpinner page="projects" />;
+    return (
+      <>
+        <SEO {...PAGE_SEO.projects} />
+        <LoadingSpinner page="projects" />
+      </>
+    );
   }
 
   return (
     <>
+      <SEO {...PAGE_SEO.projects} />
       {/* ── Hero */}
       <Hero
         totalProjects={projects.length}
@@ -69,7 +78,7 @@ const Project = () => {
       />
 
       {/* ── Good first issues */}
-      <GoodFirstIssues />
+      <GoodFirstIssues {...goodFirstIssues} />
 
       {/* ── Propose a project */}
       <ProposeAProject />
