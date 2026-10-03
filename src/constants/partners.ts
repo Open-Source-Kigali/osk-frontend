@@ -2,12 +2,12 @@ import type { Partner } from "@/types";
 
 // Partner logos — copy your uploaded images to src/assets/partners/
 
-import digitalTransform from "@/assets/partners/DTCR.png";
-import giz from "@/assets/partners/GIZ.png";
-import millionCoders from "@/assets/partners/RC.png";
-import rwandaGovt from "@/assets/partners/MINICT.png";
-import klab from "@/assets/partners/KLab.png";
-import wikiSuite from "@/assets/partners/WikiSuite.png";
+import digitalTransform from "@/assets/partners/DTCR.webp";
+import giz from "@/assets/partners/GIZ.webp";
+import millionCoders from "@/assets/partners/RC.webp";
+import rwandaGovt from "@/assets/partners/MINICT.webp";
+import klab from "@/assets/partners/KLab.webp";
+import wikiSuite from "@/assets/partners/WikiSuite.webp";
 
 export const PARTNERS: Partner[] = [
   {

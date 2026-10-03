@@ -1,6 +1,6 @@
 import { useState } from "react";
 import {FAQ_ITEMS} from "@/constants";
-import coachImg from "@/assets/images/People.jpeg";
+import coachImg from "@/assets/images/people-avatar.webp";
 import { Plus, Minus} from "lucide-react";
 import primaryCTALink from '@/config/links'
 
