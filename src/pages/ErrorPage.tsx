@@ -1,5 +1,5 @@
-import { useEffect } from "react";
 import { useRouteError, isRouteErrorResponse, NavLink } from "react-router";
+import SEO from "@/components/SEO";
 
 const ErrorPage = () => {
   const error = useRouteError();
@@ -9,7 +9,7 @@ const ErrorPage = () => {
 
   if (isRouteErrorResponse(error)) {
     if (error.status === 404) {
-      title = "Page not found";
+      title = "Page Not Found";
       message = "The page you're looking for doesn't exist or has been moved.";
     } else {
       title = `${error.status} ${error.statusText}`;
@@ -18,11 +18,14 @@ const ErrorPage = () => {
   } else if (error instanceof Error) {
     message = error.message;
   }
-  useEffect(() => {
-    document.title = "Page Not Found | Open Source Kigali";
-  }, []);
+
   return (
     <main className="min-h-[70vh] flex items-center justify-center px-6">
+      <SEO
+        title={title}
+        description={message}
+        noindex
+      />
       <div className="text-center max-w-md">
         <h1 className="text-4xl md:text-5xl font-bold text-text-heading mb-4">
           {title}
