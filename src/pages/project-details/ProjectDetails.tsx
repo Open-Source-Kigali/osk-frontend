@@ -13,7 +13,7 @@ import {
 	Users,
 } from "lucide-react";
 
-import { useProjects } from "@/hooks";
+import { useGoodFirstIssues, useProjects } from "@/hooks";
 import type { ProjectStatus, Projects } from "@/types";
 
 import { Card, Loader } from "@/components/UI";
@@ -83,6 +83,7 @@ const TechPill = ({ tech }: { tech: string }) => (
 const ProjectDetails = () => {
 	const { slug } = useParams(); // route param is the project slug
 	const { projects, loading, error } = useProjects();
+	const goodFirstIssues = useGoodFirstIssues();
 	console.log(slug);
 
 	const project: Projects | undefined = useMemo(() => {
@@ -253,7 +254,7 @@ const ProjectDetails = () => {
 			</section>
 
 			{/* Keep the app flow consistent with /projects */}
-			<GoodFirstIssues />
+			<GoodFirstIssues {...goodFirstIssues} />
 			<ProposeAProject />
 		</>
 	);
