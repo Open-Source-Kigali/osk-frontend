@@ -1,5 +1,6 @@
 
-import image2 from "@/assets/images/open2.jpg";
+import image2 from "@/assets/images/open2.webp";
+import image2Small from "@/assets/images/open2-640.webp";
 import { ScrollAnimatedItem } from "@/components/UI/ScrollAnimatedItem";
 import EyebrowLabel from "@/components/UI/EyebrowLabel";
 import SecondaryButton from "@/components/UI/SecondaryButton";
@@ -25,6 +26,9 @@ const About = () => {
           <div className="w-full md:w-1/2">
             <img
               src={image2}
+              srcSet={`${image2Small} 640w, ${image2} 1600w`}
+              sizes="(min-width: 768px) 50vw, 100vw"
+              loading="lazy"
               alt="Team collaboration"
               className="w-full rounded-lg object-cover"
             />
