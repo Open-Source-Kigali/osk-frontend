@@ -8,3 +8,4 @@ export { useProjects } from "./useProjects";
 export { useEvents } from "./useEvents";
 export { useStats } from "./useStats";
 export { useScrollAnimation } from "./useScrollAnimation";
+export { useGoodFirstIssues } from "./useGoodFirstIssues";
