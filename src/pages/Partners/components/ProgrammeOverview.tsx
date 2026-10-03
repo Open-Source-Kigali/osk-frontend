@@ -3,6 +3,7 @@ import { Building2, GraduationCap, Landmark, Heart } from "lucide-react";
 import EyebrowLabel from "@/components/UI/EyebrowLabel";
 import PrimaryButton from "@/components/UI/PrimaryButton";
 import { PARTNERS} from "@/constants";
+import links from "@/config/links";
 
 
 
@@ -27,7 +28,7 @@ const ProgrammeOverview = () => {
             <strong className="text-gray-900">{PARTNERS.length} organisations</strong>{" "}
             across Rwanda and we're actively looking for more.
           </p>
-          <PrimaryButton to="#become" className="md:w-1/2">
+          <PrimaryButton to={links.partnerCTA} className="md:w-1/2">
             Partner with Us
           </PrimaryButton>
         </div>
