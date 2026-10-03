@@ -33,6 +33,7 @@ const router = createBrowserRouter([
 			{ path: "/about", Component: About },
 			{ path: "/community", Component: Community },
 			{ path: "/event", Component: Event },
+			{ path: "/events", Component: Event },
 			// {path:'/resources', Component: Resources},
 			{ path: "/projects", Component: Project },
 			{ path: "/projects/:slug", Component: ProjectDetails },
