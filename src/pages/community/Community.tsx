@@ -5,12 +5,12 @@ import BottomCTA from "./components/BottomCTA";
 
 const Community = () => {
   return (
-  <>
-    <HeroSection />
-    <Channels/>
-    <CommunityGuidelines/>
-    <BottomCTA/>
-  </>
+    <>
+      <HeroSection />
+      <Channels />
+      <CommunityGuidelines />
+      <BottomCTA />
+    </>
   );
 };
 
