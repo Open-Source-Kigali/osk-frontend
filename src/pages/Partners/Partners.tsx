@@ -6,6 +6,7 @@ import Benefit from "./components/Benefit";
 import Process from "./components/Process";
 import BecomeAPartner from "./components/BecomeAPartner";
 import BottomCTA from './components/BottomCTA';
+import links from '@/config/links';
 
 
 // ─── Page 
@@ -13,7 +14,10 @@ import BottomCTA from './components/BottomCTA';
 const Partners = () => (
   <div className="bg-white">
     <HeroSection/>
-    <PartnerMarquee showSecondary={false} />
+    <PartnerMarquee
+      showSecondary={false}
+      ctaTo={links.partnerCTA}
+    />
     <ProgrammeOverview/>
     <Banner />
     <Benefit/>
