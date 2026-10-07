@@ -3,7 +3,7 @@ import whiteLogo from "@/assets/Logo/OSK-primary-logo-1200-400-white.svg";
 import { Mail } from "lucide-react";
 import { FiGithub, FiTwitter, FiLinkedin } from "react-icons/fi";
 import { FaWhatsapp } from "react-icons/fa";
-import socialLink from "@/config/links"
+import socialLink from "@/config/links";
 interface FooterLinkGroup {
   heading: string;
   links: { label: string; to: string; external?: boolean }[];
@@ -30,7 +30,7 @@ const linkGroups: FooterLinkGroup[] = [
     heading: "Resources",
     links: [
       { label: "Blog", to: "/blog" },
-      { label: "Events", to: "/events" },
+      { label: "Events", to: "/event" },
     ],
   },
   {
