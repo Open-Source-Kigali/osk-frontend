@@ -29,7 +29,7 @@ const linkGroups: FooterLinkGroup[] = [
   {
     heading: "Resources",
     links: [
-      { label: "Blog", to: "/blog" },
+      // { label: "Blog", to: "/blog" },
       { label: "Events", to: "/event" },
     ],
   },
