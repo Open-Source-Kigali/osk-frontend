@@ -24,6 +24,8 @@ import type { OSKEvent, EventType } from "@/types";
 import EyebrowLabel from "@/components/UI/EyebrowLabel";
 import socialLink from "@/config/links";
 import LoadingSpinner from "@/components/UI/LoadingSpinner";
+import SEO from "@/components/SEO";
+import { PAGE_SEO } from "@/config/seo";
 
 // ─── Meta maps
 
@@ -589,19 +591,28 @@ const Event = () => {
   const upcomingCount = events.filter((e) => e.status !== "past").length;
 
   if (loading) {
-    return <LoadingSpinner page="events" />;
+    return (
+      <>
+        <SEO {...PAGE_SEO.events} />
+        <LoadingSpinner page="events" />
+      </>
+    );
   }
 
   if (error) {
     return (
-      <div className="min-h-[60vh] flex items-center justify-center text-red-500">
-        Failed to load events: {error}
-      </div>
+      <>
+        <SEO {...PAGE_SEO.events} />
+        <div className="min-h-[60vh] flex items-center justify-center text-red-500">
+          Failed to load events: {error}
+        </div>
+      </>
     );
   }
 
   return (
     <>
+      <SEO {...PAGE_SEO.events} />
       {/* ── Hero */}
       <section
         className="pt-32 pb-16 px-6 md:px-20 relative overflow-hidden"
