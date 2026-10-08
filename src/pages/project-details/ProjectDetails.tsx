@@ -19,6 +19,7 @@ import type { ProjectStatus, Projects } from "@/types";
 import { Card, Loader } from "@/components/UI";
 import GoodFirstIssues from "@/components/projects/GoodFirstIssues";
 import ProposeAProject from "@/components/projects/ProposeAProject";
+import SEO from "@/components/SEO";
 
 const STATUS_META: Record<
 	ProjectStatus,
@@ -84,17 +85,51 @@ const ProjectDetails = () => {
 	const { slug } = useParams(); // route param is the project slug
 	const { projects, loading, error } = useProjects();
 	const goodFirstIssues = useGoodFirstIssues();
-	console.log(slug);
 
 	const project: Projects | undefined = useMemo(() => {
 		if (!slug) return undefined;
 		return projects.find((p) => p.slug === slug);
 	}, [slug, projects]);
 
+	const seoProps = useMemo(() => {
+		if (loading) {
+			return {
+				title: "Loading Project...",
+				description: "Loading project details from Open Source Kigali repositories.",
+			};
+		}
+		if (error || !project) {
+			return {
+				title: "Project Not Found",
+				description: slug
+					? `The project "${slug}" was not found in Open Source Kigali repositories.`
+					: "Project not found.",
+				noindex: true,
+			};
+		}
+		return {
+			title: `${project.title} - Open Source Project`,
+			description:
+				project.description ||
+				project.tagline ||
+				`Learn more about ${project.title} on Open Source Kigali.`,
+			image: project.image,
+			type: "article" as const,
+			keywords: [
+				project.title,
+				project.language,
+				...(project.techStack ?? []),
+				"open source project",
+				"Open Source Kigali",
+			],
+		};
+	}, [loading, error, project, slug]);
+
 	const hasTech = (p: Projects) => (p.techStack?.length ?? 0) > 0;
 
 	return (
 		<>
+			<SEO {...seoProps} />
 			<section className="pt-32 pb-10 px-6 md:px-20 bg-gray-50">
 				<div className="max-w-7xl mx-auto">
 					<Link
