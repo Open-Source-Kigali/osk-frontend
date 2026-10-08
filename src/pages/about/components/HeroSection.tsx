@@ -1,6 +1,7 @@
 import { formatStat } from "@/lib/formatters";
 import { Skeleton } from "@/components/UI";
-import image13 from "@/assets/images/open13.jpg";
+import image13 from "@/assets/images/open13.webp";
+import image13Small from "@/assets/images/open13-640.webp";
 import { ABOUT_STATS } from "@/constants";
 import { useStats } from "@/hooks/useStats";
 import EyebrowLabel from "@/components/UI/EyebrowLabel";
@@ -88,6 +89,8 @@ const HeroSection = () => {
                 <div className="w-full">
                     <img
                         src={image13}
+                        srcSet={`${image13Small} 640w, ${image13} 1350w`}
+                        sizes="(min-width: 1024px) 896px, 100vw"
                         alt="OSK team collaboration"
                         className="w-full rounded-lg object-cover"
                     />
