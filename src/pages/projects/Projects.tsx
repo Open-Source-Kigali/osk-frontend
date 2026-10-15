@@ -3,12 +3,13 @@ import Hero from "@/components/projects/Hero";
 import ProjectsList from "@/components/projects/ProjectsList";
 import ProposeAProject from "@/components/projects/ProposeAProject";
 import LoadingSpinner from "@/components/UI/LoadingSpinner";
-import { useFilter, useProjects } from "@/hooks";
+import { useFilter, useGoodFirstIssues, useProjects } from "@/hooks";
 import type { ProjectCategory, Projects, ProjectStatus } from "@/types";
 
 // ─── Page
 const Project = () => {
   const { projects, loading, error } = useProjects();
+  const goodFirstIssues = useGoodFirstIssues();
 
   // ── Filter hook — replaces all the inline useState filter logic
   const {
@@ -69,7 +70,7 @@ const Project = () => {
       />
 
       {/* ── Good first issues */}
-      <GoodFirstIssues />
+      <GoodFirstIssues {...goodFirstIssues} />
 
       {/* ── Propose a project */}
       <ProposeAProject />
