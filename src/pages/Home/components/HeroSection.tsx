@@ -45,8 +45,8 @@ const HeroSection = () => {
                             key={stat.label}
                             delay={index * 0.15}
                             className={`flex-1 min-w-20 py-4 ${index !== HERO_STATS.length - 1
-                                    ? "md:border-r border-gray-300"
-                                    : ""
+                                ? "md:border-r border-gray-300"
+                                : ""
                                 } text-center md:text-left`}
                         >
                             <p className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">
