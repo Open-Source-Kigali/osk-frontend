@@ -2,6 +2,11 @@ import { useState } from "react";
 import { NavLink } from "react-router";
 import { ArrowRight, AlertCircle, CheckCircle2 } from "lucide-react";
 import { postForm } from "@/lib/api";
+import {
+  IMAGE_UPLOAD_ACCEPT,
+  IMAGE_UPLOAD_HELP_TEXT,
+  validateImageFile,
+} from "@/lib/imageUpload";
 import type { ApiPartner } from "@/types";
 import type { PartnerFormState } from "@/types";
 
@@ -170,6 +175,22 @@ const PartnersForm = () => {
     }
   };
 
+  const handleLogoChange = async (file: File | null) => {
+    if (!file) {
+      set("logoFile", null);
+      return;
+    }
+
+    const result = await validateImageFile(file);
+    if (!result.ok) {
+      set("logoFile", null);
+      setErrors((prev) => ({ ...prev, logoFile: result.message }));
+      return;
+    }
+
+    set("logoFile", file);
+  };
+
   // ── Submit ─────────────────────────────────────────────────────────────────
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -180,6 +201,16 @@ const PartnersForm = () => {
       setErrors(validationErrors);
       window.scrollTo({ top: 200, behavior: "smooth" });
       return;
+    }
+
+    if (values.logoFile) {
+      const imageResult = await validateImageFile(values.logoFile);
+      if (!imageResult.ok) {
+        setErrors((prev) => ({ ...prev, logoFile: imageResult.message }));
+        set("logoFile", null);
+        window.scrollTo({ top: 200, behavior: "smooth" });
+        return;
+      }
     }
 
     setSubmitting(true);
@@ -326,11 +357,15 @@ const PartnersForm = () => {
                       <input
                         id="logo-upload"
                         type="file"
-                        accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp"
+                        accept={IMAGE_UPLOAD_ACCEPT}
                         className="sr-only"
                         onChange={(e) => {
-                          const file = e.target.files?.[0] ?? null;
-                          set("logoFile", file);
+                          const input = e.currentTarget;
+                          const file = input.files?.[0] ?? null;
+                          void handleLogoChange(file).finally(() => {
+                            // Allow selecting the same rejected file again.
+                            input.value = "";
+                          });
                         }}
                       />
 
@@ -385,7 +420,7 @@ const PartnersForm = () => {
                               Click to upload your logo
                             </p>
                             <p className="text-xs text-gray-400">
-                              PNG, JPG, SVG or WebP
+                              {IMAGE_UPLOAD_HELP_TEXT}
                             </p>
                           </>
                         )}
