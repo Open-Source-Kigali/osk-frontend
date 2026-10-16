@@ -1,11 +1,12 @@
+import { clsx, type ClassValue } from "clsx";
+import { twMerge } from "tailwind-merge";
+
 /**
- * Joins class names, filtering out falsy values.
+ * Joins class names, filtering out falsy values and merging Tailwind classes.
  * Usage: cn("base", condition && "extra", "always")
  */
-export function cn(
-  ...classes: (string | boolean | undefined | null)[]
-): string {
-  return classes.filter(Boolean).join(" ");
+export function cn(...classes: ClassValue[]): string {
+  return twMerge(clsx(classes));
 }
 
 /**
