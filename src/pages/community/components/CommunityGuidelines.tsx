@@ -1,9 +1,8 @@
 import EyebrowLabel from "@/components/UI/EyebrowLabel";
 import { ScrollAnimatedItem } from "@/components/UI/ScrollAnimatedItem";
-import {Shield} from "lucide-react";
-import { GUIDELINES} from "@/constants";
-
-
+import { Shield } from "lucide-react";
+import { GUIDELINES } from "@/constants";
+import { Highlight } from "@/components/animate-ui/primitives/effects/highlight";
 
 const CommunityGuidelines = () => {
   return (
@@ -31,24 +30,32 @@ const CommunityGuidelines = () => {
           </div>
         </div>
 
-        {/* Right: rules — from GUIDELINES constant */}
-        <div className="space-y-3">
+        {/* Right: rules — animated hover using animate-ui Highlight */}
+        <Highlight
+          hover
+          mode="parent"
+          className="bg-white/[0.08] border border-white/20 rounded-xl pointer-events-none"
+          containerClassName="space-y-3"
+          transition={{ type: "spring", stiffness: 350, damping: 32 }}
+        >
           {GUIDELINES.map((g, i) => (
             <ScrollAnimatedItem
               key={i}
               delay={i * 0.15}
-              className="flex items-start gap-4 bg-white/5 border border-white/10 rounded-xl px-5 py-4 hover:bg-white/8 transition-colors duration-200"
+              className="group flex items-start gap-4 bg-white/5 border border-white/10 rounded-xl px-5 py-4 transition-colors duration-200 cursor-default"
             >
-              <span className="text-gray-600 font-mono text-sm shrink-0 mt-0.5">
+              <span className="text-gray-500 font-mono text-sm shrink-0 mt-0.5 group-hover:text-blue-400 transition-colors duration-200">
                 {String(i + 1).padStart(2, "0")}
               </span>
-              <p className="text-gray-300 text-sm leading-relaxed">{g.rule}</p>
+              <p className="text-gray-300 text-sm leading-relaxed group-hover:text-white transition-colors duration-200">
+                {g.rule}
+              </p>
             </ScrollAnimatedItem>
           ))}
-        </div>
+        </Highlight>
       </div>
     </section>
-  )
-}
+  );
+};
 
 export default CommunityGuidelines
