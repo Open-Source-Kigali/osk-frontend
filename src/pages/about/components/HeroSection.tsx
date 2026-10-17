@@ -1,5 +1,4 @@
-import { formatStat } from "@/lib/formatters";
-import { Skeleton } from "@/components/UI";
+import { Skeleton, StatNumber } from "@/components/UI";
 import image13 from "@/assets/images/open13.webp";
 import image13Small from "@/assets/images/open13-640.webp";
 import { ABOUT_STATS } from "@/constants";
@@ -100,13 +99,17 @@ const HeroSection = () => {
             {/* Stats strip — data from ABOUT_STATS constant */}
             <div className="border-b border-gray-100 bg-white">
                 <div className="max-w-7xl mx-auto px-6 md:px-20 flex flex-wrap items-center justify-center gap-10 py-4">
-                    {ABOUT_STATS.map((s) => (
+                    {ABOUT_STATS.map((s, index) => (
                         <div key={s.label} className="flex items-center gap-3 text-center">
                             <span className="font-black text-primary-colour text-3xl md:text-4xl">
                                 {loading ? (
                                     <Skeleton className="h-7 md:h-8 w-14" />
                                 ) : (
-                                    formatStat(stats?.[s.key] ?? 0)
+                                    <StatNumber
+                                        prefix="+"
+                                        value={stats?.[s.key] ?? 0}
+                                        delay={index * 150}
+                                    />
                                 )}
                             </span>
                             <span className="text-gray-500 text-base uppercase">

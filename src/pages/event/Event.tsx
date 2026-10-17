@@ -19,7 +19,7 @@ import {
   ChevronLeft,
 } from "lucide-react";
 import { useFilter, useEvents } from "@/hooks";
-import { AttendeeBar, Badge, SectionLabel } from "@/components/UI";
+import { AttendeeBar, Badge, SectionLabel, StatNumber } from "@/components/UI";
 import type { OSKEvent, EventType } from "@/types";
 import EyebrowLabel from "@/components/UI/EyebrowLabel";
 import socialLink from "@/config/links";
@@ -666,7 +666,7 @@ const Event = () => {
                   { n: upcomingCount, label: "Upcoming" },
                   { n: events.length, label: "This year" },
                   { n: "100+", label: "Per event" },
-                ].map((s) => (
+                ].map((s, index) => (
                   <div
                     key={s.label}
                     className="rounded-2xl p-4 text-center border"
@@ -676,7 +676,7 @@ const Event = () => {
                       className="text-xl font-black"
                       style={{ color: "#2b7fff" }}
                     >
-                      {s.n}
+                      <StatNumber value={s.n} delay={index * 120} />
                     </p>
                     <p className="text-xs text-gray-500 mt-0.5">{s.label}</p>
                   </div>
