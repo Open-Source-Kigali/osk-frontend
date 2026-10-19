@@ -26,7 +26,7 @@ export const FOOTER_LINKS: Record<string, NavLink[]> = {
   Resources: [
     // { name: "Tutorials", path: "/resources?type=tutorial" },
     // { name: "Blog", path: "/resources?type=article" },
-    { name: "Events", path: "/events" },
+    { name: "Events", path: "/event" },
     { name: "Opportunities", path: "/community" },
   ],
   Connect: [
