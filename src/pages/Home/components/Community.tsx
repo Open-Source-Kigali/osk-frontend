@@ -1,6 +1,7 @@
 import EyebrowLabel from "@/components/UI/EyebrowLabel";
 import {  EXPLORE_LINKS} from "@/constants";
-import image12 from '@/assets/images/open12.jpg';
+import image12 from '@/assets/images/open12.webp';
+import image12Small from '@/assets/images/open12-640.webp';
 import PrimaryButton from "@/components/UI/PrimaryButton";
 import SecondaryButton from "@/components/UI/SecondaryButton";
 
@@ -48,6 +49,9 @@ const Community = () => {
           <div className="rounded-2xl overflow-hidden shadow-lg">
             <img
               src={image12}
+              srcSet={`${image12Small} 640w, ${image12} 1350w`}
+              sizes="(min-width: 1024px) 50vw, 100vw"
+              loading="lazy"
               alt="Community collaboration"
               className="w-full h-full object-cover"
             />

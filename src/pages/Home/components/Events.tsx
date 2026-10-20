@@ -112,6 +112,22 @@ export const Events = () => {
             </p>
           ) : null}
 
+          {/* Empty state: no upcoming events */}
+          {!eventsLoading && !eventsError && homeEvents.length === 0 && (
+            <div className="bg-white rounded-2xl shadow-md border border-gray-100 py-16 px-6 text-center">
+              <p className="flex items-center justify-center gap-2 text-gray-500 text-base sm:text-lg mb-4">
+                <Calendar size={20} className="text-blue-500" />
+                  No upcoming events right now. Check back soon!
+              </p>
+              <NavLink
+                to="/event"
+                className="text-blue-500 hover:underline text-sm md:text-base font-medium"
+              >
+                View All Events
+              </NavLink>
+            </div>
+          )}
+
           {/* Featured event */}
           {!eventsLoading && !eventsError && featuredHomeEvent && (
             <div className="bg-white rounded-2xl shadow-md overflow-hidden mb-8 border border-gray-100">

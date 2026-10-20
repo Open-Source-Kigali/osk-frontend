@@ -1,4 +1,4 @@
-import type { OSKEvent, EventType, EventStatus, EventSpeaker, ApiEvent } from "@/types";
+import type { OSKEvent, EventType, EventStatus, EventMode, EventSpeaker, ApiEvent } from "@/types";
 import { formatDateRange, slugFromTitle } from "@/lib/formatters";
 import { getInitials } from "@/lib/utils";
 import { apiGet } from "./client";
@@ -22,6 +22,27 @@ function deriveStatus(date: string, endDate: string | null): EventStatus {
   return "upcoming";
 }
 
+const MODE_ALIASES: Record<string, EventMode> = {
+  "in-person": "in-person",
+  "in person": "in-person",
+  "in_person": "in-person",
+  inperson:    "in-person",
+  onsite:      "in-person",
+  "on-site":   "in-person",
+  physical:    "in-person",
+  virtual:     "virtual",
+  online:      "virtual",
+  remote:      "virtual",
+  hybrid:      "hybrid",
+};
+
+// The API may send values outside EventMode (e.g. "online"); map known
+// aliases and return null for anything unrecognised so the UI can skip it.
+export function normalizeMode(mode: string | null | undefined): EventMode | null {
+  if (!mode) return null;
+  return MODE_ALIASES[mode.trim().toLowerCase()] ?? null;
+}
+
 function toSpeakers(speakers: string[] | null): EventSpeaker[] {
   if (!speakers) return [];
   return speakers.map((name) => ({ name, role: "", initials: getInitials(name) }));
@@ -37,7 +58,7 @@ function transform(e: ApiEvent): OSKEvent {
     slug:        slugFromTitle(e.title, e.id),
     type:        deriveType(e.category),
     status:      deriveStatus(e.date, e.endDate),
-    mode:        e.mode,
+    mode:        normalizeMode(e.mode),
     title:       e.title,
     tagline:     e.tagline ?? "",
     description: e.description ?? "",
@@ -55,6 +76,7 @@ function transform(e: ApiEvent): OSKEvent {
     featured:    e.featured,
     registerUrl: e.registerUrl ?? "#",
     coverImage:  e.imageUrl ?? undefined,
+    startDate:   e.date,
     endDate:     e.endDate ?? undefined,
   };
 }
