@@ -24,6 +24,8 @@ import type { OSKEvent, EventType } from "@/types";
 import EyebrowLabel from "@/components/UI/EyebrowLabel";
 import socialLink from "@/config/links";
 import LoadingSpinner from "@/components/UI/LoadingSpinner";
+import SEO from "@/components/SEO";
+import { PAGE_SEO } from "@/config/seo";
 
 // ─── Meta maps
 
@@ -97,6 +99,7 @@ const TypeBadge = ({ type }: { type: EventType }) => {
 };
 
 const ModeBadge = ({ mode }: { mode: OSKEvent["mode"] }) => {
+  if (!mode) return null;
   const styles = {
     "in-person": "bg-[#e8f1ff] text-[#2b7fff] border-[#c5d9ff]",
     virtual: "bg-gray-100 text-gray-600 border-gray-200",
@@ -357,6 +360,20 @@ const FeaturedCard = ({ event }: { event: OSKEvent }) => (
   </div>
 );
 
+// ─── Next event selection
+
+const startTime = (e: OSKEvent) =>
+  e.startDate ? new Date(e.startDate).getTime() : Number.POSITIVE_INFINITY;
+
+// Soonest live/upcoming event, preferring featured ones. Past events are never
+// promoted, even when the API still marks them as featured.
+const selectNextEvent = (events: OSKEvent[]): OSKEvent | undefined => {
+  const comingUp = events
+    .filter((e) => e.status !== "past")
+    .sort((a, b) => startTime(a) - startTime(b));
+  return comingUp.find((e) => e.featured) ?? comingUp[0];
+};
+
 // ─── Event Card
 
 const TYPE_HEADER_BG: Record<EventType, string> = {
@@ -580,8 +597,7 @@ const Event = () => {
     filterKeys: ["type"],
   });
 
-  const featured =
-    events.find((e) => e.featured) ?? events.find((e) => e.status !== "past");
+  const featured = selectNextEvent(events);
   const upcoming = filtered.filter(
     (e) => e.status !== "past" && e.id !== featured?.id,
   );
@@ -589,19 +605,28 @@ const Event = () => {
   const upcomingCount = events.filter((e) => e.status !== "past").length;
 
   if (loading) {
-    return <LoadingSpinner page="events" />;
+    return (
+      <>
+        <SEO {...PAGE_SEO.events} />
+        <LoadingSpinner page="events" />
+      </>
+    );
   }
 
   if (error) {
     return (
-      <div className="min-h-[60vh] flex items-center justify-center text-red-500">
-        Failed to load events: {error}
-      </div>
+      <>
+        <SEO {...PAGE_SEO.events} />
+        <div className="min-h-[60vh] flex items-center justify-center text-red-500">
+          Failed to load events: {error}
+        </div>
+      </>
     );
   }
 
   return (
     <>
+      <SEO {...PAGE_SEO.events} />
       {/* ── Hero */}
       <section
         className="pt-32 pb-16 px-6 md:px-20 relative overflow-hidden"
@@ -700,7 +725,25 @@ const Event = () => {
       <section className="px-6 md:px-20 py-10 bg-white mt-6">
         <div className="max-w-7xl mx-auto">
           <EyebrowLabel text="Next big event" align="left" />
-          {featured && <FeaturedCard event={featured} />}
+          {featured ? (
+            <FeaturedCard event={featured} />
+          ) : (
+            <div
+              className="rounded-3xl border text-center py-16 px-6 mb-8"
+              style={{ background: "#f0f6ff", borderColor: "#c5d9ff" }}
+            >
+              <Calendar
+                size={36}
+                className="mx-auto mb-4 text-[#2b7fff] opacity-40"
+              />
+              <p className="font-semibold text-gray-700">
+                No upcoming events scheduled yet.
+              </p>
+              <p className="text-sm text-gray-500 mt-1">
+                Check back soon, or browse our past events below.
+              </p>
+            </div>
+          )}
         </div>
       </section>
 
