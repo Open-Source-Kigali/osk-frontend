@@ -30,7 +30,7 @@ async function handleResponse<T>(response: Response): Promise<T> {
     if (response.status === 204) {
       return undefined as unknown as T;
     }
-    throw new Error("Recieved an empty response from the server");
+    throw new Error("Received an empty response from the server");
   }
 
   if (typeof json === "object" && json !== null && "success" in json) {

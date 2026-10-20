@@ -69,7 +69,7 @@ const Project = () => {
       />
 
       {/* ── Good first issues */}
-      <GoodFirstIssues issues={[]} loading={false} error={null} />
+      <GoodFirstIssues />
 
       {/* ── Propose a project */}
       <ProposeAProject />
