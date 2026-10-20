@@ -3,7 +3,7 @@ import Hero from "@/components/projects/Hero";
 import ProjectsList from "@/components/projects/ProjectsList";
 import ProposeAProject from "@/components/projects/ProposeAProject";
 import LoadingSpinner from "@/components/UI/LoadingSpinner";
-import { useFilter, useProjects, useGoodFirstIssues } from "@/hooks";
+import { useFilter, useGoodFirstIssues, useProjects } from "@/hooks";
 import type { ProjectCategory, Projects, ProjectStatus } from "@/types";
 import SEO from "@/components/SEO";
 import { PAGE_SEO } from "@/config/seo";

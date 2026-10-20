@@ -10,11 +10,12 @@ export interface EventSpeaker {
 
 export interface OSKEvent {
   id:           string | number;
+  startDate?:   string;
   endDate?:     string;
   slug:         string;
   type:         EventType;
   status:       EventStatus;
-  mode:         EventMode;
+  mode:         EventMode | null;
   title:        string;
   tagline:      string;
   description:  string;

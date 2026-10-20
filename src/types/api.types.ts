@@ -96,8 +96,6 @@ export interface ApiProject {
 }
 
 // ── Event ──────────────────────────────────────────────────────────────────────
-import type { EventMode } from "./event.types";
-
 export interface ApiEvent {
   id:            string;
   title:         string;
@@ -106,7 +104,7 @@ export interface ApiEvent {
   imagePublicId: string | null;
   description:   string | null;
   category:      string;
-  mode:          EventMode;
+  mode:          string | null;
   featured:      boolean;
   capacity:      number | null;
   registered:    number;
