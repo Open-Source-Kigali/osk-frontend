@@ -24,9 +24,9 @@ import ErrorPage from "./pages/ErrorPage";
 import ProjectDetails from "./pages/project-details/ProjectDetails";
 import AdminLoginPage from "./pages/admin/AdminLoginPage";
 import AdminShell from "./pages/admin/AdminShell";
+import AdminDashboardPage from "./pages/admin/AdminDashboardPage";
 import {
 	AdminApplicationsPage,
-	AdminDashboardPage,
 	AdminEventsPage,
 	AdminMembersPage,
 	AdminNotFoundPage,

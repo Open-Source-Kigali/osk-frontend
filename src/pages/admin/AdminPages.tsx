@@ -1,14 +1,5 @@
 import AdminPlaceholder from "./AdminPlaceholder";
 
-export function AdminDashboardPage() {
-  return (
-    <AdminPlaceholder
-      title="Dashboard"
-      description="This is the admin home. Events, projects, partners, members, applications, and reviews each have their own page. Editing those records comes in a later update."
-    />
-  );
-}
-
 export function AdminEventsPage() {
   return (
     <AdminPlaceholder
