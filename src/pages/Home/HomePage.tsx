@@ -7,12 +7,13 @@ import Testimonials from "./components/Testimonials";
 import FAQ from "./components/FAQ";
 import CTA from "./components/CTA";
 import { Events } from "./components/Events";
-
-
+import SEO from "@/components/SEO";
+import { PAGE_SEO } from "@/config/seo";
 
 const HomePage = () => {
   return (
     <div className="font-sans">
+      <SEO {...PAGE_SEO.home} />
       <HeroSection />
       <PartnersMarquee />
       <About/>

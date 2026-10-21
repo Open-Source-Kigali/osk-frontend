@@ -1,17 +1,17 @@
 import { formatStat } from "@/lib/formatters";
 import { Skeleton } from "@/components/UI";
-import { COMMUNITY_STATS} from "@/constants";
+import { COMMUNITY_STATS } from "@/constants";
 import PrimaryButton from "@/components/UI/PrimaryButton";
 import EyebrowLabel from "@/components/UI/EyebrowLabel";
 import { useStats } from "@/hooks";
-import primaryCTALink from '@/config/links'
-import {ArrowUpRight} from "lucide-react";
-
-
+import primaryCTALink from "@/config/links";
+import { ArrowUpRight } from "lucide-react";
+import LoadingSpinner from "@/components/UI/LoadingSpinner";
 
 const HeroSection = () => {
-      const { stats, loading } = useStats();
-    
+  const { stats, loading } = useStats();
+  if (loading) return <LoadingSpinner page="community" />;
+
   return (
     <section className="pt-32 pb-20 px-6 md:px-20 bg-[#FFFBF7] relative overflow-hidden">
       <div className="relative max-w-7xl mx-auto">
@@ -103,16 +103,13 @@ const HeroSection = () => {
             <span className="font-semibold text-gray-900">1500+ people</span>{" "}
             already building — come meet them.
           </p>
-          <PrimaryButton
-            to={primaryCTALink.social.discord}
-            className=""
-          >
+          <PrimaryButton to={primaryCTALink.social.discord} className="">
             Join the Community Now <ArrowUpRight size={14} />
           </PrimaryButton>
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default HeroSection
+export default HeroSection;

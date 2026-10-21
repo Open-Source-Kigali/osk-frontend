@@ -1,6 +1,5 @@
-import { GOOD_FIRST_ISSUES } from "@/constants";
 import { AlertCircle, CheckCircle2, ExternalLink, Github } from "lucide-react";
-import { SectionLabel } from "../UI";
+import { Loader, SectionLabel } from "../UI";
 import type { Issue } from "@/types";
 
 const ISSUE_LABEL_STYLES: Record<Issue["label"], string> = {
@@ -55,7 +54,17 @@ const IssueRow = ({ issue }: { issue: Issue }) => (
 	</a>
 );
 
-const GoodFirstIssues = () => {
+interface GoodFirstIssuesProps {
+	issues: Issue[];
+	loading: boolean;
+	error: string | null;
+}
+
+const GoodFirstIssues = ({
+	issues,
+	loading,
+	error,
+}: GoodFirstIssuesProps) => {
 	return (
 		<section id="issues" className="py-20 px-6 md:px-20 bg-white">
 			<div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-5 gap-12 items-start">
@@ -96,17 +105,24 @@ const GoodFirstIssues = () => {
 					</a>
 				</div>
 
-				{/* Issue list — comes from GOOD_FIRST_ISSUES constant */}
 				<div className="lg:col-span-3 bg-white rounded-2xl border border-gray-100 p-5 shadow-sm">
 					<div className="flex items-center justify-between mb-2 pb-3 border-b border-gray-100">
 						<p className="text-sm font-black text-gray-900">Open Issues</p>
 						<span className="text-xs font-mono text-gray-400">
-							{GOOD_FIRST_ISSUES.length} issues
+							{issues.length} issues
 						</span>
 					</div>
-					{GOOD_FIRST_ISSUES.map((issue) => (
-						<IssueRow key={issue.id} issue={issue} />
-					))}
+					{loading ? (
+						<Loader text="Loading issues..." size={32} />
+					) : error ? (
+						<p className="py-10 text-center text-sm text-red-600">{error}</p>
+					) : issues.length === 0 ? (
+						<p className="py-10 text-center text-sm text-gray-500">
+							No open good first issues right now.
+						</p>
+					) : (
+						issues.map((issue) => <IssueRow key={issue.id} issue={issue} />)
+					)}
 				</div>
 			</div>
 		</section>

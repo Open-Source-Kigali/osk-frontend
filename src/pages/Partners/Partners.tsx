@@ -7,12 +7,14 @@ import Process from "./components/Process";
 import BecomeAPartner from "./components/BecomeAPartner";
 import BottomCTA from './components/BottomCTA';
 import links from '@/config/links';
-
+import SEO from "@/components/SEO";
+import { PAGE_SEO } from "@/config/seo";
 
 // ─── Page 
 
 const Partners = () => (
   <div className="bg-white">
+    <SEO {...PAGE_SEO.partners} />
     <HeroSection/>
     <PartnerMarquee
       showSecondary={false}
