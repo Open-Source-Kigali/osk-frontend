@@ -147,7 +147,7 @@ http://localhost:5173
 
 | Variable            | Description              | Required |
 | ------------------- | ------------------------ | -------- |
-| `VITE_API_BASE_URL` | OSK backend API base URL | ✅ Yes   |
+| `VITE_API_BASE_URL` | OSK backend API base URL, including `/api`, with no trailing slash | ✅ Yes   |
 
 ---
 

@@ -19,7 +19,7 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Partners page with programme details and benefits
 - Contact page
 - Member application form (POST /members)
-- Partner application form (POST /partners) with logo upload
+- Partner application form (POST /partner-applications) with logo upload
 - Lazy-loaded routing with React Router v6
 - Fully typed data layer using TypeScript
 - Centralised constants for all static data
