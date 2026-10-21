@@ -1,9 +1,8 @@
 import { NavLink } from "react-router";
-import { formatStat } from "@/lib/formatters";
 import { ArrowRight, GitMerge, UserPlus, GitPullRequest, Zap} from "lucide-react";
 import {  CTA_ACTIVITY, CTA_STATS} from "@/constants";
 import primaryCTALink from '@/config/links'
-import { Skeleton } from "@/components/UI";
+import { Skeleton, StatNumber } from "@/components/UI";
 import PrimaryButton from "@/components/UI/PrimaryButton";
 import SecondaryButton from "@/components/UI/SecondaryButton";
 import {   useStats } from "@/hooks";
@@ -88,7 +87,7 @@ const CTA = () => {
                     {statsLoading ? (
                       <Skeleton className="h-3.5 w-8 bg-white/20" />
                     ) : (
-                      formatStat(stats?.[s.key] ?? 0)
+                      <StatNumber value={stats?.[s.key] ?? 0} prefix="+" />
                     )}
                   </span>
                   <span className="text-gray-500 text-sm ml-1.5">
