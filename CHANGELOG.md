@@ -20,6 +20,7 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Contact page
 - Member application form (POST /members)
 - Partner application form (POST /partner-applications) with logo upload
+- Admin sign-in at /admin/login and a session-protected /admin shell with placeholder sections
 - Lazy-loaded routing with React Router v6
 - Fully typed data layer using TypeScript
 - Centralised constants for all static data

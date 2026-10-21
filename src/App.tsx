@@ -22,6 +22,18 @@ const wrap = (Component: ComponentType) => (
 );
 import ErrorPage from "./pages/ErrorPage";
 import ProjectDetails from "./pages/project-details/ProjectDetails";
+import AdminLoginPage from "./pages/admin/AdminLoginPage";
+import AdminShell from "./pages/admin/AdminShell";
+import {
+	AdminApplicationsPage,
+	AdminDashboardPage,
+	AdminEventsPage,
+	AdminMembersPage,
+	AdminNotFoundPage,
+	AdminPartnersPage,
+	AdminProjectsPage,
+	AdminReviewsPage,
+} from "./pages/admin/AdminPages";
 
 const router = createBrowserRouter([
 	{
@@ -39,6 +51,26 @@ const router = createBrowserRouter([
 			{ path: "/partners", Component: Partners },
 			{ path: "/partnersform", element: wrap(PartnersForm) },
 			{ path: "/donate", Component: DonatePage },
+		],
+	},
+	{
+		path: "/admin/login",
+		Component: AdminLoginPage,
+		ErrorBoundary: ErrorPage,
+	},
+	{
+		path: "/admin",
+		Component: AdminShell,
+		ErrorBoundary: ErrorPage,
+		children: [
+			{ index: true, Component: AdminDashboardPage },
+			{ path: "events", Component: AdminEventsPage },
+			{ path: "projects", Component: AdminProjectsPage },
+			{ path: "partners", Component: AdminPartnersPage },
+			{ path: "members", Component: AdminMembersPage },
+			{ path: "partner-applications", Component: AdminApplicationsPage },
+			{ path: "reviews", Component: AdminReviewsPage },
+			{ path: "*", Component: AdminNotFoundPage },
 		],
 	},
 ]);
