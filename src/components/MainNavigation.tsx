@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router";
 import { RxHamburgerMenu } from "react-icons/rx";
-import { X } from "lucide-react";
+import { X, Sun, Moon } from "lucide-react";
 import LogoImage from "@/assets/Logo/OSK-primary-logo.svg";
 import LogoWhite from "@/assets/Logo/OSK-primary-logo-1200-400-white.svg";
 import { useScrolled } from "@/hooks";
@@ -12,6 +12,7 @@ import primaryCTALink from '@/config/links'
 const Navbar = () => {
   const scrolled = useScrolled(50);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [darkMode, setDarkMode] = useState(false);
 
   const location = useLocation();
   const isHome = location.pathname === "/";
@@ -84,6 +85,21 @@ const Navbar = () => {
           >
             ❤️ Donate
           </NavLink>
+
+          {/* Dark/Light mode toggle (mock — local state only for now) */}
+          <button
+            type="button"
+            onClick={() => setDarkMode((d) => !d)}
+            aria-pressed={darkMode}
+            aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}
+            className={`p-2 rounded-full border transition-colors duration-200 ${
+              isLight
+                ? "border-gray-300 text-gray-900 hover:bg-gray-100"
+                : "border-white/40 text-white hover:bg-white/10"
+            }`}
+          >
+            {darkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+          </button>
         </div>
 
         {/* CTA button (desktop) */}
@@ -139,6 +155,17 @@ const Navbar = () => {
 
           {/* CTA button (mobile) */}
           <PrimaryButton to="https://docs.google.com/forms/d/e/1FAIpQLSfP6ysp6y_SNcuHb1x9v-nMxfXR7-kcyBogN2ZMF--2byOzyg/viewform">Contribute to OSK</PrimaryButton>
+
+          {/* Dark/Light mode toggle (mock — local state only for now) */}
+          <button
+            type="button"
+            onClick={() => setDarkMode((d) => !d)}
+            aria-pressed={darkMode}
+            aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}
+            className="p-2 rounded-full border border-gray-300 text-gray-900 hover:bg-gray-100 transition-colors duration-200"
+          >
+            {darkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+          </button>
         </div>
       )}
     </>
