@@ -5,6 +5,8 @@ import ProposeAProject from "@/components/projects/ProposeAProject";
 import LoadingSpinner from "@/components/UI/LoadingSpinner";
 import { useFilter, useGoodFirstIssues, useProjects } from "@/hooks";
 import type { ProjectCategory, Projects, ProjectStatus } from "@/types";
+import SEO from "@/components/SEO";
+import { PAGE_SEO } from "@/config/seo";
 
 // ─── Page
 const Project = () => {
@@ -43,11 +45,17 @@ const Project = () => {
   );
   //handle loading status
   if (loading) {
-    return <LoadingSpinner page="projects" />;
+    return (
+      <>
+        <SEO {...PAGE_SEO.projects} />
+        <LoadingSpinner page="projects" />
+      </>
+    );
   }
 
   return (
     <>
+      <SEO {...PAGE_SEO.projects} />
       {/* ── Hero */}
       <Hero
         totalProjects={projects.length}
