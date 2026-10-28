@@ -1,14 +1,5 @@
 import AdminPlaceholder from "./AdminPlaceholder";
 
-export function AdminApplicationsPage() {
-  return (
-    <AdminPlaceholder
-      title="Partner applications"
-      description="Submitted partner applications will be listed here in a later update. This page does not accept or reject applications yet."
-    />
-  );
-}
-
 export function AdminReviewsPage() {
   return (
     <AdminPlaceholder

@@ -29,8 +29,8 @@ import AdminEventsPage from "./pages/admin/AdminEventsPage";
 import AdminProjectsPage from "./pages/admin/AdminProjectsPage";
 import AdminPartnersPage from "./pages/admin/AdminPartnersPage";
 import AdminMembersPage from "./pages/admin/AdminMembersPage";
+import AdminApplicationsPage from "./pages/admin/AdminApplicationsPage";
 import {
-	AdminApplicationsPage,
 	AdminNotFoundPage,
 	AdminReviewsPage,
 } from "./pages/admin/AdminPages";
