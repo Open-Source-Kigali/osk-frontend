@@ -1,14 +1,5 @@
 import AdminPlaceholder from "./AdminPlaceholder";
 
-export function AdminPartnersPage() {
-  return (
-    <AdminPlaceholder
-      title="Partners"
-      description="Partner management will be added in a later update. This page does not create or change partners yet."
-    />
-  );
-}
-
 export function AdminMembersPage() {
   return (
     <AdminPlaceholder
