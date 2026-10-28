@@ -25,9 +25,9 @@ import ProjectDetails from "./pages/project-details/ProjectDetails";
 import AdminLoginPage from "./pages/admin/AdminLoginPage";
 import AdminShell from "./pages/admin/AdminShell";
 import AdminDashboardPage from "./pages/admin/AdminDashboardPage";
+import AdminEventsPage from "./pages/admin/AdminEventsPage";
 import {
 	AdminApplicationsPage,
-	AdminEventsPage,
 	AdminMembersPage,
 	AdminNotFoundPage,
 	AdminPartnersPage,

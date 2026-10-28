@@ -1,14 +1,5 @@
 import AdminPlaceholder from "./AdminPlaceholder";
 
-export function AdminEventsPage() {
-  return (
-    <AdminPlaceholder
-      title="Events"
-      description="Event management will be added in a later update. This page does not create or change events yet."
-    />
-  );
-}
-
 export function AdminProjectsPage() {
   return (
     <AdminPlaceholder
