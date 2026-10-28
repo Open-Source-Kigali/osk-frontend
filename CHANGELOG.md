@@ -25,6 +25,7 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Admin event list, create, edit, and delete
 - Admin project list, create, edit, delete, and manual GitHub refresh
 - Admin partner list, create, edit, and delete
+- Admin member list, edit, and delete
 - Lazy-loaded routing with React Router v6
 - Fully typed data layer using TypeScript
 - Centralised constants for all static data

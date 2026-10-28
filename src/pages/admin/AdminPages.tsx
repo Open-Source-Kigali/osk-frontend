@@ -1,14 +1,5 @@
 import AdminPlaceholder from "./AdminPlaceholder";
 
-export function AdminMembersPage() {
-  return (
-    <AdminPlaceholder
-      title="Members"
-      description="Member management will be added in a later update. This page does not create or change members yet."
-    />
-  );
-}
-
 export function AdminApplicationsPage() {
   return (
     <AdminPlaceholder
