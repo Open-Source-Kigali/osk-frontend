@@ -26,12 +26,12 @@ import AdminLoginPage from "./pages/admin/AdminLoginPage";
 import AdminShell from "./pages/admin/AdminShell";
 import AdminDashboardPage from "./pages/admin/AdminDashboardPage";
 import AdminEventsPage from "./pages/admin/AdminEventsPage";
+import AdminProjectsPage from "./pages/admin/AdminProjectsPage";
 import {
 	AdminApplicationsPage,
 	AdminMembersPage,
 	AdminNotFoundPage,
 	AdminPartnersPage,
-	AdminProjectsPage,
 	AdminReviewsPage,
 } from "./pages/admin/AdminPages";
 

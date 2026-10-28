@@ -1,14 +1,5 @@
 import AdminPlaceholder from "./AdminPlaceholder";
 
-export function AdminProjectsPage() {
-  return (
-    <AdminPlaceholder
-      title="Projects"
-      description="Project management will be added in a later update. This page does not create or change projects yet."
-    />
-  );
-}
-
 export function AdminPartnersPage() {
   return (
     <AdminPlaceholder
