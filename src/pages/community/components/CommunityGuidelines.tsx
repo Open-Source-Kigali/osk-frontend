@@ -58,4 +58,4 @@ const CommunityGuidelines = () => {
   );
 };
 
-export default CommunityGuidelines
+export default CommunityGuidelines;

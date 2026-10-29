@@ -71,7 +71,7 @@ const HeroSection = () => {
                 </div>
             </div>
         </section>
-    )
-}
+    );
+};
 
-export default HeroSection
+export default HeroSection;

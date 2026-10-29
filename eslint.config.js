@@ -6,6 +6,7 @@ import tseslint from 'typescript-eslint'
 import { defineConfig, globalIgnores } from 'eslint/config'
 
 export default defineConfig([
+  // Ignore build output and vendored animate-ui animation primitives
   globalIgnores(['dist', 'src/components/animate-ui/**']),
   {
     files: ['**/*.{ts,tsx}'],
@@ -24,6 +25,7 @@ export default defineConfig([
         'warn',
         { allowConstantExport: true },
       ],
+      // Allow state synchronization in effects and ref measurements used by animation hooks
       'react-hooks/set-state-in-effect': 'off',
       'react-hooks/refs': 'off',
     },

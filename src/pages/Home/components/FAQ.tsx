@@ -73,39 +73,39 @@ const FAQ = () => {
           ))}
         </Accordion>
 
-          {/* Still have questions card */}
-          <div className="bg-white rounded-2xl border border-gray-100 flex flex-col sm:flex-row items-center justify-between px-6 py-5 gap-4 overflow-hidden relative">
-            {/* Left accent border */}
-            <div className="absolute left-0 top-0 bottom-0 w-1 bg-primary-colour rounded-l-2xl" />
+        {/* Still have questions card */}
+        <div className="bg-white rounded-2xl border border-gray-100 flex flex-col sm:flex-row items-center justify-between px-6 py-5 gap-4 overflow-hidden relative">
+          {/* Left accent border */}
+          <div className="absolute left-0 top-0 bottom-0 w-1 bg-primary-colour rounded-l-2xl" />
 
-            <div className="flex items-center gap-4 pl-4">
-              <img
-                src={coachImg}
-                alt="Community team"
-                className="w-12 h-12 rounded-full object-cover shrink-0"
-              />
-              <div>
-                <p className="font-semibold text-gray-900 text-sm sm:text-base">
-                  Still have questions?
-                </p>
-                <p className="text-gray-400 text-xs sm:text-sm">
-                  Can't find the answer you're looking for? Let's chat.
-                </p>
-              </div>
+          <div className="flex items-center gap-4 pl-4">
+            <img
+              src={coachImg}
+              alt="Community team"
+              className="w-12 h-12 rounded-full object-cover shrink-0"
+            />
+            <div>
+              <p className="font-semibold text-gray-900 text-sm sm:text-base">
+                Still have questions?
+              </p>
+              <p className="text-gray-400 text-xs sm:text-sm">
+                Can't find the answer you're looking for? Let's chat.
+              </p>
             </div>
-
-            <a
-              href={primaryCTALink.social.discord}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="shrink-0 px-5 py-2.5 bg-primary-colour text-white text-sm font-medium rounded-full hover:opacity-90 transition-colors duration-200"
-            >
-              Message the Community
-            </a>
           </div>
-        </div>
-      </section>
-  )
-}
 
-export default FAQ
+          <a
+            href={primaryCTALink.social.discord}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="shrink-0 px-5 py-2.5 bg-primary-colour text-white text-sm font-medium rounded-full hover:opacity-90 transition-colors duration-200"
+          >
+            Message the Community
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default FAQ;
