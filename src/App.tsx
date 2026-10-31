@@ -30,10 +30,8 @@ import AdminProjectsPage from "./pages/admin/AdminProjectsPage";
 import AdminPartnersPage from "./pages/admin/AdminPartnersPage";
 import AdminMembersPage from "./pages/admin/AdminMembersPage";
 import AdminApplicationsPage from "./pages/admin/AdminApplicationsPage";
-import {
-	AdminNotFoundPage,
-	AdminReviewsPage,
-} from "./pages/admin/AdminPages";
+import AdminReviewsPage from "./pages/admin/AdminReviewsPage";
+import { AdminNotFoundPage } from "./pages/admin/AdminPages";
 
 const router = createBrowserRouter([
 	{
