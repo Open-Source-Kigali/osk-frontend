@@ -1,16 +1,12 @@
 import { NavLink } from "react-router";
-import { formatStat } from "@/lib/formatters";
-import { ArrowRight, GitMerge, UserPlus, GitPullRequest, Zap} from "lucide-react";
-import {  CTA_ACTIVITY, CTA_STATS} from "@/constants";
-import primaryCTALink from '@/config/links'
-import { Skeleton } from "@/components/UI";
+import { ArrowRight, GitMerge, UserPlus, GitPullRequest, Zap } from "lucide-react";
+import { CTA_ACTIVITY, CTA_STATS } from "@/constants";
+import primaryCTALink from "@/config/links";
+import { Skeleton, StatNumber } from "@/components/UI";
 import PrimaryButton from "@/components/UI/PrimaryButton";
 import SecondaryButton from "@/components/UI/SecondaryButton";
-import {   useStats } from "@/hooks";
+import { useStats } from "@/hooks";
 import type { ActivityIconKey } from "@/constants";
-
-
-
 
 const ACTIVITY_ICONS: Record<ActivityIconKey, React.ReactNode> = {
   merge: <GitMerge size={13} />,
@@ -19,10 +15,8 @@ const ACTIVITY_ICONS: Record<ActivityIconKey, React.ReactNode> = {
   event: <Zap size={13} />,
 };
 
-
-
 const CTA = () => {
-    const { stats, loading: statsLoading } = useStats();
+  const { stats, loading: statsLoading } = useStats();
   return (
     <section
         className="relative overflow-hidden py-24 px-4 md:px-20"
@@ -79,7 +73,7 @@ const CTA = () => {
 
             {/* Stat pills — from CTA_STATS constant */}
             <div className="flex flex-wrap gap-3">
-              {CTA_STATS.map((s) => (
+              {CTA_STATS.map((s, index) => (
                 <div
                   key={s.label}
                   className="px-4 py-2 rounded-full border border-white/10 bg-white/5"
@@ -88,7 +82,11 @@ const CTA = () => {
                     {statsLoading ? (
                       <Skeleton className="h-3.5 w-8 bg-white/20" />
                     ) : (
-                      formatStat(stats?.[s.key] ?? 0)
+                      <StatNumber
+                        value={stats?.[s.key] ?? 0}
+                        prefix="+"
+                        delay={index * 120}
+                      />
                     )}
                   </span>
                   <span className="text-gray-500 text-sm ml-1.5">

@@ -1,5 +1,6 @@
 import { Filter, Search } from "lucide-react";
 import EyebrowLabel from "../UI/EyebrowLabel";
+import { StatNumber } from "../UI";
 import type { ProjectCategory, ProjectStatus } from "@/types";
 
 interface HeroProps {
@@ -113,9 +114,11 @@ const Hero = ({
 							{ n: totalProjects, label: "Projects" },
 							{ n: totalOpenIssues, label: "Open Issues" },
 							{ n: totalContributors, label: "Contributors" },
-						].map((s) => (
+						].map((s, index) => (
 							<div key={s.label} className="bg-white/5 px-6 py-5 text-center">
-								<p className="text-2xl font-black text-white">{s.n}</p>
+								<p className="text-2xl font-black text-white">
+									<StatNumber value={s.n} delay={index * 120} />
+								</p>
 								<p className="text-xs text-white/40 mt-1">{s.label}</p>
 							</div>
 						))}

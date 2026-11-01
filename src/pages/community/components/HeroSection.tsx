@@ -1,5 +1,4 @@
-import { formatStat } from "@/lib/formatters";
-import { Skeleton } from "@/components/UI";
+import { Skeleton, StatNumber } from "@/components/UI";
 import { COMMUNITY_STATS } from "@/constants";
 import PrimaryButton from "@/components/UI/PrimaryButton";
 import EyebrowLabel from "@/components/UI/EyebrowLabel";
@@ -58,7 +57,7 @@ const HeroSection = () => {
 
           {/* Right: stats — from COMMUNITY_STATS constant */}
           <div className="grid grid-cols-2 gap-3 lg:min-w-[320px]">
-            {COMMUNITY_STATS.map((s) => (
+            {COMMUNITY_STATS.map((s, index) => (
               <div
                 key={s.label}
                 className="bg-white rounded-2xl border border-gray-100 p-5 shadow-sm"
@@ -67,7 +66,11 @@ const HeroSection = () => {
                   {loading ? (
                     <Skeleton className="h-7 w-16" />
                   ) : (
-                    formatStat(stats?.[s.key] ?? 0)
+                    <StatNumber
+                      value={stats?.[s.key] ?? 0}
+                      prefix="+"
+                      delay={index * 120}
+                    />
                   )}
                 </p>
                 <p className="text-gray-800 text-sm font-semibold">{s.label}</p>
