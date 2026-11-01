@@ -11,6 +11,8 @@ import {
   PARTNERSHIP_TIERS,
   AFRICAN_COUNTRIES,
 } from "@/constants";
+import SEO from "@/components/SEO";
+import { PAGE_SEO } from "@/config/seo";
 
 
 
@@ -214,6 +216,11 @@ const PartnersForm = () => {
         className="min-h-screen flex flex-col items-center justify-center px-6 text-center"
         style={{ background: "#f0f6ff" }}
       >
+        <SEO
+          title="Proposal Received | Become a Partner"
+          description="Your partnership proposal has been submitted to Open Source Kigali."
+          noindex
+        />
         <div
           className="w-20 h-20 rounded-full flex items-center justify-center mb-6"
           style={{ background: "#e8f1ff" }}
@@ -259,6 +266,7 @@ const PartnersForm = () => {
 
   return (
     <div className="min-h-screen" style={{ background: "#f0f6ff" }}>
+      <SEO {...PAGE_SEO.partnersForm} />
 
       {/* Header */}
       <div className="pt-24 pb-10 px-6 text-center">

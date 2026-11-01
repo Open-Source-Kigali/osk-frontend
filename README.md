@@ -220,8 +220,9 @@ for more information.
 
 <div align="center">
 
-### Built with ❤️ by the Open Source Kigali Community
+### Built with ❤️love  by the Open Source Kigali Community
 
 Empowering African developers through open source.
+It also helps young people become more creative developers and encourages innovation.
 
 </div>
