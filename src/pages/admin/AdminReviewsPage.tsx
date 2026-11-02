@@ -379,7 +379,7 @@ function DeleteReviewDialog({
     <dialog
       ref={dialogRef}
       aria-labelledby={review ? titleId : undefined}
-      className="w-[calc(100%-2rem)] max-w-md rounded-2xl border border-gray-200 p-6 backdrop:bg-black/40"
+      className="fixed top-1/2 left-1/2 w-[min(100%-2rem,28rem)] -translate-x-1/2 -translate-y-1/2 rounded-2xl border border-gray-200 bg-white p-6 backdrop:bg-black/40"
       onCancel={(dialogEvent) => {
         if (locked) dialogEvent.preventDefault();
       }}

@@ -1,6 +1,7 @@
 import { useEffect, useId, useRef, useState, type FormEvent, type ReactNode } from "react";
 import { Link } from "react-router";
 import { AlertCircle } from "lucide-react";
+import AdminImagePreview, { adminFileInputClass } from "./AdminImagePreview";
 import { apiGet, sessionForm, sessionSend } from "@/api";
 import {
   beginPending,
@@ -498,13 +499,14 @@ function EventEditor({
           }
           className="sm:col-span-2"
         >
+          <AdminImagePreview file={file} currentUrl={event?.imageUrl} />
           <input
             id="event-file"
             type="file"
             accept={IMAGE_UPLOAD_ACCEPT}
             disabled={locked}
             aria-invalid={fieldErrors.file ? true : undefined}
-            className="block w-full text-sm text-text-body file:mr-3 file:rounded-full file:border-0 file:bg-brand-50 file:px-4 file:py-2 file:text-sm file:font-semibold file:text-text-heading"
+            className={adminFileInputClass}
             onChange={(input) => {
               const nextFile = input.target.files?.[0] ?? null;
               setFile(nextFile);
@@ -604,7 +606,7 @@ function DeleteEventDialog({
     <dialog
       ref={dialogRef}
       aria-labelledby={event ? titleId : undefined}
-      className="w-[calc(100%-2rem)] max-w-md rounded-2xl border border-gray-200 p-6 backdrop:bg-black/40"
+      className="fixed top-1/2 left-1/2 w-[min(100%-2rem,28rem)] -translate-x-1/2 -translate-y-1/2 rounded-2xl border border-gray-200 bg-white p-6 backdrop:bg-black/40"
       onCancel={(dialogEvent) => {
         if (locked) dialogEvent.preventDefault();
       }}

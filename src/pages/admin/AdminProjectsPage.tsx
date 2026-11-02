@@ -1,6 +1,7 @@
 import { useEffect, useId, useRef, useState, type FormEvent, type ReactNode } from "react";
 import { Link } from "react-router";
 import { AlertCircle } from "lucide-react";
+import AdminImagePreview, { adminFileInputClass } from "./AdminImagePreview";
 import { apiGet, sessionForm, sessionSend } from "@/api";
 import {
   beginPending,
@@ -228,6 +229,7 @@ const AdminProjectsPage = () => {
         <ProjectEditor
           intent={editor.intent}
           initialValues={editor.intent === "edit" ? formFromProject(editor.project) : EMPTY_PROJECT_FORM}
+          currentImageUrl={editor.intent === "edit" ? editor.project.imageUrl : null}
           serverMessage={actionError}
           pending={action === "save"}
           locked={locked}
@@ -367,6 +369,7 @@ function ProjectList({
 function ProjectEditor({
   intent,
   initialValues,
+  currentImageUrl,
   serverMessage,
   pending,
   locked,
@@ -376,6 +379,7 @@ function ProjectEditor({
 }: {
   intent: "create" | "edit";
   initialValues: ProjectFormValues;
+  currentImageUrl: string | null;
   serverMessage: string | null;
   pending: boolean;
   locked: boolean;
@@ -509,11 +513,12 @@ function ProjectEditor({
           hint={IMAGE_UPLOAD_HELP_TEXT}
           className="sm:col-span-2"
         >
+          <AdminImagePreview file={file} currentUrl={currentImageUrl} />
           <input
             id={`${formId}-file`}
             type="file"
             accept={IMAGE_UPLOAD_ACCEPT}
-            className="block w-full text-sm text-gray-700 file:mr-4 file:rounded-full file:border-0 file:bg-gray-100 file:px-4 file:py-2 file:text-sm file:font-medium"
+            className={adminFileInputClass}
             onChange={(event) => {
               onDismiss();
               setFile(event.target.files?.[0] ?? null);
@@ -558,7 +563,7 @@ function DeleteProjectDialog({
   return (
     <dialog
       ref={dialogRef}
-      className="w-[min(100%,32rem)] rounded-2xl border border-gray-200 p-6 backdrop:bg-black/40"
+      className="fixed top-1/2 left-1/2 w-[min(100%-2rem,32rem)] -translate-x-1/2 -translate-y-1/2 rounded-2xl border border-gray-200 bg-white p-6 backdrop:bg-black/40"
       onCancel={(event) => {
         if (pending) event.preventDefault();
         else onCancel();
@@ -605,7 +610,7 @@ function RefreshDialog({
   return (
     <dialog
       ref={dialogRef}
-      className="w-[min(100%,32rem)] rounded-2xl border border-gray-200 p-6 backdrop:bg-black/40"
+      className="fixed top-1/2 left-1/2 w-[min(100%-2rem,32rem)] -translate-x-1/2 -translate-y-1/2 rounded-2xl border border-gray-200 bg-white p-6 backdrop:bg-black/40"
       onCancel={(event) => {
         if (pending) event.preventDefault();
         else onCancel();
