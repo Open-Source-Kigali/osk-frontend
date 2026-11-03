@@ -1,6 +1,10 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
-import { NavLink, Navigate, Outlet, useLocation, useNavigate } from "react-router";
+import { Link, NavLink, Navigate, Outlet, useLocation, useNavigate } from "react-router";
+import { RxHamburgerMenu } from "react-icons/rx";
+import { X } from "lucide-react";
 import { getSession, logout } from "@/api/client";
+import AdminLogo from "@/assets/Logo/OSK-admin-logo.svg";
+import AdminLogoWhite from "@/assets/Logo/OSK-admin-logo-white.svg";
 import {
   ADMIN_NAV,
   checkAdminSession,
@@ -13,6 +17,16 @@ import { useNoIndex } from "@/admin/useNoIndex";
 import { Button } from "@/components/UI";
 import Loader from "@/components/UI/Loader";
 import type { AuthMe } from "@/types";
+
+// The admin bar is white, so the dark wordmark shows. The white lockup is the dark-bar pair.
+const adminHeaderLogos = {
+  light: AdminLogo,
+  dark: AdminLogoWhite,
+} as const;
+
+function adminHeaderLogo(onLightBackground: boolean) {
+  return onLightBackground ? AdminLogo : AdminLogoWhite;
+}
 
 const AdminShell = () => {
   const location = useLocation();
@@ -123,61 +137,127 @@ function AdminFrame({
   onLogout: () => void;
   children: ReactNode;
 }) {
+  const location = useLocation();
+  const [mobileOpen, setMobileOpen] = useState(false);
+
+  useEffect(() => {
+    setMobileOpen(false);
+  }, [location.pathname]);
+
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? "hidden" : "unset";
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [mobileOpen]);
+
   return (
     <div className="min-h-screen bg-[#f7f8fa] text-text-body" data-testid="admin-shell">
-      <header className="border-b border-gray-200 bg-white">
-        <div className="flex items-center justify-between gap-4 px-4 py-4 sm:px-6">
-          <div>
-            <p className="text-xs font-bold uppercase tracking-widest text-primary-colour">
-              Open Source Kigali
-            </p>
-            <p className="text-lg font-bold text-text-heading">Admin</p>
+      <header className="fixed top-0 z-20 w-full">
+        <nav
+          className="flex items-center justify-between bg-white px-4 py-4 text-gray-900 shadow-xl sm:px-8 lg:px-20"
+          aria-label="Admin sections"
+        >
+          <Link to="/admin" className="flex items-center">
+            <img
+              src={adminHeaderLogos.light}
+              alt="Open Source Kigali Admin"
+              className="h-12 w-auto object-contain sm:h-14 md:h-16"
+            />
+          </Link>
+
+          <div className="hidden items-center gap-6 text-sm xl:flex">
+            {ADMIN_NAV.map((item) => (
+              <NavLink
+                key={item.to}
+                to={item.to}
+                end={item.end}
+                className={({ isActive }) =>
+                  isActive
+                    ? "font-semibold text-primary-colour underline decoration-2 underline-offset-4"
+                    : "font-medium text-gray-900 transition-colors duration-200 hover:text-primary-colour"
+                }
+              >
+                {item.label}
+              </NavLink>
+            ))}
           </div>
-          <div className="flex items-center gap-3">
-            <div className="hidden text-right sm:block">
-              <p className="text-sm font-semibold text-text-heading">{session.user.name}</p>
-              <p className="text-xs text-text-supporting">{session.user.email}</p>
+
+          <div className="hidden items-center gap-4 xl:flex">
+            <div className="text-right">
+              <p className="text-sm font-semibold text-gray-900">{session.user.name}</p>
+              <p className="text-xs text-gray-500">{session.user.email}</p>
             </div>
-            <Button
-              type="button"
-              variant="secondary"
-              size="sm"
-              loading={loggingOut}
-              onClick={onLogout}
-            >
-              {loggingOut ? "Signing out..." : "Sign out"}
-            </Button>
+            <SignOutButton loggingOut={loggingOut} onLogout={onLogout} />
           </div>
-        </div>
-        <nav className="flex gap-1 overflow-x-auto px-4 pb-3 sm:px-6" aria-label="Admin sections">
+
+          <button
+            type="button"
+            className="z-50 p-1 xl:hidden"
+            onClick={() => setMobileOpen((open) => !open)}
+            aria-label={mobileOpen ? "Close navigation menu" : "Open navigation menu"}
+          >
+            {mobileOpen ? <X className="h-6 w-6 text-gray-900" /> : <RxHamburgerMenu className="h-6 w-6 text-gray-900" />}
+          </button>
+        </nav>
+      </header>
+
+      {mobileOpen ? (
+        <div className="fixed inset-0 z-10 flex flex-col items-center space-y-6 overflow-y-auto bg-white px-6 pt-28 pb-10 text-lg xl:hidden">
+          <div className="text-center">
+            <p className="font-semibold text-gray-900">{session.user.name}</p>
+            <p className="text-sm text-gray-500">{session.user.email}</p>
+          </div>
           {ADMIN_NAV.map((item) => (
             <NavLink
               key={item.to}
               to={item.to}
               end={item.end}
+              onClick={() => setMobileOpen(false)}
               className={({ isActive }) =>
-                `whitespace-nowrap rounded-full px-3 py-1.5 text-sm font-semibold transition-colors ${
-                  isActive
-                    ? "bg-primary-colour text-white"
-                    : "text-text-body hover:bg-brand-50 hover:text-text-heading"
-                }`
+                isActive
+                  ? "font-semibold text-primary-colour underline decoration-2 underline-offset-4"
+                  : "text-black transition-colors duration-200 hover:text-primary-colour"
               }
             >
               {item.label}
             </NavLink>
           ))}
-        </nav>
-      </header>
-      {logoutError ? (
-        <p
-          role="alert"
-          className="mx-4 mt-4 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm font-medium text-red-700 sm:mx-6"
-        >
-          {logoutError}
-        </p>
+          <SignOutButton loggingOut={loggingOut} onLogout={onLogout} />
+        </div>
       ) : null}
-      <main className="mx-auto w-full max-w-5xl px-4 py-8 sm:px-6">{children}</main>
+
+      <div className="pt-24 md:pt-28">
+        {logoutError ? (
+          <p
+            role="alert"
+            className="mx-4 mt-4 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm font-medium text-red-700 sm:mx-6"
+          >
+            {logoutError}
+          </p>
+        ) : null}
+        <main className="mx-auto w-full max-w-5xl px-4 py-8 sm:px-6">{children}</main>
+      </div>
     </div>
+  );
+}
+
+function SignOutButton({
+  loggingOut,
+  onLogout,
+}: {
+  loggingOut: boolean;
+  onLogout: () => void;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onLogout}
+      disabled={loggingOut}
+      className="inline-flex h-12 items-center justify-center rounded-full bg-primary-colour px-6 text-sm font-semibold whitespace-nowrap text-white transition hover:scale-[1.05] hover:bg-brand-500 hover:shadow-lg disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:scale-100"
+    >
+      {loggingOut ? "Signing out..." : "Sign out"}
+    </button>
   );
 }
 
