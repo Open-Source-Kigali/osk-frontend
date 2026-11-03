@@ -1,12 +1,20 @@
 import { ApiRequestError } from "../api/http.ts";
+import {
+  reviewContentForm,
+  validateReviewContent,
+  type ReviewContentErrors,
+  type ReviewContentValues,
+} from "../lib/stories.ts";
 
 /**
  * Admin moderation uses the session.
  * GET /admin/reviews?status= defaults to PENDING on the server; this client always sends a status.
+ * POST /admin/reviews creates a pending review. It is not public until approval.
  * PATCH /admin/reviews/:id/status accepts only APPROVED or REJECTED.
  * Allowed transitions: PENDING -> APPROVED|REJECTED, APPROVED -> REJECTED, REJECTED -> APPROVED.
  * Repeating the current status, or returning a review to PENDING, is rejected.
- * DELETE /reviews/:id removes a review. PUT /reviews/:id edits content and is not used here.
+ * PUT /reviews/:id edits content and must not change status.
+ * DELETE /reviews/:id removes a review.
  *
  * Public GET /reviews returns approved reviews and omits moderation fields.
  * Public POST /reviews accepts name, role, message, and file. It rejects client status fields.
@@ -60,7 +68,16 @@ export type ReviewDetailState =
   | { status: "error"; id: string; message: string }
   | { status: "unauthorized"; id: string; message: string };
 
-export type PendingAction = "moderate" | "delete";
+export type PendingAction = "moderate" | "delete" | "create" | "save";
+
+export type ReviewWriteResult =
+  | { ok: true; review: AdminReview }
+  | {
+      ok: false;
+      kind: "validation" | "unauthorized" | "forbidden" | "error";
+      message: string;
+      fieldErrors: ReviewContentErrors;
+    };
 
 export type ModerateResult =
   | { ok: true; review: AdminReview }
@@ -81,6 +98,10 @@ export function controlsLocked(action: PendingAction | null): boolean {
 export function beginPending(current: PendingAction | null, next: PendingAction): PendingAction | null {
   if (current) return null;
   return next;
+}
+
+export function adminReviewCreatePath(): string {
+  return "/admin/reviews";
 }
 
 export function reviewsListPath(status: ReviewStatus): string {
@@ -253,6 +274,73 @@ export function applyModeration(
   };
 }
 
+export async function createAdminReview(
+  client: { createReview: (form: FormData) => Promise<unknown> },
+  values: ReviewContentValues,
+  file: File | null,
+  imageError: string | null,
+): Promise<ReviewWriteResult> {
+  const fieldErrors = validateReviewContent(values, {
+    requireFile: true,
+    hasFile: file !== null,
+    imageError,
+  });
+  if (hasFieldErrors(fieldErrors)) {
+    return { ok: false, kind: "validation", message: "Check the highlighted fields.", fieldErrors };
+  }
+
+  try {
+    const review = readAdminReview(await client.createReview(reviewContentForm(values, file)));
+    if (!review || review.status !== "PENDING") {
+      return {
+        ok: false,
+        kind: "error",
+        message: "A new review must stay pending until it is approved.",
+        fieldErrors: {},
+      };
+    }
+    return { ok: true, review };
+  } catch (error) {
+    return { ok: false, ...mutationFailure(error), fieldErrors: {} };
+  }
+}
+
+export async function saveReviewContent(
+  client: { updateReview: (id: string, form: FormData) => Promise<unknown> },
+  review: AdminReview,
+  values: ReviewContentValues,
+  file: File | null,
+  imageError: string | null,
+): Promise<ReviewWriteResult> {
+  const fieldErrors = validateReviewContent(values, {
+    requireFile: false,
+    hasFile: file !== null,
+    imageError,
+  });
+  if (hasFieldErrors(fieldErrors)) {
+    return { ok: false, kind: "validation", message: "Check the highlighted fields.", fieldErrors };
+  }
+
+  try {
+    const updated = readAdminReview(await client.updateReview(review.id, reviewContentForm(values, file)));
+    if (!updated) {
+      return { ok: false, kind: "error", message: "The server response did not include the updated review.", fieldErrors: {} };
+    }
+    if (updated.status !== review.status) {
+      return { ok: false, kind: "error", message: "Editing a review must not change its status.", fieldErrors: {} };
+    }
+    return { ok: true, review: updated };
+  } catch (error) {
+    return { ok: false, ...mutationFailure(error), fieldErrors: {} };
+  }
+}
+
+export function applyCreatedReview(list: ReviewListState, review: AdminReview): ReviewListState {
+  if (list.status !== "ready" || list.filter !== review.status) return list;
+  if (list.reviews.some((item) => item.id === review.id)) return list;
+  return { status: "ready", filter: list.filter, reviews: [review, ...list.reviews] };
+}
+
 export function applyDeletion(list: ReviewListState, id: string): ReviewListState {
   if (list.status !== "ready") return list;
   return { status: "ready", filter: list.filter, reviews: list.reviews.filter((item) => item.id !== id) };
@@ -316,6 +404,10 @@ function isRecord(value: unknown): value is Record<string, unknown> {
 
 function isNonEmptyString(value: unknown): value is string {
   return typeof value === "string" && value.trim().length > 0;
+}
+
+function hasFieldErrors(errors: ReviewContentErrors): boolean {
+  return Object.values(errors).some((error) => Boolean(error));
 }
 
 function isReviewStatus(value: unknown): value is ReviewStatus {

@@ -1,18 +1,21 @@
-import { useEffect, useId, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState, type ReactNode } from "react";
 import { Link } from "react-router";
 import { AlertCircle } from "lucide-react";
-import { sessionGet, sessionSend } from "@/api";
+import { sessionForm, sessionGet, sessionSend } from "@/api";
 import {
   REVIEW_STATUSES,
   REVIEW_UNCHANGED_MESSAGE,
+  adminReviewCreatePath,
   adminReviewPath,
   adminReviewStatusPath,
   allowedDecisions,
+  applyCreatedReview,
   applyDeletion,
   applyModeration,
   beginPending,
   confirmedDeletion,
   controlsLocked,
+  createAdminReview,
   deleteReview,
   initialReviewList,
   loadReview,
@@ -20,6 +23,7 @@ import {
   moderateReview,
   reviewResourcePath,
   reviewsListPath,
+  saveReviewContent,
   SESSION_EXPIRED_MESSAGE,
   type AdminReview,
   type ModerationDecision,
@@ -30,10 +34,15 @@ import {
 } from "@/admin/reviews";
 import { Button } from "@/components/UI";
 import Loader from "@/components/UI/Loader";
+import { validateImageFile } from "@/lib/imageUpload";
+import type { ReviewContentErrors, ReviewContentValues } from "@/lib/stories";
+import AdminImagePreview, { adminFileInputClass } from "./AdminImagePreview";
 
 const reviewsClient = {
   listReviews: (status: ReviewStatus) => sessionGet<unknown>(reviewsListPath(status)),
   getReview: (id: string) => sessionGet<unknown>(adminReviewPath(id)),
+  createReview: (form: FormData) => sessionForm<unknown>(adminReviewCreatePath(), "POST", form),
+  updateReview: (id: string, form: FormData) => sessionForm<unknown>(reviewResourcePath(id), "PUT", form),
   setStatus: (id: string, status: ModerationDecision) =>
     sessionSend<unknown>(adminReviewStatusPath(id), "PATCH", { status }),
   deleteReview: (id: string) => sessionSend<unknown>(reviewResourcePath(id), "DELETE"),
@@ -50,6 +59,8 @@ const AdminReviewsPage = () => {
   const [list, setList] = useState<ReviewListState>(initialReviewList("PENDING"));
   const [detail, setDetail] = useState<ReviewDetailState | null>(null);
   const [deleteTarget, setDeleteTarget] = useState<AdminReview | null>(null);
+  const [creating, setCreating] = useState(false);
+  const [editor, setEditor] = useState<AdminReview | null>(null);
   const [action, setAction] = useState<PendingAction | null>(null);
   const [notice, setNotice] = useState<string | null>(null);
   const [actionError, setActionError] = useState<string | null>(null);
@@ -92,6 +103,60 @@ const AdminReviewsPage = () => {
     setDetail({ status: "loading", id });
     const next = await loadReview(reviewsClient.getReview, id);
     if (requestId.current === token) setDetail(next);
+  }
+
+  async function onCreate(values: ReviewContentValues, file: File | null) {
+    const next = beginPending(action, "create");
+    if (!next) return {};
+    setAction(next);
+    setActionError(null);
+    try {
+      const imageError = file ? await imageErrorFor(file) : null;
+      const result = await createAdminReview(reviewsClient, values, file, imageError);
+      if (!result.ok) {
+        setActionError(result.kind === "forbidden" ? `${result.message} ${REVIEW_UNCHANGED_MESSAGE}` : result.message);
+        return result.fieldErrors;
+      }
+      setNotice("Review submitted for approval.");
+      setCreating(false);
+      setFilter("PENDING");
+      setList((current) =>
+        applyCreatedReview(
+          current.status === "ready" && current.filter === "PENDING"
+            ? current
+            : { status: "ready", filter: "PENDING", reviews: [] },
+          result.review,
+        ),
+      );
+      await refresh("PENDING");
+      return {};
+    } finally {
+      setAction(null);
+    }
+  }
+
+  async function onSave(values: ReviewContentValues, file: File | null) {
+    if (!editor) return {};
+    const next = beginPending(action, "save");
+    if (!next) return {};
+    setAction(next);
+    setActionError(null);
+    try {
+      const imageError = file ? await imageErrorFor(file) : null;
+      const result = await saveReviewContent(reviewsClient, editor, values, file, imageError);
+      if (!result.ok) {
+        setActionError(result.kind === "forbidden" ? `${result.message} ${REVIEW_UNCHANGED_MESSAGE}` : result.message);
+        return result.fieldErrors;
+      }
+      setNotice("Review updated.");
+      setEditor(null);
+      setList((current) => applyModeration(current, result.review, filter));
+      setDetail({ status: "ready", review: result.review });
+      await refresh(filter);
+      return {};
+    } finally {
+      setAction(null);
+    }
   }
 
   async function onModerate(review: AdminReview, nextStatus: ModerationDecision) {
@@ -147,12 +212,64 @@ const AdminReviewsPage = () => {
 
   return (
     <section className="flex flex-col gap-6" data-testid="admin-reviews">
-      <div>
-        <h1 className="text-2xl font-bold text-text-heading sm:text-3xl">Reviews</h1>
-        <p className="mt-2 max-w-2xl text-sm leading-6 text-text-supporting sm:text-base">
-          Pending reviews can be approved or rejected. An approved review can be rejected, and a rejected review can be approved. A review cannot return to pending.
-        </p>
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <h1 className="text-2xl font-bold text-text-heading sm:text-3xl">Reviews</h1>
+          <p className="mt-2 max-w-2xl text-sm leading-6 text-text-supporting sm:text-base">
+            New reviews stay pending until they are approved. An approved review can be rejected, and a rejected review can be approved. A review cannot return to pending.
+          </p>
+        </div>
+        <Button
+          type="button"
+          disabled={locked}
+          onClick={() => {
+            if (locked) return;
+            setNotice(null);
+            setActionError(null);
+            setEditor(null);
+            setCreating(true);
+          }}
+        >
+          New review
+        </Button>
       </div>
+
+      {creating ? (
+        <ReviewContentForm
+          title="New review"
+          submitLabel="Submit for approval"
+          pendingLabel="Submitting..."
+          locked={action === "create"}
+          requireFile
+          serverMessage={actionError}
+          onCancel={() => {
+            if (action === "create") return;
+            setCreating(false);
+            setActionError(null);
+          }}
+          onSubmit={onCreate}
+        />
+      ) : null}
+
+      {editor ? (
+        <ReviewContentForm
+          key={editor.id}
+          title={`Edit ${editor.name}`}
+          submitLabel="Save review"
+          pendingLabel="Saving..."
+          locked={action === "save"}
+          requireFile={false}
+          initialValues={{ name: editor.name, role: editor.role, message: editor.message }}
+          currentImageUrl={editor.profileUrl}
+          serverMessage={actionError}
+          onCancel={() => {
+            if (action === "save") return;
+            setEditor(null);
+            setActionError(null);
+          }}
+          onSubmit={onSave}
+        />
+      ) : null}
 
       <div role="group" aria-label="Review status" className="flex flex-wrap gap-2">
         {REVIEW_STATUSES.map((status) => (
@@ -200,19 +317,42 @@ const AdminReviewsPage = () => {
       {list.status === "ready" && list.reviews.length > 0 ? (
         <ul className="grid grid-cols-1 gap-4">
           {list.reviews.map((review) => (
-            <li key={review.id} className="rounded-2xl border border-gray-200 bg-white p-5">
-              <div className="flex flex-col gap-4 sm:flex-row sm:items-start">
-                <img src={review.profileUrl} alt="" className="h-16 w-16 rounded-full object-cover" />
+            <li key={review.id} className="overflow-hidden rounded-2xl border border-gray-200 bg-white">
+              <div className="flex gap-4 p-5">
+                <img src={review.profileUrl} alt="" className="h-12 w-12 shrink-0 rounded-full object-cover" />
                 <div className="min-w-0 flex-1">
-                  <h2 className="text-lg font-bold text-text-heading">{review.name}</h2>
+                  <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+                    <h2 className="text-lg font-bold text-text-heading">{review.name}</h2>
+                    <span className={`rounded-full px-2.5 py-0.5 text-xs font-bold ${statusBadge(review.status)}`}>
+                      {STATUS_LABELS[review.status]}
+                    </span>
+                  </div>
                   <p className="mt-1 text-sm text-text-supporting">{review.role}</p>
-                  <p className={`mt-2 text-sm font-bold ${statusClass(review.status)}`}>{STATUS_LABELS[review.status]}</p>
-                  <p className="mt-2 whitespace-pre-wrap text-sm text-text-body">{review.message}</p>
+                  <p className="mt-3 whitespace-pre-wrap text-sm leading-6 text-text-body">{review.message}</p>
                 </div>
+              </div>
+              <div className="flex flex-col gap-3 border-t border-gray-100 bg-[#f7f8fa] px-5 py-3 sm:flex-row sm:items-center sm:justify-between">
                 <div className="flex flex-wrap gap-2">
-                  <Button type="button" variant="secondary" size="sm" disabled={locked} onClick={() => void openReview(review.id)}>
+                  <Button type="button" variant="primary" size="sm" disabled={locked} onClick={() => void openReview(review.id)}>
                     View
                   </Button>
+                  <Button
+                    type="button"
+                    variant="secondary"
+                    size="sm"
+                    disabled={locked}
+                    onClick={() => {
+                      if (locked) return;
+                      setNotice(null);
+                      setActionError(null);
+                      setCreating(false);
+                      setEditor(review);
+                    }}
+                  >
+                    Edit
+                  </Button>
+                </div>
+                <div className="flex flex-wrap gap-2">
                   {allowedDecisions(review.status).map((decision) => (
                     <Button
                       key={decision}
@@ -252,6 +392,12 @@ const AdminReviewsPage = () => {
         pending={action === "moderate"}
         serverMessage={actionError}
         onModerate={onModerate}
+        onEdit={(review) => {
+          setNotice(null);
+          setActionError(null);
+          setCreating(false);
+          setEditor(review);
+        }}
         onDismiss={() => setActionError(null)}
       />
 
@@ -275,6 +421,7 @@ function ReviewDetail({
   pending,
   serverMessage,
   onModerate,
+  onEdit,
   onDismiss,
 }: {
   detail: ReviewDetailState | null;
@@ -282,6 +429,7 @@ function ReviewDetail({
   pending: boolean;
   serverMessage: string | null;
   onModerate: (review: AdminReview, nextStatus: ModerationDecision) => Promise<void>;
+  onEdit: (review: AdminReview) => void;
   onDismiss: () => void;
 }) {
   if (!detail) return null;
@@ -298,7 +446,7 @@ function ReviewDetail({
 
   const review = detail.review;
   return (
-    <article className="rounded-2xl border border-gray-200 bg-white p-5 sm:p-6" aria-labelledby="review-detail-title">
+    <article className="overflow-hidden rounded-2xl border border-gray-200 bg-white p-5 pb-0 sm:p-6 sm:pb-0" aria-labelledby="review-detail-title">
       <h2 id="review-detail-title" className="text-lg font-bold text-text-heading">
         {review.name}
       </h2>
@@ -312,11 +460,34 @@ function ReviewDetail({
         <DetailItem label="Reviewed by" value={review.reviewedByName ?? "Not reviewed yet"} />
         <DetailItem label="Message" value={review.message} className="sm:col-span-2" />
       </dl>
-      <div className="mt-6 flex flex-wrap gap-2">
+      {serverMessage ? (
+        <p className="mt-4 text-sm font-medium text-red-600" role="alert">
+          {serverMessage}{" "}
+          {serverMessage === SESSION_EXPIRED_MESSAGE ? (
+            <Link to="/admin/login" className="underline">
+              Sign in again
+            </Link>
+          ) : null}
+        </p>
+      ) : null}
+      <div className="-mx-5 mt-6 flex flex-col gap-3 border-t border-gray-100 bg-[#f7f8fa] px-5 py-3 sm:-mx-6 sm:flex-row sm:items-center sm:justify-end sm:px-6">
+        <Button
+          type="button"
+          variant="secondary"
+          size="sm"
+          disabled={locked}
+          onClick={() => {
+            onDismiss();
+            onEdit(review);
+          }}
+        >
+          Edit
+        </Button>
         {allowedDecisions(review.status).map((decision) => (
           <Button
             key={decision}
             type="button"
+            size="sm"
             variant={decision === "APPROVED" ? "primary" : "dark"}
             disabled={locked}
             loading={pending}
@@ -329,18 +500,145 @@ function ReviewDetail({
           </Button>
         ))}
       </div>
-      {serverMessage ? (
-        <p className="mt-4 text-sm font-medium text-red-600" role="alert">
-          {serverMessage}{" "}
-          {serverMessage === SESSION_EXPIRED_MESSAGE ? (
-            <Link to="/admin/login" className="underline">
-              Sign in again
-            </Link>
-          ) : null}
-        </p>
-      ) : null}
     </article>
   );
+}
+
+function ReviewContentForm({
+  title,
+  submitLabel,
+  pendingLabel,
+  locked,
+  requireFile,
+  initialValues = { name: "", role: "", message: "" },
+  currentImageUrl = null,
+  serverMessage,
+  onCancel,
+  onSubmit,
+}: {
+  title: string;
+  submitLabel: string;
+  pendingLabel: string;
+  locked: boolean;
+  requireFile: boolean;
+  initialValues?: ReviewContentValues;
+  currentImageUrl?: string | null;
+  serverMessage: string | null;
+  onCancel: () => void;
+  onSubmit: (values: ReviewContentValues, file: File | null) => Promise<ReviewContentErrors>;
+}) {
+  const [values, setValues] = useState<ReviewContentValues>(initialValues);
+  const [file, setFile] = useState<File | null>(null);
+  const [fieldErrors, setFieldErrors] = useState<ReviewContentErrors>({});
+
+  function update(field: keyof ReviewContentValues, value: string) {
+    setValues((current) => ({ ...current, [field]: value }));
+    setFieldErrors((current) => ({ ...current, [field]: undefined }));
+  }
+
+  return (
+    <form
+      className="rounded-2xl border border-gray-200 bg-white p-5 sm:p-6"
+      onSubmit={(event) => {
+        event.preventDefault();
+        if (locked) return;
+        void onSubmit(values, file).then((errors) => setFieldErrors(errors));
+      }}
+    >
+      <h2 className="text-lg font-bold text-text-heading">{title}</h2>
+      <p className="mt-2 text-sm leading-6 text-text-supporting">
+        {requireFile
+          ? "This review stays pending until you approve it."
+          : "Saving changes keeps the current approval status."}
+      </p>
+      <div className="mt-4 grid gap-4 sm:grid-cols-2">
+        <ContentField label="Name" error={fieldErrors.name} className="sm:col-span-2">
+          <input
+            id="review-name"
+            value={values.name}
+            aria-invalid={fieldErrors.name ? true : undefined}
+            className={inputClass(Boolean(fieldErrors.name))}
+            onChange={(event) => update("name", event.target.value)}
+          />
+        </ContentField>
+        <ContentField label="Role" error={fieldErrors.role}>
+          <input
+            id="review-role"
+            value={values.role}
+            aria-invalid={fieldErrors.role ? true : undefined}
+            className={inputClass(Boolean(fieldErrors.role))}
+            onChange={(event) => update("role", event.target.value)}
+          />
+        </ContentField>
+        <ContentField label="Message" error={fieldErrors.message} className="sm:col-span-2">
+          <textarea
+            id="review-message"
+            rows={5}
+            value={values.message}
+            aria-invalid={fieldErrors.message ? true : undefined}
+            className={inputClass(Boolean(fieldErrors.message))}
+            onChange={(event) => update("message", event.target.value)}
+          />
+        </ContentField>
+        <ContentField label={requireFile ? "Profile photo" : "Replace profile photo"} error={fieldErrors.file} className="sm:col-span-2">
+          <AdminImagePreview file={file} currentUrl={currentImageUrl} />
+          <input
+            id="review-file"
+            type="file"
+            accept="image/jpeg,image/jpg,image/png,image/webp,image/gif"
+            className={adminFileInputClass}
+            aria-invalid={fieldErrors.file ? true : undefined}
+            onChange={(event) => {
+              setFile(event.target.files?.[0] ?? null);
+              setFieldErrors((current) => ({ ...current, file: undefined }));
+            }}
+          />
+        </ContentField>
+      </div>
+      {serverMessage ? (
+        <p role="alert" className="mt-4 text-sm font-medium text-red-600">
+          {serverMessage}
+        </p>
+      ) : null}
+      <div className="mt-6 flex flex-wrap justify-end gap-3">
+        <Button type="button" variant="secondary" onClick={onCancel} disabled={locked}>
+          Cancel
+        </Button>
+        <Button type="submit" disabled={locked} loading={locked}>
+          {locked ? pendingLabel : submitLabel}
+        </Button>
+      </div>
+    </form>
+  );
+}
+
+function ContentField({
+  label,
+  error,
+  className,
+  children,
+}: {
+  label: string;
+  error?: string;
+  className?: string;
+  children: ReactNode;
+}) {
+  return (
+    <label className={`block text-sm font-bold text-gray-700 ${className ?? ""}`}>
+      {label}
+      {children}
+      {error ? <span className="mt-1 block text-sm font-medium text-red-600">{error}</span> : null}
+    </label>
+  );
+}
+
+function inputClass(invalid: boolean): string {
+  return `mt-2 w-full rounded-xl border px-3 py-2 text-sm ${invalid ? "border-red-400" : "border-gray-200"}`;
+}
+
+async function imageErrorFor(file: File): Promise<string | null> {
+  const result = await validateImageFile(file);
+  return result.ok ? null : result.message;
 }
 
 function DetailItem({ label, value, className }: { label: string; value: string; className?: string }) {
@@ -428,10 +726,10 @@ function StatusMessage({ message, unauthorized }: { message: string; unauthorize
   );
 }
 
-function statusClass(status: ReviewStatus): string {
-  if (status === "APPROVED") return "text-green-800";
-  if (status === "REJECTED") return "text-red-800";
-  return "text-amber-800";
+function statusBadge(status: ReviewStatus): string {
+  if (status === "APPROVED") return "bg-green-50 text-green-800";
+  if (status === "REJECTED") return "bg-red-50 text-red-800";
+  return "bg-amber-50 text-amber-800";
 }
 
 function detailShows(detail: ReviewDetailState | null, id: string): boolean {

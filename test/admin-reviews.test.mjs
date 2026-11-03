@@ -9,11 +9,13 @@ const testimonialsPath = new URL("../src/pages/Home/components/Testimonials.tsx"
 
 const {
   allowedDecisions,
+  applyCreatedReview,
   applyDeletion,
   applyModeration,
   beginPending,
   confirmedDeletion,
   controlsLocked,
+  createAdminReview,
   deleteReview,
   initialReviewList,
   loadReview,
@@ -24,6 +26,7 @@ const {
   readAdminReview,
   readPublicReviewList,
   reviewsListPath,
+  saveReviewContent,
 } = await import(reviewsUrl);
 const { ApiRequestError, createApiClient } = await import(httpUrl);
 
@@ -284,8 +287,11 @@ test("public submissions cannot set moderation fields and public lists omit unap
   assert.equal("profilePublicId" in listed[0], false);
 
   const testimonials = await readFile(testimonialsPath, "utf8");
-  assert.match(testimonials, /TESTIMONIALS/);
-  assert.doesNotMatch(testimonials, /\/reviews|sessionSend|status/);
+  assert.match(testimonials, /apiGet<unknown>\("\/reviews"\)/);
+  assert.match(testimonials, /postForm<unknown>\("\/reviews", form\)/);
+  assert.match(testimonials, /Share your story/);
+  assert.match(testimonials, /STORY_PENDING_MESSAGE/);
+  assert.doesNotMatch(testimonials, /TESTIMONIALS|sessionSend|localStorage|sessionStorage|x-api-key/);
 });
 
 test("the reviews page uses the moderation endpoints and keeps failed actions from changing the list", async () => {
@@ -293,7 +299,11 @@ test("the reviews page uses the moderation endpoints and keeps failed actions fr
   assert.match(source, /sessionGet<unknown>\(reviewsListPath\(status\)\)/);
   assert.match(source, /sessionGet<unknown>\(adminReviewPath\(id\)\)/);
   assert.match(source, /sessionSend<unknown>\(adminReviewStatusPath\(id\), "PATCH", \{ status \}\)/);
+  assert.match(source, /sessionForm<unknown>\(adminReviewCreatePath\(\), "POST", form\)/);
+  assert.match(source, /sessionForm<unknown>\(reviewResourcePath\(id\), "PUT", form\)/);
   assert.match(source, /sessionSend<unknown>\(reviewResourcePath\(id\), "DELETE"\)/);
+  assert.match(source, /Submit for approval/);
+  assert.match(source, /Save review/);
   assert.match(source, /allowedDecisions/);
   assert.match(source, /aria-pressed/);
   assert.match(source, /disabled=\{locked\}/);
@@ -304,6 +314,54 @@ test("the reviews page uses the moderation endpoints and keeps failed actions fr
   assert.ok(moderateFn.indexOf("if (!result.ok)") < moderateFn.indexOf("applyModeration"));
   const deleteFn = source.slice(source.indexOf("async function onConfirmDelete"));
   assert.ok(deleteFn.indexOf("if (!result.ok)") < deleteFn.indexOf("applyDeletion"));
+});
+
+test("an admin-created review stays pending and an edit cannot change status", async () => {
+  const created = await createAdminReview(
+    { createReview: async () => pending },
+    { name: "Amina", role: "Developer", message: "Hello" },
+    new File(["png"], "photo.png", { type: "image/png" }),
+    null,
+  );
+  assert.equal(created.ok, true);
+  assert.equal(created.review.status, "PENDING");
+
+  const published = await createAdminReview(
+    { createReview: async () => approvedCopy() },
+    { name: "Amina", role: "Developer", message: "Hello" },
+    new File(["png"], "photo.png", { type: "image/png" }),
+    null,
+  );
+  assert.equal(published.ok, false);
+  assert.equal(published.message, "A new review must stay pending until it is approved.");
+
+  const saved = await saveReviewContent(
+    { updateReview: async () => ({ ...pending, message: "Updated hello" }) },
+    readAdminReview(pending),
+    { name: "Amina", role: "Developer", message: "Updated hello" },
+    null,
+    null,
+  );
+  assert.equal(saved.ok, true);
+  assert.equal(saved.review.status, "PENDING");
+  assert.equal(saved.review.message, "Updated hello");
+
+  const changedStatus = await saveReviewContent(
+    { updateReview: async () => approvedCopy() },
+    readAdminReview(pending),
+    { name: "Amina", role: "Developer", message: "Hello" },
+    null,
+    null,
+  );
+  assert.equal(changedStatus.ok, false);
+  assert.equal(changedStatus.message, "Editing a review must not change its status.");
+
+  const queued = applyCreatedReview(
+    { status: "ready", filter: "PENDING", reviews: [] },
+    created.review,
+  );
+  assert.equal(queued.reviews.length, 1);
+  assert.equal(queued.reviews[0].status, "PENDING");
 });
 
 function json(body, status = 200) {
