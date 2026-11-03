@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useState } from "react";
 
 export const adminFileInputClass = "admin-file-input block w-full text-sm text-gray-700";
 
@@ -29,19 +29,23 @@ export default function AdminImagePreview({
 }
 
 function useFilePreviewUrl(file: File | null): string | null {
-  const store = useRef<{ file: File | null; url: string | null }>({ file: null, url: null });
+  const [stored, setStored] = useState<{ file: File | null; url: string | null }>({
+    file: null,
+    url: null,
+  });
 
-  if (store.current.file !== file) {
-    if (store.current.url) URL.revokeObjectURL(store.current.url);
-    store.current = { file, url: file ? URL.createObjectURL(file) : null };
+  let url = stored.url;
+  if (stored.file !== file) {
+    if (stored.url) URL.revokeObjectURL(stored.url);
+    url = file ? URL.createObjectURL(file) : null;
+    setStored({ file, url });
   }
 
   useEffect(() => {
-    const owned = store;
     return () => {
-      if (owned.current.url) URL.revokeObjectURL(owned.current.url);
+      if (url) URL.revokeObjectURL(url);
     };
-  }, []);
+  }, [url]);
 
-  return store.current.url;
+  return url;
 }

@@ -24,10 +24,6 @@ const adminHeaderLogos = {
   dark: AdminLogoWhite,
 } as const;
 
-function adminHeaderLogo(onLightBackground: boolean) {
-  return onLightBackground ? AdminLogo : AdminLogoWhite;
-}
-
 const AdminShell = () => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -138,11 +134,8 @@ function AdminFrame({
   children: ReactNode;
 }) {
   const location = useLocation();
-  const [mobileOpen, setMobileOpen] = useState(false);
-
-  useEffect(() => {
-    setMobileOpen(false);
-  }, [location.pathname]);
+  const [menuPath, setMenuPath] = useState<string | null>(null);
+  const mobileOpen = menuPath === location.pathname;
 
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? "hidden" : "unset";
@@ -194,7 +187,7 @@ function AdminFrame({
           <button
             type="button"
             className="z-50 p-1 xl:hidden"
-            onClick={() => setMobileOpen((open) => !open)}
+            onClick={() => setMenuPath(mobileOpen ? null : location.pathname)}
             aria-label={mobileOpen ? "Close navigation menu" : "Open navigation menu"}
           >
             {mobileOpen ? <X className="h-6 w-6 text-gray-900" /> : <RxHamburgerMenu className="h-6 w-6 text-gray-900" />}
@@ -213,7 +206,7 @@ function AdminFrame({
               key={item.to}
               to={item.to}
               end={item.end}
-              onClick={() => setMobileOpen(false)}
+              onClick={() => setMenuPath(null)}
               className={({ isActive }) =>
                 isActive
                   ? "font-semibold text-primary-colour underline decoration-2 underline-offset-4"

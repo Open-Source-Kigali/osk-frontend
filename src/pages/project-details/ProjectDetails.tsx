@@ -84,7 +84,6 @@ const ProjectDetails = () => {
 	const { slug } = useParams(); // route param is the project slug
 	const { projects, loading, error } = useProjects();
 	const goodFirstIssues = useGoodFirstIssues();
-	console.log(slug);
 
 	const project: Projects | undefined = useMemo(() => {
 		if (!slug) return undefined;
