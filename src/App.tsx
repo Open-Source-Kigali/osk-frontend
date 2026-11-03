@@ -13,6 +13,7 @@ import RootLayer from "./pages/RootLayer";
 import Partners from "./pages/Partners/Partners";
 import Event from "./pages/event/Event";
 import DonatePage from "./pages/donate/DonatePage";
+import Join from "./pages/Join";
 const PartnersForm = lazy(() => import("./pages/PartnersForm"));
 
 const wrap = (Component: ComponentType) => (
@@ -49,6 +50,7 @@ const router = createBrowserRouter([
 			{ path: "/partners", Component: Partners },
 			{ path: "/partnersform", element: wrap(PartnersForm) },
 			{ path: "/donate", Component: DonatePage },
+			{ path: "/join", Component: Join },
 		],
 	},
 	{
