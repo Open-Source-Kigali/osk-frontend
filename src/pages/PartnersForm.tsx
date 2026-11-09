@@ -1,9 +1,13 @@
 import { useState } from "react";
 import { NavLink } from "react-router";
 import { ArrowRight, AlertCircle, CheckCircle2 } from "lucide-react";
-import { postForm } from "@/lib/api";
-import type { ApiPartner } from "@/types";
-import type { PartnerFormState } from "@/types";
+import { submitPartnerApplication } from "@/api/partner-applications";
+import {
+  IMAGE_UPLOAD_ACCEPT,
+  IMAGE_UPLOAD_HELP_TEXT,
+  validateImageFile,
+} from "@/lib/imageUpload";
+import type { ApiPartnerApplication, PartnerFormState } from "@/types";
 
 import {
   ORG_CATEGORIES,
@@ -48,18 +52,22 @@ function validate(values: PartnerFormState): Errors {
   if (!values.country) e.country = "Please select your country";
 
   if (!values.website.trim()) e.website = "Website is required";
-  else if (!/^https?:\/\//.test(values.website))
-    e.website = "Enter a full URL starting with https://";
+  else if (!isHttpUrl(values.website.trim()))
+    e.website = "Enter a valid URL starting with http:// or https://";
 
   if (!values.description.trim()) e.description = "Please describe your organisation";
   else if (values.description.trim().length < 20)
     e.description = "Please write at least 20 characters";
+  else if (values.description.trim().length > 300)
+    e.description = "Please keep the description to 300 characters or fewer";
 
   if (!values.tier) e.tier = "Please select a partnership tier";
 
   if (!values.whatWeOffer.trim()) e.whatWeOffer = "Please describe what you can offer";
   else if (values.whatWeOffer.trim().length < 30)
     e.whatWeOffer = "Please write at least 30 characters";
+  else if (values.whatWeOffer.trim().length > 600)
+    e.whatWeOffer = "Please keep this to 600 characters or fewer";
 
   if (!values.contactName.trim()) e.contactName = "Contact name is required";
   if (!values.contactRole.trim()) e.contactRole = "Job title is required";
@@ -73,41 +81,13 @@ function validate(values: PartnerFormState): Errors {
   return e;
 }
 
-// ─── Payload builder ──────────────────────────────────────────────────────────
-// The API expects multipart/form-data because it includes a binary file.
-// We build a FormData object — field names must match the API exactly.
-// "partershipReason" is the real field name in the API (one 'n') — intentional typo.
-
-function buildFormData(values: PartnerFormState): FormData {
-  const form = new FormData();
-
-  form.append("name", values.orgName.trim());
-  form.append("websiteUrl", values.website.trim());
-  form.append("description", values.description.trim());
-  form.append("email", values.contactEmail.trim());
-
-  const reason = [
-    `Tier interest: ${values.tier}`,
-    `What we offer: ${values.whatWeOffer.trim()}`,
-    values.projectIdea.trim()
-      ? `Project idea: ${values.projectIdea.trim()}`
-      : null,
-    `Contact: ${values.contactName.trim()} (${values.contactRole.trim()})`,
-    `Org size: ${values.orgSize}`,
-    `Country: ${values.country}`,
-    `Category: ${values.orgCategory}`,
-  ]
-    .filter(Boolean)
-    .join("\n");
-
-  form.append("partershipReason", reason);
-
-  // API field name is "file"
-  if (values.logoFile) {
-    form.append("file", values.logoFile);
+function isHttpUrl(value: string): boolean {
+  try {
+    const url = new URL(value);
+    return url.protocol === "http:" || url.protocol === "https:";
+  } catch {
+    return false;
   }
-
-  return form;
 }
 
 // ─── Small reusable field wrapper ─────────────────────────────────────────────
@@ -162,7 +142,7 @@ const PartnersForm = () => {
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [apiError, setApiError] = useState<string | null>(null);
-  const [createdPartner, setCreatedPartner] = useState<ApiPartner | null>(null);
+  const [application, setApplication] = useState<ApiPartnerApplication | null>(null);
 
   // ── Field change ───────────────────────────────────────────────────────────
   const set = (field: keyof PartnerFormState, value: string | boolean | File | null) => {
@@ -170,6 +150,22 @@ const PartnersForm = () => {
     if (errors[field]) {
       setErrors((prev) => ({ ...prev, [field]: undefined }));
     }
+  };
+
+  const handleLogoChange = async (file: File | null) => {
+    if (!file) {
+      set("logoFile", null);
+      return;
+    }
+
+    const result = await validateImageFile(file);
+    if (!result.ok) {
+      set("logoFile", null);
+      setErrors((prev) => ({ ...prev, logoFile: result.message }));
+      return;
+    }
+
+    set("logoFile", file);
   };
 
   // ── Submit ─────────────────────────────────────────────────────────────────
@@ -184,16 +180,22 @@ const PartnersForm = () => {
       return;
     }
 
+    if (values.logoFile) {
+      const imageResult = await validateImageFile(values.logoFile);
+      if (!imageResult.ok) {
+        setErrors((prev) => ({ ...prev, logoFile: imageResult.message }));
+        set("logoFile", null);
+        window.scrollTo({ top: 200, behavior: "smooth" });
+        return;
+      }
+    }
+
     setSubmitting(true);
 
     try {
-      // Build FormData — not JSON — because the request includes a file
-      const formData = buildFormData(values);
+      const submittedApplication = await submitPartnerApplication(values);
 
-      // POST /partners — returns ApiPartner on success, throws on failure
-      const partner = await postForm<ApiPartner>("/partners", formData);
-
-      setCreatedPartner(partner);
+      setApplication(submittedApplication);
       setSubmitted(true);
       window.scrollTo({ top: 0, behavior: "smooth" });
 
@@ -210,7 +212,7 @@ const PartnersForm = () => {
   };
 
   // ── Success screen 
-  if (submitted && createdPartner) {
+  if (submitted && application) {
     return (
       <div
         className="min-h-screen flex flex-col items-center justify-center px-6 text-center"
@@ -235,9 +237,9 @@ const PartnersForm = () => {
           Thank you,{" "}
           <strong className="text-gray-700">{values.contactName}</strong>.
           We'll review{" "}
-          <strong className="text-gray-700">{createdPartner.name}</strong>'s
+          <strong className="text-gray-700">{application.organisationName}</strong>'s
           proposal and get back to{" "}
-          <strong className="text-gray-700">{createdPartner.email}</strong>{" "}
+          <strong className="text-gray-700">{application.workEmail}</strong>{" "}
           within <strong className="text-gray-700">48 hours</strong>.
         </p>
        
@@ -334,11 +336,15 @@ const PartnersForm = () => {
                       <input
                         id="logo-upload"
                         type="file"
-                        accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp"
+                        accept={IMAGE_UPLOAD_ACCEPT}
                         className="sr-only"
                         onChange={(e) => {
-                          const file = e.target.files?.[0] ?? null;
-                          set("logoFile", file);
+                          const input = e.currentTarget;
+                          const file = input.files?.[0] ?? null;
+                          void handleLogoChange(file).finally(() => {
+                            // Allow selecting the same rejected file again.
+                            input.value = "";
+                          });
                         }}
                       />
 
@@ -393,7 +399,7 @@ const PartnersForm = () => {
                               Click to upload your logo
                             </p>
                             <p className="text-xs text-gray-400">
-                              PNG, JPG, SVG or WebP
+                              {IMAGE_UPLOAD_HELP_TEXT}
                             </p>
                           </>
                         )}

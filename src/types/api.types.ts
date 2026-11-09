@@ -51,20 +51,92 @@ export interface ApiPartner {
   websiteUrl:       string;
   logoUrl:          string;
   description:      string;
-  email:            string;
-  partershipReason: string;
-  createdAt:        string;
-  updatedAt:        string;
+  email:             string;
+  partnershipReason: string;
+  createdAt:         string;
+  updatedAt:         string;
 }
 
-// What we send to POST /partners
+// Admin partner create/update fields. Public proposals use ApiPartnerApplication.
 export interface CreatePartnerPayload {
-  name:             string;
-  websiteUrl:       string;
-  logoUrl:          string;
-  description:      string;
-  email:            string;
-  partershipReason: string; // intentional — matches the API typo
+  name:              string;
+  websiteUrl:        string;
+  logoUrl:           string;
+  description:       string;
+  email:             string;
+  partnershipReason: string;
+}
+
+export type ApplicationStatus =
+  | "Pending"
+  | "Contacted"
+  | "Approved"
+  | "Rejected";
+
+export interface ApiPartnerApplication {
+  id:                       string;
+  organisationName:         string;
+  organisationLogoUrl:      string;
+  organisationLogoPublicId: string;
+  organisationType:         string;
+  website:                  string;
+  organisationSize:         string;
+  country:                  string;
+  description:              string;
+  partnershipTier:          string;
+  organisationOffer:        string;
+  projectIdea:              string | null;
+  fullName:                 string;
+  jobTitle:                 string;
+  workEmail:                string;
+  agreedToTerms:            boolean;
+  status:                   ApplicationStatus;
+  createdAt:                string;
+  updatedAt:                string;
+}
+
+export interface AuthUser {
+  id:    string;
+  name:  string;
+  email: string;
+  role:  "ADMIN";
+}
+
+export interface AuthMe {
+  user:      AuthUser;
+  expiresAt: string;
+}
+
+export interface AuthSession extends AuthMe {
+  csrfToken: string;
+}
+
+export type ReviewStatus = "PENDING" | "APPROVED" | "REJECTED";
+
+export interface ApiReview {
+  id:              string;
+  name:            string;
+  profileUrl:      string;
+  profilePublicId: string;
+  role:            string;
+  message:         string;
+  createdAt:       string;
+  updatedAt:       string;
+}
+
+export interface ReviewSubmission extends ApiReview {
+  status: "PENDING";
+}
+
+export interface ReviewModerator {
+  id:   string;
+  name: string;
+}
+
+export interface AdminReview extends ApiReview {
+  status:     ReviewStatus;
+  reviewedAt: string | null;
+  reviewedBy: ReviewModerator | null;
 }
 
 // ── Project ────────────────────────────────────────────────────────────────────

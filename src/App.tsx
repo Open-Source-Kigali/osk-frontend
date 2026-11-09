@@ -13,6 +13,7 @@ import RootLayer from "./pages/RootLayer";
 import Partners from "./pages/Partners/Partners";
 import Event from "./pages/event/Event";
 import DonatePage from "./pages/donate/DonatePage";
+import Join from "./pages/Join";
 const PartnersForm = lazy(() => import("./pages/PartnersForm"));
 
 const wrap = (Component: ComponentType) => (
@@ -22,6 +23,16 @@ const wrap = (Component: ComponentType) => (
 );
 import ErrorPage from "./pages/ErrorPage";
 import ProjectDetails from "./pages/project-details/ProjectDetails";
+import AdminLoginPage from "./pages/admin/AdminLoginPage";
+import AdminShell from "./pages/admin/AdminShell";
+import AdminDashboardPage from "./pages/admin/AdminDashboardPage";
+import AdminEventsPage from "./pages/admin/AdminEventsPage";
+import AdminProjectsPage from "./pages/admin/AdminProjectsPage";
+import AdminPartnersPage from "./pages/admin/AdminPartnersPage";
+import AdminMembersPage from "./pages/admin/AdminMembersPage";
+import AdminApplicationsPage from "./pages/admin/AdminApplicationsPage";
+import AdminReviewsPage from "./pages/admin/AdminReviewsPage";
+import { AdminNotFoundPage } from "./pages/admin/AdminPages";
 
 const router = createBrowserRouter([
 	{
@@ -40,6 +51,27 @@ const router = createBrowserRouter([
 			{ path: "/partners", Component: Partners },
 			{ path: "/partnersform", element: wrap(PartnersForm) },
 			{ path: "/donate", Component: DonatePage },
+			{ path: "/join", Component: Join },
+		],
+	},
+	{
+		path: "/admin/login",
+		Component: AdminLoginPage,
+		ErrorBoundary: ErrorPage,
+	},
+	{
+		path: "/admin",
+		Component: AdminShell,
+		ErrorBoundary: ErrorPage,
+		children: [
+			{ index: true, Component: AdminDashboardPage },
+			{ path: "events", Component: AdminEventsPage },
+			{ path: "projects", Component: AdminProjectsPage },
+			{ path: "partners", Component: AdminPartnersPage },
+			{ path: "members", Component: AdminMembersPage },
+			{ path: "partner-applications", Component: AdminApplicationsPage },
+			{ path: "reviews", Component: AdminReviewsPage },
+			{ path: "*", Component: AdminNotFoundPage },
 		],
 	},
 ]);

@@ -19,7 +19,15 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Partners page with programme details and benefits
 - Contact page
 - Member application form (POST /members)
-- Partner application form (POST /partners) with logo upload
+- Partner application form (POST /partner-applications) with logo upload
+- Admin sign-in at /admin/login and a session-protected /admin shell with placeholder sections
+- Admin dashboard counts for events, projects, partners, members, applications, and reviews
+- Admin event list, create, edit, and delete
+- Admin project list, create, edit, delete, and manual GitHub refresh
+- Admin partner list, create, edit, and delete
+- Admin member list, edit, and delete
+- Admin partner application list, details, status update, and delete
+- Admin review moderation for pending, approved, and rejected testimonials
 - Lazy-loaded routing with React Router v6
 - Fully typed data layer using TypeScript
 - Centralised constants for all static data

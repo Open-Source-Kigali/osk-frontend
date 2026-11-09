@@ -51,3 +51,32 @@ html {
     scrollbar-width: none;
   }
 }
+
+.admin-file-input::file-selector-button,
+.admin-file-input::-webkit-file-upload-button {
+  -webkit-appearance: none;
+  appearance: none;
+  margin-right: 1rem;
+  cursor: pointer;
+  border: 0;
+  border-radius: 9999px;
+  background: #2b7fff;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #fff;
+  transition: background-color 150ms ease;
+}
+
+.admin-file-input:hover::file-selector-button,
+.admin-file-input::file-selector-button:hover,
+.admin-file-input:hover::-webkit-file-upload-button,
+.admin-file-input::-webkit-file-upload-button:hover {
+  background: #1a6fef;
+}
+
+.admin-file-input:disabled::file-selector-button,
+.admin-file-input:disabled::-webkit-file-upload-button {
+  cursor: not-allowed;
+  opacity: 0.6;
+}

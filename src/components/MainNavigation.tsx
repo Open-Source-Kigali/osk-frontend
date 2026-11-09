@@ -138,7 +138,7 @@ const Navbar = () => {
           </NavLink>
 
           {/* CTA button (mobile) */}
-          <PrimaryButton to="https://docs.google.com/forms/d/e/1FAIpQLSfP6ysp6y_SNcuHb1x9v-nMxfXR7-kcyBogN2ZMF--2byOzyg/viewform">Contribute to OSK</PrimaryButton>
+          <PrimaryButton to={primaryCTALink.primaryCTA}>Contribute to OSK</PrimaryButton>
         </div>
       )}
     </>

@@ -9,7 +9,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
-    "test": "node --test"
+    "test": "node --experimental-strip-types --test"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.18",
