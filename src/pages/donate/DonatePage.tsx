@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Heart, ArrowRight, Check, CreditCard, Phone, Mail, HelpCircle, Shield, ArrowLeft, ChevronDown, ChevronUp, Landmark, MapPin } from "lucide-react";
 import oskLogoWhite from "@/assets/Logo/OSK-primary-logo-1200-400-white.svg";
+import SEO from "@/components/SEO";
+import { PAGE_SEO } from "@/config/seo";
 
 // ─── Types ─────────────────────────────────────────────────────────────────
 type Frequency = "monthly" | "one-time";
@@ -186,6 +188,7 @@ const DonatePage = () => {
 
   return (
     <div className="min-h-screen" style={{ background: "#0a0f1e" }}>
+      <SEO {...PAGE_SEO.donate} />
       {/* ── Hero banner ─────────────────────────────────────────────────── */}
       <div
         className="relative overflow-hidden pt-32 pb-20 px-4 text-center"
